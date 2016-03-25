@@ -1,9 +1,200 @@
-<div class="container">
-    
-    <flex-slider flex-slide="s in mySlides">
-        <li>
-            <img ng-src="{{s}}">
-        </li>
-    </flex-slider>
-    
+<section>
+  <div class="home">
+    <div class="need-help">
+      <button class="">Not able to find an expert?</button>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+          <div class="search-head text-center">
+            <h2>Get experts to answer all your questions</h2>
+          </div>
+          <div class="search-input">
+            <form class="form-inline">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go!</button>
+              </span>
+              </div>
+              <!-- /input-group -->
+            </form>
+          </div>
+          <div class="signup text-center">
+            <h2>
+        SIGN UP AND GET YOUR SECOND CALL FREE
+      </h2>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="how-it-work">
+        <h4>HOW IT WORKS?</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3" ng-repeat="data in hows track by $index">
+        <div class="icon-box">
+          <img src="{{data.icon}}" alt="" class="img-responsive">
+        </div>
+        <div class="icon-title">
+          <span>{{data.title}}</span>
+        </div>
+        <div class="desc">
+          <p>{{data.desc}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="about">
+    <div class="container">
+      <div class="row">
+        <h2>ABOUT JACKNOWS</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="owl">
+            <img src="img/owl.png" alt="" class="img-responsive">
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="abt-desc">
+            <p>
+              JacKnows is an exciting start up in the peer-to-peer professional services domain, loooking to connect people with subject matter experts for fulfillemnt of customised requests and queries. The platform endeavours to have experts across many sectors to
+              help users have their queries resolved professionaly and conveniently.
+            </p>
+          </div>
+          <div class="read-mr pull-right">
+            <button>read more</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="icon-txt">
+          <div class="display-inline">
+            <img src="img/category.png" alt="">
+          </div>
+          <div class="icon-head">
+            <span>New Category</span>
+          </div>
+          <p>Following are the new categories added</p>
+          <div class="cat-list">
+            <ul>
+              <li>
+                <a href="">
+                  <i class="ln-briefcase"></i> Lawyer
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="ln-library"></i> Financial Adviser
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="ln-cash"></i> Musician
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="icon-txt">
+          <div class="display-inline">
+            <img src="img/search.png" alt="">
+          </div>
+          <div class="icon-head">
+            <span>Frequently Searched</span>
+          </div>
+          <div class="cat-list">
+            <ul>
+              <li>
+                <a href="">
+                 Fitness Expert <span class="badge">4</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+               Travel Consultant <span class="badge">4</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+               Legal Advisor <span class="badge">4</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                 Real Estate Consultant <span class="badge">4</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="icon-txt">
+          <div class="display-inline">
+            <img src="img/rss.png" alt="">
+          </div>
+          <div class="icon-head">
+            <span>Daily Updates</span>
+          </div>
+          <div class="update-box">
+            <span>Top 10 things to do in Thailand</span>
+            <p class="pull-right">31 january 2016</p>
+            <div class="desc-p">
+              <p>This beautiful gold-tipped series of buildings is over 200 years old, and perhaps Bangkok's most famous destination. Yes, it can feel like a tourist trap, but the complex's history and grandeur is palpable</p>
+            </div>
+            <div class="recc">
+              <span>12  RECOMMENDATIONS </span>
+              <button>read more</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+<div class="slider-testimonial">
+  <div class="container">
+    <flex-slider class="carousel" flex-slide="slide in testimonial track by $index"  animation="slide">
+      <li>
+        <div class="testimonial">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="img-holder">
+                <img ng-src="{{slide.img}}" alt="" class="img-responsive">
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div class="testi-descp">
+                <p>{{slide.descp}}</p>
+<div class="text-right">
+  <h4>{{slide.name}}</h4>
 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </flex-slider>
+  </div>
+</div>
+</section>
