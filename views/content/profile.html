@@ -1,0 +1,112 @@
+<section>
+<div class="container">
+<div class="row">
+  <div class="col-md-offset-1 col-md-10">
+    <div class="search-bar">
+      <form class="form-inline">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search for...">
+          <span class="input-group-btn">
+          <button class="btn btn-default" type="button">Go!</button>
+        </span>
+        </div>
+        <!-- /input-group -->
+      </form>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <div class="hemberg">
+      <ul>
+        <li>
+          <a href="">home</a>
+        </li>
+        <li>
+          <a href="">
+            search
+          </a>
+        </li>
+        <li><a href="">
+          profile
+        </a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <div class="profile-bx text-center">
+      <div class="pro-img-box">
+        <img src="img/profile.png" alt="">
+      </div>
+      <div class="pro-name">
+        <h2>DHAVAL GALA</h2>
+      </div>
+      <div class="avl-time">
+        <span>Available Time: Mon to Fri, 5pm to 7pm</span>
+      </div>
+      <div class="price">
+        <span> ₹ 500/ 30 MIN</span>
+      </div>
+      <div class="location">
+        <i class="ln-map-marker"> Mumbai, Maharashtra </i>
+      </div>
+      <div class="descp">
+        <p>Lorem Ipsum is simply dummy text of the printing
+ and typesetting industry.Lorem Ipsum has been
+the industry's standard dummy text ever since
+the 1500s</p>
+      </div>
+      <div class="spl">
+        <h4>SPECIALIZATION</h4>
+        <span>WEB DEVELOPER, APP  DEVELOPER, WEB DESIGNER </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="pro-detail">
+      <ul>
+        <li class="{{classa}}" ng-click="tabchange('summary',1)">Summary</li>
+        <li class="{{classb}}" ng-click="tabchange('exp',2)">Experience</li>
+        <li class="{{classc}}" ng-click="tabchange('edc',3)">Education</li>
+        <li class="{{classd}}" ng-click="tabchange('awd',4)">AWARDS AND HONORS</li>
+      </ul>
+    </div>
+    <div class="summary"  ng-show="tab=='summary'">
+    <h4>WEB DEVELOPER</h4>
+    <p>2 year of experience in MSBI.</p>
+    <p>My job is direct interaction with client,writing store procedures,functions,Creating and Maintaing Staging Database,
+backup,restore and optimization of queries in both platform sql_server as well as oracle.creating reports and
+dashboards.</p>
+    </div>
+    <div class="exp"  ng-show="tab=='exp'">
+      <div class="exp-sec">
+        <h4>JOB TITLE</h4>
+        <span>Company name / self employed</span>
+        <p>October 2015 – Present (6 months)</p>
+        <p>Job Description</p>
+      </div>
+      <div class="exp-sec">
+        <h4>IT CONSULTANT</h4>
+        <span>MindCraft Software Pvt. Ltd.</span>
+        <p>May 2015 – October 2015 (6 months)</p>
+        <p>Consulting companies on their web deveopment needs</p>
+      </div>
+
+    </div>
+    <div class="edc"  ng-show="tab=='edc'">
+      <div class="exp-sec">
+        <h4>BACHELOR OF ENGINEERING</h4>
+        <span>Jorhat Engineering College</span>
+        <p>October 2008 (PASSING YEAR)</p>
+        <p>City, Country</p>
+      </div>
+    </div>
+    <div class="awd"  ng-show="tab=='awd'">
+      <p>awd</p>
+    </div>
+  </div>
+</div>
+</div>
+</section>

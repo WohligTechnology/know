@@ -51,6 +51,42 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Profile");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+
+  $scope.tab = 'summary';
+$scope.classa = 'active';
+$scope.classb = '';
+$scope.classc = '';
+$scope.classd = '';
+
+$scope.tabchange = function(tab, a) {
+    //        console.log(tab);
+    $scope.tab = tab;
+    if (a == 1) {
+        $ionicScrollDelegate.scrollTop();
+        $scope.classa = "active";
+        $scope.classb = '';
+        $scope.classc = '';
+        $scope.classd = '';
+    } else if (a == 2) {
+        $ionicScrollDelegate.scrollTop();
+        $scope.classa = '';
+        $scope.classb = "active";
+        $scope.classc = '';
+        $scope.classd = '';
+    }else if (a == 3) {
+        $ionicScrollDelegate.scrollTop();
+        $scope.classa = '';
+        $scope.classb = '';
+        $scope.classc = "active";
+        $scope.classd = '';
+    }else {
+        $ionicScrollDelegate.scrollTop();
+        $scope.classa = '';
+        $scope.classb = '';
+        $scope.classc = '';
+        $scope.classd = "active";
+    }
+};
 })
 
 .controller('headerctrl', function($scope, TemplateService) {
