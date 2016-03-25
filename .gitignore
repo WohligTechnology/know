@@ -27,7 +27,14 @@ $RECYCLE.BIN/
 .DS_Store
 .AppleDouble
 .LSOverride
-
+bower_components/
+node_modules/
+w/
+.sass-cache/
+*.tar
+production/
+*.zip
+css/
 # Thumbnails
 ._*
 
