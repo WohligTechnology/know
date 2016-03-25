@@ -1,19 +1,46 @@
 <header>
    <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#/home"><img src="img/logo.png" alt="logo" width="20"> </a>
+      <div class="row">
+        <div class="col-md-2">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#/home"><img src="img/options.png" alt="menu" width="20"> </a>
+              <div class="logo">
+                <img src="img/logop.png" alt="" class="img-responsive">
+              </div>
+          </div>
         </div>
+        <div class="col-md-10">
+          <div class="righ-side pull-right">
+            <ul>
+              <li>
+                <a href="">
+                  <button>Become an expert</button>
+                </a>
+              </li>
+              <li>
+                <a href="">Login</a>
+              </li>
+              <li>
+                <a href="">
+                  <img src="img/help.png" alt="">
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
+<!--
         <div class="collapse navbar-collapse" id="nav-collapse">
                <div ng-include="template.menu" class="template menu"></div>
-        </div>
+        </div> -->
     </div>
 </nav>
 </header>
