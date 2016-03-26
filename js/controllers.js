@@ -1,4 +1,4 @@
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider','ui-rangeSlider'])
 
 .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
   //Used to name the .html file
@@ -50,6 +50,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Edit-User");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+})
+.controller('SearchCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("search");
+  $scope.menutitle = NavigationService.makeactive("Search");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+  $scope.demo2 = {
+      range: {
+          min: 0,
+          max: 10050
+      },
+      minPrice: 1000,
+      maxPrice: 4000
+  };
+  // set available range
+$scope.minPrice = 100;
+$scope.maxPrice = 999;
+
+// default the user's values to the available range
+$scope.userMinPrice = $scope.minPrice;
+$scope.userMaxPrice = $scope.maxPrice;
 })
 
 .controller('ProfileCtrl', function($scope, TemplateService, NavigationService, $timeout) {

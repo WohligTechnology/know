@@ -3,6 +3,7 @@
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
 @import "../bower_components/flexslider/flexslider.css";
 @import "../bower_components/font-awesome/css/font-awesome.min.css";
+@import "../bower_components/angular-rangeslider/angular.rangeSlider.css";
 
 /* Bootstrap Variables Goes Here */
 
@@ -32,6 +33,9 @@ img.doneLoading {
 }
 nav li:hover .dropdown-menu {
   display: block;
+}
+.ng-hide:not(.ng-hide-animate) {
+     display: block !important; 
 }
 /* Start writing sass here */
 @import "fancybox-override";
