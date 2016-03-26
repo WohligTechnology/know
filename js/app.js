@@ -20,6 +20,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     templateUrl: "views/template.html",
     controller: 'UserBookingCtrl'
   })
+  .state('edit-user', {
+    url: "/edit-user",
+    templateUrl: "views/template.html",
+    controller: 'EditUserCtrl'
+  })
   .state('profile', {
     url: "/profile",
     templateUrl: "views/template.html",
