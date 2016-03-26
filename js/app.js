@@ -30,6 +30,16 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     templateUrl: "views/template.html",
     controller: 'SearchCtrl'
   })
+  .state('privacy', {
+    url: "/privacy",
+    templateUrl: "views/template.html",
+    controller: 'PrivacyCtrl'
+  })
+  .state('terms-condition', {
+    url: "/terms-condition",
+    templateUrl: "views/template.html",
+    controller: 'TermsConditionCtrl'
+  })
   .state('contact', {
     url: "/contact",
     templateUrl: "views/template.html",
