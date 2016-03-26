@@ -40,6 +40,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     templateUrl: "views/template.html",
     controller: 'HomeExpertCtrl'
   })
+  .state('faq', {
+    url: "/faq",
+    templateUrl: "views/template.html",
+    controller: 'FaqCtrl'
+  })
   .state('terms-condition', {
     url: "/terms-condition",
     templateUrl: "views/template.html",
