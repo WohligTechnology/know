@@ -25,7 +25,8 @@
             <li class="{{classd}}" ng-click="tabchange('bank',4)">BANK DETAILS</li>
           </ul>
         </div>
-        <div class="exp-personal" ng-show="tab=='personal'">
+        {{tab2}}
+        <div class="exp-personal" ng-if="tab2=='personal'">
           <div class="set-title">
             <h4>PERSONAL INFORMATION</h4>
           </div>
@@ -82,10 +83,10 @@
             </div>
           </div>
 
-            <div class="set-title">
-              <h4>ADDRESS DETAILS</h4>
-            </div>
-            <div class="row">
+          <div class="set-title">
+            <h4>ADDRESS DETAILS</h4>
+          </div>
+          <div class="row">
             <div class="col-md-8">
               <form action="">
                 <div class="form-group">
@@ -97,7 +98,33 @@
           </div>
           <button>SAVE</button>
         </div>
+        <div class="exp-prof" ng-if="tab2=='professional'">
+          <div class="set-title">
+            <h4>AREA OF EXPERTISE</h4>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <form action="">
+                <div class="form-group">
+           <label for="exampleInputEmail1">AREA OF EXPERTISE</label>
+           <select class="form-control">
+           <option>1</option>
+           <option>2</option>
+           <option>3</option>
+           <option>4</option>
+           <option>5</option>
+         </select>
+         </div>
+         <div class="form-group">
+           <label for="exampleInputPassword1">specialization <span>(YOU CAN ENTER MULTIPLE SPECIALIZATION)</span></label>
+           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+         </div>
+              </form>
+            </div>
+            <div class="col-md-4"></div>
 
+          </div>
+        </div>
       </div>
     </div>
   </div>

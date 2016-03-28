@@ -76,14 +76,14 @@ the 1500s</p>
         <li class="{{classd}}" ng-click="tabchange('awd',4)">AWARDS AND HONORS</li>
       </ul>
     </div>
-    <div class="summary"  ng-show="tab=='summary'">
+    <div class="summary"  ng-if="tab2=='summary'">
     <h4>WEB DEVELOPER</h4>
     <p>2 year of experience in MSBI.</p>
     <p>My job is direct interaction with client,writing store procedures,functions,Creating and Maintaing Staging Database,
 backup,restore and optimization of queries in both platform sql_server as well as oracle.creating reports and
 dashboards.</p>
     </div>
-    <div class="exp"  ng-show="tab=='exp'">
+    <div class="exp"  ng-if="tab2=='exp'">
       <div class="exp-sec">
         <h4>JOB TITLE</h4>
         <span>Company name / self employed</span>
@@ -98,7 +98,7 @@ dashboards.</p>
       </div>
 
     </div>
-    <div class="edc"  ng-show="tab=='edc'">
+    <div class="edc"  ng-if="tab2=='edc'">
       <div class="exp-sec">
         <h4>BACHELOR OF ENGINEERING</h4>
         <span>Jorhat Engineering College</span>
@@ -106,7 +106,7 @@ dashboards.</p>
         <p>City, Country</p>
       </div>
     </div>
-    <div class="awd"  ng-show="tab=='awd'">
+    <div class="awd"  ng-if="tab2=='awd'">
     <h4>AWARDS AND HONORS</h4>
     <div class="awd-list">
       <ul>
