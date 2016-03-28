@@ -1,0 +1,104 @@
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="hemberg">
+          <ul>
+            <li>
+              <a href="">home</a>
+            </li>
+
+            <li><a href="">
+              profile-setting
+            </a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="exp-setting">
+          <ul>
+            <li class="{{classa}}" ng-click="tabchange('personal',1)">Personal DetailS</li>
+            <li class="{{classb}}" ng-click="tabchange('professional',2)">Professional DetailS</li>
+            <li class="{{classc}}" ng-click="tabchange('call',3)">Call Setting</li>
+            <li class="{{classd}}" ng-click="tabchange('bank',4)">BANK DETAILS</li>
+          </ul>
+        </div>
+        <div class="exp-personal" ng-show="tab=='personal'">
+          <div class="set-title">
+            <h4>PERSONAL INFORMATION</h4>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <form action="">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">FIRST NAME</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">EMAIL <span>( NOT TO BE SHARED PUBLICALY )</span></label>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">PASSWORD</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">GENDER</label>
+                  <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> MALE
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> FEMALE
+                  </label>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-4">
+              <form action="">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">LAST NAME</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">MOBILE NUMBER <span>( NOT TO BE SHARED PUBLICALY )</span></label>
+                  <input type="email" class="form-control" id="exampleInputEmail1">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">CONFIRM PASSWORD</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">PROFILE IMAGE</label>
+                  <div class="user-img display-inline">
+                    <img src="img/user.png" alt="">
+                  </div>
+                  <div class="sub-btn display-inline">
+                    <button>CHOOSE FILE</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+            <div class="set-title">
+              <h4>ADDRESS DETAILS</h4>
+            </div>
+            <div class="row">
+            <div class="col-md-8">
+              <form action="">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">CONFIRM PASSWORD</label>
+                  <textarea class="form-control" rows="6"></textarea>
+                </div>
+              </form>
+            </div>
+          </div>
+          <button>SAVE</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

@@ -25,6 +25,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     templateUrl: "views/template.html",
     controller: 'EditUserCtrl'
   })
+  .state('expert-profile', {
+    url: "/expert-profile",
+    templateUrl: "views/template.html",
+    controller: 'ExpertProfileCtrl'
+  })
   .state('search', {
     url: "/search",
     templateUrl: "views/template.html",
