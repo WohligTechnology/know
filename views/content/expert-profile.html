@@ -25,7 +25,6 @@
             <li class="{{classd}}" ng-click="tabchange('bank',4)">BANK DETAILS</li>
           </ul>
         </div>
-        {{tab2}}
         <div class="exp-personal" ng-if="tab2=='personal'">
           <div class="set-title">
             <h4>PERSONAL INFORMATION</h4>
@@ -106,24 +105,350 @@
             <div class="col-md-4">
               <form action="">
                 <div class="form-group">
-           <label for="exampleInputEmail1">AREA OF EXPERTISE</label>
-           <select class="form-control">
-           <option>1</option>
-           <option>2</option>
-           <option>3</option>
-           <option>4</option>
-           <option>5</option>
-         </select>
-         </div>
-         <div class="form-group">
-           <label for="exampleInputPassword1">specialization <span>(YOU CAN ENTER MULTIPLE SPECIALIZATION)</span></label>
-           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-         </div>
+                  <label for="exampleInputEmail1">AREA OF EXPERTISE</label>
+                  <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">specialization <span>(YOU CAN ENTER MULTIPLE SPECIALIZATION)</span></label>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
               </form>
             </div>
-            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <form action="">
+                <div class="form-group">
+                  <label for="exampleInputPassword1">short descrpition</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">price for service / 30 MINS</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+              </form>
+            </div>
 
           </div>
+          <div class="pro-det">
+            <div class="set-title">
+              <h4>EDUCATIONAL QUALIFICATION </h4>
+            </div>
+            <div class="add">
+              +
+            </div>
+            <div class="row">
+              <form action="">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">DEGREE TITLE</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">INSTITUTE NAME</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">YEAR OF PASSING</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="row">
+              <form action="">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">CITY</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">COUNTRY</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="edu-det">
+            <div class="set-title">
+              <h4>EXPERIENCE </h4>
+            </div>
+            <div class="add">
+              +
+            </div>
+            <form action="">
+              <div class="tab-dis">
+                <label class="radio-inline">
+                  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> COMPANY
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> self employed
+                </label>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">COMPANY NAME</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">JOB TITLE</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">JOB DESCRIPTION</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">START DATE</label>
+                    <p class="input-group">
+                      <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                      <span class="input-group-btn">
+              <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">START DATE</label>
+                    <p class="input-group">
+                      <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                      <span class="input-group-btn">
+              <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">PROFILE IMAGE</label>
+                    <div class="user-img display-inline">
+                      <img src="img/user.png" alt="">
+                    </div>
+                    <div class="sub-btn display-inline">
+                      <button>CHOOSE FILE</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="desc">
+            <div class="set-title">
+              <h4>EXPERIENCE </h4>
+            </div>
+            <div class="row">
+              <div class="col-md-8">
+                <div class="form-group">
+                  <label for="exampleInputPassword1">DETAIL DESCRIPTION <span>(TELL US ABOUT YOUR  SKILL)</span></label>
+                  <textarea class="form-control" rows="6"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="awd">
+            <span>INFORMATION BELOW THE OPTIONAL</span>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="set-title">
+                  <h4>AWARDS AND HONORS</h4>
+                </div>
+                <div class="add">
+                  +
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">AWARDS AND HONORS</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="set-title">
+                  <h4>VIDEO LINKS</h4>
+                </div>
+                <div class="add">
+                  +
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">VIDEO LINKS</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="set-title">
+                  <h4>ADD PHOTOS</h4>
+                </div>
+                <div class="add">
+                  +
+                </div>
+                <!-- <div class="form-group">
+                  <label for="exampleInputPassword1">VIDEO LINKS</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                </div> -->
+                <span>(NOTE: THIS DOCUMENT WILL BE VERIFY BY THE ADMIN)</span>
+              </div>
+            </div>
+          </div>
+          <button>SAVE</button>
+        </div>
+        <div class="exp-call" ng-if="tab2=='call'">
+          <div class="call-sett">
+            <span>Will be activated once your profile is verified.</span>
+            <div class="set-title">
+              <h4>CALL SETTINGS</h4>
+            </div>
+            <div class="call-time">
+              <span>PLEASE SELECT YOUR PREFERRED CALL TIME</span>
+              <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> WEEKDAYS (9AM - 9PM)
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> WEEKENDS (9AM - 9PM)
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> CUSTOM TIMING
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> UNAVAILABLE DAY
+              </label>
+              <div class="call-det">
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">SELECT DAY</label>
+                      <select class="form-control">
+                        <option>MONDAY</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select>
+                    </div>
+                    <div class="add">
+                      +
+                    </div>
+                    <!-- <div class="day-opt">
+     <ul>
+       <li>  <span>MONDAY</span></li>
+       <li>  <span>TUESDAY</span></li>
+     </ul>
+     </div> -->
+                    <div class="day-opt2">
+                      <div class="day-title">
+                        <div class="close pull-right">
+                          <img src="img/close.png" alt="">
+                        </div>
+                        <span>MONDAY</span>
+                        <div class="from">
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">FROM</label>
+                            <select class="form-control">
+                              <option>MONDAY</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="from">
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">TO</label>
+                            <select class="form-control">
+                              <option>MONDAY</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+          <button>SAVE</button>
+        </div>
+        <div class="exp-bank" ng-if="tab2=='bank'">
+          <span>THese details are important for us to remit funds for the calls that you have made</span>
+          <div class="set-title">
+            <h4>BANK DETAILS</h4>
+          </div>
+          <form action="">
+          <div class="row">
+            <div class="col-md-4">
+<div class="form-group">
+  <label for="exampleInputEmail1">NAME OF ACCOUNT HOLDER</label>
+  <input type="email" class="form-control" id="exampleInputEmail1" >
+</div>
+<div class="form-group">
+  <label for="exampleInputEmail1">BANK NAME</label>
+  <input type="email" class="form-control" id="exampleInputEmail1" >
+</div>
+<div class="form-group">
+  <label for="exampleInputEmail1">BANK NAME</label>
+  <input type="email" class="form-control" id="exampleInputEmail1" >
+</div>
+<div class="radio">
+  <label>
+    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+  SAME AS USER ADDRESS
+  </label>
+</div>
+<div class="form-group">
+  <label for="exampleInputEmail1">ACCOUNT HOLDER ADDRESS</label>
+<textarea class="form-control" rows="3"></textarea>
+</div>
+            </div>
+            <div class="col-md-4">
+<div class="form-group">
+  <label for="exampleInputEmail1">TYPE OF ACCOUNT</label>
+  <select class="form-control">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select>
+</div>
+<div class="form-group">
+  <label for="exampleInputEmail1">ACCOUNT NUMBER</label>
+  <input type="email" class="form-control" id="exampleInputEmail1" >
+</div>
+
+<div class="form-group">
+  <label for="exampleInputEmail1">BANK BRANCH ADDRESS (OPTIONAL)</label>
+<textarea class="form-control" rows="3"></textarea>
+</div>
+            </div>
+          </div>
+          </form>
         </div>
       </div>
     </div>
