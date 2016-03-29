@@ -277,7 +277,8 @@ input{
       border-radius: 0px;
       &:focus{
         outline: 0;
-
+    box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(102, 175, 233, 0.6);
+        border-color: rgba(102, 175, 233, 0);
       }
       &:active{
         outline: 0;
@@ -459,4 +460,29 @@ padding-top: 50px;
   background-color: #292624;
   color: #fff;
   padding:15px 0px;
+}
+.bk-grey{
+      background-color: #cecece;
+}
+.social-set{
+  ul{
+    list-style: none;
+    display: block;
+        margin-top: 10px;
+    li{
+      display: inline-block;
+      padding: 0px 4px;
+      a{
+        i{
+          color: #959595;
+              border: 1px solid #959595;
+              font-size: 19px;
+              border-radius: 100%;
+              height: 30px;
+              width: 30px;
+              padding: 5px 6px;
+        }
+      }
+    }
+  }
 }
