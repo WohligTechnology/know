@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700);
 @import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
@@ -7,12 +9,16 @@
 
 /* Bootstrap Variables Goes Here */
 
-$brand-primary: #0d9dff !default;
-$brand-success: #84ce3c !default;
+$brand-primary: #ff8621 !default;
+$brand-success: #588ed0 !default;
 $brand-warning: #ffec39 !default;
 $brand-danger: #fc483f !default;
 $brand-info: #000072 !default;
 
+$brand-base: #474d4f !default;
+$grey-base: #969696 !default;
+
+$font-family-sans-serif: "Lato","Raleway", sans-serif !default;
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 
 body {
@@ -35,7 +41,63 @@ nav li:hover .dropdown-menu {
   display: block;
 }
 .ng-hide:not(.ng-hide-animate) {
-     display: block !important; 
+     display: block !important;
+}
+/* mixing*/
+@mixin placeholder {
+  $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
+  @each $placeholder in $placeholders {
+    &:#{$placeholder}-placeholder {
+      @content;
+    }
+  }
+}
+@mixin transition($transition...) {
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  -webkit-transition: $transition;
+  transition: $transition;
+}
+@mixin x-appearance ($value) {
+  -webkit-appearance: $value;
+  -moz-appearance: $value;
+  appearance: $value;
+}
+.margin0{
+  margin: 0px;
+}
+.padding0{
+  padding: 0px;
+}
+.display-inline{
+  display: inline-block;
+}
+.mt10{
+  margin-top: 10px;
+}
+.mt20{
+  margin-top: 20px;
+}
+.pt10{
+  padding-top: 10px;
+}
+.pt20{
+  padding-top: 20px;
+}
+.mb10{
+  margin-bottom: 10px;
+}
+.mb20{
+  margin-bottom: 20px;
+}
+.pb10{
+  padding-bottom: 10px;
+}
+.pd20{
+  padding-bottom: 20px;
+}
+.custom-li{
+  
 }
 /* Start writing sass here */
 @import "fancybox-override";
