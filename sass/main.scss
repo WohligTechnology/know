@@ -240,20 +240,25 @@ color:$white;
 }
 .search-icon{
   position: absolute;
-  left: 10px;
+  left: 15px;
     top: 12px;
 
 }
+.search-input {
+    background: rgba(0, 0, 0, 0.31);
+    padding: 30px;
+}
 .search-br{
-  width: 90%;
+  width:86%;
 float: left;
 input{
-      padding: 6px 10px 6px 45px;
+      padding: 6px 10px 6px 50px;
       height: 45px;
+      font-size: 16px;
 }
 }
 .form-control{
-      border-radius: 2px;
+      border-radius: 0px;
       &:focus{
         outline: 0;
 
@@ -264,4 +269,16 @@ input{
 }
 .pos-relative{
   position: relative;
+}
+input {
+  @include placeholder {
+    font-weight: 300;
+    font-size: 16px;
+  }
+}
+.search-btn{
+  button{
+    font-size: 16px;
+padding: 10px 25px 10px 25px;
+  }
 }
