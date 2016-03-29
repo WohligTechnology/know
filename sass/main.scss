@@ -98,6 +98,9 @@ color:$white;
 .mt20 {
   margin-top: 20px;
 }
+.mt15{
+  margin-top: 15px;
+}
 .pt10 {
   padding-top: 10px;
 }
@@ -241,20 +244,20 @@ color:$white;
 .search-icon{
   position: absolute;
   left: 15px;
-    top: 12px;
+    top: 10px;
 
 }
 .search-input {
-    background: rgba(0, 0, 0, 0.31);
+    background: rgba(0, 0, 0, 0.5);
     padding: 30px;
 }
 .search-br{
-  width:86%;
+  width:83%;
 float: left;
 input{
       padding: 6px 10px 6px 50px;
-      height: 45px;
-      font-size: 16px;
+      height: 40px;
+      font-size: 14px;
 }
 }
 .form-control{
@@ -273,13 +276,13 @@ input{
 input {
   @include placeholder {
     font-weight: 300;
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 .search-btn{
   button{
-    font-size: 16px;
-padding: 10px 25px 10px 25px;
+    font-size: 15px;
+padding: 9px 25px 9px 25px;
   }
 }
 .signup.text-center {
@@ -291,8 +294,8 @@ padding: 10px 25px 10px 25px;
     transform: translateX(-50%);
     background: rgba(255, 134, 33, 0.66);
     width: 100%;
-    padding: 20px 0px;
-    h1{
+    padding: 15px 0px;
+    h2{
       margin: 0px;
       font-weight: 300;
     }
