@@ -58,7 +58,7 @@
           <img src="{{data.icon}}" alt="" class="img-responsive margin-auto ">
         </div>
         <div class="icon-title">
-          <span class="font-raleway color-base" style="font-weight: 500;">{{data.title}}</span>
+          <span class="font-raleway color-base text-cap" style="font-weight: 500;">{{data.title}}</span>
         </div>
         <div class="desc mt7">
           <p class="font-light color-grey">{{data.desc}}</p>
@@ -68,7 +68,7 @@
   </div>
 </section>
 <section>
-  <div class="about p50 mt70">
+  <div class="about p50 mt60">
     <div class="container">
       <div class="row">
         <h3 class="font-bold font-raleway text-center color-base margin0">ABOUT JACKNOWS</h3>
@@ -94,20 +94,20 @@
     </div>
   </div>
 </section>
-<section>
+<section class="m70">
   <div class="container">
     <div class="row">
       <div class="col-md-4">
         <div class="icon-txt">
           <div class="display-inline">
-            <img src="img/category.png" alt="">
+            <img src="img/category.png" alt="" width="35px">
           </div>
-          <div class="icon-head">
-            <span>New Category</span>
+          <div class="icon-head display-inline pl12">
+            <span class="font-raleway font-med">New Category</span>
           </div>
-          <p>Following are the new categories added</p>
+          <p class="margin0 color-grey pt15 pb15 font-light">Following are the new categories added</p>
           <div class="cat-list">
-            <ul>
+            <ul class="padding0">
               <li>
                 <a href="">
                   <i class="ln-briefcase"></i> Lawyer
@@ -130,31 +130,31 @@
       <div class="col-md-4">
         <div class="icon-txt">
           <div class="display-inline">
-            <img src="img/search.png" alt="">
+            <img src="img/search.png" alt=""  width="35px">
           </div>
-          <div class="icon-head">
-            <span>Frequently Searched</span>
+          <div class="icon-head display-inline pl12">
+            <span class="font-raleway font-med">Frequently Searched</span>
           </div>
-          <div class="cat-list">
-            <ul>
-              <li>
+          <div class="cat-list mt20 pad-list">
+            <ul class="padding0">
+              <li >
                 <a href="">
-                 Fitness Expert <span class="badge">4</span>
+                 Fitness Expert <span class="badge pull-right">25</span>
                 </a>
               </li>
               <li>
                 <a href="">
-               Travel Consultant <span class="badge">4</span>
+               Travel Consultant <span class="badge pull-right">21</span>
                 </a>
               </li>
               <li>
                 <a href="">
-               Legal Advisor <span class="badge">4</span>
+               Legal Advisor <span class="badge pull-right">20</span>
                 </a>
               </li>
               <li>
                 <a href="">
-                 Real Estate Consultant <span class="badge">4</span>
+                 Real Estate Consultant <span class="badge pull-right">18</span>
                 </a>
               </li>
             </ul>
@@ -164,20 +164,20 @@
       <div class="col-md-4">
         <div class="icon-txt">
           <div class="display-inline">
-            <img src="img/rss.png" alt="">
+            <img src="img/rss.png" alt=""  width="35px">
           </div>
-          <div class="icon-head">
-            <span>Daily Updates</span>
+          <div class="icon-head display-inline pl12">
+            <span class="font-raleway font-med">Daily Updates</span>
           </div>
-          <div class="update-box">
-            <span>Top 10 things to do in Thailand</span>
-            <p class="pull-right">31 january 2016</p>
+          <div class="update-box mt20">
+            <h5 class="color-primary margin0">Top 10 things to do in Thailand</h5>
+            <p class="pull-right color-grey f10 date">31 january 2016</p>
             <div class="desc-p">
               <p>This beautiful gold-tipped series of buildings is over 200 years old, and perhaps Bangkok's most famous destination. Yes, it can feel like a tourist trap, but the complex's history and grandeur is palpable</p>
             </div>
             <div class="recc">
               <span>12  RECOMMENDATIONS </span>
-              <button>read more</button>
+              <button class="btn btn-outline f10 text-up pull-right">read more</button>
             </div>
           </div>
         </div>
@@ -186,22 +186,23 @@
   </div>
 </section>
 <section>
-  <div class="slider-testimonial">
+  <div class="slider-testimonial p50 mt60">
     <div class="container">
+        <h3 class="font-bold font-raleway text-center color-base margin0">TESTIMONIALS</h3>
       <flex-slider class="carousel" flex-slide="slide in testimonial track by $index" animation="slide">
         <li>
           <div class="testimonial">
             <div class="row">
-              <div class="col-md-3">
+              <div class="col-md-2">
                 <div class="img-holder">
                   <img ng-src="{{slide.img}}" alt="" class="img-responsive">
                 </div>
               </div>
               <div class="col-md-9">
-                <div class="testi-descp">
-                  <p>{{slide.descp}}</p>
+                <div class="testi-descp mt30">
+                  <p class="font-light color-base line-80">{{slide.descp}}</p>
                   <div class="text-right">
-                    <h4>{{slide.name}}</h4>
+                    <h5>{{slide.name}}</h5>
                   </div>
                 </div>
               </div>
