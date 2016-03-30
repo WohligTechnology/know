@@ -54,6 +54,36 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     });
 
   };
+  $scope.open2 = function(size) {
+
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'views/modal/signup.html',
+      controller: 'HomeCtrl',
+      size: size,
+      resolve: {
+        items: function() {
+          return $scope.items;
+        }
+      }
+    });
+
+  };
+  $scope.open3 = function(size) {
+
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'views/modal/forgetpassword.html',
+      controller: 'HomeCtrl',
+      size: size,
+      resolve: {
+        items: function() {
+          return $scope.items;
+        }
+      }
+    });
+
+  };
 
   $scope.toggleAnimation = function() {
     $scope.animationsEnabled = !$scope.animationsEnabled;
