@@ -1,0 +1,38 @@
+// user booking
+.booking-section {
+  padding: 20px;
+  background-color: #fff;
+  .nav-tabs { border: none; }
+  .nav-tabs > li > a {
+    margin: 0px 26px;
+    @extend .font-raleway;
+    @extend .color-grey;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-size: 15px;
+    &:hover { background-color: #fff; }
+  }
+  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    @extend .font-raleway;
+    @extend .color-grey;
+    background-color: #fff;
+    border: none;
+    border-bottom: 2px solid $brand-success;
+  }
+  .tab-content {
+    padding: 20px 25px;
+  }
+}
+.account-history {
+  font-weight: 300;
+  th {
+    border: none;
+    background-color: #d7e5f7;
+    font-weight: 300;
+    text-align: center;
+  }
+  tbody > tr > td { vertical-align: middle; }
+  .completed { @include square(50px); }
+}
+
+// end user booing
