@@ -163,10 +163,10 @@ a {
 .navbar-default {
   background-color: rgba(248, 248, 248, 0);
   border-color: rgba(231, 231, 231, 0);
-  padding: 10px 0;
+  padding: 5px 0;
 }
 .logo {
-  @include margin(14px 0px 0px 18px);
+  @include margin(12px 0px 0px 18px);
 }
 .btn-become {
   @include button-variant($white, $transparent, $white);
@@ -180,6 +180,40 @@ a {
     border-color: $white;
   }
 }
+.edt {
+  &:hover {
+    color: $brand-success;
+  }
+  &:active {
+    color: $brand-success;
+  }
+  &:focus {
+    color: $brand-success;
+  }
+}
+.home {
+  &:hover {
+    color: $brand-base;
+  }
+  &:active {
+    color: $brand-base;
+  }
+  &:focus {
+    color: $brand-base;
+  }
+}
+.btn-become2 {
+  @include button-variant($brand-base, $transparent, $brand-base);
+  &:hover {
+    border-color: $brand-base;
+  }
+  &:focus {
+    border-color: $brand-base;
+  }
+  &:acive {
+    border-color: $brand-base;
+  }
+}
 .btn-blue {
   @include button-variant($white, $brand-success, $brand-success);
 }
@@ -189,10 +223,13 @@ a {
 .btn-outline {
   @include button-variant($brand-primary, $transparent, $brand-primary);
 }
+.btn-outline-blue {
+  @include button-variant($brand-success, $transparent, $brand-success);
+}
 .btn-facebook {
   @include button-variant($white, $facebook, $facebook);
   width: 100%;
-  padding: 12px 12px;
+  padding: 12px;
   i {
     font-size: 14px;
   }
@@ -200,10 +237,13 @@ a {
 .btn-google {
   @include button-variant($white, $google, $google);
   width: 100%;
-  padding: 12px 12px;
+  padding: 12px;
   i {
     font-size: 14px;
   }
+}
+.sub-btn{
+  padding-left: 20px;
 }
 .color-success {
   color: $brand-success;
@@ -298,7 +338,6 @@ a {
   &:focus {
     outline: 0;
     box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075), 0 0 0 rgba(102, 175, 233, 0.6);
-
   }
   &:active {
     outline: 0;
@@ -375,6 +414,12 @@ input {
 }
 .pl12 {
   padding-left: 12px;
+}
+.m20 {
+  margin: 20px 0;
+}
+.mt70 {
+  margin-top: 70px;
 }
 .cat-list {
   width: 70%;
@@ -506,79 +551,160 @@ input {
     }
   }
 }
-.mail{
-  select{
+.mail {
+  select {
     @include appearance(none);
     font-size: 11px;
-      padding: 0px 0px 0px 12px;
+    padding: 0 0 0 12px;
   }
 }
-.icon-mail{
+.icon-mail {
   position: absolute;
-right: 6px;
-top: 5px;
-i{
-  font-size: 18px;
-  color:#717171;
+  right: 6px;
+  top: 5px;
+  i {
+    font-size: 18px;
+    color: #717171;
+  }
 }
+.log {
+  padding: 6px 30px 0 12px;
+  border: 2px solid #a4a4a4;
+  @include placeholder {
+    font-weight: 400;
+    font-size: 10px;
+  }
 }
-.log{
-      padding: 6px 30px 0px 12px;
-      border: 2px solid #a4a4a4;
-      @include placeholder {
-        font-weight: 400;
-        font-size: 10px;
-      }
-}
-.login-btn{
-  .btn{
+.login-btn {
+  .btn {
     width: 100%;
     text-align: center;
-      padding: 10px 10px;
+    padding: 10px;
   }
 }
-.mt5{
+.mt5 {
   margin-top: 5px;
 }
-.forg-pass{
-  a{
-    &:hover{
-      color:$brand-primary;
-
+.forg-pass {
+  a {
+    &:hover {
+      color: $brand-primary;
     }
-    &:focus{
-      color:$brand-primary;
+    &:focus {
+      color: $brand-primary;
     }
   }
 }
-.pointer{
+.pointer {
   cursor: pointer;
 }
-.other{
-  p{
+.other {
+  p {
     border-top: 1px solid #ccc;
   }
 }
 .modal-header {
-    padding: 9px 0px;
+  padding: 9px 0;
   background-color: #ebebeb;
 }
-.pclose{
+.pclose {
   position: absolute;
-right: -6px;
-top: -10px;
+  right: -6px;
+  top: -10px;
 }
 .modal-dialog {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%) !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%) !important;
 }
-.arrow{
+.arrow {
   right: 8px;
   top: 7px;
-  i{
+  i {
     font-size: 14px;
   }
+}
+.header2 {
+  background-color: rgb(255, 255, 255);
+  border-color: #a4a4a4;
+  padding: 5px 0;
+  z-index: 99999999;
+  box-shadow: 0 1px 2px 0 #a4a4a4;
+}
+.hemberg {
+  ul {
+    li {
+      padding: 0 1px;
+      i {
+        font-size: 9px;
+      }
+    }
+  }
+}
+.conten-box {
+  background-color: $white;
+  border: 1px solid #ccc;
+      padding: 16px 35px 30px 35px;
+}
+.f17 {
+  font-size: 17px;
+}
+label {
+  font-weight: 400;
+}
+.form-input {
+.form-control{
+  height: 40px;
+  background-color: #efefef;
+  border: 1px solid #efefef;
+      box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+}
+}
+.radio{
+  margin-top: 0px;
+  label{
+    font-size: 11px;
+    padding-left: 0px;
+  }
+  input[type="radio"] {
+      display:none;
+  }
+  input[type="radio"] + label {
+      color: $brand-base;
+  }
+  input[type="radio"] + label span {
+      display:inline-block;
+      width:10px;
+      height:10px;
+      margin:-1px 8px 0 0;
+      vertical-align:baseline;;
+      cursor:pointer;
+  }
+
+  input[type="radio"] + label span {
+       background-color:#efefef;
+  }
+
+  input[type="radio"]:checked + label span{
+       background-color:$brand-success;
+  }
+
+  input[type="radio"] + label span,
+  input[type="radio"]:checked + label span {
+    -webkit-transition:background-color 0.4s linear;
+    -o-transition:background-color 0.4s linear;
+    -moz-transition:background-color 0.4s linear;
+    transition:background-color 0.4s linear;
+  }
+}
+
+.save-btn{
+  .btn{
+        padding: 4px 30px;
+  }
+}
+.mt25{
+  margin-top: 25px;
 }
 @import "amit";
