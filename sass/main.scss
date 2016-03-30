@@ -506,6 +506,13 @@ input {
     }
   }
 }
+.mail{
+  select{
+    @include appearance(none);
+    font-size: 11px;
+      padding: 0px 0px 0px 12px;
+  }
+}
 .icon-mail{
   position: absolute;
 right: 6px;
@@ -566,5 +573,12 @@ top: -10px;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%) !important;
+}
+.arrow{
+  right: 8px;
+  top: 7px;
+  i{
+    font-size: 14px;
+  }
 }
 @import "amit";

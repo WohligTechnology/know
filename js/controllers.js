@@ -84,6 +84,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     });
 
   };
+  $scope.open4 = function(size) {
+
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'views/modal/needhelp.html',
+      controller: 'HomeCtrl',
+      size: size,
+      resolve: {
+        items: function() {
+          return $scope.items;
+        }
+      }
+    });
+
+  };
 
   $scope.toggleAnimation = function() {
     $scope.animationsEnabled = !$scope.animationsEnabled;
