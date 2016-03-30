@@ -8,7 +8,7 @@
     @extend .font-raleway;
     @extend .color-grey;
     border: none;
-    border-bottom: 2px solid transparent;
+    border-bottom: 3px solid transparent;
     font-size: 15px;
     &:hover { background-color: #fff; }
   }
@@ -17,7 +17,7 @@
     @extend .color-grey;
     background-color: #fff;
     border: none;
-    border-bottom: 2px solid $brand-success;
+    border-bottom: 3px solid $brand-success;
   }
   .tab-content {
     padding: 20px 25px;
@@ -39,6 +39,14 @@
     vertical-align: middle;
   }
   .completed { @include square(50px); }
+}
+.single-completed {
+  padding: 20px;
+  border: 2px solid #bdbdbd;
+  text-align: center;
+}
+.user-imgholder {
+  @include square(120px);
 }
 
 // end user booing
