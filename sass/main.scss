@@ -561,4 +561,10 @@ i{
 right: -6px;
 top: -10px;
 }
+.modal-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) !important;
+}
 @import "amit";
