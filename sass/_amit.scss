@@ -24,14 +24,20 @@
   }
 }
 .account-history {
-  font-weight: 300;
+  font-size: 13px;
+  font-weight: 400;
   th {
     border: none;
     background-color: #d7e5f7;
-    font-weight: 300;
+    font-weight: 400;
     text-align: center;
   }
-  tbody > tr > td { vertical-align: middle; }
+  tbody > tr > td {
+    padding: 16px 8px;
+    border: 1px solid #ccc;
+    border-top: none;
+    vertical-align: middle;
+  }
   .completed { @include square(50px); }
 }
 
