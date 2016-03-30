@@ -14,6 +14,8 @@ $brand-danger: #fc483f !default;
 $brand-info: #000072 !default;
 $brand-base: #474d4f !default;
 $grey-base: #969696 !default;
+$facebook: #3b5998 !default;
+$google: #dc4a38 !default;
 $white: #fff !default;
 $transparent: rgba(255, 255, 255, 0) !default;
 $bold: 600 !default;
@@ -187,6 +189,25 @@ a {
 .btn-outline {
   @include button-variant($brand-primary, $transparent, $brand-primary);
 }
+.btn-facebook {
+  @include button-variant($white, $facebook, $facebook);
+  width: 100%;
+  padding: 12px 12px;
+  i {
+    font-size: 14px;
+  }
+}
+.btn-google {
+  @include button-variant($white, $google, $google);
+  width: 100%;
+  padding: 12px 12px;
+  i {
+    font-size: 14px;
+  }
+}
+.color-success {
+  color: $brand-success;
+}
 .btn {
   border-radius: 0;
   &:focus {
@@ -277,7 +298,7 @@ a {
   &:focus {
     outline: 0;
     box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075), 0 0 0 rgba(102, 175, 233, 0.6);
-    border-color: rgba(102, 175, 233, 0);
+
   }
   &:active {
     outline: 0;
@@ -342,6 +363,9 @@ input {
 }
 .mt60 {
   margin-top: 60px;
+}
+.mt50 {
+  margin-top: 50px;
 }
 .mt7 {
   margin-top: 7px;
@@ -480,6 +504,49 @@ input {
         }
       }
     }
+  }
+}
+.icon-mail{
+  position: absolute;
+right: 6px;
+top: 4px;
+i{
+  font-size: 22px;
+  color:#717171;
+}
+}
+.log{
+      padding: 6px 30px 0px 12px;
+      border: 2px solid #a4a4a4;
+      @include placeholder {
+        font-weight: 400;
+        font-size: 10px;
+      }
+}
+.login-btn{
+  .btn{
+    width: 100%;
+    text-align: center;
+      padding: 10px 10px;
+  }
+}
+.mt5{
+  margin-top: 5px;
+}
+.forg-pass{
+  a{
+    &:hover{
+      color:$brand-primary;
+
+    }
+    &:focus{
+      color:$brand-primary;
+    }
+  }
+}
+.other{
+  p{
+    border-top: 1px solid #ccc;
   }
 }
 @import "amit";
