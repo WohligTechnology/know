@@ -552,4 +552,13 @@ i{
     border-top: 1px solid #ccc;
   }
 }
+.modal-header {
+    padding: 9px 0px;
+  background-color: #ebebeb;
+}
+.pclose{
+  position: absolute;
+right: -6px;
+top: -10px;
+}
 @import "amit";
