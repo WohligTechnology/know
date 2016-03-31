@@ -1,6 +1,8 @@
 // user booking
+.booking-main { padding: 20px 0; }
 .booking-section {
   padding: 20px;
+  margin: 10px 0;
   background-color: #fff;
   .nav-tabs { border: none; }
   .nav-tabs > li > a {
@@ -44,6 +46,10 @@
   padding: 20px;
   border: 2px solid #bdbdbd;
   text-align: center;
+  .print-icon {
+    float: right;
+    font-size: 25px;
+  }
 }
 .user-imgholder {
   @include square(120px);
@@ -52,5 +58,27 @@
     margin: 0 auto;
   }
 }
-
+.sec-searchbar {
+  overflow: hidden;
+  img { width: 100%; }
+  .searchbar-center {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform(translate(-50%,-50%));
+  }
+  .search-br { margin-right: 7px; }
+}
+.main-links {
+  .breadcrumb {
+    background-color: transparent;
+    li a { color: #000; }
+    li + li:before {
+      content: ">";
+      color: #000;
+    }
+    li:last-child a { color: $brand-success; }
+  }
+}
 // end user booing
