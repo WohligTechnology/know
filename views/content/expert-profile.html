@@ -5,9 +5,9 @@
         <div class="hemberg m20 custom-li">
           <ul>
             <li>
-              <a href=""  class="text-up color-base f13 home">home</a>
+              <a href="" class="text-up color-base f13 home">home</a>
             </li>
-  <li><i class="ln-chevron-right"></i></li>
+            <li><i class="ln-chevron-right"></i></li>
             <li><a href="" class="color-success text-up f13 edt">
               profile-setting
             </a></li>
@@ -33,12 +33,12 @@
           </div>
           <div class="exp-personal mt30" ng-if="tab2=='personal'">
             <div class="set-title">
-                <h5 class="font-raleway font-bold f17 color-base">PERSONAL INFORMATION</h5>
+              <h5 class="font-raleway font-bold f17 color-base">PERSONAL INFORMATION</h5>
             </div>
-            <div class="row">
+            <div class="row mt25">
               <div class="col-md-4">
                 <form action="" class="form-input">
-                  <div class="form-group mt25">
+                  <div class="form-group ">
                     <label for="exampleInputEmail1">FIRST NAME</label>
                     <input type="email" class="form-control" id="exampleInputEmail1">
                   </div>
@@ -55,11 +55,11 @@
                     <div class="rad">
                       <div class="radio display-inline">
                         <input type="radio" id="radio01" name="radio" />
-        <label for="radio01"><span></span>MALE</label>
+                        <label for="radio01"><span></span>MALE</label>
                       </div>
                       <div class="radio display-inline pl12">
                         <input type="radio" id="radio02" name="radio" />
-       <label for="radio02"><span></span>FEMALE</label>
+                        <label for="radio02"><span></span>FEMALE</label>
                       </div>
                     </div>
                   </div>
@@ -67,7 +67,7 @@
               </div>
               <div class="col-md-4">
                 <form action="" class="form-input">
-                  <div class="form-group mt25">
+                  <div class="form-group ">
                     <label for="exampleInputEmail1">LAST NAME</label>
                     <input type="email" class="form-control" id="exampleInputEmail1">
                   </div>
@@ -81,14 +81,14 @@
                   </div>
                   <div class="form-group mt25">
                     <label for="exampleInputPassword1">PROFILE IMAGE</label>
-              <div class="pro-im mt10">
-                <div class="user-img display-inline">
-                  <img src="img/user.png" alt="">
-                </div>
-                <div class="sub-btn display-inline">
-                  <button class="btn btn-outline-blue f10">CHOOSE FILE</button>
-                </div>
-              </div>
+                    <div class="pro-im mt10">
+                      <div class="user-img display-inline">
+                        <img src="img/user.png" alt="">
+                      </div>
+                      <div class="sub-btn display-inline">
+                        <button class="btn btn-outline-blue f10">CHOOSE FILE</button>
+                      </div>
+                    </div>
                   </div>
                 </form>
               </div>
@@ -115,14 +115,15 @@
               </div>
             </div>
           </div>
-          <div class="exp-prof" ng-if="tab2=='professional'">
+          <div class="exp-prof mt30" ng-if="tab2=='professional'">
             <div class="set-title">
-              <h4>AREA OF EXPERTISE</h4>
+              <h5 class="font-raleway font-bold f17 color-base text-up">Professional INFORMATION</h5>
             </div>
-            <div class="row">
+
+            <div class="row mt25">
               <div class="col-md-4">
-                <form action="">
-                  <div class="form-group">
+                <form action="" class="form-input">
+                  <div class="form-group ">
                     <label for="exampleInputEmail1">AREA OF EXPERTISE</label>
                     <select class="form-control">
                       <option>1</option>
@@ -132,35 +133,35 @@
                       <option>5</option>
                     </select>
                   </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">specialization <span>(YOU CAN ENTER MULTIPLE SPECIALIZATION)</span></label>
+                  <div class="form-group mt25">
+                    <label for="exampleInputPassword1">specialization <span class="f10 color-success">(YOU CAN ENTER MULTIPLE SPECIALIZATION)</span></label>
                     <input type="password" class="form-control" id="exampleInputPassword1">
                   </div>
                 </form>
               </div>
               <div class="col-md-4">
-                <form action="">
+                <form action="" class="form-input">
                   <div class="form-group">
                     <label for="exampleInputPassword1">short descrpition</label>
                     <input type="password" class="form-control" id="exampleInputPassword1">
                   </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">price for service / 30 MINS</label>
+                  <div class="form-group mt25">
+                    <label for="exampleInputPassword1">price for service / <span class="color-success">30 MINS</span></label>
                     <input type="password" class="form-control" id="exampleInputPassword1">
                   </div>
                 </form>
               </div>
 
             </div>
-            <div class="pro-det">
-              <div class="set-title">
-                <h4>EDUCATIONAL QUALIFICATION </h4>
+            <div class="pro-det mt20 pt20" style="border-top: 1px solid #ccc;">
+              <div class="set-title display-inline">
+                  <h5 class="font-raleway font-bold f17 color-base text-up">EDUCATIONAL QUALIFICATION </h5>
               </div>
-              <div class="add">
-                +
+              <div class="add display-inline">
+                <i class="ln-cross"></i>
               </div>
-              <div class="row">
-                <form action="">
+              <div class="row mt25">
+                <form action="" class="form-input">
                   <div class="col-md-4">
                     <div class="form-group">
                       <label for="exampleInputPassword1">DEGREE TITLE</label>
@@ -181,8 +182,8 @@
                   </div>
                 </form>
               </div>
-              <div class="row">
-                <form action="">
+              <div class="row mt25">
+                <form action="" class="form-input">
                   <div class="col-md-4">
                     <div class="form-group">
                       <label for="exampleInputPassword1">CITY</label>
@@ -198,23 +199,27 @@
                 </form>
               </div>
             </div>
-            <div class="edu-det">
-              <div class="set-title">
-                <h4>EXPERIENCE </h4>
+            <div class="edu-det mt20 pt20" style="border-top: 1px solid #ccc;">
+              <div class="set-title display-inline">
+                <h5 class="font-raleway font-bold f17 color-base text-up">EXPERIENCE </h5>
               </div>
-              <div class="add">
-                +
+              <div class="add display-inline">
+                <i class="ln-cross"></i>
               </div>
-              <form action="">
-                <div class="tab-dis">
-                  <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> COMPANY
-                  </label>
-                  <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> self employed
-                  </label>
+              <form action=""  class="form-input">
+                <div class="tab-dis mt25">
+                  <div class="rad">
+                    <div class="radio display-inline">
+                      <input type="radio" id="radio01" name="radio" />
+      <label for="radio01"><span></span>COMPANY</label>
+                    </div>
+                    <div class="radio display-inline pl12">
+                      <input type="radio" id="radio02" name="radio" />
+     <label for="radio02"><span></span>SELF EMPLOYED</label>
+                    </div>
+                  </div>
                 </div>
-                <div class="row">
+                <div class="row mt25">
                   <div class="col-md-4">
                     <div class="form-group">
                       <label for="exampleInputPassword1">COMPANY NAME</label>
@@ -228,22 +233,22 @@
                     </div>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row mt25">
                   <div class="col-md-8">
                     <div class="form-group">
                       <label for="exampleInputPassword1">JOB DESCRIPTION</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1">
+                      <textarea class="form-control" rows="4" style="resize: none;"></textarea>
                     </div>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row mt25">
                   <div class="col-md-4">
                     <div class="form-group">
                       <label for="exampleInputPassword1">START DATE</label>
                       <p class="input-group">
                         <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                         <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                <button type="button" class="btn btn-default cal-btn" ng-click="open1()"><i class="fa fa-calendar"></i></button>
               </span>
                       </p>
                     </div>
@@ -254,7 +259,7 @@
                       <p class="input-group">
                         <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                         <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                <button type="button" class="btn btn-default cal-btn" ng-click="open2()"><i class="fa fa-calendar"></i></button>
               </span>
                       </p>
                     </div>
@@ -262,73 +267,95 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label for="exampleInputPassword1">PROFILE IMAGE</label>
-                      <div class="user-img display-inline">
-                        <img src="img/user.png" alt="">
-                      </div>
-                      <div class="sub-btn display-inline">
-                        <button>CHOOSE FILE</button>
-                      </div>
+                <div class="pro-im mt10">
+                  <div class="user-img display-inline">
+                    <img src="img/user.png" alt="">
+                  </div>
+                  <div class="sub-btn display-inline">
+                    <button class="btn btn-outline-blue f10">CHOOSE FILE</button>
+                  </div>
+                </div>
                     </div>
                   </div>
                 </div>
               </form>
             </div>
-            <div class="desc">
+            <div class="desc mt20 pt20" style="border-top: 1px solid #ccc;">
               <div class="set-title">
-                <h4>EXPERIENCE </h4>
+              <h5 class="font-raleway font-bold f17 color-base text-up">DESCRIPTION AND SKILL </h5>
               </div>
               <div class="row">
                 <div class="col-md-8">
+                    <form action=""  class="form-input">
                   <div class="form-group">
-                    <label for="exampleInputPassword1">DETAIL DESCRIPTION <span>(TELL US ABOUT YOUR  SKILL)</span></label>
-                    <textarea class="form-control" rows="6"></textarea>
+                    <label for="exampleInputPassword1">DETAIL DESCRIPTION <span class="f10 color-success">(TELL US ABOUT YOUR  SKILL)</span></label>
+                    <textarea class="form-control" rows="6" style="resize:none;"></textarea>
                   </div>
+                </form>
                 </div>
               </div>
             </div>
-            <div class="awd">
-              <span>INFORMATION BELOW THE OPTIONAL</span>
-              <div class="row">
+            <div class="awd mt20 pt20"  style="border-top: 1px solid #ccc;">
+              <span class="color-success f13">INFORMATION BELOW THE OPTIONAL</span>
+              <div class="row mt25 pb20">
                 <div class="col-md-4">
-                  <div class="set-title">
-                    <h4>AWARDS AND HONORS</h4>
+                  <div class="set-title display-inline">
+                      <h5 class="font-raleway font-bold f17 color-base text-up">AWARDS AND HONORS</h5>
                   </div>
-                  <div class="add">
-                    +
+                  <div class="add display-inline">
+                    <i class="ln-cross"></i>
                   </div>
-                  <div class="form-group">
+                  <form action=""  class="form-input">
+                  <div class="form-group mt25">
                     <label for="exampleInputPassword1">AWARDS AND HONORS</label>
                     <input type="password" class="form-control" id="exampleInputPassword1">
                   </div>
+                </form>
                 </div>
                 <div class="col-md-4">
-                  <div class="set-title">
-                    <h4>VIDEO LINKS</h4>
+                  <div class="set-title display-inline">
+                      <h5 class="font-raleway font-bold f17 color-base text-up">VIDEO LINKS</h5>
                   </div>
-                  <div class="add">
-                    +
+                  <div class="add display-inline">
+                <i class="ln-cross"></i>
                   </div>
-                  <div class="form-group">
+                  <form action=""  class="form-input">
+                  <div class="form-group mt25">
                     <label for="exampleInputPassword1">VIDEO LINKS</label>
                     <input type="password" class="form-control" id="exampleInputPassword1">
                   </div>
+                </form>
                 </div>
                 <div class="col-md-4">
-                  <div class="set-title">
-                    <h4>ADD PHOTOS</h4>
+                  <div class="set-title display-inline">
+                      <h5 class="font-raleway font-bold f17 color-base text-up">ADD PHOTOS</h5>
                   </div>
-                  <div class="add">
-                    +
+                  <div class="add display-inline">
+                    <i class="ln-cross"></i>
                   </div>
-                  <!-- <div class="form-group">
-                    <label for="exampleInputPassword1">VIDEO LINKS</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
-                  </div> -->
-                  <span>(NOTE: THIS DOCUMENT WILL BE VERIFY BY THE ADMIN)</span>
+      <div class="pic custom-li mt25">
+        <ul class="padding0">
+          <li>
+            <img src="img/cr1.jpg" alt="">
+          </li>
+          <li>
+            <img src="img/cr2.jpg" alt="">
+          </li>
+        </ul>
+      </div>
+                <div class="noti ">
+                    <span class="color-success f10">(NOTE: THIS DOCUMENT WILL BE VERIFY BY THE ADMIN)</span>
+                </div>
                 </div>
               </div>
             </div>
-            <button>SAVE</button>
+            <div class="row ">
+              <div class="col-md-12" style="border-top: 1px solid #ccc;">
+                <div class="save-btn mt25">
+                  <button class="btn btn-blue font-light text-up f13">save</button>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="exp-call" ng-if="tab2=='call'">
             <div class="call-sett">
