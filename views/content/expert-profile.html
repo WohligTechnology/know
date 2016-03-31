@@ -357,30 +357,38 @@
               </div>
             </div>
           </div>
-          <div class="exp-call" ng-if="tab2=='call'">
+          <div class="exp-call mt30" ng-if="tab2=='call'">
             <div class="call-sett">
-              <span>Will be activated once your profile is verified.</span>
-              <div class="set-title">
-                <h4>CALL SETTINGS</h4>
+              <span class="f13 color-success text-up">Will be activated once your profile is verified.</span>
+              <div class="set-title mt25">
+                <h5 class="font-raleway font-bold f17 color-base text-up">CALL SETTINGS</h5>
               </div>
-              <div class="call-time">
-                <span>PLEASE SELECT YOUR PREFERRED CALL TIME</span>
-                <label class="radio-inline">
-                  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> WEEKDAYS (9AM - 9PM)
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> WEEKENDS (9AM - 9PM)
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> CUSTOM TIMING
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> UNAVAILABLE DAY
-                </label>
+              <div class="call-time mt25">
+                <div class="select-dt">
+                  <span class="f13 color-grey">PLEASE SELECT YOUR PREFERRED CALL TIME</span>
+                </div>
+                <div class="rad mt10">
+                <div class="radio display-inline">
+                  <input type="radio" id="radio01" name="radio" />
+  <label for="radio01"><span></span>WEEKDAYS (9AM - 9PM)</label>
+                </div>
+                <div class="radio display-inline pl12">
+                  <input type="radio" id="radio02" name="radio" />
+ <label for="radio02"><span></span>WEEKENDS (9AM - 9PM)</label>
+                </div>
+                <div class="radio display-inline pl12">
+                  <input type="radio" id="radio03" name="radio" />
+ <label for="radio03"><span></span>CUSTOM TIMING</label>
+                </div>
+                <div class="radio display-inline pl12">
+                  <input type="radio" id="radio04" name="radio" />
+ <label for="radio04"><span></span>UNAVAILABLE DAY</label>
+                </div>
+</div>
                 <div class="call-det">
                   <div class="row">
                     <div class="col-md-3">
-                      <div class="form-group">
+                      <div class="form-group display-inline">
                         <label for="exampleInputPassword1">SELECT DAY</label>
                         <select class="form-control">
                           <option>MONDAY</option>
@@ -390,8 +398,8 @@
                           <option>5</option>
                         </select>
                       </div>
-                      <div class="add">
-                        +
+                      <div class="add display-inline">
+                        <i class="ln-cross"></i>
                       </div>
                       <!-- <div class="day-opt">
        <ul>
