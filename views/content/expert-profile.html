@@ -463,34 +463,33 @@
               </div>
             </div>
           </div>
-          <div class="exp-bank" ng-if="tab2=='bank'">
-            <span>THese details are important for us to remit funds for the calls that you have made</span>
-            <div class="set-title">
-              <h4>BANK DETAILS</h4>
+          <div class="exp-bank mt30" ng-if="tab2=='bank'">
+            <span class="text-up color-success f13">THese details are important for us to remit funds for the calls that you have made</span>
+            <div class="set-title mt25">
+              <h5 class="font-raleway font-bold f17 color-base text-up">BANK DETAILS</h5>
             </div>
-            <form action="">
-              <div class="row">
+            <form action=""  class="form-input">
+              <div class="row mt25 pb20">
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="exampleInputEmail1">NAME OF ACCOUNT HOLDER</label>
                     <input type="email" class="form-control" id="exampleInputEmail1">
                   </div>
-                  <div class="form-group">
+                  <div class="form-group mt25">
                     <label for="exampleInputEmail1">BANK NAME</label>
                     <input type="email" class="form-control" id="exampleInputEmail1">
                   </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">BANK NAME</label>
+                  <div class="form-group mt25">
+                    <label for="exampleInputEmail1">RTGS / NEFT  IFCS CODE </label>
                     <input type="email" class="form-control" id="exampleInputEmail1">
                   </div>
-                  <div class="radio">
-                    <label>
-                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> SAME AS USER ADDRESS
-                    </label>
+                  <div class="radio mt25">
+                    <input type="radio" id="radio01" name="radio" />
+    <label for="radio01"><span></span>SAME AS USER ADDRESS</label>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group ">
                     <label for="exampleInputEmail1">ACCOUNT HOLDER ADDRESS</label>
-                    <textarea class="form-control" rows="3"></textarea>
+                    <textarea class="form-control" rows="3" style="resize:none"></textarea>
                   </div>
                 </div>
                 <div class="col-md-4">
@@ -504,18 +503,25 @@
                       <option>5</option>
                     </select>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group mt25">
                     <label for="exampleInputEmail1">ACCOUNT NUMBER</label>
                     <input type="email" class="form-control" id="exampleInputEmail1">
                   </div>
 
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">BANK BRANCH ADDRESS (OPTIONAL)</label>
-                    <textarea class="form-control" rows="3"></textarea>
+                  <div class="form-group mt25">
+                    <label for="exampleInputEmail1">BANK BRANCH ADDRESS <span class="color-success f10">(OPTIONAL)</span></label>
+                    <textarea class="form-control" rows="3" style="resize:none"></textarea>
                   </div>
                 </div>
               </div>
             </form>
+            <div class="row">
+              <div class="col-md-12" style="border-top: 1px solid #ccc;">
+                <div class="save-btn mt25">
+                  <button class="btn btn-blue font-light text-up f13">save</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
