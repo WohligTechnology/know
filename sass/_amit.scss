@@ -1,3 +1,4 @@
+.block { display: block; }
 // user booking
 .booking-main { padding: 20px 0; }
 .booking-section {
@@ -42,9 +43,11 @@
   }
   .completed { @include square(50px); }
 }
+.outline-single {
+  border: 2px solid #bdbdbd;
+}
 .single-completed {
   padding: 20px;
-  border: 2px solid #bdbdbd;
   text-align: center;
   .print-icon {
     float: right;
@@ -52,7 +55,7 @@
   }
 }
 .user-imgholder {
-  @include square(120px);
+  @include square(100px);
   img {
     max-height: 100%;
     margin: 0 auto;
@@ -69,6 +72,14 @@
     @include transform(translate(-50%,-50%));
   }
   .search-br { margin-right: 7px; }
+}
+.feedback {
+  margin: 20px 0;
+  textarea.form-control {
+  min-height: 100px;
+  margin: 10px 0px 15px;
+  resize: none;
+ }
 }
 .main-links {
   .breadcrumb {
