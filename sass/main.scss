@@ -110,6 +110,9 @@ a {
 .pt20 {
   padding-top: 20px;
 }
+.pt70{
+  padding-top: 70px;
+}
 .mb10 {
   margin-bottom: 10px;
 }
@@ -385,7 +388,7 @@ input {
   font-size: 13px;
 }
 .color-primary {
-  color: $brand-primary;
+  color: $brand-primary !important;
 }
 .color-base {
   color: $brand-base;
@@ -815,6 +818,27 @@ color:#fff;
 }
     }
   }
+}
+.bg-expert{
+  background: url(../img/exp-home.jpg)no-repeat;
+  background-size: cover;
+      min-height: 750px;
+}
+.exp-signup{
+  label{
+    color:$brand-primary;
+    font-weight: bold;
+    font-size: 13px;
+  }
+  input{
+    height:36px;
+    background: #dbdbdb;
+  }
+}
+.exp-signup {
+    background: rgba(0, 0, 0, 0.41);
+    padding: 25px 25px;
+        margin: 20px 0px 20px 0px;
 }
 @import "amit";
        
