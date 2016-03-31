@@ -125,7 +125,7 @@ a {
 .pb10 {
   padding-bottom: 10px;
 }
-.pd20 {
+.pb20 {
   padding-bottom: 20px;
 }
 .mt30 {
@@ -523,7 +523,8 @@ input {
 }
 .footer {
   border-top: 1px solid #c8c8c8;
-  padding-top: 50px;
+  padding-top: 20px;
+padding-bottom: 20px;
 }
 .sub-footer {
   background-color: #292624;
@@ -655,15 +656,24 @@ input {
   font-size: 17px;
 }
 label {
-  font-weight: 400;
+  font-weight: 500;
+  font-family: 'Raleway';
+  font-size: 13px;
 }
 .form-input {
-.form-control{
+
+input{
   height: 40px;
   background-color: #efefef;
   border: 1px solid #efefef;
       box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
 }
+textarea{
+  background-color: #efefef;
+  border: 1px solid #efefef;
+      box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+}
+
 }
 .radio{
   margin-top: 0px;
@@ -710,5 +720,19 @@ label {
 }
 .mt25{
   margin-top: 25px;
+}
+.expert-active{
+  border-bottom: 3px solid $brand-success;
+  color:$brand-base !important;
+}
+.exp-setting{
+  ul{
+    li{
+      color:#afafaf;
+      font-family: 'Raleway';
+      font-weight: 400;
+          padding: 0px 20px 10px 20px;
+    }
+  }
 }
 @import "amit";

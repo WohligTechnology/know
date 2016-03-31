@@ -148,9 +148,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Expert-Profile");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+        TemplateService.header = "./views/header2.html";
 
     $scope.tab2 = 'personal';
-    $scope.classa = 'active';
+    $scope.classa = 'expert-active';
     $scope.classb = '';
     $scope.classc = '';
     $scope.classd = '';
