@@ -47,6 +47,10 @@
 }
 .user-imgholder {
   @include square(120px);
+  img {
+    max-height: 100%;
+    margin: 0 auto;
+  }
 }
 
 // end user booing
