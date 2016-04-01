@@ -860,5 +860,12 @@ color:#fff;
     color:$grey-base;
   }
 }
+.navbar-fixed-top, .navbar-fixed-bottom{
+  position: absolute;
+}
+.exp{
+  position: absolute;
+right: 80px;
+top: 9px;
+}
 @import "amit";
-       
