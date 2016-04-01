@@ -29,6 +29,7 @@
     "lodash": "~4.0.0",
     "ui-router": "~0.2.15",
     "angular": "^1.5.0",
-    "angular-rangeslider": "^0.0.14"
+    "angular-rangeslider": "^0.0.14",
+    "fancyBox": "https://github.com/fancyapps/fancyBox.git#^2.1.5"
   }
 }

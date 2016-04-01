@@ -6,6 +6,7 @@
 @import "../bower_components/flexslider/flexslider.css";
 @import "../bower_components/font-awesome/css/font-awesome.min.css";
 @import "../bower_components/angular-rangeslider/angular.rangeSlider.css";
+@import "../bower_components/fancyBox/source/jquery.fancybox.css";
 /* Bootstrap Variables Goes Here */
 $brand-primary: #ff8621 !default;
 $brand-success: #588ed0 !default;
@@ -948,7 +949,7 @@ padding: 13px 0px 11px 0px;
     overflow: hidden;
     display: block;
     position: relative;
-    border: 1px solid;
+    border: 1px solid #ccc;
     /* background: black; */
     img{
       max-width: 100%;
@@ -959,5 +960,7 @@ padding: 13px 0px 11px 0px;
   transform: translate(-50%,-50%);
     }
 }
- 
+.fancybox-image {
+  opacity: 1 !important;
+}
 @import "amit";
