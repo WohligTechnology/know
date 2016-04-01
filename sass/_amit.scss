@@ -45,14 +45,21 @@
 }
 .outline-single {
   border: 2px solid #bdbdbd;
+  margin: 20px 0;
+  overflow: hidden;
 }
 .single-completed {
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   .print-icon {
     float: right;
     font-size: 25px;
   }
+  .name {
+    margin-top: 5px;
+    font-size: 15px;
+  }
+  .price { font-size: 16px; }
 }
 .user-imgholder {
   @include square(100px);
@@ -61,6 +68,7 @@
     margin: 0 auto;
   }
 }
+.tag-line { font-size: 16px; }
 .sec-searchbar {
   overflow: hidden;
   img { width: 100%; }
@@ -80,6 +88,11 @@
   margin: 10px 0px 15px;
   resize: none;
  }
+}
+.user-detail {
+  padding: 10px;
+  border-bottom: 1px solid #dfdfdf;
+  span { font-size: 12px; }
 }
 .main-links {
   .breadcrumb {
