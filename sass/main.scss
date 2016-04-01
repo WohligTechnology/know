@@ -637,7 +637,7 @@ padding-bottom: 20px;
 .header2 {
   background-color: rgb(255, 255, 255);
   border-color: #a4a4a4;
-  padding: 5px 0;
+  padding: 8px 0;
   z-index: 99999999;
   box-shadow: 0 1px 2px 0 #a4a4a4;
 }
@@ -867,5 +867,44 @@ color:#fff;
   position: absolute;
 right: 80px;
 top: 9px;
+}
+.profile-bx {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding-top: 30px;
+}
+.pro-name{
+      margin: 15px 0px 5px 0px;
+}
+.location {
+    margin: 30px 0px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 12px 0px;
+    i{
+      font-size: 22px;
+    color: #ccc;
+    display: inline-flex;
+    }
+    span{
+      font-family: lato;
+    vertical-align: super;
+    font-size: 15px;
+    color: #474d4f;
+    display: block;
+    margin: 3px 0px 0px 10px;
+    }
+}
+.spl{
+  border-top: 1px solid #ccc;
+}
+.btn-book{
+  .btn{
+    width: 100%;
+padding: 13px 0px 11px 0px;
+  }
+}
+.descp{
+      padding: 0px 22px;
 }
 @import "amit";

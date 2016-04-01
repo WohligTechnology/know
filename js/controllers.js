@@ -308,6 +308,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Profile");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+  TemplateService.header = "./views/header2.html";
 
   $scope.tab2 = 'summary';
   $scope.classa = 'active';
@@ -340,6 +341,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       $scope.classd = "active";
     }
   };
+
+
 })
 
 .controller('headerctrl', function($scope, TemplateService) {
