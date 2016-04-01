@@ -105,4 +105,16 @@
     li:last-child a { color: $brand-success; }
   }
 }
-// end user booing
+// end user booking
+
+// terms and condition
+.contact {
+  padding: 20px 30px 60px;
+  border: 2px solid #ccc;
+  background-color: #fff;
+  h3 {
+    margin: 10px 0 30px;
+    color: #474d4f;
+  }
+}
+// end terms and condition
