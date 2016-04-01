@@ -311,7 +311,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.header = "./views/header2.html";
 
   $scope.tab2 = 'summary';
-  $scope.classa = 'active';
+  $scope.classa = 'expert-active';
   $scope.classb = '';
   $scope.classc = '';
   $scope.classd = '';
@@ -320,25 +320,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
            console.log(tab);
     $scope.tab2 = tab;
     if (a == 1) {
-    $scope.classa = "active";
+    $scope.classa = "expert-active";
       $scope.classb = '';
       $scope.classc = '';
       $scope.classd = '';
     } else if (a == 2) {
      $scope.classa = '';
-      $scope.classb = "active";
+      $scope.classb = "expert-active";
       $scope.classc = '';
       $scope.classd = '';
     } else if (a == 3) {
    $scope.classa = '';
       $scope.classb = '';
-      $scope.classc = "active";
+      $scope.classc = "expert-active";
       $scope.classd = '';
     } else {
    $scope.classa = '';
       $scope.classb = '';
       $scope.classc = '';
-      $scope.classd = "active";
+      $scope.classd = "expert-active";
     }
   };
 

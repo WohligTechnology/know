@@ -158,7 +158,7 @@ a {
 /* Start writing sass here */
 @import "fancybox-override";
 .home {
-  height: 667px;
+  height: 550px;
   position: relative;
   overflow: hidden;
 }
@@ -418,7 +418,7 @@ input {
   margin-top: 7px;
 }
 .font-med {
-  font-weight: 500;
+  font-weight: 600;
 }
 .pl12 {
   padding-left: 12px;
@@ -752,7 +752,7 @@ select{
   border: 1px solid;
 border-radius: 100%;
 border-style: dashed;
-padding: 9px 10px 4px 9px;
+    padding: 7px 8px 4px 8px;
 color:  $brand-success;
 transform: rotate(-46deg);
 margin-left: 16px;
@@ -906,5 +906,23 @@ padding: 13px 0px 11px 0px;
 }
 .descp{
       padding: 0px 22px;
+}
+.pro-detail{
+  ul{
+    li{
+      text-transform: uppercase;
+    }
+  }
+}
+.pro-det-box {
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+.f16{
+  font-size: 16px;
+}
+.summary{
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
 }
 @import "amit";
