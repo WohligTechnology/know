@@ -963,4 +963,15 @@ padding: 13px 0px 11px 0px;
 .fancybox-image {
   opacity: 1 !important;
 }
+.qsn-ans{
+  margin-top: 25px;
+  h4{
+    color:$brand-base;
+    font-family: 'Raleway';
+  }
+  p{
+    color:$grey-base;
+    font-weight: 300;
+  }
+}
 @import "amit";
