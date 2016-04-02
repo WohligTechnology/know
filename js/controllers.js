@@ -112,6 +112,40 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
+.controller('LoginCtrl', function($scope, TemplateService, NavigationService, $timeout,$uibModal) {
+    $scope.template = TemplateService.changecontent("login");
+    $scope.menutitle = NavigationService.makeactive("Login");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+      TemplateService.header = "./views/header2.html";
+        $scope.animationsEnabled = true;
+      $scope.open3 = function(size) {
+
+        var modalInstance = $uibModal.open({
+          animation: $scope.animationsEnabled,
+          templateUrl: 'views/modal/forgetpassword.html',
+          controller: 'LoginCtrl',
+          size: size,
+          resolve: {
+            items: function() {
+              return $scope.items;
+            }
+          }
+        });
+
+      };
+      $scope.toggleAnimation = function() {
+        $scope.animationsEnabled = !$scope.animationsEnabled;
+      };
+
+  })
+.controller('SignupCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("signup");
+    $scope.menutitle = NavigationService.makeactive("Signup");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+      TemplateService.header = "./views/header2.html";
+  })
   .controller('EditUserCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("edit-user");
     $scope.menutitle = NavigationService.makeactive("Edit-User");

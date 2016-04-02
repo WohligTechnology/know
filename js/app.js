@@ -35,6 +35,16 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     templateUrl: "views/template.html",
     controller: 'SearchCtrl'
   })
+  .state('login', {
+    url: "/login",
+    templateUrl: "views/template.html",
+    controller: 'LoginCtrl'
+  })
+  .state('signup', {
+    url: "/signup",
+    templateUrl: "views/template.html",
+    controller: 'SignupCtrl'
+  })
   .state('privacy', {
     url: "/privacy",
     templateUrl: "views/template.html",
