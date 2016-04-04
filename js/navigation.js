@@ -10,16 +10,23 @@ else {
 var navigationservice = angular.module('navigationservice', [])
 
 .factory('NavigationService', function() {
-  var navigation = [{
+  var navigation = [
+    {
     name: "Home",
     classis: "active",
     anchor: "home",
-    subnav: [{
-      name: "Subnav1",
-      classis: "active",
-      link: "#/home"
-    }]
-  }];
+    // subnav: [{
+    //   name: "Subnav1",
+    //   classis: "active",
+    //   link: "#/home"
+    // }]
+  },
+    {
+    name: "Home",
+    classis: "active",
+    anchor: "home",
+  },
+];
 
   return {
     getnav: function() {
