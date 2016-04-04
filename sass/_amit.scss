@@ -118,3 +118,54 @@
   }
 }
 // end terms and condition
+
+// menu
+.hamburger {
+  @include size(30px, 20px);
+  padding: 0;
+  border: none;
+  position: relative;
+  z-index: 10;
+  background-color: transparent;
+  &:focus { outline: none; }
+  span {
+    @include size(30px, 2px);
+    // margin-bottom: 5px;
+    position: absolute;
+    left: 0;
+    background-color: #ccc;
+    @include transition(all 300ms linear);
+  }
+  span:first-child { top: 0; }
+  span:first-child + span { top: 7px; }
+  span:last-child { top: 15px; }
+}
+.put-cross {
+  span { @include transition(all 300ms linear); }
+  span:first-child {
+    top: 7px;
+    @include transform(rotate(-45deg));
+  }
+  span:first-child + span { opacity: 0; }
+  span:last-child {
+    top: 7px;
+    @include transform(rotate(45deg));
+  }
+}
+.side-menu {
+  width: 350px;
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+}
+.menu-out {
+  @include transform(translateX(-450px));
+  @include transition(all 300ms linear);
+}
+.menu-in {
+  @include transform(translateX(0px));
+  @include transition(all 300ms linear);
+}
+// menu end

@@ -1,7 +1,7 @@
 <!-- <object class="embed-responsive-item">
   <param class="black-overlay"></param>
 </object> -->
-<header>
+<header ng-controller="headerctrl">
    <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="row">
@@ -13,7 +13,14 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand display-inline" href="#/home"><img src="img/options.png" alt="menu" width="30"> </a>
+              <a class="navbar-brand display-inline" href="#/home">
+                <!-- <img src="img/options.png" alt="menu" width="30">  -->
+                <button type="button" class="hamburger {{cross}}" ng-click="getMenu();">
+                  <span class=""></span>
+                  <span class=""></span>
+                  <span class=""></span>
+                </button>
+              </a>
               <div class="logo display-inline">
                 <a ui-sref="home"><img src="img/logop.png" alt="" class="img-responsive" width="180" alt="logo" title="logo" ></a>
                   <!-- <span class="f13 font-bold color-success exp">EXPERT</span> -->
@@ -45,6 +52,9 @@
         <div class="collapse navbar-collapse" id="nav-collapse">
                <div ng-include="template.menu" class="template menu"></div>
         </div> -->
+        <div class="side-menu {{menu}}">
+          <div class="template menu" ng-include="template.menu"></div>
+        </div>
     </div>
 </nav>
 </header>

@@ -385,6 +385,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     $(window).scrollTop(0);
   });
+  $scope.menu = "menu-out";
+  $scope.getMenu = function() {
+    if($scope.menu == "menu-in") {
+      $scope.menu = "menu-out";
+      $scope.cross = "";
+    }
+    else {
+      $scope.menu = "menu-in";
+      $scope.cross = "put-cross"
+    }
+  };
 })
 
 ;
