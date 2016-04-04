@@ -1,22 +1,4 @@
 <section>
-  <!-- <div class="search-section">
-    <div class="container">
-      <div class="search-bar">
-        <div class="row">
-          <div class="col-sm-offset-1 col-sm-11">
-            <form class="form-inline">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search category, expert name, skill..">
-                <span class="input-group-btn">
-                <button class="btn btn-default text-uppercase" type="button">Search</button>
-              </span>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
   <div class="">
     <div class="" ng-include="template.searchbar"></div>
   </div>
@@ -28,14 +10,13 @@
             <li><a href="#/home" class="text-uppercase">Home</a></li>
             <li><a href="#" class="active text-uppercase">Booking</a></li>
           </ul>
-        </div> 
+        </div>
       </div>
-
       <div class="booking-section">
         <uib-tabset>
           <uib-tab>
             <uib-tab-heading class="text-uppercase">Awaiting Payment</uib-tab-heading>
-            <p>Following calls are confirmed. We will connect you at the scheduled time.</p>
+            <p class="font-bold tag-line">Following calls are awaiting payment. Please pay now to confirm the call</p>
             <div class="row">
               <div class="col-md-3">
                 <div class="outline-single">
@@ -43,26 +24,25 @@
                     <div class="user-imgholder margin-auto">
                       <img src="img/search-pro2.jpg" alt="" class="img-circle  img-responsive">
                     </div>
-                    <span class="name">Rohan Cheddha</span>
-                    <span class="price"><i class="fa fa-inr"></i> 500/-</span>
+                    <span class="name block font-bold">Rohan Cheddha</span>
+                    <span class="price color-success"><i class="fa fa-inr"></i> 500/-</span>
 
                     <div class="user-data">
                       <div class="area user-detail clearfix">
-                        <span class="pull-left">Area of Expertise</span>
+                        <span class="pull-left color-grey">Area of Expertise</span>
                         <span class="pull-right">Travel</span>
                       </div>
                       <div class="date user-detail clearfix">
-                        <span class="pull-left">Book Date</span>
+                        <span class="pull-left color-grey">Book Date</span>
                         <span class="pull-right">20th March, 2016</span>
                       </div>
                       <div class="time user-detail clearfix">
-                        <span class="pull-left">Book Time</span>
+                        <span class="pull-left color-grey">Book Time</span>
                         <span class="pull-right">3:00 IST</span>
                       </div>
                     </div>
-
-                    <button type="button" class="btn text-uppercase">Pay Now</button>
                   </div>
+                  <button type="button" class="mt20 full-width btn btn-success text-uppercase">Pay Now</button>
                 </div>
               </div>
               <div class="col-md-3">
@@ -71,132 +51,132 @@
                     <div class="user-imgholder margin-auto">
                       <img src="img/search-pro3.jpg" alt="" class="img-circle img-responsive">
                     </div>
-                    <span class="name">Rohan Cheddha</span>
-                    <span class="price"><i class="fa fa-inr"></i> 500/-</span>
+                    <span class="name block font-bold">Rohan Cheddha</span>
+                    <span class="price color-success"><i class="fa fa-inr"></i> 500/-</span>
 
                     <div class="user-data">
                       <div class="area user-detail clearfix">
-                        <span class="pull-left">Area of Expertise</span>
+                        <span class="pull-left color-grey">Area of Expertise</span>
                         <span class="pull-right">Travel</span>
                       </div>
                       <div class="date user-detail clearfix">
-                        <span class="pull-left">Book Date</span>
+                        <span class="pull-left color-grey">Book Date</span>
                         <span class="pull-right">20th March, 2016</span>
                       </div>
                       <div class="time user-detail clearfix">
-                        <span class="pull-left">Book Time</span>
+                        <span class="pull-left color-grey">Book Time</span>
                         <span class="pull-right">3:00 IST</span>
                       </div>
                     </div>
-
-                    <button type="button" class="btn btn-success text-uppercase">Pay Now</button>
                   </div>
+                  <button type="button" class="mt20 full-width btn btn-success text-uppercase">Pay Now</button>
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="outline-single">
                   <div class="single-payment single-completed">
                     <div class="user-imgholder margin-auto">
-                      <img src="" alt="" class="img-responsive">
+                      <img src="img/search-pro3.jpg" alt="" class="img-circle img-responsive">
                     </div>
-                    <span class="name">Dr. Sourabh Joshi</span>
-                    <span class="price"><i class="fa fa-inr"></i> 500/-</span>
+                    <span class="name block font-bold">Dr. Sourabh Joshi</span>
+                    <span class="price color-success"><i class="fa fa-inr"></i> 500/-</span>
 
                     <div class="user-data">
                       <div class="area user-detail clearfix">
-                        <span class="pull-left">Area of Expertise</span>
+                        <span class="pull-left color-grey">Area of Expertise</span>
                         <span class="pull-right">Travel</span>
                       </div>
                       <div class="date user-detail clearfix">
-                        <span class="pull-left">Book Date</span>
+                        <span class="pull-left color-grey">Book Date</span>
                         <span class="pull-right">20th March, 2016</span>
                       </div>
                       <div class="time user-detail clearfix">
-                        <span class="pull-left">Book Time</span>
+                        <span class="pull-left color-grey">Book Time</span>
                         <span class="pull-right">3:00 IST</span>
                       </div>
                     </div>
-
-                    <button type="button" class="btn text-uppercase">Pay Now</button>
                   </div>
+                  <button type="button" class="mt20 full-width btn btn-success text-uppercase">Pay Now</button>
                 </div>
               </div>
             </div>
           </uib-tab>
           <uib-tab>
             <uib-tab-heading class="text-uppercase">Schedule Call</uib-tab-heading>
-            <p>Following calls are confirmed. We will connect you at the scheduled time.</p>
+            <p class="font-bold tag-line">Following calls are confirmed. We will connect you at the scheduled time.</p>
             <div class="row">
-              <div class="col-md-4">
-                <div class="outline-single">
-                  <div class="single-schedule single-completed">
-                    <div class="user-imgholder">
-                      <img src="" alt="" class="img-responsive margin-auto">
-                    </div>
-                    <span class="name">Dr. Sourabh Joshi</span>
-                    <span class="price"><i class="fa fa-inr"></i> 500/-</span>
-
-                    <div class="user-data">
-                      <div class="area user-detail clearfix">
-                        <span class="pull-left">Area of Expertise</span>
-                        <span class="pull-right">Travel</span>
-                      </div>
-                      <div class="date user-detail clearfix">
-                        <span class="pull-left">Book Date</span>
-                        <span class="pull-right">20th March, 2016</span>
-                      </div>
-                      <div class="time user-detail clearfix">
-                        <span class="pull-left">Book Time</span>
-                        <span class="pull-right">3:00 IST</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <div class="outline-single">
                   <div class="single-schedule single-completed">
                     <div class="user-imgholder margin-auto">
-                      <img src="" alt="" class="img-responsive">
+                      <img src="img/search-pro2.jpg" alt="" class="img-circle img-responsive">
                     </div>
-                    <span class="name">Rohan Cheddha</span>
-                    <span class="price"><i class="fa fa-inr"></i> 500/-</span>
+                    <span class="name font-bold block">Dr. Sourabh Joshi</span>
+                    <span class="price color-success"><i class="fa fa-inr"></i> 500/-</span>
 
                     <div class="user-data">
                       <div class="area user-detail clearfix">
-                        <span class="pull-left">Area of Expertise</span>
+                        <span class="pull-left color-grey">Area of Expertise</span>
                         <span class="pull-right">Travel</span>
                       </div>
                       <div class="date user-detail clearfix">
-                        <span class="pull-left">Book Date</span>
+                        <span class="pull-left color-grey">Book Date</span>
                         <span class="pull-right">20th March, 2016</span>
                       </div>
                       <div class="time user-detail clearfix">
-                        <span class="pull-left">Book Time</span>
+                        <span class="pull-left color-grey">Book Time</span>
                         <span class="pull-right">3:00 IST</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <div class="outline-single">
                   <div class="single-schedule single-completed">
-                    <img src="" alt="" class="img-responsive">
-                    <span class="name">Rohan Cheddha</span>
-                    <span class="price"><i class="fa fa-inr"></i> 500/-</span>
+                    <div class="user-imgholder margin-auto">
+                      <img src="img/search-pro2.jpg" alt="" class="img-circle img-responsive">
+                    </div>
+                    <span class="name font-bold block">Rohan Cheddha</span>
+                    <span class="price color-success"><i class="fa fa-inr"></i> 500/-</span>
 
                     <div class="user-data">
                       <div class="area user-detail clearfix">
-                        <span class="pull-left">Area of Expertise</span>
+                        <span class="pull-left color-grey">Area of Expertise</span>
                         <span class="pull-right">Travel</span>
                       </div>
                       <div class="date user-detail clearfix">
-                        <span class="pull-left">Book Date</span>
+                        <span class="pull-left color-grey">Book Date</span>
                         <span class="pull-right">20th March, 2016</span>
                       </div>
                       <div class="time user-detail clearfix">
-                        <span class="pull-left">Book Time</span>
+                        <span class="pull-left color-grey">Book Time</span>
+                        <span class="pull-right">3:00 IST</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="outline-single">
+                  <div class="single-schedule single-completed">
+                    <div class="user-imgholder margin-auto">
+                      <img src="img/search-pro2.jpg" alt="" class="img-circle img-responsive">
+                    </div>
+                    <span class="name font-bold block">Rohan Cheddha</span>
+                    <span class="price color-success"><i class="fa fa-inr"></i> 500/-</span>
+
+                    <div class="user-data">
+                      <div class="area user-detail clearfix">
+                        <span class="pull-left color-grey">Area of Expertise</span>
+                        <span class="pull-right">Travel</span>
+                      </div>
+                      <div class="date user-detail clearfix">
+                        <span class="pull-left color-grey">Book Date</span>
+                        <span class="pull-right">20th March, 2016</span>
+                      </div>
+                      <div class="time user-detail clearfix">
+                        <span class="pull-left color-grey">Book Time</span>
                         <span class="pull-right">3:00 IST</span>
                       </div>
                     </div>
@@ -207,82 +187,82 @@
           </uib-tab>
           <uib-tab>
             <uib-tab-heading class="text-uppercase">Awaiting Confirmation</uib-tab-heading>
-            <p>Following calls are yet to be confirmed by the experts. Upon confirmation you will be prompted to pay.</p>
+            <p class="font-bold tag-line">Following calls are yet to be confirmed by the experts. Upon confirmation you will be prompted to pay.</p>
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <div class="outline-single">
-                  <div class="single-awaiting single-completed">
+                  <div class="single-schedule single-completed">
                     <div class="user-imgholder margin-auto">
-                      <img src="" alt="" class="img-responsive">
+                      <img src="img/search-pro2.jpg" alt="" class="img-circle img-responsive">
                     </div>
-                    <span class="name">Rohan Cheddha</span>
-                    <span class="price"><i class="fa fa-inr"></i> 500/-</span>
+                    <span class="name font-bold block">Dr. Sourabh Joshi</span>
+                    <span class="price color-success"><i class="fa fa-inr"></i> 500/-</span>
 
                     <div class="user-data">
                       <div class="area user-detail clearfix">
-                        <span class="pull-left">Area of Expertise</span>
+                        <span class="pull-left color-grey">Area of Expertise</span>
                         <span class="pull-right">Travel</span>
                       </div>
                       <div class="date user-detail clearfix">
-                        <span class="pull-left">Book Date</span>
+                        <span class="pull-left color-grey">Book Date</span>
                         <span class="pull-right">20th March, 2016</span>
                       </div>
                       <div class="time user-detail clearfix">
-                        <span class="pull-left">Book Time</span>
+                        <span class="pull-left color-grey">Book Time</span>
                         <span class="pull-right">3:00 IST</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <div class="outline-single">
-                  <div class="single-awaiting single-completed">
+                  <div class="single-schedule single-completed">
                     <div class="user-imgholder margin-auto">
-                      <img src="" alt="" class="img-responsive">
+                      <img src="img/search-pro2.jpg" alt="" class="img-circle img-responsive">
                     </div>
-                    <span class="name">Rohan Cheddha</span>
-                    <span class="price"><i class="fa fa-inr"></i> 500/-</span>
+                    <span class="name font-bold block">Rohan Cheddha</span>
+                    <span class="price color-success"><i class="fa fa-inr"></i> 500/-</span>
 
                     <div class="user-data">
                       <div class="area user-detail clearfix">
-                        <span class="pull-left">Area of Expertise</span>
+                        <span class="pull-left color-grey">Area of Expertise</span>
                         <span class="pull-right">Travel</span>
                       </div>
                       <div class="date user-detail clearfix">
-                        <span class="pull-left">Book Date</span>
+                        <span class="pull-left color-grey">Book Date</span>
                         <span class="pull-right">20th March, 2016</span>
                       </div>
                       <div class="time user-detail clearfix">
-                        <span class="pull-left">Book Time</span>
+                        <span class="pull-left color-grey">Book Time</span>
                         <span class="pull-right">3:00 IST</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-              <div class="col-md-4">
-                <div class="single-awaiting single-completed">
-                  <div class="user-imgholder margin-auto">
-                    <img src="" alt="" class="img-responsive">
-                  </div>
-                  <span class="name">Rohan Cheddha</span>
-                  <span class="price"><i class="fa fa-inr"></i> 500/-</span>
-
-                  <div class="user-data">
-                    <div class="area user-detail clearfix">
-                      <span class="pull-left">Area of Expertise</span>
-                      <span class="pull-right">Travel</span>
+              <div class="col-md-3">
+                <div class="outline-single">
+                  <div class="single-schedule single-completed">
+                    <div class="user-imgholder margin-auto">
+                      <img src="img/search-pro2.jpg" alt="" class="img-circle img-responsive">
                     </div>
-                    <div class="date user-detail clearfix">
-                      <span class="pull-left">Book Date</span>
-                      <span class="pull-right">20th March, 2016</span>
-                    </div>
-                    <div class="time user-detail clearfix">
-                      <span class="pull-left">Book Time</span>
-                      <span class="pull-right">3:00 IST</span>
+                    <span class="name font-bold block">Rohan Cheddha</span>
+                    <span class="price color-success"><i class="fa fa-inr"></i> 500/-</span>
+
+                    <div class="user-data">
+                      <div class="area user-detail clearfix">
+                        <span class="pull-left color-grey">Area of Expertise</span>
+                        <span class="pull-right">Travel</span>
+                      </div>
+                      <div class="date user-detail clearfix">
+                        <span class="pull-left color-grey">Book Date</span>
+                        <span class="pull-right">20th March, 2016</span>
+                      </div>
+                      <div class="time user-detail clearfix">
+                        <span class="pull-left color-grey">Book Time</span>
+                        <span class="pull-right">3:00 IST</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -423,7 +403,7 @@
           </uib-tab>
           <uib-tab>
             <uib-tab-heading class="text-uppercase">Account History</uib-tab-heading>
-            <p class="font-bold">Account History</p>
+            <p class="font-bold tag-line">Account History</p>
             <div class="completed-section mt30">
               <p class="text-uppercase font-bold color-success">Completed</p>
               <table class="table text-uppercase account-history font-light text-center">
@@ -438,8 +418,12 @@
                   <td><img src="img/search-pro2.jpg" alt="" class="img-responsive display-inline img-circle completed" /> Dr. Satish Chahhda</td>
                   <td>45:00 Min</td>
                   <td>20th March, 2016</td>
-                  <td>Completed <br><button class="btn btn-success mt10">PRINT INVOICE</button><br>
-                  <button class="btn btn-success text-uppercase mt10">Retrieve Call (Coming Soon)</button></td>
+                  <td>Completed
+                    <br>
+                    <button class="btn btn-success mt10">PRINT INVOICE</button>
+                    <br>
+                    <button class="btn btn-success text-uppercase mt10">Retrieve Call (Coming Soon)</button>
+                  </td>
                   <td>500/-</td>
                 </tr>
               </table>
@@ -459,7 +443,10 @@
                   <td><img src="img/search-pro2.jpg" alt="" class="img-responsive margin-auto img-circle completed" /> Dr. Satish Chahhda</td>
                   <td>45:00 Min</td>
                   <td>20th March, 2016</td>
-                  <td>Pending <br><button class="btn btn-success mt10">PRINT INVOICE</button></td>
+                  <td>Pending
+                    <br>
+                    <button class="btn btn-success mt10">PRINT INVOICE</button>
+                  </td>
                   <td>500/-</td>
                 </tr>
               </table>
@@ -479,7 +466,10 @@
                   <td>Dr. Satish Chahhda</td>
                   <td>45:00 Min</td>
                   <td>20th March, 2016</td>
-                  <td>Cancelled <br><button class="btn btn-success mt10">PRINT INVOICE</button></td>
+                  <td>Cancelled
+                    <br>
+                    <button class="btn btn-success mt10">PRINT INVOICE</button>
+                  </td>
                   <td>500/-</td>
                 </tr>
               </table>
