@@ -22,10 +22,35 @@ var navigationservice = angular.module('navigationservice', [])
     // }]
   },
     {
-    name: "Home",
+    name: "My Calendar",
     classis: "active",
     anchor: "home",
   },
+    {
+    name: "My Booking Page",
+    classis: "active",
+    anchor: "home",
+  },
+    {
+    name: "My Profile Page",
+    classis: "active",
+    anchor: "home",
+  },
+    {
+    name: "My Account",
+    classis: "active",
+    anchor: "home",
+  },
+    {
+    name: "About Us",
+    classis: "active",
+    anchor: "home",
+  },
+    {
+    name: "Contact Us",
+    classis: "active",
+    anchor: "home",
+  }
 ];
 
   return {

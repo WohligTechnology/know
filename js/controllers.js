@@ -387,14 +387,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   });
   $scope.menu = "menu-out";
   $scope.getMenu = function() {
-    if($scope.menu == "menu-in") {
-      $scope.menu = "menu-out";
-      $scope.cross = "";
-    }
-    else {
       $scope.menu = "menu-in";
-      $scope.cross = "put-cross"
-    }
+  };
+  $scope.closeMenu = function() {
+    $scope.menu = "menu-out";
   };
 })
 

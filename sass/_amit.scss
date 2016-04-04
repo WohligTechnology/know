@@ -141,19 +141,22 @@
   left: 0;
   background-color: #2a2a2a;
   color: #fff;
-  text-align: center;
   .navbar-nav {
     float: none;
     li {
       float: none;
+      a {
+        background-color: transparent !important;
+        color: #fff;
+      }
     }
   }
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
-    background-color: transparent;
-    color: #fff;
-  }
+}
+.closemenu {
+  position: absolute;
+  left: 20px;
+  cursor: pointer;
+  font-size: 20px;
 }
 .menu-out {
   @include transform(translateX(-450px));

@@ -1,30 +1,30 @@
 <!-- <object class="embed-responsive-item">
   <param class="black-overlay"></param>
 </object> -->
-<header ng-controller="headerctrl">
-   <nav class="navbar navbar-default navbar-fixed-top">
+<header class="pos-relative" ng-controller="headerctrl">
+  <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="row">
         <div class="col-md-3">
           <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand display-inline" href="#/home">
+              <!-- <img src="img/options.png" alt="menu" width="30">  -->
+              <button type="button" class="hamburger" ng-click="getMenu();">
+                <span class=""></span>
+                <span class=""></span>
+                <span class=""></span>
               </button>
-              <a class="navbar-brand display-inline" href="#/home">
-                <!-- <img src="img/options.png" alt="menu" width="30">  -->
-                <button type="button" class="hamburger {{cross}}" ng-click="getMenu();">
-                  <span class=""></span>
-                  <span class=""></span>
-                  <span class=""></span>
-                </button>
-              </a>
-              <div class="logo display-inline">
-                <a ui-sref="home"><img src="img/logop.png" alt="" class="img-responsive" width="180" alt="logo" title="logo" ></a>
-                  <!-- <span class="f13 font-bold color-success exp">EXPERT</span> -->
-              </div>
+            </a>
+            <div class="logo display-inline">
+              <a ui-sref="home"><img src="img/logop.png" alt="" class="img-responsive" width="180" alt="logo" title="logo"></a>
+              <!-- <span class="f13 font-bold color-success exp">EXPERT</span> -->
+            </div>
           </div>
         </div>
         <div class="col-md-9">
@@ -48,14 +48,15 @@
         </div>
       </div>
 
-<!--
+      <!--
         <div class="collapse navbar-collapse" id="nav-collapse">
                <div ng-include="template.menu" class="template menu"></div>
         </div> -->
-        <div class="side-menu {{menu}}">
-          <span class="heading-menu">Menu</span>
-          <div class="template menu" ng-include="template.menu"></div>
-        </div>
+      <div class="side-menu text-center {{menu}}">
+        <span ng-click="closeMenu();" class="closemenu {{menu}}"><i class="ln-cross"></i></span>
+        <span class="heading-menu">Menu</span>
+        <div class="template menu" ng-include="template.menu"></div>
+      </div>
     </div>
-</nav>
+  </nav>
 </header>
