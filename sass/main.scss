@@ -975,5 +975,25 @@ padding: 13px 0px 11px 0px;
     font-weight: 300;
   }
 }
+// search
+.range-slider {
+  .ngrs-range-slider {
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+  }
+  .ngrs-runner {
+    height: 7px;
+    border-radius: 10px;
+    margin: 0;
+    background: $brand-primary;
+  }
+  .ngrs-join { display: none; }
+  .ngrs-handle {
+    @include square(20px);
+    border-radius: 100%;
+    top: -7px;
+  }
+}
+// end search page
 @import "amit";
-  

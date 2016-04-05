@@ -323,8 +323,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.navigation = NavigationService.getnav();
     $scope.demo2 = {
       range: {
-        min: 0,
-        max: 10050
+        min: 100,
+        max: 10000,
       },
       minPrice: 1000,
       maxPrice: 4000
