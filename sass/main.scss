@@ -9,6 +9,7 @@
 @import "../bower_components/fancyBox/source/jquery.fancybox.css";
 /* Bootstrap Variables Goes Here */
 $brand-primary: #ff8621 !default;
+$brand-success-light: #0093b0 !default;
 $brand-success: #588ed0 !default;
 $brand-warning: #ffec39 !default;
 $brand-danger: #fc483f !default;
@@ -80,6 +81,9 @@ a {
 }
 .color-white {
   color: $white;
+}
+.color-success-light {
+  color: $brand-success-light;
 }
 .font-bold {
   font-weight: bold;
@@ -992,9 +996,32 @@ padding: 13px 0px 11px 0px;
   .ngrs-join { display: none; }
   .ngrs-handle {
     @include square(20px);
+    border: 1px solid #bcbcbc;
     border-radius: 100%;
     top: -7px;
+    background-color: #bcbcbc;
   }
 }
+.search-box {
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  .exp-brief { margin: 10px 0; }
+}
+.search-img {
+  @include square(150px);
+  overflow: hidden;
+  position: relative;
+  img {
+    @include position(absolute, 50% null null 50%);
+    @include transform(translate(-50%,-50%));
+  }
+}
+.filter-box {
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+.filter { padding-right: 25px; }
 // end search page
 @import "amit";
