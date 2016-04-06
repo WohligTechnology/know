@@ -1063,5 +1063,12 @@ padding: 13px 0px 11px 0px;
 .noselect{
   cursor: pointer;
 }
+.pub-link{
+  a{
+    &:hover{
+      color:$brand-success;
+    }
+  }
+}
 // end search page
 @import "amit";
