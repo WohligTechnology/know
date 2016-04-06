@@ -64,7 +64,24 @@
 .user-bg {
   padding: 20px;
   background-color: #eee;
+  .user-imgholder {
+    border: 3px solid #fff;
+    border-radius: 100%;
+    overflow: hidden;
+    img { max-height: none; }
+  }
 }
+.user-info {
+  .media { margin: 10px 0; }
+  .media-left { padding: 0 0 0 5px; }
+  .media-body {
+    padding: 7px 0px 7px 10px;
+    border-bottom: 1px solid #dfdfdf
+  }
+  .media:last-child .media-body { border: none; }
+  .user-info-icon { font-size: 25px; }
+}
+
 .user-imgholder {
   @include square(100px);
   img {
