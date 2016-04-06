@@ -25,6 +25,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     templateUrl: "views/template.html",
     controller: 'EditUserCtrl'
   })
+  .state('book-now', {
+    url: "/book-now",
+    templateUrl: "views/template.html",
+    controller: 'BookNowCtrl'
+  })
   .state('expert-profile', {
     url: "/expert-profile",
     templateUrl: "views/template.html",
@@ -81,11 +86,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
 
 
 firstapp.directive('img', function($compile, $parse) {
+  
   return {
     restrict: 'E',
     replace: false,
     link: function($scope, element, attrs) {
       var $element = $(element);
+
       if (!attrs.noloading) {
         $element.after("<img src='img/loading.gif' class='loading' />");
         var $loading = $element.next(".loading");

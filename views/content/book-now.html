@@ -1,0 +1,66 @@
+<section class="mt70">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="main-links mt25">
+          <ul class="breadcrumb padding0">
+            <li><a href="#/home" class="text-uppercase">Home</a></li>
+            <li><a href="#" class=" text-uppercase">profile</a></li>
+            <li><a href="#" class="active text-uppercase">book now</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4">
+        <div class="conten-box">
+          <div class="login-form cust-form">
+            <h4 class="text-up text-center color-base">book now</h4>
+
+            <div class="mail mt15 pos-relative">
+              <label for="">Select Date</label>
+              <p class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                <span class="input-group-btn">
+           <button type="button" class="btn btn-default pad" ng-click="open2()"><i class="ln-calendar3"></i></button>
+         </span>
+              </p>
+            </div>
+          </div>
+          <div class="mail mt15 pos-relative">
+            <label for="">Select Time</label>
+            <ng-timepicker ng-model="ctrl.time2" show-meridian="true"></ng-timepicker>
+          </div>
+          <div class="mail mt15 pos-relative">
+            <label for="">Select Duration</label>
+            <select class="form-control display-inline pos-relative pointer">
+              <option>SELECT DURATION</option>
+              <option>1 Hr</option>
+              <option>30 Min</option>
+              <option>1:30 Min</option>
+              <option>2 Hr</option>
+            </select>
+            <div class="icon-mail display-inline arrow" style="top: 33px;">
+              <i class="ln-chevron-down"></i>
+            </div>
+          </div>
+          <div class="mail mt15">
+            <label for="">Ask Query</label>
+            <textarea class="form-control" rows="6" style="resize:none" placeholder="ASK QUERY"></textarea>
+          </div>
+          <div class="login-btn mt50">
+            <button class="btn btn-org f10 font-light">Book</button>
+          </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>

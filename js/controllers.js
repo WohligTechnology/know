@@ -1,4 +1,4 @@
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider','jkuri.timepicker'])
 
 .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout,$uibModal) {
   //Used to name the .html file
@@ -111,6 +111,70 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("User Booking");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+  })
+.controller('BookNowCtrl', function($scope, TemplateService, NavigationService, $timeout,$log) {
+    $scope.template = TemplateService.changecontent("book-now");
+    $scope.menutitle = NavigationService.makeactive("Book-Now");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+      TemplateService.header = "./views/header2.html";
+      $scope.today = function() {
+        $scope.dt = new Date();
+      };
+      $scope.today();
+
+      $scope.clear = function() {
+        $scope.dt = null;
+      };
+      $scope.open2 = function() {
+        $scope.popup2.opened = true;
+      };
+      $scope.popup2 = {
+        opened: false
+      };
+      $scope.setDate = function(year, month, day) {
+  $scope.dt = new Date(year, month, day);
+};
+      $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+      $scope.format = $scope.formats[0];
+      $scope.altInputFormats = ['M!/d!/yyyy'];
+
+      var tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      var afterTomorrow = new Date();
+      afterTomorrow.setDate(tomorrow.getDate() + 1);
+      $scope.events = [
+        {
+          date: tomorrow,
+          status: 'full'
+        },
+        {
+          date: afterTomorrow,
+          status: 'partially'
+        }
+      ];
+      function getDayClass(data) {
+        var date = data.date,
+          mode = data.mode;
+        if (mode === 'day') {
+          var dayToCheck = new Date(date).setHours(0,0,0,0);
+
+          for (var i = 0; i < $scope.events.length; i++) {
+            var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
+
+            if (dayToCheck === currentDay) {
+              return $scope.events[i].status;
+            }
+          }
+        }
+
+        return '';
+      }
+ $scope.ismeridian = true;
+ $scope.time = "1970-01-01T05:00:40.000Z"; // (formatted: 10:30 AM)
+$scope.selectedTimeAsNumber = 37840000; // (formatted: 4:00 PM)
+$scope.sharedDate = "2016-04-06T05:30:00.116Z"; // (formatted: 4/6/16 11:00 AM)
+
   })
 .controller('LoginCtrl', function($scope, TemplateService, NavigationService, $timeout,$uibModal) {
     $scope.template = TemplateService.changecontent("login");
