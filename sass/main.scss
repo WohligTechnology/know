@@ -849,6 +849,8 @@ color:#fff;
 }
 .icon-bx{
   display:inline-block;
+  min-height: 70px;
+vertical-align: -webkit-baseline-middle;
   img{
     vertical-align: text-bottom;
 
@@ -1060,6 +1062,13 @@ padding: 13px 0px 11px 0px;
 }
 .noselect{
   cursor: pointer;
+}
+.pub-link{
+  a{
+    &:hover{
+      color:$brand-success;
+    }
+  }
 }
 // end search page
 @import "amit";
