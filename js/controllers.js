@@ -107,8 +107,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 })
 
 .controller('UserBookingCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-    $scope.template = TemplateService.changecontent("userbooking");
-    $scope.menutitle = NavigationService.makeactive("User Booking");
+    $scope.template = TemplateService.changecontent("user-booking");
+    $scope.menutitle = NavigationService.makeactive("User-Booking");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
