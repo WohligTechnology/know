@@ -5,9 +5,10 @@
   padding: 20px;
   margin: 10px 0;
   background-color: #fff;
+      border: 1px solid #ccc;
   .nav-tabs { border: none; }
   .nav-tabs > li > a {
-    margin: 0px 26px;
+    margin: 0px 22px;
     @extend .font-raleway;
     @extend .color-grey;
     border: none;

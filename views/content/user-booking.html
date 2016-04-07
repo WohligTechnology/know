@@ -448,7 +448,23 @@
           </uib-tab>
           <uib-tab>
             <uib-tab-heading class="text-uppercase">Account History</uib-tab-heading>
-            <p class="font-bold tag-line">Account History</p>
+          <div class="display-inline">
+              <p class="font-bold tag-line">Account History</p>
+          </div>
+            <div class="filt display-inline">
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  SORT BY CATEGORY
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li><a href="#">Cancelled</a></li>
+                  <li><a href="#">Completed</a></li>
+                  <li><a href="#">Refunded</a></li>
+
+                </ul>
+              </div>
+            </div>
             <div class="completed-section mt30">
               <p class="text-uppercase font-bold color-success">Completed</p>
               <table class="table text-uppercase account-history font-light text-center">
