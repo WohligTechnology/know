@@ -257,10 +257,12 @@ header {
 .expert-page {
   .user-logo,
   .home-logo { display: none; }
+  .white-img { display: none; }
 }
 .user-page {
   .expertise-logo,
   .home-logo { display: none; }
+  .white-img { display: none; }
 }
 
 .header-white-black {
@@ -281,7 +283,7 @@ header {
     box-shadow: none;
     background-color: transparent;
   }
-  .white-img { display: none; }
+  .black-img { display: none; }
   button {
     @extend.btn-become;
   }
