@@ -399,6 +399,7 @@ $scope.sharedDate = "2016-04-06T05:30:00.116Z"; // (formatted: 4/6/16 11:00 AM)
     $scope.menutitle = NavigationService.makeactive("Search");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+      TemplateService.header = "./views/header2.html";
     $scope.demo2 = {
       range: {
         min: 100,
