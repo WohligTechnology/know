@@ -1,8 +1,8 @@
 <!-- <object class="embed-responsive-item">
   <param class="black-overlay"></param>
 </object> -->
-<header class="pos-relative" ng-controller="headerctrl">
-  <nav class="navbar navbar-default navbar-fixed-top">
+<header class="pos-relative {{getlogo}} {{logonormal}} {{home}}" ng-controller="headerctrl" >
+  <nav class="navbar navbar-default navbar-fixed-top header-white-black">
     <div class="container">
       <div class="row">
         <div class="col-md-3">
@@ -21,8 +21,10 @@
                 <span class=""></span>
               </button>
             </a>
-            <div class="logo display-inline">
-              <a ui-sref="home"><img src="img/logop.png" alt="" class="img-responsive" width="180" alt="logo" title="logo"></a>
+            <div class="logo display-inline ">
+              <a ui-sref="home"><img src="img/logop.png" alt="" class="img-responsive home-logo" width="180" alt="logo" title="logo"></a>
+              <a ui-sref="home"><img src="img/logo2.png" alt="" class="img-responsive expertise-logo" width="180" alt="logo" title="logo" ></a>
+              <a ui-sref="home"><img src="img/logou.png" alt="" class="img-responsive user-logo" width="180" alt="logo" title="logo" ></a>
               <!-- <span class="f13 font-bold color-success exp">EXPERT</span> -->
             </div>
           </div>
@@ -36,11 +38,13 @@
                 </a>
               </li>
               <li>
-                <a href="" class="color-white" ui-sref="login"><img src="img/log.png" alt="" width="30"></a>
+                <a href="" class="color-white black-img" ui-sref="login"><img src="img/log.png" alt="" width="30"></a>
+                <a href="" class="color-base white-img" ui-sref="login"><img src="img/close2.png" alt="" width="30"></a>
               </li>
               <li>
                 <a href="">
-                  <img src="img/help.png" alt="" width="30">
+                  <img src="img/help.png" class="black-img" alt="" width="30">
+                  <img src="img/help2.png" class="white-img"  alt="" width="30">
                 </a>
               </li>
             </ul>

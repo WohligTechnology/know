@@ -6,6 +6,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Home");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+  $scope.getlogo = "";
+  $scope.logonormal = "";
+  $scope.home = "home-page"
 
   $scope.hows = [{
     icon: 'img/i1.png',
@@ -111,27 +114,35 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("User-Booking");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-        TemplateService.header = "./views/header2.html";
+        // TemplateService.header = "./views/header2.html";
+    $scope.getlogo = "";
+    $scope.logonormal = "m-logo";
   })
 .controller('ExpertBookingCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("expert-booking");
     $scope.menutitle = NavigationService.makeactive("Expert-Booking");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-      TemplateService.header = "./views/header2.html";
+      // TemplateService.header = "./views/header2.html";
+    $scope.getlogo = "expert-logo";
+    $scope.logonormal = "";
   })
 .controller('AboutCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("about");
     $scope.menutitle = NavigationService.makeactive("About");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    $scope.getlogo = "";
+    $scope.logonormal = "m-logo";
   })
 .controller('BookNowCtrl', function($scope, TemplateService, NavigationService, $timeout,$log) {
     $scope.template = TemplateService.changecontent("book-now");
     $scope.menutitle = NavigationService.makeactive("Book-Now");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-      TemplateService.header = "./views/header2.html";
+    $scope.getlogo = "";
+    $scope.logonormal = "m-logo";
+
       $scope.today = function() {
         $scope.dt = new Date();
       };
@@ -195,7 +206,9 @@ $scope.sharedDate = "2016-04-06T05:30:00.116Z"; // (formatted: 4/6/16 11:00 AM)
     $scope.menutitle = NavigationService.makeactive("Login");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-      TemplateService.header = "./views/header2.html";
+    $scope.getlogo = "";
+    $scope.logonormal = "m-logo";
+
         $scope.animationsEnabled = true;
       $scope.open3 = function(size) {
 
@@ -222,46 +235,58 @@ $scope.sharedDate = "2016-04-06T05:30:00.116Z"; // (formatted: 4/6/16 11:00 AM)
     $scope.menutitle = NavigationService.makeactive("Signup");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-      TemplateService.header = "./views/header2.html";
+    $scope.getlogo = "";
+    $scope.logonormal = "m-logo";
   })
   .controller('EditUserCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("edit-user");
     $scope.menutitle = NavigationService.makeactive("Edit-User");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-        TemplateService.header = "./views/header2.html";
+    $scope.getlogo = "";
+    $scope.logonormal = "m-logo";
   })
   .controller('ContactCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("contact");
     $scope.menutitle = NavigationService.makeactive("Contact");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    TemplateService.header = "./views/header2.html";
+    $scope.getlogo = "";
+    $scope.logonormal = "m-logo";
   })
   .controller('PrivacyCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("privacy");
     $scope.menutitle = NavigationService.makeactive("Privacy");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    $scope.getlogo = "";
+    $scope.logonormal = "m-logo";
   })
   .controller('TermsConditionCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("terms-condition");
     $scope.menutitle = NavigationService.makeactive("Terms-Condition");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    $scope.getlogo = "";
+    $scope.logonormal = "m-logo";
   })
   .controller('HomeExpertCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("home-expert");
     $scope.menutitle = NavigationService.makeactive("Home-Expert");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    $scope.getlogo = "";
+    $scope.logonormal = "";
+    $scope.home = "home-page";
   })
   .controller('ExpertProfileCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("expert-profile");
     $scope.menutitle = NavigationService.makeactive("Expert-Profile");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-        TemplateService.header = "./views/header2.html";
+        // TemplateService.header = "./views/header2.html";
+        $scope.getlogo = "expert-logo";
+        $scope.logonormal = "";
 
     $scope.tab2 = 'personal';
     $scope.classa = 'expert-active';
@@ -393,20 +418,26 @@ $scope.sharedDate = "2016-04-06T05:30:00.116Z"; // (formatted: 4/6/16 11:00 AM)
     $scope.menutitle = NavigationService.makeactive("FAQ");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    $scope.getlogo = "";
+    $scope.logonormal = "m-logo";
   })
   .controller('WishlistCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("wishlist");
     $scope.menutitle = NavigationService.makeactive("Wishlist");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    TemplateService.header = "./views/header2.html";
+    $scope.getlogo = "";
+    $scope.logonormal = "m-logo";
   })
   .controller('SearchCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("search");
     $scope.menutitle = NavigationService.makeactive("Search");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-      TemplateService.header = "./views/header2.html";
+    $scope.getlogo = "";
+    $scope.logonormal = "m-logo";
+    // TemplateService.header = "./views/header2.html";
+
     $scope.demo2 = {
       range: {
         min: 100,
@@ -429,7 +460,8 @@ $scope.sharedDate = "2016-04-06T05:30:00.116Z"; // (formatted: 4/6/16 11:00 AM)
   $scope.menutitle = NavigationService.makeactive("Profile");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
-  TemplateService.header = "./views/header2.html";
+  $scope.getlogo = "";
+  $scope.logonormal = "m-logo";
 
   $scope.tab2 = 'summary';
   $scope.classa = 'expert-active';

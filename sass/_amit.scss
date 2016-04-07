@@ -252,3 +252,38 @@ header {
 // footer
 .submit { height: 34px; }
 // footer end
+
+// header
+.expert-logo {
+  .user-logo,
+  .home-logo { display: none; }
+}
+.m-logo {
+  .expertise-logo,
+  .home-logo { display: none; }
+}
+
+.header-white-black {
+  background-color: rgb(255, 255, 255);
+  border-color: #a4a4a4;
+  padding: 8px 0;
+  z-index: 99999999;
+  box-shadow: 0 1px 2px 0 #a4a4a4;
+  button {
+    @extend .btn-become2;
+  }
+}
+.home-page {
+  .user-logo,
+  .expertise-logo { display: none; }
+  .header-white-black {
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+  }
+  .white-img { display: none; }
+  button {
+    @extend.btn-become; 
+  }
+}
+// header end

@@ -186,18 +186,6 @@ a {
 .logo {
   @include margin(12px 0px 0px 18px);
 }
-.btn-become {
-  @include button-variant($white, $transparent, $white);
-  &:hover {
-    border-color: $white;
-  }
-  &:focus {
-    border-color: $white;
-  }
-  &:acive {
-    border-color: $white;
-  }
-}
 .edt {
   &:hover {
     color: $brand-success;
@@ -230,6 +218,18 @@ a {
   }
   &:acive {
     border-color: $brand-base;
+  }
+}
+.btn-become {
+  @include button-variant($white, $transparent, $white);
+  &:hover {
+    border-color: $white;
+  }
+  &:focus {
+    border-color: $white;
+  }
+  &:acive {
+    border-color: $white;
   }
 }
 .btn-blue {
