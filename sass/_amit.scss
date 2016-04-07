@@ -21,7 +21,7 @@
     @extend .color-grey;
     background-color: #fff;
     border: none;
-    border-bottom: 3px solid $brand-success;
+    border-bottom: 3px solid $brand-primary;
   }
   .tab-content {
     padding: 20px 25px;
@@ -31,8 +31,9 @@
   font-size: 13px;
   font-weight: 400;
   th {
-    border: 1px solid #d7e5f7;
-    background-color: #d7e5f7;
+    border: 1px solid $brand-primary;
+    background-color: $brand-primary;
+    color: #fff;
     font-weight: 400;
     text-align: center;
   }
@@ -109,8 +110,9 @@
 }
 .feedback {
   margin: 20px 0 0;
+  padding: 0px 10px;
   textarea.form-control {
-  min-height: 75px;
+  min-height: 85px;
   margin: 10px 0px 15px;
   resize: none;
  }
