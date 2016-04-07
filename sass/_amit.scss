@@ -136,6 +136,19 @@
 }
 // end user booking
 
+// expert booking
+.expert-booking {
+  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus { border-bottom: 3px solid $brand-success; }
+  .account-history {
+    th {
+      border: 1px solid #d7e5f7;
+      background-color: #d7e5f7;
+      color: #000;
+    }
+  }
+}
+// end expert booking
+
 // terms and condition
 .contact {
   padding: 20px 30px 60px;
