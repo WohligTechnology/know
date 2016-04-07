@@ -25,6 +25,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     templateUrl: "views/template.html",
     controller: 'AboutCtrl'
   })
+  .state('wishlist', {
+    url: "/wishlist",
+    templateUrl: "views/template.html",
+    controller: 'WishlistCtrl'
+  })
   .state('edit-user', {
     url: "/edit-user",
     templateUrl: "views/template.html",
