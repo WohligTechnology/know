@@ -1079,4 +1079,25 @@ padding: 13px 0px 11px 0px;
   border-bottom: 1px solid #ccc;
 padding-bottom: 20px;
 }
+.u-query {
+    border: 1px solid #ccc;
+    margin: 7px 14px 0px 0px;
+    padding: 9px 8px;
+}
+.btn-ac{
+  li{
+        margin-bottom: 8px;
+
+    .blue-link{
+      margin: 0px 0px 0px -1px;
+      background-color: $brand-success;
+        padding: 9px 39px;
+    }
+    .grey-link{
+      margin: 0px -1px 0px 0px;
+        background: #b7b7b7;
+          padding: 9px 39px;
+    }
+  }
+}
 @import "amit";
