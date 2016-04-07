@@ -20,6 +20,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     templateUrl: "views/template.html",
     controller: 'UserBookingCtrl'
   })
+  .state('about', {
+    url: "/about",
+    templateUrl: "views/template.html",
+    controller: 'AboutCtrl'
+  })
   .state('edit-user', {
     url: "/edit-user",
     templateUrl: "views/template.html",
@@ -86,7 +91,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
 
 
 firstapp.directive('img', function($compile, $parse) {
-  
+
   return {
     restrict: 'E',
     replace: false,
