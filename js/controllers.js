@@ -111,6 +111,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("User-Booking");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+        TemplateService.header = "./views/header2.html";
   })
 .controller('ExpertBookingCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("expert-booking");
