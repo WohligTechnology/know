@@ -254,11 +254,11 @@ header {
 // footer end
 
 // header
-.expert-logo {
+.expert-page {
   .user-logo,
   .home-logo { display: none; }
 }
-.m-logo {
+.user-page {
   .expertise-logo,
   .home-logo { display: none; }
 }
@@ -283,7 +283,7 @@ header {
   }
   .white-img { display: none; }
   button {
-    @extend.btn-become; 
+    @extend.btn-become;
   }
 }
 // header end
