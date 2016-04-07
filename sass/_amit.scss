@@ -44,7 +44,7 @@
   .completed { @include square(50px); }
 }
 .outline-single {
-  border: 2px solid #bdbdbd;
+  border: 1px solid #bdbdbd;
   margin: 20px 0;
   overflow: hidden;
 }
@@ -73,13 +73,13 @@
 }
 .user-info {
   .media { margin: 10px 0; }
-  .media-left { padding: 0 5px 0 7px; }
+  .media-left {     padding: 8px 5px 0 12px; }
   .media-body {
     padding: 7px 0px 7px 10px;
     border-bottom: 1px solid #dfdfdf
   }
   .media:last-child .media-body { border: none; }
-  .user-info-icon { font-size: 25px; }
+  .user-info-icon { font-size: 20px; }
 }
 
 .user-imgholder {
@@ -88,6 +88,10 @@
     max-height: 100%;
     margin: 0 auto;
   }
+}
+.media-heading {
+    margin-top: 0;
+    margin-bottom: 2px;
 }
 .tag-line { font-size: 16px; }
 .sec-searchbar {

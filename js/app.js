@@ -35,6 +35,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     templateUrl: "views/template.html",
     controller: 'BookNowCtrl'
   })
+  .state('expert-booking', {
+    url: "/expert-booking",
+    templateUrl: "views/template.html",
+    controller: 'ExpertBookingCtrl'
+  })
   .state('expert-profile', {
     url: "/expert-profile",
     templateUrl: "views/template.html",
