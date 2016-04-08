@@ -294,7 +294,7 @@ header {
   .view-dropdown {
     width: 230px;
     padding: 0px;
-    @include position(absolute, 60px null null -170px);
+    @include position(absolute, 60px null null -177px);
     background-color: #fff;
     display: none;
     li {
@@ -337,8 +337,27 @@ header {
     &:after {
       content: "";
       @include size(100%, 50px);
-      @include position(absolute, -50px null null null );
+      @include position(absolute, -25px null null null );
     }
   }
 }
+.notify {
+  padding: 10px;
+  background-color: #ebebeb;
+  .notification-list:last-child .descp-noti { border: none; }
+}
+.notify-imgholder { margin: 10px 10px 10px 0; }
+.descp-noti {
+  border-bottom: 1px solid #b7b7b7;
+  padding: 10px 0;
+  p {
+  margin: 0;
+  font-size: 11px;
+  a:hover {
+    color: $brand-success;
+    text-decoration: underline;
+  }
+ }
+}
+
 // header end
