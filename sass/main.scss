@@ -171,6 +171,35 @@ a {
   font-family: 'Raleway';
 }
 .full-width { width: 100%; }
+.checkbox {
+  input[type="checkbox"] {
+    display: none;
+  }
+  input[type="checkbox"] + label {
+    font-size: 13px;
+    padding-left: 5px;
+    display: block;
+  }
+  input[type="checkbox"] + label span {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    margin: -2px 4px 0 0;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid $brand-primary;
+  }
+  input[type="checkbox"] + label span {
+    background-color: transparent;
+  }
+  input[type="checkbox"]:checked + label span {
+    background-color: $brand-primary;
+  }
+  input[type="checkbox"] + label span,
+  input[type="checkbox"]:checked + label span {
+    @include transition(background-color 0.4s linear);
+  }
+}
 /* Start writing sass here */
 @import "fancybox-override";
 .home {
@@ -567,13 +596,18 @@ padding-bottom: 20px;
       padding: 0 4px;
       a {
         i {
+          @include square(30px);
           color: #959595;
-          border: 1px solid #959595;
-          font-size: 19px;
-          border-radius: 100%;
-          height: 30px;
-          width: 30px;
           padding: 5px 6px;
+          border: 1px solid #959595;
+          border-radius: 100%;
+          font-size: 19px;
+          @include transition(all 300ms linear);
+          &:hover {
+            color: #fff;
+            background-color: #959595;
+            @include transition(all 300ms linear);
+          }
         }
       }
     }
