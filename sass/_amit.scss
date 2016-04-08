@@ -294,7 +294,7 @@ header {
   .view-dropdown {
     width: 230px;
     padding: 0px;
-    @include position(absolute, 60px null null -177px);
+    @include position(absolute, 50px null null -177px);
     background-color: #fff;
     display: none;
     li {
@@ -339,6 +339,13 @@ header {
       @include size(100%, 50px);
       @include position(absolute, -25px null null null );
     }
+  }
+}
+.user-page,
+.expert-page {
+  .view-dropdown {
+    border-top: 1px solid #474747;
+    &:before { border-bottom: 15px solid #474747; }
   }
 }
 .notify {
