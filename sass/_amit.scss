@@ -366,5 +366,17 @@ header {
   }
  }
 }
+.noti-badge {
+  @include position(absolute, 10px 0 null null);
+  a {
+    @include square(20px);
+    border-radius: 100%;
+    display: inline-block;
+    background-color: $brand-primary;
+    line-height: 18px;
+    text-align: center;
+  }
+  span { font-size: 11px; }
+}
 
 // header end
