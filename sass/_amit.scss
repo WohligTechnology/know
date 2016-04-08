@@ -294,7 +294,7 @@ header {
   .view-dropdown {
     width: 230px;
     padding: 0px;
-    @include position(absolute, 50px null null -177px);
+    @include position(absolute, 50px 2px null null);
     background-color: #fff;
     display: none;
     li {
@@ -348,6 +348,7 @@ header {
     &:before { border-bottom: 15px solid #474747; }
   }
 }
+.profile .notification { width: 310px; }
 .notify {
   padding: 10px;
   background-color: #ebebeb;
