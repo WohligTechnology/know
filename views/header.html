@@ -1,7 +1,7 @@
 <!-- <object class="embed-responsive-item">
   <param class="black-overlay"></param>
 </object> -->
-<header class="pos-relative {{expertlogo}} {{userlogo}} {{home}}" ng-controller="headerctrl" >
+<header class="pos-relative {{expertlogo}} {{userlogo}} {{home}}" ng-controller="headerctrl">
   <nav class="navbar navbar-default navbar-fixed-top header-white-black">
     <div class="container">
       <div class="row">
@@ -22,9 +22,11 @@
               </button>
             </a>
             <div class="logo display-inline ">
-              <a ui-sref="home"><img src="img/logop.png" alt="" class="img-responsive home-logo" width="180" alt="logo" title="logo"></a>
-              <a ui-sref="home"><img src="img/logo2.png" alt="" class="img-responsive expertise-logo" width="180" alt="logo" title="logo" ></a>
-              <a ui-sref="home"><img src="img/logou.png" alt="" class="img-responsive user-logo" width="180" alt="logo" title="logo" ></a>
+              <a ui-sref="home" class="display-inline">
+                <img src="img/logop.png" alt="" class="img-responsive home-logo" width="180" alt="logo" title="logo">
+                <img src="img/logo2.png" alt="" class="img-responsive expertise-logo" width="180" alt="logo" title="logo">
+                <img src="img/logou.png" alt="" class="img-responsive user-logo" width="180" alt="logo" title="logo">
+              </a>
               <!-- <span class="f13 font-bold color-success exp">EXPERT</span> -->
             </div>
           </div>
@@ -37,13 +39,22 @@
                   <button class="btn-become btn font-bold btn-1 btn-1b">Become an expert</button>
                 </a>
               </li>
-              <li>
-                <a href="" class="color-white white-img" ui-sref="login"><img src="img/log.png" alt="" width="30"></a>
-                <a href="" class="color-base black-img" ui-sref="login"><img src="img/close2.png" alt="" width="30"></a>
+              <li class="profile pointer">
+                <a href="" class="display-inline">
+                  <img class="color-white white-img" src="img/log.png" alt="" width="30" />
+                  <img class="color-base black-img" src="img/close2.png" alt="" width="30" />
+                </a>
+                <ul class="view-dropdown">
+                  <li><a href="" class="text-uppercase" title="Your Booking">your booking</a></li>
+                  <li><a href="" class="text-uppercase" title="Edit Account">edit account</a></li>
+                  <li><a href="" class="text-uppercase" title="Logout">logout</a></li>
+                </ul>
               </li>
               <li>
-                <a href=""><img src="img/help2.png" class="black-img"  alt="" width="30"></a>
-                <a href=""><img src="img/help.png" class="white-img" alt="" width="30"></a>
+                <a href="" class="display-inline">
+                  <img src="img/help2.png" class="black-img" alt="" width="30">
+                  <img src="img/help.png" class="white-img" alt="" width="30">
+                </a>
               </li>
             </ul>
           </div>
