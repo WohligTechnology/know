@@ -309,7 +309,7 @@ header {
         border-bottom: 1px solid #dfdfdf;
         display: block;
         color: $grey-base;
-        &:hover { color: #000; }
+        &:hover { color: $brand-primary; }
       }
       &:hover {
         @include transition(all 300ms linear);
@@ -321,7 +321,7 @@ header {
       &:after {
         content: "";
         @include size(0px,1px);
-        background-color: #000;
+        background-color: $brand-primary;
         position: absolute;
         bottom: 0;
         left: 0;
@@ -351,13 +351,15 @@ header {
 }
 .notification-list{
   padding: 10px;
-border-bottom: 1px solid #b7b7b7;
-&:hover{
-  background-color: #BFBFBF;
-}
-&:last-child{
+  border-bottom: 1px solid #b7b7b7;
+  @include transition(all 300ms linear);
+  &:hover {
+    background-color: #BFBFBF;
+    @include transition(all 300ms linear);
+  }
+  &:last-child{
   .descp-noti { border: none; }
-}
+  }
 }
 .profile .notification { width: 310px; }
 .notify {
