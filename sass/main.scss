@@ -1225,6 +1225,7 @@ padding: 13px 0px 11px 0px;
     top: -7px;
     background-color: #bcbcbc;
   }
+  .ngrs-range-slider .ngrs-value { color: #474d4f; }
 }
 .search-box {
   padding: 20px;
@@ -1272,13 +1273,14 @@ padding: 13px 0px 11px 0px;
 .noselect{
   cursor: pointer;
 }
-// .pub-link{
-//   a{
-//     &:hover{
-//       color:$brand-success;
-//     }
-//   }
-// }
+.pub-link{
+  a{
+    &:hover{
+      color:$brand-success;
+      text-decoration: underline;
+    }
+  }
+}
 // end search page
 
 .filt{
