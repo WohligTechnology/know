@@ -349,15 +349,25 @@ header {
     &:before { border-bottom: 15px solid #474747; }
   }
 }
+.notification-list{
+  padding: 10px;
+border-bottom: 1px solid #b7b7b7;
+&:hover{
+  background-color: #BFBFBF;
+}
+&:last-child{
+  .descp-noti { border: none; }
+}
+}
 .profile .notification { width: 310px; }
 .notify {
-  padding: 10px;
+
   background-color: #ebebeb;
   .notification-list:last-child .descp-noti { border: none; }
 }
 .notify-imgholder { margin: 10px 10px 10px 0; }
 .descp-noti {
-  border-bottom: 1px solid #b7b7b7;
+
   padding: 10px 0;
   p {
   margin: 0;
