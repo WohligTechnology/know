@@ -785,6 +785,7 @@ padding-bottom: 20px;
   @include placeholder {
     font-weight: 400;
     font-size: 10px;
+    line-height: 21px;
   }
 }
 .login-btn {
@@ -927,6 +928,10 @@ select{
     transition:background-color 0.4s linear;
   }
 }
+.radio-org {
+  @extend .radio;
+  input[type="radio"]:checked + label span { background-color:$brand-primary; }
+}
 
 .save-btn{
   .btn{
@@ -1049,7 +1054,10 @@ color:#fff;
 vertical-align: -webkit-baseline-middle;
   img{
     vertical-align: text-bottom;
-
+    cursor: pointer;
+    &:hover {
+      @include animation(tada 1s 0s linear);
+    }
   }
 }
 .icon-box {

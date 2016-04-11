@@ -277,7 +277,8 @@ $scope.sharedDate = "2016-04-06T05:30:00.116Z"; // (formatted: 4/6/16 11:00 AM)
     $scope.navigation = NavigationService.getnav();
     $scope.expertlogo = "";
     $scope.userlogo = "";
-    $scope.home = "home-page";
+    $scope.home = "";
+    $scope.experthome = "expert-home"
   })
   .controller('ExpertProfileCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("expert-profile");

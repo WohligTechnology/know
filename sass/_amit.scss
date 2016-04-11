@@ -216,6 +216,8 @@ header {
   }
   .ask-jack {
     padding: 10px 50px;
+    border-color: #fff;
+    color: #fff;
     &:hover {
       background-color: #fff;
       color: #000;
@@ -226,6 +228,7 @@ header {
     background-color: #fff;
     color: #000;
     &:hover {
+      border-color: #fff;
       background-color: #2a2a2a;
       color: #fff;
     }
@@ -256,11 +259,13 @@ header {
 // header
 .expert-page {
   .user-logo,
+  .expert-home ,
   .home-logo { display: none; }
   .white-img { display: none; }
 }
 .user-page {
   .expertise-logo,
+  .expert-home,
   .home-logo { display: none; }
   .white-img { display: none; }
 }
@@ -278,7 +283,8 @@ header {
 }
 .home-page {
   .user-logo,
-  .expertise-logo { display: none; }
+  .expertise-logo,
+  .expert-home { display: none; }
   .header-white-black {
     border: none;
     box-shadow: none;
@@ -288,6 +294,18 @@ header {
   button {
     @extend.btn-become;
   }
+}
+.expert-home {
+  .expertise-logo,
+  .home-logo,
+  .user-logo { display: none; }
+  .header-white-black {
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+  }
+  .black-img { display: none; }
+    .btn-animate-become { display: none; }
 }
 .profile {
   position: relative;
