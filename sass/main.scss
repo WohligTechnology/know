@@ -1227,7 +1227,7 @@ padding-bottom: 20px;
     background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, #FF8521), color-stop(0.72, #FF8521), color-stop(0.86, #FF8521));
 }
 // animation
-.notify-bell:hover img {
+.notify-bell:hover .noti-icon {
   @include animation(shake 400ms 0s linear reverse);
   @include keyframes(shake) {
     0% { @include transform(rotatez(-25deg)); }
