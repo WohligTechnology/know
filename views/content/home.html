@@ -1,5 +1,4 @@
 <section>
-
   <div class="home">
     <div class="hero__background">
       <div class="black-overlay"></div>
@@ -8,18 +7,18 @@
         <source src="movie.ogg" type="video/ogg">
       </video>
     </div>
-    <div class="home-contain wow fadeInUp" >
-      <div class="need-help">
+    <div class="home-contain">
+      <div class="need-help wow fadeIn" data-wow-duration="600ms">
         <button class="btn btn-blue font-bold" ng-click="open4('sm')">Not able to find an expert?</button>
       </div>
       <div class="search-pos">
         <div class="container">
           <div class="row">
             <div class="col-md-offset-2 col-md-8 text-center">
-              <div class="search-head text-center">
+              <div class="search-head text-center wow fadeInUp">
                 <h2 class="color-white font-raleway">Get experts to answer all your questions</h2>
               </div>
-              <div class="search-input">
+              <div class="search-input wow fadeInUp">
                 <form action="" class="pos-relative">
                   <div class="search-icon display-inline">
                     <img src="img/search-mini.png" alt="">
@@ -54,14 +53,16 @@
     </div>
     <div class="row">
       <div class="col-md-3 text-center" ng-repeat="data in hows track by $index">
-        <div class="icon-box">
-          <img ng-src="{{data.icon}}" alt="" class="img-responsive margin-auto ">
-        </div>
-        <div class="icon-title">
-          <span class="font-raleway color-base text-cap" style="font-weight: 500;">{{data.title}}</span>
-        </div>
-        <div class="desc mt7">
-          <p class="font-light color-grey">{{data.desc}}</p>
+        <div class="wow fadeInUp animated" data-wow-duration="500ms">
+          <div class="icon-box">
+            <img ng-src="{{data.icon}}" alt="" class="img-responsive margin-auto ">
+          </div>
+          <div class="icon-title">
+            <span class="font-raleway color-base text-cap" style="font-weight: 500;">{{data.title}}</span>
+          </div>
+          <div class="desc mt7">
+            <p class="font-light color-grey">{{data.desc}}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -70,24 +71,26 @@
 <section>
   <div class="about p70 mt60">
     <div class="container">
-      <div class="row">
-        <h3 class="font-bold font-raleway text-center color-base margin0">ABOUT JACKNOWS</h3>
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-          <div class="owl">
-            <img src="img/owl.png" alt="" class="img-responsive margin-auto">
-          </div>
+      <div class=" wow flipInX">
+        <div class="row">
+          <h3 class="font-bold font-raleway text-center color-base margin0">ABOUT JACKNOWS</h3>
         </div>
-        <div class="col-md-9">
-          <div class="abt-desc mt20 mb20">
-            <p class="font-light color-base line-80">
-              JacKnows is an exciting start up in the peer-to-peer professional services domain, loooking to connect people with subject matter experts for fulfillemnt of customised requests and queries. The platform endeavours to have experts across many sectors to
-              help users have their queries resolved professionaly and conveniently.
-            </p>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="owl">
+              <img src="img/owl.png" alt="" class="img-responsive margin-auto">
+            </div>
           </div>
-          <div class="read-mr pull-right mt20">
-            <button class="btn btn-outline text-up f13" ui-sref="about">read more</button>
+          <div class="col-md-9">
+            <div class="abt-desc mt20 mb20">
+              <p class="font-light color-base line-80">
+                JacKnows is an exciting start up in the peer-to-peer professional services domain, loooking to connect people with subject matter experts for fulfillemnt of customised requests and queries. The platform endeavours to have experts across many sectors to
+                help users have their queries resolved professionaly and conveniently.
+              </p>
+            </div>
+            <div class="read-mr pull-right mt20">
+              <button class="btn btn-outline text-up f13" ui-sref="about">read more</button>
+            </div>
           </div>
         </div>
       </div>
@@ -98,7 +101,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <div class="icon-txt">
+        <div class="icon-txt wow bounceIn">
           <div class="display-inline">
             <img src="img/category.png" alt="" width="35px">
           </div>
@@ -128,7 +131,7 @@
         </div>
       </div>
       <div class="col-md-4">
-        <div class="icon-txt">
+        <div class="icon-txt wow bounceIn">
           <div class="display-inline">
             <img src="img/search.png" alt="" width="35px">
           </div>
@@ -162,7 +165,7 @@
         </div>
       </div>
       <div class="col-md-4">
-        <div class="icon-txt ">
+        <div class="icon-txt wow bounceIn">
           <div class="display-inline">
             <img src="img/rss.png" alt="" width="35px">
           </div>
@@ -170,28 +173,28 @@
             <span class="font-raleway font-med">Daily Updates</span>
           </div>
           <div class="over-flow mt20" id="style-7">
-          <div class="update-box ">
-            <h5 class="color-primary margin0">Top 10 things to do in Thailand</h5>
-            <p class="pull-right color-grey f10 date">31 january 2016</p>
-            <div class="desc-p">
-              <p>This beautiful gold-tipped series of buildings is over 200 years old, and perhaps Bangkok's most famous destination. Yes, it can feel like a tourist trap, but the complex's history and grandeur is palpable</p>
+            <div class="update-box ">
+              <h5 class="color-primary margin0">Top 10 things to do in Thailand</h5>
+              <p class="pull-right color-grey f10 date">31 january 2016</p>
+              <div class="desc-p">
+                <p>This beautiful gold-tipped series of buildings is over 200 years old, and perhaps Bangkok's most famous destination. Yes, it can feel like a tourist trap, but the complex's history and grandeur is palpable</p>
+              </div>
+              <div class="recc">
+                <span>12  RECOMMENDATIONS </span>
+                <button class="btn btn-outline f10 text-up pull-right">read more</button>
+              </div>
             </div>
-            <div class="recc">
-              <span>12  RECOMMENDATIONS </span>
-              <button class="btn btn-outline f10 text-up pull-right">read more</button>
+            <div class="update-box mt20">
+              <h5 class="color-primary margin0">Top 10 things to do in Thailand</h5>
+              <p class="pull-right color-grey f10 date">31 january 2016</p>
+              <div class="desc-p">
+                <p>This beautiful gold-tipped series of buildings is over 200 years old, and perhaps Bangkok's most famous destination. Yes, it can feel like a tourist trap, but the complex's history and grandeur is palpable</p>
+              </div>
+              <div class="recc">
+                <span>12  RECOMMENDATIONS </span>
+                <button class="btn btn-outline f10 text-up pull-right">read more</button>
+              </div>
             </div>
-          </div>
-          <div class="update-box mt20">
-            <h5 class="color-primary margin0">Top 10 things to do in Thailand</h5>
-            <p class="pull-right color-grey f10 date">31 january 2016</p>
-            <div class="desc-p">
-              <p>This beautiful gold-tipped series of buildings is over 200 years old, and perhaps Bangkok's most famous destination. Yes, it can feel like a tourist trap, but the complex's history and grandeur is palpable</p>
-            </div>
-            <div class="recc">
-              <span>12  RECOMMENDATIONS </span>
-              <button class="btn btn-outline f10 text-up pull-right">read more</button>
-            </div>
-          </div>
           </div>
         </div>
       </div>
