@@ -278,7 +278,16 @@ $scope.sharedDate = "2016-04-06T05:30:00.116Z"; // (formatted: 4/6/16 11:00 AM)
     $scope.expertlogo = "";
     $scope.userlogo = "";
     $scope.home = "";
-    $scope.experthome = "expert-home"
+    $scope.experthome = "expert-home";
+
+    $scope.openform = function(param) {
+      if(param=='Login') {
+        $scope.showform = true;
+      }else{
+        $scope.showform = false;
+      }
+      $(window).scrollTop(0)
+    }
   })
   .controller('ExpertProfileCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("expert-profile");

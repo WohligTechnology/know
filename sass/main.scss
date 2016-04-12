@@ -52,9 +52,9 @@ img.doneLoading {
 nav li:hover .dropdown-menu {
   display: block;
 }
-.ng-hide:not(.ng-hide-animate) {
-  display: block !important;
-}
+// .ng-hide:not(.ng-hide-animate) {
+//   display: block !important;
+// }
 /* mixing*/
 @mixin placeholder {
   $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";

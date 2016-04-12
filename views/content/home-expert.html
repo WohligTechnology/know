@@ -1,11 +1,11 @@
-<section >
+<section>
   <div class="bg-expert">
     <div class="container pt70">
       <div class="row">
         <div class="col-md-6"></div>
         <div class="col-md-6">
           <div class="exp-signup">
-            <form action="">
+            <form action="" ng-hide="showform">
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
@@ -49,11 +49,11 @@
                     <div class="rad">
                       <div class="radio-org display-inline">
                         <input type="radio" id="radio01" name="radio" />
-        <label for="radio01" class="color-primary"><span></span>MALE</label>
+                        <label for="radio01" class="color-primary"><span></span>MALE</label>
                       </div>
                       <div class="radio-org display-inline pl12">
                         <input type="radio" id="radio02" name="radio" />
-       <label for="radio02" class="color-primary"><span></span>FEMALE</label>
+                        <label for="radio02" class="color-primary"><span></span>FEMALE</label>
                       </div>
                     </div>
                   </div>
@@ -61,32 +61,31 @@
               </div>
 
 
-            <div class="mt25">
+              <div class="mt25">
                 <button class="btn btn-animate-org">SUBMIT</button>
-            </div>
+              </div>
               <div class="login-lnk mt25">
-                <p class="color-white font-light">Already an Jacknow member?<span class="color-primary pointer"> Log in</span></p>
+                <p class="color-white font-light">Already an Jacknow member?<span class="color-primary pointer" ng-click="openform('Login')"> Log in</span></p>
               </div>
             </form>
-
-          <!-- <div class="login-form">
-            <form action="">
-            <div class="form-group">
-              <label for="exampleInputEmail1">EMAIL / MOBILE NUMBER</label>
-              <input type="email" class="form-control" id="exampleInputEmail1">
+            <div class="login-form" ng-show="showform">
+              <form action="">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">EMAIL / MOBILE NUMBER</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">PASSWORD</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1">
+                </div>
+                <div class="mt25">
+                  <button class="btn btn-org">SUBMIT</button>
+                </div>
+                <div class="login-lnk mt25">
+                  <p class="color-white">Don’t have an account?<span class="color-primary pointer" ng-click="openform()"> Sign up</span></p>
+                </div>
+              </form>
             </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">PASSWORD</label>
-              <input type="email" class="form-control" id="exampleInputEmail1">
-            </div>
-            <div class="mt25">
-              <button class="btn btn-org">SUBMIT</button>
-            </div>
-            <div class="login-lnk mt25">
-              <p class="color-white">Don’t have an account?<span class="color-primary">Sig up</span></p>
-            </div>
-            </form>
-          </div> -->
           </div>
         </div>
       </div>
@@ -107,8 +106,7 @@
           <h4 class="color-base font-bold font-raleway">Flexibility</h4>
         </div>
         <div class="icon-desc">
-          <p>Set your own schedule.block the
-day/time that you are not available</p>
+          <p>Set your own schedule.block the day/time that you are not available</p>
         </div>
       </div>
       <div class="col-md-3">
@@ -130,8 +128,7 @@ day/time that you are not available</p>
           <h4>Convenient</h4>
         </div>
         <div class="icon-desc">
-          <p>No need to step out anywhere, consult
-from where you are </p>
+          <p>No need to step out anywhere, consult from where you are </p>
         </div>
       </div>
       <div class="col-md-3">
@@ -142,13 +139,12 @@ from where you are </p>
           <h4>No negotiations</h4>
         </div>
         <div class="icon-desc">
-          <p>No need to go back and forth on quotes,
-set your own price</p>
+          <p>No need to go back and forth on quotes, set your own price</p>
         </div>
       </div>
 
     </div>
-    <div class="row mt30" >
+    <div class="row mt30">
       <div class="col-md-3">
         <div class="icon-bx">
           <img src="img/c5.png" alt="">
@@ -157,9 +153,7 @@ set your own price</p>
           <h4>Guaranteed payment</h4>
         </div>
         <div class="icon-desc">
-          <p>No follow ups or reminders needed,
-get paid digitally soon after completing
- your consulting assignment</p>
+          <p>No follow ups or reminders needed, get paid digitally soon after completing your consulting assignment</p>
         </div>
       </div>
       <div class="col-md-3">
@@ -170,9 +164,7 @@ get paid digitally soon after completing
           <h4>Share as you earn</h4>
         </div>
         <div class="icon-desc">
-          <p>No listing fees, share a small
-percentage of your fees only when
-you get paid</p>
+          <p>No listing fees, share a small percentage of your fees only when you get paid</p>
         </div>
       </div>
       <div class="col-md-3">
@@ -183,8 +175,7 @@ you get paid</p>
           <h4>Visibility</h4>
         </div>
         <div class="icon-desc">
-          <p>Build your network/clientelle as you go,
-and get noticed even more</p>
+          <p>Build your network/clientelle as you go, and get noticed even more</p>
         </div>
       </div>
       <div class="col-md-3">
@@ -195,8 +186,7 @@ and get noticed even more</p>
           <h4>Get started right away</h4>
         </div>
         <div class="icon-desc">
-          <p>No infrastructure or team needed, go it alone.
-Just sign up and get started with your consultancy </p>
+          <p>No infrastructure or team needed, go it alone. Just sign up and get started with your consultancy </p>
         </div>
       </div>
 
