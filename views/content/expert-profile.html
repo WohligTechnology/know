@@ -21,58 +21,60 @@
           <div class="exp-setting custom-li">
             <ul class="padding0">
               <li class="{{classa}} text-up" ng-click="tabchange('personal',1)">Personal DetailS</li>
-              <li class="{{classb}} text-up" ng-click="tabchange('professional',2)">Professional DetailS</li>
+              <li class="{{classb}} text-up" ng-click="tabchange('professional',2)">Professional Details</li>
               <li class="{{classc}} text-up" ng-click="tabchange('call',3)">Call Setting</li>
               <li class="{{classd}} text-up" ng-click="tabchange('bank',4)">BANK DETAILS</li>
             </ul>
           </div>
           <div class="exp-personal mt30" ng-if="tab2=='personal'">
+            <form name="user" class="form-input">
             <div class="set-title">
               <h5 class="font-raleway font-bold f17 color-base">PERSONAL INFORMATION</h5>
             </div>
             <div class="row mt25">
               <div class="col-md-4">
-                <form action="" class="form-input">
                   <div class="form-group ">
                     <label for="exampleInputEmail1">FIRST NAME</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
+                    <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" ng-model="userForm.firstName">
+                    <div class="error-msg" ng-show="user.firstName.$error.required && user.firstName.$touched">Please Enter Your firstName.</div>
                   </div>
                   <div class="form-group mt25">
-                    <label for="exampleInputPassword1">EMAIL <span class="f10 color-success">( NOT TO BE SHARED PUBLICALY )</span></label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label>EMAIL <span class="f10 color-success">( NOT TO BE SHARED PUBLICALY )</span></label>
+                    <input type="email" name="email" class="form-control" ng-model="userForm.email">
                   </div>
                   <div class="form-group mt25">
-                    <label for="exampleInputPassword1">PASSWORD</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label>PASSWORD</label>
+                    <input type="password" name="password" class="form-control" ng-model="userForm.password">
+                        <div class="error-msg" ng-show="user.password.$error.required && user.password.$touched">Please Enter Your Password.</div>
                   </div>
                   <div class="form-group mt25">
-                    <label for="exampleInputEmail1">GENDER</label>
+                    <label>GENDER</label>
                     <div class="rad">
                       <div class="radio display-inline">
-                        <input type="radio" id="radio01" name="radio" />
+                        <input type="radio" id="radio01" name="radio" value="male" ng-model="userForm.gender"/>
                         <label for="radio01"><span></span>MALE</label>
                       </div>
                       <div class="radio display-inline pl12">
-                        <input type="radio" id="radio02" name="radio" />
+                        <input type="radio"  id="radio02" name="radio" value="female" ng-model="userForm.gender"/>
                         <label for="radio02"><span></span>FEMALE</label>
                       </div>
                     </div>
                   </div>
-                </form>
+                <!-- </form> -->
               </div>
               <div class="col-md-4">
-                <form action="" class="form-input">
+                <!-- <form action=""  class="form-input"> -->
                   <div class="form-group ">
-                    <label for="exampleInputEmail1">LAST NAME</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
+                    <label>LAST NAME</label>
+                    <input type="text" name="lastName" class="form-control" ng-model="userForm.lastName">
                   </div>
                   <div class="form-group mt25">
-                    <label for="exampleInputEmail1">MOBILE NUMBER <span class="f10 color-success">( NOT TO BE SHARED PUBLICALY )</span></label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
+                    <label>MOBILE NUMBER <span class="f10 color-success">( NOT TO BE SHARED PUBLICALY )</span></label>
+                    <input type="text" name="mobileno" class="form-control" ng-model="userForm.mobileno">
                   </div>
                   <div class="form-group mt25">
-                    <label for="exampleInputEmail1">CONFIRM PASSWORD</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
+                    <label>CONFIRM PASSWORD</label>
+                    <input type="password" name="confirmPassword" class="form-control" ng-model="userForm.confirmPassword">
                   </div>
                   <div class="form-group mt25">
                     <label for="exampleInputPassword1">PROFILE IMAGE</label>
@@ -85,7 +87,7 @@
                       </div>
                     </div>
                   </div>
-                </form>
+                <!-- </form> -->
               </div>
             </div>
 
@@ -94,21 +96,23 @@
             </div>
             <div class="row">
               <div class="col-md-8">
-                <form action="" class="form-input ">
+                <!-- <form action="" name="user" class="form-input "> -->
                   <div class="form-group mt25 pb20">
-                    <label for="exampleInputEmail1">FULL ADDRESS <span class="f10 color-success">( NOT TO BE SHARED PUBLICALY )</span></label>
-                    <textarea class="form-control" rows="6" style="resize: none;"></textarea>
+                    <label>FULL ADDRESS <span class="f10 color-success">( NOT TO BE SHARED PUBLICALY )</span></label>
+                    <textarea name="addressDetails" class="form-control" rows="6" style="resize: none;" ng-model="userForm.addressDetails"></textarea>
+                        <div class="error-msg" ng-show="user.addressDetails.$error.required && user.addressDetails.$touched">Please Enter Your firstName.</div>
                   </div>
-                </form>
+                <!-- </form> -->
               </div>
             </div>
             <div class="row">
               <div class="col-md-12" style="border-top: 1px solid #ccc;">
                 <div class="save-btn mt25">
-                  <button class="btn btn-blue font-light text-up f13">save</button>
+                  <button class="btn btn-blue font-light text-up f13" ng-click="userSubmitForm(user)">save</button>
                 </div>
               </div>
             </div>
+            </form>
           </div>
           <div class="exp-prof mt30" ng-if="tab2=='professional'">
             <div class="set-title">

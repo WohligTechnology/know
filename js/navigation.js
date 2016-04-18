@@ -1,3 +1,5 @@
+var adminurl = "http://192.168.1.127:1337/";
+
 var adminURL = "";
 if(isproduction)
 {
@@ -9,7 +11,7 @@ else {
 
 var navigationservice = angular.module('navigationservice', [])
 
-.factory('NavigationService', function() {
+.factory('NavigationService', function($http) {
   var navigation = [
     {
     name: "Home",
@@ -56,6 +58,28 @@ var navigationservice = angular.module('navigationservice', [])
   return {
     getnav: function() {
       return navigation;
+    },
+    ExpertUSerCreateSubmit: function(formData, callback) {
+      //console.log('Navigation form data: ', formData);
+      console.log(formData);
+      $http({
+        url: adminurl + 'ExpertUser/saveData',
+        method: 'POST',
+        withCredentials: true,
+        data:formData
+        // data: {
+        //   "email": formData.email,
+        //   "mobileno": formData.mobileno,
+        //   "gender": formData.gender,
+        //   "firstName": formData.firstName,
+        //   "lastName": formData.lastName,
+        //   "password": formData.password,
+        //   "addressDetails": formData.addressDetails
+        //   //"confirmPassword": formData.confirmPassword,
+        //   // "logintype": formData.logintype,
+        //   // "twitter": formData.twitter
+        // }
+      }).success(callback);
     },
     makeactive: function(menuname) {
       for (var i = 0; i < navigation.length; i++) {
