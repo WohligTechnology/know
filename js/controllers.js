@@ -1,4 +1,6 @@
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'jkuri.timepicker'])
+window.uploadurl = "http://wohlig.biz/uploadfile/upload/";
+
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'jkuri.timepicker' ,'imageupload'])
 
 .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
     //Used to name the .html file
@@ -298,12 +300,35 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
           console.log($scope.userForm);
             if (formValid.$valid) {
             NavigationService.ExpertUSerCreateSubmit($scope.userForm, function(data) {
-                console.log('userform', $scope.userForm);
+                console.log('userformctrl', $scope.userForm);
+                //$scope.userForm={};
                 $state.go("expert-profile");
             });
 
             }
         };
+        $scope.publilink=[{id:''}];
+
+        $scope.addlink=function(){
+          var addlinks= $scope.publilink.length+1;
+          $scope.publilink.push({'id':'link'+addlinks});
+        };
+
+
+        $scope.edudetail=[{title:'',name:'',year:'',city:'',country:''}];
+
+        $scope.addMore=function(){
+          var addedu= $scope.edudetail.length+1;
+          $scope.edudetail.push({'id':'link'+addedu});
+        };
+
+        $scope.experiencedetail=[{experienceType:'',companyName:'',jobTitle:'',jobDescription:'',startDate:'',endDate:''}];
+
+        $scope.addexperience=function(){
+          var addexperience= $scope.experiencedetail.length+1;
+          $scope.experiencedetail.push({'id':'link'+addexperience});
+        };
+
         // TemplateService.header = "./views/header2.html";
         $scope.expertlogo = "expert-page";
         $scope.userlogo = "";

@@ -1,4 +1,7 @@
 var adminurl = "http://192.168.1.127:1337/";
+var imgurl = "http://wohlig.biz/";
+var imgpath = imgurl + "upload/readFile";
+var uploadurl = imgurl + "upload";
 
 var adminURL = "";
 if(isproduction)
