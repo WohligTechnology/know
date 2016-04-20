@@ -83,6 +83,7 @@
                                     </div>
                                     <div class="form-group mt25">
                                         <label for="exampleInputPassword1">PROFILE IMAGE</label>
+                                      <!--   <div class="pro-im mt10"><div class="user-img display-inline"><img src="img/user.png" class="doneLoading"></div><div class="sub-btn display-inline"><button class="btn btn-animate-inverse-success f10">CHOOSE FILE</button></div></div> -->
                                         <upload-image ng-model="userForm.image">
                                         </upload-image>
                                         <!-- <div class="pro-im mt10">
@@ -277,8 +278,8 @@
                                               <label for="exampleInputPassword1">START DATE</label>
                                               <p class="input-group">
                                                   <input name="startDate" class="form-control" uib-datepicker-popup="{{format}}" ng-model="experi.startDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
-                                                  <div class="error-msg" ng-show="user.startDate.$error.required && user.startDate.$touched">Please Enter Start Date.
-                                                  </div>
+                                                  <!-- <div class="error-msg" ng-show="user.startDate.$error.required && user.startDate.$touched">Please Enter Start Date.
+                                                  </div> -->
                                                   <span class="input-group-btn">
                   <button type="button" class="btn btn-default cal-btn" ng-click="open1()"><i class="fa fa-calendar"></i></button>
                 </span>
@@ -290,33 +291,33 @@
                                               <label for="exampleInputPassword1">END DATE</label>
                                               <p class="input-group">
                                                   <input name="endDate" class="form-control" uib-datepicker-popup="{{format}}" ng-model="experi.endDate" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
-                                                  <div class="error-msg" ng-show="user.endDate.$error.required && user.endDate.$touched">Please Enter End Date.
-                                                  </div>
+                                                  <!-- <div class="error-msg" ng-show="user.endDate.$error.required && user.endDate.$touched">Please Enter End Date.
+                                                  </div> -->
                                                   <span class="input-group-btn">
                   <button type="button" class="btn btn-default cal-btn" ng-click="open2()"><i class="fa fa-calendar"></i></button>
                 </span>
                                               </p>
                                           </div>
                                       </div>
-
+                                      <div class="col-md-4">
+                                          <div class="form-group">
+                                              <label for="exampleInputPassword1">COMPANY LOGO</label>
+                                              <div class="pro-im mt10">
+                                                  <!-- <div class="user-img display-inline">
+                                                      <img src="img/user.png" alt="">
+                                                  </div> -->
+                                                  <upload-image ng-model="userForm.image1">
+                                                  </upload-image>
+                                                  <!-- <div class="sub-btn display-inline">
+                                                      <upload-image ng-model="" no-view></upload-image>
+                                                  </div> -->
+                                              </div>
+                                          </div>
+                                      </div>
                                 </div>
 
 
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">PROFILE IMAGE</label>
-                                            <div class="pro-im mt10">
-                                                <!-- <div class="user-img display-inline">
-                                                    <img src="img/user.png" alt="">
-                                                </div> -->
-                                                <upload-image ng-model="userForm.image1">
-                                                </upload-image>
-                                                <!-- <div class="sub-btn display-inline">
-                                                    <upload-image ng-model="" no-view></upload-image>
-                                                </div> -->
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 </div>
                                 <!-- </form> -->
                             </div>

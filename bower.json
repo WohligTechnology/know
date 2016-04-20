@@ -32,6 +32,7 @@
     "angular-rangeslider": "^0.0.14",
     "fancyBox": "https://github.com/fancyapps/fancyBox.git#^2.1.5",
     "ngTimepicker": "https://github.com/jkuri/ngTimepicker.git",
-    "wow": "wowjs#^1.1.2"
+    "wow": "wowjs#^1.1.2",
+    "angularjs-imageupload-directive": "*"
   }
 }
