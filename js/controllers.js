@@ -1,6 +1,6 @@
 window.uploadurl = "http://wohlig.biz/uploadfile/upload/";
 
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'jkuri.timepicker' ,'imageupload'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'jkuri.timepicker', 'imageupload'])
 
 .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
     //Used to name the .html file
@@ -253,6 +253,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.navigation = NavigationService.getnav();
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
+
+        $scope.userForm={};
+        $scope.userSubmitForm = function(formValid) {
+            console.log($scope.userForm);
+            if (formValid.$valid) {
+              $scope.formComplete = true;
+                NavigationService.ContactSubmit($scope.userForm, function(data) {
+                    console.log('userformctrl', $scope.userForm);
+
+                });
+
+            }
+
+        };
+
     })
     .controller('PrivacyCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("privacy");
@@ -270,7 +285,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
     })
-    .controller('HomeExpertCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('HomeExpertCtrl', function($scope, TemplateService, NavigationService, $timeout,$state) {
         $scope.template = TemplateService.changecontent("home-expert");
         $scope.menutitle = NavigationService.makeactive("Home-Expert");
         TemplateService.title = $scope.menutitle;
@@ -279,6 +294,26 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.userlogo = "";
         $scope.home = "";
         $scope.experthome = "expert-home";
+
+        $scope.userForm={};
+        $scope.userSubmitForm = function(formValid) {
+            console.log($scope.userForm);
+            if (formValid.$valid) {
+                NavigationService.ExpertSubmit($scope.userForm, function(data) {
+                    console.log('userformctrl', $scope.userForm);
+                    //console.log('$scope.userForm.experienceType',$scope.userForm.experienceType);
+                    // if($scope.userForm.experienceType==company)
+                    // {
+                    //   $scope.myexp=true;
+                    // }
+                    $state.go("home-expert");
+                });
+
+            }
+        };
+
+
+
 
         $scope.openform = function(param) {
             if (param == 'Login') {
@@ -290,43 +325,95 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
     })
 
-    .controller('ExpertProfileCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+.controller('ExpertProfileCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         $scope.template = TemplateService.changecontent("expert-profile");
         $scope.menutitle = NavigationService.makeactive("Expert-Profile");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.userForm = {};
+
+        $scope.done = function(data) {
+            console.log(data);
+        }
+
         $scope.userSubmitForm = function(formValid) {
-          console.log($scope.userForm);
+            console.log($scope.userForm);
             if (formValid.$valid) {
-            NavigationService.ExpertUSerCreateSubmit($scope.userForm, function(data) {
-                console.log('userformctrl', $scope.userForm);
-                //$scope.userForm={};
-                $state.go("expert-profile");
-            });
+                NavigationService.ExpertUSerCreateSubmit($scope.userForm, function(data) {
+                    console.log('userformctrl', $scope.userForm);
+                    //console.log('$scope.userForm.experienceType',$scope.userForm.experienceType);
+                    // if($scope.userForm.experienceType==company)
+                    // {
+                    //   $scope.myexp=true;
+                    // }
+                    $state.go("expert-profile");
+                });
 
             }
         };
-        $scope.publilink=[{id:''}];
+        $scope.publilink = [{
+            name: ''
+        }];
 
-        $scope.addlink=function(){
-          var addlinks= $scope.publilink.length+1;
-          $scope.publilink.push({'id':'link'+addlinks});
+        $scope.addlink = function() {
+            var addlinks = $scope.publilink.length + 1;
+            $scope.publilink.splice(0, 0, {
+                'id': '' + addlinks
+            });
         };
 
 
-        $scope.edudetail=[{title:'',name:'',year:'',city:'',country:''}];
+        $scope.edudetail = [{
+            title: '',
+            name: '',
+            year: '',
+            city: '',
+            country: ''
+        }];
 
-        $scope.addMore=function(){
-          var addedu= $scope.edudetail.length+1;
-          $scope.edudetail.push({'id':'link'+addedu});
+        $scope.addMore = function() {
+            var addedu = $scope.edudetail.length + 1;
+            $scope.edudetail.splice(0, 0, {
+                'id': '' + addedu
+            });
         };
 
-        $scope.experiencedetail=[{experienceType:'',companyName:'',jobTitle:'',jobDescription:'',startDate:'',endDate:''}];
+        $scope.experiencedetail = [{
+            experienceType: '',
+            companyName: '',
+            jobTitle: '',
+            jobDescription: '',
+            startDate: '',
+            endDate: ''
+        }];
 
-        $scope.addexperience=function(){
-          var addexperience= $scope.experiencedetail.length+1;
-          $scope.experiencedetail.push({'id':'link'+addexperience});
+        $scope.addexperience = function() {
+            var addexperience = $scope.experiencedetail.length + 1;
+            $scope.experiencedetail.splice(0, 0, {
+                'id': '' + addexperience
+            });
+        };
+
+        $scope.moreAwards = [{
+            name: ''
+        }];
+
+        $scope.addawards = function() {
+            var addawards = $scope.moreAwards.length + 1;
+            $scope.moreAwards.splice(0, 0, {
+                'id': '' + addawards
+            });
+        };
+
+        $scope.moreVideos = [{
+            name: ''
+        }];
+
+        $scope.addvideos = function() {
+            var addvideos = $scope.moreVideos.length + 1;
+            $scope.moreVideos.splice(0, 0, {
+                'id': '' + addvideos
+            });
         };
 
         // TemplateService.header = "./views/header2.html";

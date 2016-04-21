@@ -140,7 +140,7 @@ firstapp.directive('uploadImage', function($http) {
             $scope.clearOld = function() {
                 $scope.model = [];
             };
-            $scope.upload = function(image) {
+            $scope.uploadNow = function(image) {
                 var Template = this;
                 image.hide = true;
                 var formData = new FormData();
@@ -151,6 +151,7 @@ firstapp.directive('uploadImage', function($http) {
                     },
                     transformRequest: angular.identity
                 }).success(function(data) {
+                  console.log("success");
                     if ($scope.callback) {
                         $scope.callback(data);
                     } else {

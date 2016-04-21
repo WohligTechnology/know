@@ -5,42 +5,49 @@
         <div class="col-md-6"></div>
         <div class="col-md-6">
           <div class="exp-signup">
-            <form action="" ng-hide="showform">
+            <form name="user">
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="exampleInputEmail1">FIRST NAME</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
+                    <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" ng-model="userForm.firstName" required>
+                    <div class="error-msg" ng-if="user.firstName.$error.required && user.firstName.$touched">Please Enter Your First Name.</div>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="exampleInputEmail1">LAST NAME</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
+                    <input type="text" name="lastName" class="form-control" id="exampleInputEmail1" ng-model="userForm.lastName" required>
+                    <div class="error-msg" ng-if="user.lastName.$error.required && user.lastName.$touched">Please Enter Your Last  Name.</div>
                   </div>
                 </div>
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">EMAIL</label>
-                <input type="email" class="form-control" id="exampleInputEmail1">
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1" ng-model="userForm.email" required>
+                <div class="error-msg" ng-if="user.email.$error.required && user.email.$touched">Please Enter Your  Email.</div>
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">MOBILE NUMBER</label>
-                <input type="email" class="form-control" id="exampleInputEmail1">
+                <input type="text" name="mobile" class="form-control" id="exampleInputEmail1" ng-model="userForm.mobile" required>
+                <div class="error-msg" ng-if="user.mobile.$error.required && user.mobile.$touched">Please Enter Your  Mobile Number.</div>
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">PASSWORD</label>
-                <input type="email" class="form-control" id="exampleInputEmail1">
+                <input type="password" name="password" class="form-control" id="exampleInputEmail1" ng-model="userForm.password" required>
+                <div class="error-msg" ng-if="user.password.$error.required && user.password.$touched">Please Enter Your  Password.</div>
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">CONFIRM PASSWORD</label>
-                <input type="email" class="form-control" id="exampleInputEmail1">
+                <input type="password" name="confirmPassword" class="form-control" id="exampleInputEmail1" ng-model="userForm.confirmPassword" required>
+                <div class="error-msg" ng-if="user.confirmPassword.$error.required && user.confirmPassword.$touched">Please Confirm Password.</div>
               </div>
               <div class="row">
                 <div class="col-md-2">
                   <div class="form-group">
                     <label for="exampleInputEmail1">AGE</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
+                    <input type="text" class="form-control" id="exampleInputEmail1" ng-model="userForm.age" required>
+                    <div class="error-msg" ng-if="user.age.$error.required && user.age.$touched">Please Enter Your  Age.</div>
                   </div>
                 </div>
                 <div class="col-md-4">
@@ -48,13 +55,14 @@
                     <label for="exampleInputEmail1">GENDER</label>
                     <div class="rad">
                       <div class="radio-org display-inline">
-                        <input type="radio" id="radio01" name="radio" />
+                        <input type="radio" id="radio01" name="radio" ng-model="userForm.gender" value="male" required />
                         <label for="radio01" class="color-primary"><span></span>MALE</label>
                       </div>
                       <div class="radio-org display-inline pl12">
-                        <input type="radio" id="radio02" name="radio" />
+                        <input type="radio" id="radio02" name="radio" ng-model="userForm.gender" value="female" required />
                         <label for="radio02" class="color-primary"><span></span>FEMALE</label>
                       </div>
+                      <div class="error-msg" ng-if="user.gender.$error.required && user.gender.$touched">Please Enter Your  Gender.</div>
                     </div>
                   </div>
                 </div>
@@ -62,7 +70,7 @@
 
 
               <div class="mt25">
-                <button class="btn btn-animate-org">SUBMIT</button>
+                <button class="btn btn-animate-org" ng-click="userSubmitForm(user)">SUBMIT</button>
               </div>
               <div class="login-lnk mt25">
                 <p class="color-white font-light">Already an Jacknow member?<span class="color-primary pointer" ng-click="openform('Login')"> Log in</span></p>
@@ -76,7 +84,7 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">PASSWORD</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1">
+                  <input type="password" class="form-control" id="exampleInputEmail1">
                 </div>
                 <div class="mt25">
                   <button class="btn btn-org">SUBMIT</button>
