@@ -1,4 +1,5 @@
 var adminurl = "http://192.168.1.127:1337/";
+var adminurl1 = "http://wohlig.io:81/callApi/jacknows/";
 var imgurl = "http://192.168.1.122/upload";
 var imgpath = imgurl + "/readFile";
 var uploadurl = imgurl;
@@ -93,6 +94,63 @@ var navigationservice = angular.module('navigationservice', [])
 
             }).success(callback);
         },
+
+        getTestimonial: function(formData, callback) {
+            //console.log('Navigation form data: ', formData);
+            $http({
+                url: adminurl + 'Testimonial/getAll',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                  "name": formData.name,
+                  "testimonial": formData.testimonial,
+                  "company": formData.company,
+                  "image": formData.image
+                }
+
+            }).success(callback);
+        },
+        getdailyUpdates: function(formData, callback) {
+            //console.log('Navigation form data: ', formData);
+            $http({
+                url: adminurl + 'DailyUpdates/getAll',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+              }).success(callback);
+        },
+
+        getUserBooking: function(formData, callback) {
+            //console.log('Navigation form data: ', formData);
+            $http({
+                url: adminurl + 'Booking/getAll',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+
+        getNewsletter: function(formData, callback) {
+            //console.log('Navigation form data: ', formData);
+            $http({
+                url: adminurl1 + 'newsletter/submit',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        deleteCallsData: function(formData, callback) {
+            //console.log('Navigation form data: ', formData);
+            $http({
+                url: adminurl1 + 'ExpertRegistration/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                  "_id": formData._id
+                }
+            }).success(callback);
+        },
+
         makeactive: function(menuname) {
             for (var i = 0; i < navigation.length; i++) {
                 if (navigation[i].name == menuname) {

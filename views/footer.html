@@ -70,16 +70,20 @@
           </ul>
         </div>
       </div>
+      <form name="user">
       <div class="col-md-4">
         <div class="newsletter">
           <h4 class="color-grey font-med font-raleway">Newsletter</h4>
-          <p class="font-light color-base">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+          <!-- <p class="font-light color-base">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p> -->{{newsletter}}
+          <p class="font-light color-base" ng-if="newsletter.value!=false && newsletter.value==true">Thank You For Submitting</p>
+            <p class="font-light color-base" ng-if="newsletter.value==false && newsletter.value!=true">Sorry email id already present</p>
+          <!-- <p class="font-light color-base" ng-if="newsletter.value==false">{{newsletter.error}}</p> -->
         <div class="display-inline">
-          <form>
+          <!-- <form> -->
             <div class="form-group pull-left">
-              <input type="text" class="form-control bk-grey">
+              <input type="text" class="form-control bk-grey" ng-model="newsletter.email">
             </div>
-            <button type="submit" class="btn btn-animate-org submit">SUBMIT</button>
+            <button type="submit" class="btn btn-animate-org submit" ng-click="newsletterSubmit(user)">SUBMIT</button>
           </form>
         </div>
           <div class="social">

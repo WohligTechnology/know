@@ -2,7 +2,7 @@ window.uploadurl = "http://wohlig.biz/uploadfile/upload/";
 
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'jkuri.timepicker', 'imageupload'])
 
-.controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+.controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal,$state) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("home");
     $scope.menutitle = NavigationService.makeactive("Home");
@@ -11,6 +11,40 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.expertlogo = "";
     $scope.userlogo = "";
     $scope.home = "home-page"
+
+    $scope.testimonial={};
+    NavigationService.getTestimonial($scope.testimonial, function(data) {
+        $scope.testimonial=data.data;
+        console.log('testimonial', $scope.testimonial);
+
+    });
+    $scope.dailyUpdates={};
+    NavigationService.getdailyUpdates($scope.dailyUpdates, function(data) {
+        $scope.dailyUpdates=data.data;
+        console.log('dailyUpdates', $scope.dailyUpdates);
+    });
+
+
+    $scope.newsletter={};
+
+    $scope.newsletterSubmit = function(data) {
+        console.log('newsletterSubmitd',data);
+        // if(data){
+
+          NavigationService.getNewsletter($scope.newsletter, function(data) {
+              $scope.newsletter=data;
+              console.log('newsletter', $scope.newsletter);
+              $state.go("home");
+          });
+        // }
+
+
+    //$scope.newsletter={};
+
+};
+
+
+
 
     $scope.hows = [{
         icon: 'img/i1.png',
@@ -29,19 +63,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         title: 'Get on call with them',
         desc: 'Get seamlessly connected with the expert. Have a great experience getting your query resolved'
     }];
-    $scope.testimonial = [{
-        img: "img/team.png",
-        descp: "We had been planning our honeymoon for a lng time. Jacknows’ travel expert helped us curate our experience and visit some places that we would have otherwise missed. I would recommend Jacknows to all would be travellers.Their help in getting us a good expert who could be trusted helped us a great deal",
-        name: "- Kris Mathews"
-    }, {
-        img: "img/team.png",
-        descp: "We had been planning our honeymoon for a lng time. Jacknows’ travel expert helped us curate our experience and visit some places that we would have otherwise missed. I would recommend Jacknows to all would be travellers.Their help in getting us a good expert who could be trusted helped us a great deal",
-        name: "- Kris Mathews"
-    }, {
-        img: "img/team.png",
-        descp: "We had been planning our honeymoon for a lng time. Jacknows’ travel expert helped us curate our experience and visit some places that we would have otherwise missed. I would recommend Jacknows to all would be travellers.Their help in getting us a good expert who could be trusted helped us a great deal",
-        name: "- Kris Mathews"
-    }];
+    // $scope.testimonial = [{
+    //     img: "img/team.png",
+    //     descp: "We had been planning our honeymoon for a lng time. Jacknows’ travel expert helped us curate our experience and visit some places that we would have otherwise missed. I would recommend Jacknows to all would be travellers.Their help in getting us a good expert who could be trusted helped us a great deal",
+    //     name: "- Kris Mathews"
+    // }, {
+    //     img: "img/team.png",
+    //     descp: "We had been planning our honeymoon for a lng time. Jacknows’ travel expert helped us curate our experience and visit some places that we would have otherwise missed. I would recommend Jacknows to all would be travellers.Their help in getting us a good expert who could be trusted helped us a great deal",
+    //     name: "- Kris Mathews"
+    // }, {
+    //     img: "img/team.png",
+    //     descp: "We had been planning our honeymoon for a lng time. Jacknows’ travel expert helped us curate our experience and visit some places that we would have otherwise missed. I would recommend Jacknows to all would be travellers.Their help in getting us a good expert who could be trusted helped us a great deal",
+    //     name: "- Kris Mathews"
+    // }];
+
+
+
 
     $scope.animationsEnabled = true;
     $scope.open = function(size) {
@@ -119,6 +156,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         // TemplateService.header = "./views/header2.html";
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
+
+        $scope.userBooking={};
+        NavigationService.getUserBooking($scope.userBooking, function(data) {
+            $scope.userBooking=data.data;
+            console.log('dailyUpdates', $scope.userBooking);
+        });
     })
     .controller('ExpertBookingCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("expert-booking");
@@ -337,9 +380,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
 
         $scope.userSubmitForm = function(formValid) {
-            console.log($scope.userForm);
+
             if (formValid.$valid) {
                 NavigationService.ExpertUSerCreateSubmit($scope.userForm, function(data) {
+                  //$scope.userForm=data.data;
                     console.log('userformctrl', $scope.userForm);
                     //console.log('$scope.userForm.experienceType',$scope.userForm.experienceType);
                     // if($scope.userForm.experienceType==company)
@@ -351,6 +395,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             }
         };
+
+
+
+
+        $scope.deleteCall = function(formValid) {
+                NavigationService.deleteCallsData({
+                    id: formValid
+                }, function(data) {
+                    console.log('delete data:', data);
+                });
+            };
+
+
+
+
         $scope.publilink = [{
             name: ''
         }];
@@ -393,6 +452,28 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 'id': '' + addexperience
             });
         };
+
+
+                $scope.calldetail = [{
+                    _id:'',
+                    callTime: '',
+                    day: '',
+                    fromTime: '',
+                    toTime: ''
+                }];
+
+        $scope.addCalls = function() {
+            var addCalls = $scope.calldetail.length + 1;
+            $scope.calldetail.splice(0, 0, {
+                'id': '' + addCalls
+            });
+        };
+        $scope.removeCalls = function(index) {
+            //var addCalls = $scope.calldetail.length + 1;
+            $scope.calldetail.splice(index, 1);
+        };
+
+        //ng-if="calls.callTime=='custom' || calls.callTime=='unavailable'"
 
         $scope.moreAwards = [{
             name: ''
