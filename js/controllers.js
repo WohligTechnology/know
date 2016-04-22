@@ -2,7 +2,7 @@ window.uploadurl = "http://wohlig.biz/uploadfile/upload/";
 
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'jkuri.timepicker', 'imageupload'])
 
-.controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal,$state) {
+.controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("home");
     $scope.menutitle = NavigationService.makeactive("Home");
@@ -12,36 +12,42 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.userlogo = "";
     $scope.home = "home-page"
 
-    $scope.testimonial={};
+    $scope.testimonial = {};
     NavigationService.getTestimonial($scope.testimonial, function(data) {
-        $scope.testimonial=data.data;
+        $scope.testimonial = data.data;
         console.log('testimonial', $scope.testimonial);
 
     });
-    $scope.dailyUpdates={};
+    $scope.dailyUpdates = {};
     NavigationService.getdailyUpdates($scope.dailyUpdates, function(data) {
-        $scope.dailyUpdates=data.data;
+        $scope.dailyUpdates = data.data;
         console.log('dailyUpdates', $scope.dailyUpdates);
     });
 
+    $scope.categories = {};
+    NavigationService.getCategory($scope.categories, function(data) {
+        $scope.categories = data.data;
+        console.log('categories', $scope.categories);
+    });
 
-    $scope.newsletter={};
+
+    $scope.newsletter = {};
 
     $scope.newsletterSubmit = function(data) {
-        console.log('newsletterSubmitd',data);
+        console.log('newsletterSubmitd', data);
         // if(data){
 
-          NavigationService.getNewsletter($scope.newsletter, function(data) {
-              $scope.newsletter=data;
-              console.log('newsletter', $scope.newsletter);
-              $state.go("home");
-          });
+        NavigationService.getNewsletter($scope.newsletter, function(data) {
+            $scope.newsletter = data;
+            console.log('newsletter', $scope.newsletter);
+            $state.go("home");
+        });
         // }
 
 
-    //$scope.newsletter={};
+        //$scope.newsletter={};
 
-};
+    };
 
 
 
@@ -157,9 +163,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
 
-        $scope.userBooking={};
+        $scope.userBooking = {};
         NavigationService.getUserBooking($scope.userBooking, function(data) {
-            $scope.userBooking=data.data;
+            $scope.userBooking = data.data;
             console.log('dailyUpdates', $scope.userBooking);
         });
     })
@@ -297,11 +303,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
 
-        $scope.userForm={};
+        $scope.userForm = {};
         $scope.userSubmitForm = function(formValid) {
             console.log($scope.userForm);
             if (formValid.$valid) {
-              $scope.formComplete = true;
+                $scope.formComplete = true;
                 NavigationService.ContactSubmit($scope.userForm, function(data) {
                     console.log('userformctrl', $scope.userForm);
 
@@ -328,7 +334,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
     })
-    .controller('HomeExpertCtrl', function($scope, TemplateService, NavigationService, $timeout,$state) {
+    .controller('HomeExpertCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         $scope.template = TemplateService.changecontent("home-expert");
         $scope.menutitle = NavigationService.makeactive("Home-Expert");
         TemplateService.title = $scope.menutitle;
@@ -338,11 +344,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.home = "";
         $scope.experthome = "expert-home";
 
-        $scope.userForm={};
+        $scope.userForm = {};
         $scope.userSubmitForm = function(formValid) {
             console.log($scope.userForm);
             if (formValid.$valid) {
-                NavigationService.ExpertSubmit($scope.userForm, function(data) {
+                NavigationService.ExpertRegistrationSubmit($scope.userForm, function(data) {
+                    $scope.formComplete = true;
                     console.log('userformctrl', $scope.userForm);
                     //console.log('$scope.userForm.experienceType',$scope.userForm.experienceType);
                     // if($scope.userForm.experienceType==company)
@@ -351,6 +358,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     // }
                     $state.go("home-expert");
                 });
+
 
             }
         };
@@ -374,6 +382,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.userForm = {};
+        $scope.userForm.callday = "MONDAY";
 
         $scope.done = function(data) {
             console.log(data);
@@ -383,7 +392,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             if (formValid.$valid) {
                 NavigationService.ExpertUSerCreateSubmit($scope.userForm, function(data) {
-                  //$scope.userForm=data.data;
+                    //$scope.userForm=data.data;
                     console.log('userformctrl', $scope.userForm);
                     //console.log('$scope.userForm.experienceType',$scope.userForm.experienceType);
                     // if($scope.userForm.experienceType==company)
@@ -395,17 +404,29 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             }
         };
+        //
+        //
+        //       $scope.data = {
+        //  weekdays: [
+        //    {id: '1', name: 'MONDAY'},
+        //    {id: '2', name: 'TUESDAY'},
+        //    {id: '3', name: 'WEDNESDAY'},
+        //    {id: '4', name: 'THURSDAY'},
+        //    {id: '5', name: 'FRIDAY'}
+        //  ],
+        //  selectedOption: {id: '6', name: 'MONDAY'} //This sets the default value of the select in the ui
+        //  };
 
-
+        $scope.weekdays = ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY'];
 
 
         $scope.deleteCall = function(formValid) {
-                NavigationService.deleteCallsData({
-                    id: formValid
-                }, function(data) {
-                    console.log('delete data:', data);
-                });
-            };
+            NavigationService.deleteCallsData({
+                id: formValid
+            }, function(data) {
+                console.log('delete data:', data);
+            });
+        };
 
 
 
@@ -454,20 +475,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
 
-                $scope.calldetail = [{
-                    _id:'',
-                    callTime: '',
-                    day: '',
-                    fromTime: '',
-                    toTime: ''
-                }];
+        $scope.calldetail = [];
 
         $scope.addCalls = function() {
             var addCalls = $scope.calldetail.length + 1;
-            $scope.calldetail.splice(0, 0, {
-                'id': '' + addCalls
+            var matchcall=$scope.userForm.callday;
+            console.log('$scope.userForm.callday',$scope.userForm.callday);
+              console.log('$scope.calldetail',$scope.calldetail);
+            $scope.calldetail.push({
+                id: '' + addCalls,
+                callTime: '',
+                day: $scope.userForm.callday,
+                fromTime: '',
+                toTime: ''
             });
+
         };
+
         $scope.removeCalls = function(index) {
             //var addCalls = $scope.calldetail.length + 1;
             $scope.calldetail.splice(index, 1);

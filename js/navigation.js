@@ -74,6 +74,16 @@ var navigationservice = angular.module('navigationservice', [])
                     // }
             }).success(callback);
         },
+          ExpertRegistrationSubmit: function(formData, callback) {
+            //console.log('Navigation form data: ', formData);
+            $http({
+                url: adminurl + 'ExpertUser/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+
+            }).success(callback);
+        },
         ContactSubmit: function(formData, callback) {
             //console.log('Navigation form data: ', formData);
             $http({
@@ -84,16 +94,16 @@ var navigationservice = angular.module('navigationservice', [])
 
             }).success(callback);
         },
-        ExpertSubmit: function(formData, callback) {
-            //console.log('Navigation form data: ', formData);
-            $http({
-                url: adminurl + 'ExpertRegistration/saveData',
-                method: 'POST',
-                withCredentials: true,
-                data: formData
+        getCategory: function(formData, callback) {
+          //console.log('Navigation form data: ', formData);
+          $http({
+              url: adminurl + 'category/getAll',
+              method: 'POST',
+              withCredentials: true,
+              data: formData
 
-            }).success(callback);
-        },
+          }).success(callback);
+      },
 
         getTestimonial: function(formData, callback) {
             //console.log('Navigation form data: ', formData);

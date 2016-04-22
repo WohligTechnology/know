@@ -111,12 +111,12 @@
           <p class="margin0 color-grey pt15 pb15 font-light">Following are the new categories added</p>
           <div class="cat-list">
             <ul class="padding0">
-              <li>
+              <li ng-repeat="category in categories">
                 <a href="">
-                  <i class="ln-briefcase"></i> Lawyer
+                  <i class="ln-briefcase"></i> {{category.name}}
                 </a>
               </li>
-              <li>
+              <!-- <li>
                 <a href="">
                   <i class="ln-library"></i> Financial Adviser
                 </a>
@@ -125,7 +125,7 @@
                 <a href="">
                   <i class="ln-cash"></i> Musician
                 </a>
-              </li>
+              </li> -->
             </ul>
           </div>
         </div>

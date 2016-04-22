@@ -459,18 +459,18 @@
                                             <label for="radio04"><span></span>UNAVAILABLE DAY</label>
                                         </div>
                                     </div>
-                                    <div class="call-det mt25" >
+                                    <div class="call-det mt25">
                                         <div class="row" ng-if="userForm.callTime=='custom' || userForm.callTime=='unavailable'">
-                                            <div class="col-md-3 pb20">
+                                            <div class="col-md-3 pb20" ng-value="userForm.callSettings = calldetail">
                                                 <!-- <form action="" class="form-input"> -->
                                                 <div class="form-group display-inline">
                                                     <label for="exampleInputPassword1">SELECT DAY</label>
-                                                    <select class="form-control text-up" ng-model="calls.day">
-                                                        <option selected>MONDAY</option>
-                                                        <option>TUESDAY</option>
+                                                    <select class="form-control text-up" ng-model="userForm.callday">
+                                                        <option value="{{weekday}}" ng-repeat="weekday in weekdays">{{weekday}}</option>
+                                                        <!-- <option>TUESDAY</option>
                                                         <option>WEDNESDAY</option>
                                                         <option>THURSDAY</option>
-                                                        <option>FRIDAY</option>
+                                                        <option>FRIDAY</option> -->
                                                     </select>
                                                 </div>
 
@@ -478,9 +478,9 @@
                                                     <i class="ln-cross" ng-click="addCalls()"></i>
                                                 </div>
                                                 <!-- </form> -->
-                                                <div class="day-opt custom-li mt25">
+                                                <div class="day-opt custom-li mt25" ng-hide="userForm.callTime=='custom'">
                                                     <ul class="padding0">
-                                                        <li  ng-repeat="calls in calldetail" ng-value="userForm.callSettings = calldetail">
+                                                        <li ng-repeat="calls in calldetail track by $index" ng-value="userForm.callSettings = calldetail">{{calls}}
                                                             <p class="color-success op2 pointer">{{calls.day}}</p>
                                                             <p class="op pointer" ng-click="removeCalls($index)">REMOVE</p>
                                                         </li>
@@ -491,39 +491,39 @@
                                                     </ul>
                                                 </div>
                                                 <div ng-hide="userForm.callTime=='unavailable'">
-                                                <div class="day-opt2 mt25">
+                                                    <div class="day-opt2 mt25" ng-repeat="calls in calldetail" ng-value="userForm.callSettings = calldetail">
 
-                                                    <div class="closes pull-right">
-                                                        <img src="img/close.png" alt="">
-                                                    </div>
+                                                        <div class="closes pull-right">
+                                                            <img src="img/close.png" alt="">
+                                                        </div>
 
 
-                                                      <span class="color-success">{{calls.day}}</span>
-                                                      <div class="from pull-left mt30">
-                                                          <div class="form-group">
-                                                              <label for="exampleInputPassword1" >FROM</label>
-                                                              <select class="form-control" ng-model="calls.fromTime">
-                                                                  <option>10:00</option>
-                                                                  <option>2</option>
-                                                                  <option>3</option>
-                                                                  <option>4</option>
-                                                                  <option>5</option>
-                                                              </select>
-                                                          </div>
-                                                      </div>
-                                                      <div class=" pull-right mt15">
-                                                          <div class="form-group">
-                                                              <label for="exampleInputPassword1" >TO</label>
-                                                              <select class="form-control" ng-model="calls.toTime">
-                                                                  <option>10:00</option>
-                                                                  <option>2</option>
-                                                                  <option>3</option>
-                                                                  <option>4</option>
-                                                                  <option>5</option>
-                                                              </select>
-                                                          </div>
+                                                        <span class="color-success">{{calls.day}}</span>
+                                                        <div class="from pull-left mt30">
+                                                            <div class="form-group">
+                                                                <label for="exampleInputPassword1">FROM</label>
+                                                                <select class="form-control" ng-model="calls.fromTime">
+                                                                    <option>10:00</option>
+                                                                    <option>2</option>
+                                                                    <option>3</option>
+                                                                    <option>4</option>
+                                                                    <option>5</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" pull-right mt15">
+                                                            <div class="form-group">
+                                                                <label for="exampleInputPassword1">TO</label>
+                                                                <select class="form-control" ng-model="calls.toTime">
+                                                                    <option>10:00</option>
+                                                                    <option>2</option>
+                                                                    <option>3</option>
+                                                                    <option>4</option>
+                                                                    <option>5</option>
+                                                                </select>
+                                                            </div>
 
-                                                      </div>
+                                                        </div>
                                                     </div>
 
 
