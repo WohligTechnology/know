@@ -74,6 +74,17 @@ var navigationservice = angular.module('navigationservice', [])
                     // }
             }).success(callback);
         },
+
+        getAllExpert: function(formData, callback) {
+            //console.log('Navigation form data: ', formData);
+            $http({
+                url: adminurl + 'ExpertUser/getAll',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+
+            }).success(callback);
+        },
           ExpertRegistrationSubmit: function(formData, callback) {
             //console.log('Navigation form data: ', formData);
             $http({
@@ -139,6 +150,15 @@ var navigationservice = angular.module('navigationservice', [])
                 data: formData
             }).success(callback);
         },
+        feedbackSubmit: function(formData, callback) {
+            //console.log('Navigation form data: ', formData);
+            $http({
+                url: adminurl + 'Booking/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
 
         getNewsletter: function(formData, callback) {
             //console.log('Navigation form data: ', formData);
@@ -159,6 +179,26 @@ var navigationservice = angular.module('navigationservice', [])
                   "_id": formData._id
                 }
             }).success(callback);
+        },
+        getUserEditDetail: function(id, callback) {
+          // console.log('form data: ', formData);
+          $http({
+            url: adminurl + 'user/saveData',
+            method: 'POST',
+            withCredentials: true,
+            data: {
+              "_id": id
+            }
+          }).success(callback);
+        },
+        editUserSubmit: function(formData, callback) {
+          console.log('In service : ', formData);
+          $http({
+            url: adminurl + 'user/saveData',
+            method: 'POST',
+            withCredentials: true,
+            data: formData
+          }).success(callback);
         },
 
         makeactive: function(menuname) {

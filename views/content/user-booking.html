@@ -46,7 +46,7 @@
                           <span class="media-object ln-calendar2 user-info-icon color-success"></span>
                         </a>
                         <div class="media-body">
-                          <h5 class="media-heading">{{booking.bookDate}}</h5>
+                          <h5 class="media-heading">{{booking.bookDate| date : "dd.MM.y"}}</h5>
                           <span class="color-grey">Book Date</span>
                         </div>
                       </div>
@@ -55,7 +55,7 @@
                           <span class="media-object ln-clock user-info-icon color-success"></span>
                         </a>
                         <div class="media-body">
-                          <h5 class="media-heading">{{booking.bookTime}}</h5>
+                          <h5 class="media-heading">{{booking.bookTime |date : "h:mm a"}}</h5>
                           <span class="color-grey">Book Time</span>
                         </div>
                       </div>
@@ -178,7 +178,7 @@
                           <span class="media-object ln-calendar2 user-info-icon color-success"></span>
                         </a>
                         <div class="media-body">
-                          <h5 class="media-heading">{{booking.bookDate}}</h5>
+                          <h5 class="media-heading">{{booking.bookDate| date : "dd.MM.y"}}</h5>
                           <span class="color-grey">Book Date</span>
                         </div>
                       </div>
@@ -187,7 +187,7 @@
                           <span class="media-object ln-clock user-info-icon color-success"></span>
                         </a>
                         <div class="media-body">
-                          <h5 class="media-heading">{{booking.bookTime}}</h5>
+                          <h5 class="media-heading">{{booking.bookTime |date : "h:mm a"}}</h5>
                           <span class="color-grey">Book Time</span>
                         </div>
                       </div>
@@ -310,7 +310,7 @@
                           <span class="media-object ln-calendar2 user-info-icon color-success"></span>
                         </a>
                         <div class="media-body">
-                          <h5 class="media-heading">{{booking.bookDate}}</h5>
+                          <h5 class="media-heading">{{booking.bookDate| date : "dd.MM.y"}}</h5>
                           <span class="color-grey">Book Date</span>
                         </div>
                       </div>
@@ -319,7 +319,7 @@
                           <span class="media-object ln-clock user-info-icon color-success"></span>
                         </a>
                         <div class="media-body">
-                          <h5 class="media-heading">{{booking.bookTime}}</h5>
+                          <h5 class="media-heading">{{booking.bookTime |date : "h:mm a"}}</h5>
                           <span class="color-grey">Book Time</span>
                         </div>
                       </div>
@@ -417,31 +417,38 @@
             <uib-tab-heading class="text-uppercase">Completed</uib-tab-heading>
             <p class="font-bold tag-line">These is your completed call history. You can print an invoice and even retrieve a recording of your call.</p>
             <div class="row">
-              <div class="col-md-3">
+              <div class="col-md-3" ng-repeat="booking in userBooking" ng-if="booking.status=='completed'" >
                 <div class="outline-single">
                   <div class="single-payment">
                     <div class="user-bg text-center">
                       <div class="user-imgholder margin-auto">
                         <img src="img/search-pro3.jpg" alt="" class="img-responsive">
                       </div>
-                      <span class="name block font-bold mt5">Rohan Cheddha</span>
-                      <span class="price color-success block font-bold mt5"><i class="fa fa-inr"></i> 500/-</span>
+                      <span class="name block font-bold mt5">{{booking.expert}}</span>
+                      <span class="price color-success block font-bold mt5"><i class="fa fa-inr"></i> {{booking.finalAmount}}/-</span>
                     </div>
-                    <!-- <div class="feedback text-left">
+
+
+                    <div class="feedback text-left" ng-hide="formComplete">
+                      <form name="user" class="form-input">
                       <span class="color-grey">Provide Feedback</span>
-                      <textarea class="form-control"></textarea>
+                      <textarea class="form-control" name="feedback" ng-model="userBookingsubmit.feedback" required> </textarea>
+                      <div class="error-msg" ng-show="user.feedback.$error.required && user.feedback.$touched">Please Enter Your Feedback.</div>
                       <div class="text-center mb10">
-                        <button type="button" class="btn btn-animate-success text-uppercase">Submit</button>
+                        <button type="button" class="btn btn-animate-success text-uppercase" ng-click="feedback(user,booking._id)">Submit</button>
                       </div>
-                    </div> -->
-                    <div class="user-info">
+                      </form>
+                    </div>
+
+
+                    <div class="user-info" ng-hide="!formComplete">
                       <div class="media">
                         <a class="media-left" href="#">
                           <span class="media-object user-info-icon ln-trophy color-success"></span>
                         </a>
                         <div class="media-body">
                           <h5 class="media-heading">Travel</h5>
-                          <span class="color-grey">Area of expertise</span>
+                          <span class="color-grey">{{booking.areaOfExpertise}}</span>
                         </div>
                       </div>
                       <div class="media">
@@ -449,7 +456,7 @@
                           <span class="media-object ln-calendar2 user-info-icon color-success"></span>
                         </a>
                         <div class="media-body">
-                          <h5 class="media-heading">20th Mar, 2016</h5>
+                          <h5 class="media-heading">{{booking.bookDate| date : "dd.MM.y"}}</h5>
                           <span class="color-grey">Book Date</span>
                         </div>
                       </div>
@@ -458,7 +465,7 @@
                           <span class="media-object ln-clock user-info-icon color-success"></span>
                         </a>
                         <div class="media-body">
-                          <h5 class="media-heading">3:00 IST</h5>
+                          <h5 class="media-heading">{{booking.bookTime |date : "h:mm a"}}</h5>
                           <span class="color-grey">Book Time</span>
                         </div>
                       </div>
@@ -466,7 +473,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-3">
+              <!-- <div class="col-md-3">
                 <div class="outline-single">
                   <div class="single-payment ">
                     <div class="user-bg text-center">
@@ -476,13 +483,13 @@
                       <span class="name block font-bold mt5">Rohan Cheddha</span>
                       <span class="price color-success block font-bold mt5"><i class="fa fa-inr"></i> 500/-</span>
                     </div>
-                    <!-- <div class="feedback text-left">
+                     <div class="feedback text-left">
                       <span class="color-grey">Provide Feedback</span>
                       <textarea class="form-control"></textarea>
                       <div class="text-center mb10">
                         <button type="button" class="btn btn-animate-success text-uppercase">Submit</button>
                       </div>
-                    </div> -->
+                    </div>
                     <div class="user-info">
                       <div class="media">
                         <a class="media-left" href="#">
@@ -514,8 +521,8 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-3">
+              </div> -->
+              <!-- <div class="col-md-3">
                 <div class="outline-single">
                   <div class="single-payment">
                     <div class="user-bg text-center">
@@ -532,7 +539,7 @@
                         <button type="button" class="btn btn-animate-success text-uppercase">Submit</button>
                       </div>
                     </div>
-                    <!-- <div class="user-info">
+                  <div class="user-info">
                       <div class="media">
                         <a class="media-left" href="#">
                           <span class="media-object user-info-icon ln-trophy color-success"></span>
@@ -560,10 +567,10 @@
                           <span class="color-grey">Book Time</span>
                         </div>
                       </div>
-                    </div> -->
-                  </div>
+                    </div>  -->
+                  <!-- </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </uib-tab>
           <uib-tab>
@@ -585,8 +592,8 @@
                 </ul>
               </div>
             </div>
-            <div class="completed-section mt30">
-              <p class="text-uppercase font-bold color-success">Completed</p>
+            <div class="completed-section mt30" ng-repeat="booking in userBooking" >
+              <p class="text-uppercase font-bold color-success">{{booking.status}}</p>
               <table class="table text-uppercase account-history font-light text-center">
                 <tr>
                   <th>Expert Name</th>
@@ -596,14 +603,14 @@
                   <th>Total Amount</th>
                 </tr>
                 <tr>
-                  <td><img src="img/search-pro2.jpg" alt="" class="img-responsive display-inline img-circle completed" /> Dr. Satish Chahhda</td>
-                  <td>45:00 Min</td>
-                  <td>20th March, 2016</td>
-                  <td>Completed
+                  <td><img src="{{booking.image}}" alt="" class="img-responsive display-inline img-circle completed" /> {{booking.expert}}</td>
+                  <td>{{booking.callDuration |date : "h:mm a"}}</td>
+                  <td>{{booking.bookDate | date : "dd.MM.y"}}</td>
+                  <td>{{booking.status}}
 
 
                   </td>
-                  <td>500/-
+                  <td>{{booking.finalAmount}}
                     <br>
                     <button class="btn btn-animate-success mt10 f12">PRINT INVOICE</button>
                     <br>
@@ -611,7 +618,7 @@
                   </td>
                 </tr>
               </table>
-              <table class="table text-uppercase account-history text-center">
+              <!-- <table class="table text-uppercase account-history text-center">
                 <tr>
                   <th>Expert Name</th>
                   <th>Call Duration</th>
@@ -630,7 +637,7 @@
                     <br>
                     <button class="btn btn-animate-success mt10 f12">PRINT INVOICE</button></td>
                 </tr>
-              </table>
+              </table> -->
             </div>
 
 

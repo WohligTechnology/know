@@ -466,7 +466,7 @@
                                                 <div class="form-group display-inline">
                                                     <label for="exampleInputPassword1">SELECT DAY</label>
                                                     <select class="form-control text-up" ng-model="userForm.callday">
-                                                        <option value="{{weekday}}" ng-repeat="weekday in weekdays">{{weekday}}</option>
+                                                        <option value="{{weekday}}" ng-repeat="weekday in weekdays"></option>
                                                         <!-- <option>TUESDAY</option>
                                                         <option>WEDNESDAY</option>
                                                         <option>THURSDAY</option>
@@ -494,7 +494,7 @@
                                                     <div class="day-opt2 mt25" ng-repeat="calls in calldetail" ng-value="userForm.callSettings = calldetail">
 
                                                         <div class="closes pull-right">
-                                                            <img src="img/close.png" alt="">
+                                                            <img src="img/close.png" alt="" ng-click="removeCalls($index)">
                                                         </div>
 
 

@@ -112,11 +112,11 @@
             <div class="filter-title">
               <h4>SEARCH RESULT : 200 RESULT FOUND</h4>
             </div>
-            <div class="search-box">
+            <div class="search-box" ng-repeat="experts in expertdata">
               <div class="row">
                 <div class="col-md-3">
                   <div class="search-img margin-auto">
-                <img src="img/search-pro.jpg" alt="">
+                <img src="{{experts.image}}" alt="">
                   </div>
                   <div class="short text-center mt10">
                     <button type="button" name="button" class="btn btn-animate-inverse-org text-uppercase" ui-sref="wishlist">shortlist</button>
@@ -124,28 +124,28 @@
                     <button type="button" name="button " class="btn btn-animate-inverse-org text-uppercase mt10" ui-sref="profile">View detail</button>
                   </div>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-9" >
                   <div class="search-info">
                     <div class="pull-right">
                       <div class="pric font-bold color-success">
-                        <i class="fa fa-inr"></i>1,500 / 30 Min
+                        <i class="fa fa-inr"></i>{{experts.professionalInfo[0].priceForService}} / 30 Min
                       </div>
                       <div class="mt5">
                         <button type="button" class="btn btn-animate-success text-uppercase" ui-sref="book-now">book now</button>
                       </div>
                     </div>
                   <div class="exp-desg">
-                    <h5 class="color-grey font-light">WEB DEVELOPER</h5>
+                    <h5 class="color-grey font-light">{{experts.professionalInfo[0].areaOfExpertise}}</h5>
                   </div>
                   <div class="exp-name">
-                    <h4 class="color-primary font-bold">MAHESH MAURYA</h4>
+                    <h4 class="color-primary font-bold">{{experts.firstName}}</h4>
                   </div>
                   <div class="exp-city">
-                    <span class="color-grey">Mumbai</span>
+                    <span class="color-grey">{{experts.addressDetails}}</span>
                   </div>
                   <div class="exp-brief">
                     <span class="color-success-light font-bold">Brief BIO:</span>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem  Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.</p>
+                    <p>{{experts.professionalInfo[0].description}}</p>
                   </div>
                   <div class="exp-brief">
                     <span class="color-success-light font-bold">SALES PITCH:</span>
@@ -153,14 +153,14 @@
                   </div>
                   <div class="exp-brief">
                     <span class="color-success-light font-bold">SPECIALIZATION:</span>
-                    <p>Web developer, App developer, web designer</p>
+                    <p>{{experts.professionalInfo[0].specilization}}</p>
                   </div>
                   </div>
 
                 </div>
               </div>
             </div>
-            <div class="search-box mt20">
+            <!-- <div class="search-box mt20">
               <div class="row">
                 <div class="col-md-3">
                   <div class="search-img margin-auto">
@@ -207,7 +207,7 @@
 
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

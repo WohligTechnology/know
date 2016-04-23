@@ -15,6 +15,7 @@
 <section>
 
   <div class="container">
+    <form name="user" class="form-input">
     <div class="conten-box">
       <div class="edit-user">
         <div class="row">
@@ -25,57 +26,67 @@
         <div class="row">
           <div class="col-md-2 text-center">
             <div class="user-img mt25">
-              <img src="img/search-pro.jpg" alt="" class="img-responsive margin-auto">
+              <!-- <img ng-src="{{userForm.image|uploadpath}}" ng-if="userForm.image" style="height:200px;"> -->
+              <img src="{{userForm.image|uploadpath}}" ng-if="userForm.image" alt="" class="img-responsive margin-auto">
+                <upload-image ng-model="userForm.image"></upload-image>
             </div>
             <div class="cho btn">
-              <div class="text-center">
+              <!-- <div class="text-center">
                 <button class="btn btn-animate-inverse-success f10">CHOOSE FILE</button>
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="col-md-offset-1 col-md-4">
-            <form action="" class="form-input">
+
               <div class="form-group mt25">
                 <label for="exampleInputEmail1">FIRST NAME</label>
-                <input type="email" class="form-control" id="exampleInputEmail1">
+                <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" ng-model="userForm.firstName" required>
+                <div class="error-msg" ng-if="user.firstName.$error.required && user.firstName.$touched">Please Enter Your First Name.</div>
               </div>
               <div class="form-group mt25">
                 <label for="exampleInputPassword1">LAST NAME</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input type="text" name="lastName" class="form-control" id="exampleInputEmail1" ng-model="userForm.lastName" required>
+                <div class="error-msg" ng-if="user.lastName.$error.required && user.lastName.$touched">Please Enter Your First Name.</div>
               </div>
               <div class="form-group mt25">
                 <label for="exampleInputEmail1">EMAIL</label>
-                <input type="email" class="form-control" id="exampleInputEmail1">
+                <input type="email" name="email" class="form-control" ng-model="userForm.email" required>
+                <div class="error-msg" ng-show="user.email.$error.required && user.email.$touched">Please Enter Your Email.</div>
               </div>
               <div class="form-group mt25">
                 <label for="exampleInputPassword1">MOBILE NUMBER</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input type="text" name="mobile" class="form-control" id="exampleInputEmail1" ng-model="userForm.mobile" required>
+                <div class="error-msg" ng-if="user.mobile.$error.required && user.mobile.$touched">Please Enter Your  Mobile Number.</div>
               </div>
               <div class="form-group mt25">
                 <label for="exampleInputPassword1">PASSWORD</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input type="password" name="password" class="form-control" ng-model="userForm.password" required>
+                <div class="error-msg" ng-show="user.password.$error.required && user.password.$touched">Please Enter Password.</div>
               </div>
               <div class="form-group mt25">
                 <label for="exampleInputPassword1">CHANGE PASSWORD</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input type="password" name="changePassword" class="form-control" ng-model="userForm.changePassword" required>
+                <div class="error-msg" ng-show="user.changePassword.$error.required && user.changePassword.$touched">Please Enter Password.</div>
               </div>
               <div class="form-group mt25">
                 <label for="exampleInputPassword1">ADDITATIONAL INFORMATION</label>
-                <textarea class="form-control" rows="6" style="resize: none;"></textarea>
+                <textarea class="form-control" rows="6" style="resize: none;" ng-model="userForm.additionalInfo" required></textarea>
               </div>
-            </form>
+
           </div>
 
         </div>
         <div class="row">
           <div class="col-md-12" style="border-top: 1px solid #ccc;">
             <div class="save-btn mt25">
-              <button class="btn btn-blue font-light text-up f13">UPDATE</button>
+              <button class="btn btn-blue font-light text-up f13" ng-click="userSubmitForm(user)">UPDATE</button>
               <button class="btn btn-blue font-light text-up f13">CANCEL</button>
             </div>
           </div>
         </div>
+
       </div>
     </div>
+        </form>
   </div>
 </section>
