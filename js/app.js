@@ -31,7 +31,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     controller: 'WishlistCtrl'
   })
   .state('edit-user', {
-    url: "/edit-user",
+    url: "/edit-user/:id",
     templateUrl: "views/template.html",
     controller: 'EditUserCtrl'
   })

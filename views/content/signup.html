@@ -20,40 +20,50 @@
         <div class="conten-box">
           <div class="login-form">
             <h4 class="text-up text-center color-base">Signup</h4>
-            <form action="" class="mt20">
+            <form name="user" class="mt20">
 
               <div class="mail mt10 pos-relative">
-                <input type="mail" placeholder="FIRST NAME" class="form-control display-inline log">
+                <input type="text" placeholder="FIRST NAME" name="firstName" class="form-control display-inline log" id="exampleInputEmail1" ng-model="userForm.firstName" required>
+                <div class="error-msg" ng-if="user.firstName.$error.required && user.firstName.$touched">Please Enter Your First Name.</div>
                 <div class="icon-mail display-inline">
                   <i class="ln-user"></i>
                 </div>
               </div>
               <div class="mail mt10 pos-relative">
-                <input type="mail" placeholder="LAST NAME" class="form-control display-inline log">
+                <input type="text" placeholder="LAST NAME" name="lastName" class="form-control display-inline log" ng-model="userForm.lastName" required>
+                <div class="error-msg" ng-show="user.lastName.$error.required && user.lastName.$touched">Please Enter Your Last Name.</div>
                 <div class="icon-mail display-inline">
                   <i class="ln-user"></i>
                 </div>
               </div>
               <div class="mail mt10 pos-relative">
-                <input type="mail" placeholder="EMAIL ADDRESS" class="form-control display-inline log">
+                <input type="email" placeholder="EMAIL ADDRESS" name="email" class="form-control display-inline log" ng-model="userForm.email" required>
+                <div class="error-msg" ng-show="user.email.$error.required && user.email.$touched">Please Enter Your Email.</div>
+
                 <div class="icon-mail display-inline">
                   <i class="ln-envelope"></i>
                 </div>
               </div>
               <div class="mail mt10 pos-relative">
-                <input type="mail" placeholder="MOBILE NUMBER" class="form-control display-inline log">
+                <input type="text" name="mobileno" placeholder="MOBILE NUMBER" class="form-control display-inline log" ng-model="userForm.mobileno" required>
+                <div class="error-msg" ng-show="user.mobileno.$error.required && user.mobileno.$touched">Please Enter Your Mobile No.</div>
+
                 <div class="icon-mail display-inline">
                   <i class="ln-phone"></i>
                 </div>
               </div>
               <div class="mail mt10 pos-relative">
-                <input type="password" placeholder="PASSWORD" class="form-control display-inline log">
+                <input type="password" name="password" placeholder="PASSWORD" class="form-control display-inline log" ng-model="userForm.password" required>
+                <div class="error-msg" ng-show="user.password.$error.required && user.password.$touched">Please Enter Password.</div>
+
                 <div class="icon-mail display-inline">
                   <i class="ln-lock"></i>
                 </div>
               </div>
               <div class="mail mt10 pos-relative">
-                <input type="password" placeholder="CONFIRM PASSWORD" class="form-control display-inline log">
+                <input type="password" name="confirmPassword" placeholder="CONFIRM PASSWORD" class="form-control display-inline log" ng-model="userForm.password" required>
+                <div class="error-msg" ng-show="user.confirmPassword.$error.required && user.confirmPassword.$touched">Please Confirm Your Password.</div>
+
                 <div class="icon-mail display-inline">
                   <i class="ln-lock"></i>
                 </div>
@@ -66,7 +76,7 @@
     Policy, Guest Refund Policy,  and Host Guarantee Terms.</p>
               </div>
               <div class="login-btn mt10">
-                <button class="btn btn-animate-org f10 font-light">SIGN UP</button>
+                <button class="btn btn-animate-org f10 font-light" ng-click="userSignup(user)">SIGN UP</button>
               </div>
               <div class="other mt20">
                 <p class="font-light f13 pt10 margin0">Already an Jacknow member?  <span class="color-primary pointer"  ui-sref="login">Login</span></p>

@@ -82,8 +82,8 @@
                 <ul class="view-dropdown">
                   <li><a href="" class="text-uppercase" title="Your Booking" ui-sref="user-booking">your booking</a></li>
                   <li><a href="" class="text-uppercase" title="short list" ui-sref="wishlist">short list</a></li>
-                  <li><a href="" class="text-uppercase" title="Edit Account" ui-sref="edit-profile">edit account</a></li>
-                  <li><a href="" class="text-uppercase" title="Logout">logout</a></li>
+                  <li><a href="" class="text-uppercase" title="Edit Account" ui-sref="edit-user({id:userdata._id})">edit account</a></li>
+                  <li><a ui-sref="home" class="text-uppercase" title="Logout" ng-click="logout();">logout</a></li>
                 </ul>
               </li>
               <li>

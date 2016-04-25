@@ -29,17 +29,17 @@
 
               <th>Price</th>
             </tr>
-            <tr>
-              <td><img src="img/search-pro2.jpg" alt="" class="img-responsive display-inline img-circle completed" /> Dr. Satish Chahhda</td>
-              <td>Travel</td>
-              <td>WEB DEVELOPER, APP DEVELOPER, WEB DESIGNER</td>
+            <tr ng-repeat="wishlist in wishlists">
+              <td><img ng-src="{{wishlist.image}}" alt="" class="img-responsive display-inline img-circle completed" /> {{wishlist.firstName}}</td>
+              <td>{{wishlist.areaOfExpertise}}</td>
+              <td>{{wishlist.specilization}}</td>
 
-              <td>₹ 500/ 30 MIN
+              <td>₹ {{wishlist.priceForService}}/ 30 MIN
                 <br>
                 <button class="btn btn-animate-success mt10 f12">VIEW DETAIL</button></td>
             </tr>
           </table>
-          <table class="table text-uppercase account-history text-center">
+          <!-- <table class="table text-uppercase account-history text-center">
             <tr>
               <th>Expert Name</th>
               <th>Area of expert</th>
@@ -56,7 +56,7 @@
                 <br>
                 <button class="btn btn-animate-success mt10 f12">VIEW DETAIL</button></td>
             </tr>
-          </table>
+          </table> -->
         </div>
       </div>
     </div>

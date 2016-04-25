@@ -180,14 +180,14 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
-        getUserEditDetail: function(id, callback) {
+        getUserEditDetail: function(_id, callback) {
           // console.log('form data: ', formData);
           $http({
-            url: adminurl + 'user/saveData',
+            url: adminurl + 'user/profile',
             method: 'POST',
             withCredentials: true,
             data: {
-              "_id": id
+              "_id": _id
             }
           }).success(callback);
         },
@@ -198,6 +198,80 @@ var navigationservice = angular.module('navigationservice', [])
             method: 'POST',
             withCredentials: true,
             data: formData
+          }).success(callback);
+        },
+
+        addWishlist: function(formData, callback) {
+          // console.log('form data: ', formData);
+          $http({
+            url: adminurl + 'User/saveData',
+            method: 'POST',
+            withCredentials: true,
+            data:
+            {
+
+              "expertUser": formData.expertUser,
+              "timestamp": new Date()
+
+            }
+          }).success(callback);
+        },
+
+        getWishlist: function(formData, callback) {
+            //console.log('Navigation form data: ', formData);
+            $http({
+                url: adminurl + 'User/getAll',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+
+            }).success(callback);
+        },
+
+        Signup: function(input, callback) {
+          // console.log('form data: ', formData);
+          $http({
+            url: adminurl + 'user/register',
+            method: 'POST',
+            withCredentials: true,
+            data: input
+          }).success(callback);
+        },
+
+        getUser: function(input, callback) {
+          // console.log('form data: ', formData);
+          $http({
+            url: adminurl + 'user/profile',
+            method: 'POST',
+            withCredentials: true,
+            data: input
+          }).success(callback);
+        },
+        getUserLogin: function(input, callback) {
+          // console.log('form data: ', formData);
+          $http({
+            url: adminurl + 'user/login',
+            method: 'POST',
+            withCredentials: true,
+            data: input
+          }).success(callback);
+        },
+        editProfile: function(input, callback) {
+          // console.log('form data: ', formData);
+          $http({
+            url: adminurl + 'user/editProfile',
+            method: 'POST',
+            withCredentials: true,
+            data: input
+          }).success(callback);
+        },
+        getLogout: function(input, callback) {
+          // console.log('form data: ', formData);
+          $http({
+            url: adminurl + 'user/logout',
+            method: 'POST',
+            withCredentials: true,
+            data: input
           }).success(callback);
         },
 

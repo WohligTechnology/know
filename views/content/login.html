@@ -20,7 +20,7 @@
         <div class="conten-box">
         <div class="login-form">
             <h4 class="text-up text-center color-base">login</h4>
-          <form action="" class="mt20">
+          <form name="user" class="mt20">
             <div class="social-btn text-center">
               <button class="btn btn-facebook f10 font-light"><span><i class="fa fa-facebook pull-left"></i></span>LOGIN WITH FACEBOOK</button>
             </div>
@@ -31,13 +31,15 @@
               <span>OR</span>
             </div>
             <div class="mail mt10 pos-relative">
-              <input type="mail" placeholder="EMAIL ADDRESS" class="form-control display-inline log">
+              <input type="mail" placeholder="EMAIL ADDRESS" class="form-control display-inline log" ng-model="userForm.email" required>
+              <div class="error-msg" ng-show="user.email.$error.required && user.email.$touched">Please Enter Your Email.</div>
               <div class="icon-mail display-inline">
                 <i class="ln-envelope"></i>
               </div>
             </div>
             <div class="mail mt10 pos-relative">
-              <input type="password" placeholder="PASSWORD" class="form-control display-inline log">
+              <input type="password" placeholder="PASSWORD" class="form-control display-inline log" ng-model="userForm.password" required>
+              <div class="error-msg" ng-show="user.password.$error.required && user.password.$touched">Please Enter Password.</div>
               <div class="icon-mail display-inline">
                 <i class="ln-lock"></i>
               </div>
@@ -46,7 +48,7 @@
               <a href="" class="color-primary font-light f13" ng-click="open3('sm'); $dismiss()">Forgot password?</a>
             </div>
             <div class="login-btn mt50">
-              <button class="btn btn-animate-org f10 font-light">LOGIN</button>
+              <button class="btn btn-animate-org f10 font-light" ng-click="getLogin(user)">LOGIN</button>
             </div>
             <div class="other mt20">
               <p class="font-light f13 pt10 margin0">Don’t have an account? <span class="color-primary pointer" ui-sref="signup">Sign up</span></p>

@@ -108,6 +108,7 @@
           </div>
         </div>
         <div class="col-md-8">
+            <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center">{{alert.msg}}</uib-alert>
           <div class="search">
             <div class="filter-title">
               <h4>SEARCH RESULT : 200 RESULT FOUND</h4>
@@ -119,7 +120,8 @@
                 <img src="{{experts.image}}" alt="">
                   </div>
                   <div class="short text-center mt10">
-                    <button type="button" name="button" class="btn btn-animate-inverse-org text-uppercase" ui-sref="wishlist">shortlist</button>
+                    <button type="button" name="button" class="btn btn-animate-inverse-org text-uppercase" ng-click="addToWishlist(experts._id)">shortlist</button>
+
                     <br>
                     <button type="button" name="button " class="btn btn-animate-inverse-org text-uppercase mt10" ui-sref="profile">View detail</button>
                   </div>
@@ -128,14 +130,14 @@
                   <div class="search-info">
                     <div class="pull-right">
                       <div class="pric font-bold color-success">
-                        <i class="fa fa-inr"></i>{{experts.professionalInfo[0].priceForService}} / 30 Min
+                        <i class="fa fa-inr"></i>{{experts.priceForService}} / 30 Min
                       </div>
                       <div class="mt5">
                         <button type="button" class="btn btn-animate-success text-uppercase" ui-sref="book-now">book now</button>
                       </div>
                     </div>
                   <div class="exp-desg">
-                    <h5 class="color-grey font-light">{{experts.professionalInfo[0].areaOfExpertise}}</h5>
+                    <h5 class="color-grey font-light">{{experts.areaOfExpertise}}</h5>
                   </div>
                   <div class="exp-name">
                     <h4 class="color-primary font-bold">{{experts.firstName}}</h4>
@@ -145,7 +147,7 @@
                   </div>
                   <div class="exp-brief">
                     <span class="color-success-light font-bold">Brief BIO:</span>
-                    <p>{{experts.professionalInfo[0].description}}</p>
+                    <p>{{experts.description}}</p>
                   </div>
                   <div class="exp-brief">
                     <span class="color-success-light font-bold">SALES PITCH:</span>
@@ -153,7 +155,7 @@
                   </div>
                   <div class="exp-brief">
                     <span class="color-success-light font-bold">SPECIALIZATION:</span>
-                    <p>{{experts.professionalInfo[0].specilization}}</p>
+                    <p>{{experts.specilization}}</p>
                   </div>
                   </div>
 
