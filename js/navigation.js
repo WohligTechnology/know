@@ -1,15 +1,8 @@
 var adminurl = "http://192.168.1.127:1337/";
-var adminurl1 = "http://wohlig.io:81/callApi/jacknows/";
-var imgurl = "http://192.168.1.122/upload";
+// var adminurl1 = "http://wohlig.io:81/callApi/jacknows/";
+var imgurl = "http://192.168.1.131/upload";
 var imgpath = imgurl + "/readFile";
 var uploadurl = imgurl;
-
-var adminURL = "";
-if (isproduction) {
-    adminURL = "http://www.wohlig.co.in/demo/index.php";
-} else {
-    adminURL = "http://localhost/demo/index.php";
-}
 
 var navigationservice = angular.module('navigationservice', [])
 
@@ -258,6 +251,8 @@ var navigationservice = angular.module('navigationservice', [])
         },
         editProfile: function(input, callback) {
           // console.log('form data: ', formData);
+          delete input.password;
+          delete input.forgotpassword;
           $http({
             url: adminurl + 'user/editProfile',
             method: 'POST',
@@ -265,12 +260,24 @@ var navigationservice = angular.module('navigationservice', [])
             data: input
           }).success(callback);
         },
+        changePassword: function(input, callback) {
+          // console.log('form data: ', formData);
+          delete input._id;
+          $http({
+            url: adminurl + 'user/changePassword',
+            method: 'POST',
+            data:
+            {
+              "password":input.password,
+              "changePassword":input.changePassword
+            }
+          }).success(callback);
+        },
         getLogout: function(input, callback) {
           // console.log('form data: ', formData);
           $http({
             url: adminurl + 'user/logout',
             method: 'POST',
-            withCredentials: true,
             data: input
           }).success(callback);
         },

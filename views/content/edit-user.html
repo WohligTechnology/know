@@ -37,10 +37,7 @@
                             </div>
                         </div>
                         <div class="col-md-offset-1 col-md-4">
-                            <pre>
-  {{userForm}}
-</pre>
-                            <div class="form-group mt25">
+                                <div class="form-group mt25">
                                 <label for="exampleInputEmail1">FIRST NAME</label>
                                 <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" ng-model="userForm.firstName" required>
                                 <div class="error-msg" ng-if="user.firstName.$error.required && user.firstName.$touched">Please Enter Your First Name.</div>

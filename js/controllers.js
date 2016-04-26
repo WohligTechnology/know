@@ -282,19 +282,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.userForm = {};
         $scope.getLogin = function(formValid) {
-            console.log($scope.userForm);
+            //console.log($scope.userForm);
             if (formValid.$valid) {
 
                 NavigationService.getUserLogin($scope.userForm, function(data) {
-                    $scope.userForm = data;
-                    console.log('userformctrl', $scope.userForm);
+                    if (data.value == true) {
+                        $scope.userForm = data;
+                        $state.go("home");
+                    } else {
 
-
+                    }
                 });
-                $state.go("home");
-
             }
-
         };
 
         $scope.animationsEnabled = true;
@@ -318,7 +317,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-    .controller('SignupCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+    .controller('SignupCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $window) {
         $scope.template = TemplateService.changecontent("signup");
         $scope.menutitle = NavigationService.makeactive("Signup");
         TemplateService.title = $scope.menutitle;
@@ -332,9 +331,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             if (formValid.$valid) {
 
                 NavigationService.Signup($scope.userForm, function(data) {
-                    $scope.userForm = data.data;
-                    //console.log('userformctrl', $scope.userForm);
-                    $state.go("home");
+                    //console.log($scope.userForm.password);
+                    //console.log($scope.userForm.confirmPassword);
+                    if ($scope.userForm.password == $scope.userForm.confirmPassword) {
+                        $scope.userForm = data.data;
+                        //console.log('userformctrl', $scope.userForm);
+                        $state.go("home");
+                    } else {
+                        $window.alert("Password do not match.");
+                        $scope.userForm.confirmPassword = "";
+                    }
+
 
                 });
 
@@ -360,16 +367,44 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
 
         $scope.userSubmitForm = function(formValid) {
-          console.log($scope.userForm);
+            console.log($scope.userForm);
 
-          //console.log('on the user');
-          if (formValid.$valid) {
+            //console.log('on the user');
+            if (formValid.$valid) {
 
-            NavigationService.editProfile($scope.userForm, function(data) {
+                NavigationService.editProfile($scope.userForm, function(data) {
 
-                $scope.userForm = data.data;
-            });
-          }
+                    $scope.userForm = data.data;
+                });
+            }
+
+
+        };
+    })
+    .controller('ChangePasswordCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
+        $scope.template = TemplateService.changecontent("change-password");
+        $scope.menutitle = NavigationService.makeactive("change-password");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+
+        // $scope.userForm = {};
+        NavigationService.getUserEditDetail($stateParams.id, function(data) {
+            console.log('getUserEditDetail', data);
+            $scope.userForm = data;
+        });
+
+        $scope.userSubmitForm = function(formValid) {
+            console.log($scope.userForm);
+
+            //console.log('on the user');
+            if (formValid.$valid) {
+
+                NavigationService.changePassword($scope.userForm, function(data) {
+
+                    $scope.userForm = data.data;
+                });
+            }
 
 
         };
@@ -455,7 +490,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
     })
 
-.controller('ExpertProfileCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+.controller('ExpertProfileCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $window) {
         $scope.template = TemplateService.changecontent("expert-profile");
         $scope.menutitle = NavigationService.makeactive("Expert-Profile");
         TemplateService.title = $scope.menutitle;
@@ -478,7 +513,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     // {
                     //   $scope.myexp=true;
                     // }
-                    $state.go("expert-profile");
+                    if ($scope.userForm.password == $scope.userForm.confirmPassword) {
+                        //$scope.userForm = data.data;
+                        //console.log('userformctrl', $scope.userForm);
+                        $state.go("expert-profile");
+                    } else {
+                        $window.alert("Password do not match.");
+                        $scope.userForm.confirmPassword = "";
+                    }
+                    //$state.go("expert-profile");
                 });
 
             }
@@ -847,7 +890,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('headerctrl', function($scope, TemplateService, NavigationService) {
     $scope.template = TemplateService;
-    $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+    $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams, $state) {
         $(window).scrollTop(0);
     });
     $scope.menu = "menu-out";
@@ -857,16 +900,33 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.closeMenu = function() {
         $scope.menu = "menu-out";
     };
+    //
+    // if($scope.userdata._id){
+    //   $scope.loginuser=true;
+    // }else{
+    //   $state.go("login");
+    // }
+
 
     $scope.userdata = {};
     NavigationService.getUser($scope.userdata, function(data) {
-        $scope.userdata = data;
-        console.log('headeruserdata', $scope.userdata);
+      $scope.userdata = data;
+      console.log($scope.userdata._id);
+
+      //$scope.
+      // if($scope.userdata._id){
+      //  $window.alert("")
+      //    $scope.loginuser=true;
+      //    $state.go("login");
+      //  }
+
+        console.log('getuser',data);
     });
     $scope.logout = function() {
-      NavigationService.getLogout($scope.userdata, function(data) {
-          // $scope.userdata = data;
-          // console.log('headeruserdata', $scope.userdata);
-      });
+        console.log("in me logout/////////////////////////////////");
+        NavigationService.getLogout($scope.userdata, function(data) {
+            // $scope.userdata = data;
+            // console.log('headeruserdata', $scope.userdata);
+        });
     }
 });
