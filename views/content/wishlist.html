@@ -29,12 +29,12 @@
 
               <th>Price</th>
             </tr>
-            <tr ng-repeat="wishlist in wishlists">
-              <td><img ng-src="{{wishlist.image}}" alt="" class="img-responsive display-inline img-circle completed" /> {{wishlist.firstName}}</td>
-              <td>{{wishlist.areaOfExpertise}}</td>
-              <td>{{wishlist.specilization}}</td>
+            <tr ng-repeat="wish in wishlists">
+              <td><img ng-src="{{wishlist.image}}" alt="" class="img-responsive display-inline img-circle completed" /> {{wish.expertUser.firstName + " " +wish.expertUser.lastName }}</td>
+              <td>{{wish.expertUser.areaOfExpertise}}</td>
+              <td>{{wish.expertUser.specilization}}</td>
 
-              <td>₹ {{wishlist.priceForService}}/ 30 MIN
+              <td>₹ {{wish.expertUser.priceForService}}/ 30 MIN
                 <br>
                 <button class="btn btn-animate-success mt10 f12">VIEW DETAIL</button></td>
             </tr>

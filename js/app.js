@@ -40,6 +40,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     templateUrl: "views/template.html",
     controller: 'ChangePasswordCtrl'
   })
+  .state('change-expert-password', {
+    url: "/change-expert-password/:id",
+    templateUrl: "views/template.html",
+    controller: 'ChangeExpertPasswordCtrl'
+  })
   .state('book-now', {
     url: "/book-now",
     templateUrl: "views/template.html",
@@ -96,7 +101,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     controller: 'ContactCtrl'
   })
   .state('profile', {
-    url: "/profile",
+    url: "/profile/:id",
     templateUrl: "views/template.html",
     controller: 'ProfileCtrl'
   });

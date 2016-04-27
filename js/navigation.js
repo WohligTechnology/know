@@ -49,22 +49,11 @@ var navigationservice = angular.module('navigationservice', [])
         ExpertUSerCreateSubmit: function(formData, callback) {
             //console.log('Navigation form data: ', formData);
             $http({
-                url: adminurl + 'ExpertUser/saveData',
+                url: adminurl + 'ExpertUser/editProfile',
                 method: 'POST',
                 withCredentials: true,
                 data: formData
-                    // data: {
-                    //   "email": formData.email,
-                    //   "mobileno": formData.mobileno,
-                    //   "gender": formData.gender,
-                    //   "firstName": formData.firstName,
-                    //   "lastName": formData.lastName,
-                    //   "password": formData.password,
-                    //   "addressDetails": formData.addressDetails
-                    //   //"confirmPassword": formData.confirmPassword,
-                    //   // "logintype": formData.logintype,
-                    //   // "twitter": formData.twitter
-                    // }
+
             }).success(callback);
         },
 
@@ -78,7 +67,7 @@ var navigationservice = angular.module('navigationservice', [])
 
             }).success(callback);
         },
-          ExpertRegistrationSubmit: function(formData, callback) {
+        ExpertRegistrationSubmit: function(formData, callback) {
             //console.log('Navigation form data: ', formData);
             $http({
                 url: adminurl + 'ExpertUser/saveData',
@@ -99,15 +88,15 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         getCategory: function(formData, callback) {
-          //console.log('Navigation form data: ', formData);
-          $http({
-              url: adminurl + 'category/getAll',
-              method: 'POST',
-              withCredentials: true,
-              data: formData
+            //console.log('Navigation form data: ', formData);
+            $http({
+                url: adminurl + 'category/getAll',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
 
-          }).success(callback);
-      },
+            }).success(callback);
+        },
 
         getTestimonial: function(formData, callback) {
             //console.log('Navigation form data: ', formData);
@@ -116,10 +105,10 @@ var navigationservice = angular.module('navigationservice', [])
                 method: 'POST',
                 withCredentials: true,
                 data: {
-                  "name": formData.name,
-                  "testimonial": formData.testimonial,
-                  "company": formData.company,
-                  "image": formData.image
+                    "name": formData.name,
+                    "testimonial": formData.testimonial,
+                    "company": formData.company,
+                    "image": formData.image
                 }
 
             }).success(callback);
@@ -131,7 +120,7 @@ var navigationservice = angular.module('navigationservice', [])
                 method: 'POST',
                 withCredentials: true,
                 data: formData
-              }).success(callback);
+            }).success(callback);
         },
 
         getUserBooking: function(formData, callback) {
@@ -169,51 +158,50 @@ var navigationservice = angular.module('navigationservice', [])
                 method: 'POST',
                 withCredentials: true,
                 data: {
-                  "_id": formData._id
+                    "_id": formData._id
                 }
             }).success(callback);
         },
         getUserEditDetail: function(_id, callback) {
-          // console.log('form data: ', formData);
-          $http({
-            url: adminurl + 'user/profile',
-            method: 'POST',
-            withCredentials: true,
-            data: {
-              "_id": _id
-            }
-          }).success(callback);
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'user/profile',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": _id
+                }
+            }).success(callback);
         },
         editUserSubmit: function(formData, callback) {
-          console.log('In service : ', formData);
-          $http({
-            url: adminurl + 'user/saveData',
-            method: 'POST',
-            withCredentials: true,
-            data: formData
-          }).success(callback);
+            console.log('In service : ', formData);
+            $http({
+                url: adminurl + 'user/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
         },
 
         addWishlist: function(formData, callback) {
-          // console.log('form data: ', formData);
-          $http({
-            url: adminurl + 'User/saveData',
-            method: 'POST',
-            withCredentials: true,
-            data:
-            {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'User/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: {
 
-              "expertUser": formData.expertUser,
-              "timestamp": new Date()
+                    "expertUser": formData.expertUser,
+                    "timestamp": new Date()
 
-            }
-          }).success(callback);
+                }
+            }).success(callback);
         },
 
         getWishlist: function(formData, callback) {
             //console.log('Navigation form data: ', formData);
             $http({
-                url: adminurl + 'User/getAll',
+                url: adminurl + 'User/getShortlist',
                 method: 'POST',
                 withCredentials: true,
                 data: formData
@@ -222,64 +210,99 @@ var navigationservice = angular.module('navigationservice', [])
         },
 
         Signup: function(input, callback) {
-          // console.log('form data: ', formData);
-          $http({
-            url: adminurl + 'user/register',
-            method: 'POST',
-            withCredentials: true,
-            data: input
-          }).success(callback);
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'user/register',
+                method: 'POST',
+                withCredentials: true,
+                data: input
+            }).success(callback);
+        },
+        ExpertSignup: function(input, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'ExpertUser/register',
+                method: 'POST',
+                withCredentials: true,
+                data: input
+            }).success(callback);
         },
 
-        getUser: function(input, callback) {
-          // console.log('form data: ', formData);
-          $http({
-            url: adminurl + 'user/profile',
-            method: 'POST',
-            withCredentials: true,
-            data: input
-          }).success(callback);
+        getUser: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'user/profile',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
         },
         getUserLogin: function(input, callback) {
-          // console.log('form data: ', formData);
-          $http({
-            url: adminurl + 'user/login',
-            method: 'POST',
-            withCredentials: true,
-            data: input
-          }).success(callback);
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'user/login',
+                method: 'POST',
+                withCredentials: true,
+                data: input
+            }).success(callback);
+        },
+        getExpertLogin: function(input, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'ExpertUser/login',
+                method: 'POST',
+                withCredentials: true,
+                data: input
+            }).success(callback);
         },
         editProfile: function(input, callback) {
-          // console.log('form data: ', formData);
-          delete input.password;
-          delete input.forgotpassword;
-          $http({
-            url: adminurl + 'user/editProfile',
-            method: 'POST',
-            withCredentials: true,
-            data: input
-          }).success(callback);
+            // console.log('form data: ', formData);
+            delete input.password;
+            delete input.forgotpassword;
+            $http({
+                url: adminurl + 'user/editProfile',
+                method: 'POST',
+                withCredentials: true,
+                data: input
+            }).success(callback);
         },
         changePassword: function(input, callback) {
-          // console.log('form data: ', formData);
-          delete input._id;
-          $http({
-            url: adminurl + 'user/changePassword',
-            method: 'POST',
-            data:
-            {
-              "password":input.password,
-              "changePassword":input.changePassword
-            }
-          }).success(callback);
+            // console.log('form data: ', formData);
+            delete input._id;
+            $http({
+                url: adminurl + 'user/changePassword',
+                method: 'POST',
+                data: {
+                    "password": input.password,
+                    "changePassword": input.changePassword
+                }
+            }).success(callback);
         },
         getLogout: function(input, callback) {
-          // console.log('form data: ', formData);
-          $http({
-            url: adminurl + 'user/logout',
-            method: 'POST',
-            data: input
-          }).success(callback);
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'user/logout',
+                method: 'POST',
+                data: input
+            }).success(callback);
+        },
+        getForgotpswd: function(input, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'user/forgotPassword',
+                method: 'POST',
+                data: input
+            }).success(callback);
+        },
+        getExpertProfile: function(_id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'ExpertUser/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": _id
+                }
+            }).success(callback);
         },
 
         makeactive: function(menuname) {

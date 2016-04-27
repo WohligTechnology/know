@@ -123,7 +123,7 @@
                     <button type="button" name="button" class="btn btn-animate-inverse-org text-uppercase" ng-click="addToWishlist(experts._id)">shortlist</button>
 
                     <br>
-                    <button type="button" name="button " class="btn btn-animate-inverse-org text-uppercase mt10" ui-sref="profile">View detail</button>
+                    <button type="button" name="button " class="btn btn-animate-inverse-org text-uppercase mt10" ui-sref="profile({id:experts._id})">View detail</button>
                   </div>
                 </div>
                 <div class="col-md-9" >
@@ -140,7 +140,7 @@
                     <h5 class="color-grey font-light">{{experts.areaOfExpertise}}</h5>
                   </div>
                   <div class="exp-name">
-                    <h4 class="color-primary font-bold">{{experts.firstName}}</h4>
+                    <h4 class="color-primary font-bold">{{experts.firstName + " " +experts.lastName}}</h4>
                   </div>
                   <div class="exp-city">
                     <span class="color-grey">{{experts.addressDetails}}</span>
@@ -151,7 +151,7 @@
                   </div>
                   <div class="exp-brief">
                     <span class="color-success-light font-bold">SALES PITCH:</span>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <p>{{experts.salesPitch}}</p>
                   </div>
                   <div class="exp-brief">
                     <span class="color-success-light font-bold">SPECIALIZATION:</span>

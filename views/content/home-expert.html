@@ -4,43 +4,44 @@
       <div class="row">
         <div class="col-md-6"></div>
         <div class="col-md-6">
-          <div class="exp-signup" ng-hide="formComplete">
+          <div class="exp-signup">
+            <div ng-hide="showform">
             <form name="user">
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="exampleInputEmail1">FIRST NAME</label>
-                    <input type="text" name="fName" class="form-control" id="exampleInputEmail1" ng-model="userForm.fName" required>
-                    <div class="color-white" class="error-msg" ng-if="user.fName.$error.required && user.fName.$touched">Please Enter Your First Name.</div>
+                    <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" ng-model="userForm.firstName" required>
+                    <div class="color-white" class="error-msg" ng-if="user.firstName.$error.required && user.firstName.$touched">Please Enter Your First Name.</div>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="exampleInputEmail1">LAST NAME</label>
-                    <input type="text" name="lName" class="form-control" id="exampleInputEmail1" ng-model="userForm.lName" required>
-                    <div class="color-white" class="error-msg" ng-if="user.lName.$error.required && user.lName.$touched">Please Enter Your Last  Name.</div>
+                    <input type="text" name="lastName" class="form-control" id="exampleInputEmail1" ng-model="userForm.lastName" required>
+                    <div class="color-white" class="error-msg" ng-if="user.lastName.$error.required && user.lastName.$touched">Please Enter Your Last  Name.</div>
                   </div>
                 </div>
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">EMAIL</label>
-                <input type="email" name="emailid" class="form-control" id="exampleInputEmail1" ng-model="userForm.emailid" required>
-                <div class="color-white" class="error-msg" ng-if="user.emailid.$error.required && user.emailid.$touched">Please Enter Your  Email.</div>
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1" ng-model="userForm.email" required>
+                <div class="color-white" class="error-msg" ng-if="user.email.$error.required && user.email.$touched">Please Enter Your  Email.</div>
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">MOBILE NUMBER</label>
-                <input type="text" name="mobile" class="form-control" id="exampleInputEmail1" ng-model="userForm.mobile" required>
-                <div class="color-white" class="error-msg" ng-if="user.mobile.$error.required && user.mobile.$touched">Please Enter Your  Mobile Number.</div>
+                <input type="text" name="mobileno" class="form-control" id="exampleInputEmail1" ng-model="userForm.mobileno" required>
+                <div class="color-white" class="error-msg" ng-if="user.mobileno.$error.required && user.mobileno.$touched">Please Enter Your  Mobile Number.</div>
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">PASSWORD</label>
-                <input type="password" name="pswd" class="form-control" id="exampleInputEmail1" ng-model="userForm.pswd" required>
-                <div class="color-white" class="error-msg" ng-if="user.pswd.$error.required && user.pswd.$touched">Please Enter Your  Password.</div>
+                <input type="password" name="password" class="form-control" id="exampleInputEmail1" ng-model="userForm.password" required>
+                <div class="color-white" class="error-msg" ng-if="user.password.$error.required && user.password.$touched">Please Enter Your  Password.</div>
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">CONFIRM PASSWORD</label>
-                <input type="password" name="confirmPswd" class="form-control" id="exampleInputEmail1" ng-model="userForm.confirmPswd" required>
-                <div class="color-white" class="error-msg" ng-if="user.confirmPswd.$error.required && user.confirmPswd.$touched">Please Confirm Password.</div>
+                <input type="password" name="confirmPassword" class="form-control" id="exampleInputEmail1" ng-model="userForm.confirmPassword" required>
+                <div class="color-white" class="error-msg" ng-if="user.confirmPassword.$error.required && user.confirmPassword.$touched">Please Confirm Password.</div>
               </div>
               <div class="row">
                 <div class="col-md-2">
@@ -55,14 +56,14 @@
                     <label for="exampleInputEmail1">GENDER</label>
                     <div class="rad">
                       <div class="radio-org display-inline">
-                        <input type="radio" id="radio01" name="sex" ng-model="userForm.sex" value="male" required />
+                        <input type="radio" id="radio01" name="gender" ng-model="userForm.gender" value="male" required />
                         <label for="radio01" class="color-primary"><span></span>MALE</label>
                       </div>
                       <div class="radio-org display-inline pl12">
-                        <input type="radio" id="radio02" name="sex" ng-model="userForm.sex" value="female" required />
+                        <input type="radio" id="radio02" name="gender" ng-model="userForm.gender" value="female" required />
                         <label for="radio02" class="color-primary"><span></span>FEMALE</label>
                       </div>
-                      <div class="color-white" class="error-msg" ng-if="user.sex.$error.required && user.sex.$touched">Please Enter Your  Gender.</div>
+                      <div class="color-white" class="error-msg" ng-if="user.gender.$error.required && user.gender.$touched">Please Enter Your  Gender.</div>
                     </div>
                   </div>
                 </div>
@@ -70,25 +71,28 @@
 
 
               <div class="mt25">
-                <button class="btn btn-animate-org" ng-click="userSubmitForm(user)">SUBMIT</button>
+                <button class="btn btn-animate-org" ng-click="expertSignup(user)">SUBMIT</button>
               </div>
 
               <div class="login-lnk mt25">
                 <p class="color-white font-light">Already an Jacknow member?<span class="color-primary pointer" ng-click="openform('Login')"> Log in</span></p>
               </div>
             </form>
+          </div>
             <div class="login-form" ng-show="showform">
-              <form action="">
+              <form name="user">
                 <div class="form-group">
                   <label for="exampleInputEmail1">EMAIL / MOBILE NUMBER</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1">
+                  <input type="email" class="form-control" id="exampleInputEmail1" ng-model="userForm.email" required>
+                  <div class="error-msg" ng-show="user.email.$error.required && user.email.$touched">Please Enter Your Email.</div>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">PASSWORD</label>
-                  <input type="password" class="form-control" id="exampleInputEmail1">
+                  <input type="password" class="form-control" id="exampleInputEmail1" ng-model="userForm.password" required>
+                  <div class="error-msg" ng-show="user.password.$error.required && user.password.$touched">Please Enter Password.</div>
                 </div>
                 <div class="mt25">
-                  <button class="btn btn-org">SUBMIT</button>
+                  <button class="btn btn-org" ng-click="getLogin(user)">SUBMIT</button>
                 </div>
                 <div class="login-lnk mt25">
                   <p class="color-white">Don’t have an account?<span class="color-primary pointer" ng-click="openform()"> Sign up</span></p>
@@ -96,9 +100,9 @@
               </form>
             </div>
           </div>
-          <div class="color-white" class="text-center" ng-show="formComplete">
+          <!-- <div class="color-white" class="text-center" ng-show="formComplete">
         <h3>Submitted Successfully, Thank You!</h3>
-        </div>
+        </div> -->
         </div>
       </div>
     </div>

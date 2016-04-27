@@ -30,6 +30,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log('categories', $scope.categories);
     });
 
+$scope.forgotpswd = {};
+    $scope.forgotpswd = function(formValid) {
+        if (formValid.$valid) {
+
+
+    NavigationService.getForgotpswd($scope.forgotpswd, function(data) {
+        $scope.forgotpswd = data.data;
+        console.log('forgotpswd', $scope.forgotpswd);
+    });
+  }
+};
+
 
     $scope.newsletter = {};
 
@@ -327,12 +339,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.userForm = {};
         $scope.userSignup = function(formValid) {
-            console.log($scope.userForm);
+            console.log('SignupCtrl', $scope.userForm);
             if (formValid.$valid) {
 
                 NavigationService.Signup($scope.userForm, function(data) {
-                    //console.log($scope.userForm.password);
-                    //console.log($scope.userForm.confirmPassword);
+                    console.log($scope.userForm.password);
+                    console.log($scope.userForm.confirmPassword);
                     if ($scope.userForm.password == $scope.userForm.confirmPassword) {
                         $scope.userForm = data.data;
                         //console.log('userformctrl', $scope.userForm);
@@ -409,6 +421,34 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         };
     })
+
+.controller('ChangeExpertPasswordCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
+        $scope.template = TemplateService.changecontent("change-expert-password");
+        $scope.menutitle = NavigationService.makeactive("change-expert-password");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        //$scope.userForm={};
+
+        // NavigationService.getUserEditDetail($stateParams.id, function(data) {
+        //     console.log('getUserEditDetail', data);
+        //     $scope.userForm = data;
+        // });
+        // $scope.userSubmitForm = function(formValid) {
+        //     console.log($scope.userForm);
+        //
+        //     //console.log('on the user');
+        //     if (formValid.$valid) {
+        //
+        //         NavigationService.changePassword($scope.userForm, function(data) {
+        //
+        //             $scope.userForm = data.data;
+        //         });
+        //     }
+        //
+        //
+        // };
+    })
     .controller('ContactCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("contact");
         $scope.menutitle = NavigationService.makeactive("Contact");
@@ -448,7 +488,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
     })
-    .controller('HomeExpertCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+    .controller('HomeExpertCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $window) {
         $scope.template = TemplateService.changecontent("home-expert");
         $scope.menutitle = NavigationService.makeactive("Home-Expert");
         TemplateService.title = $scope.menutitle;
@@ -458,24 +498,50 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.home = "";
         $scope.experthome = "expert-home";
 
+
+
         $scope.userForm = {};
-        $scope.userSubmitForm = function(formValid) {
-            console.log($scope.userForm);
+        $scope.expertSignup = function(formValid) {
+            console.log('HomeExpertCtrl', $scope.userForm);
             if (formValid.$valid) {
-                NavigationService.ExpertRegistrationSubmit($scope.userForm, function(data) {
-                    $scope.formComplete = true;
-                    //console.log('userformctrl', $scope.userForm);
-                    //console.log('$scope.userForm.experienceType',$scope.userForm.experienceType);
-                    // if($scope.userForm.experienceType==company)
-                    // {
-                    //   $scope.myexp=true;
-                    // }
-                    $state.go("home-expert");
+
+                NavigationService.ExpertSignup($scope.userForm, function(data) {
+                    // console.log($scope.userForm.password);
+                    // console.log($scope.userForm.confirmPassword);
+                    if ($scope.userForm.password == $scope.userForm.confirmPassword) {
+                        $scope.userForm = data.data;
+                        //console.log('userformctrl', $scope.userForm);
+                        $state.go("expert-profile");
+                    } else {
+                        $window.alert("Password do not match.");
+                        $scope.userForm.confirmPassword = "";
+                    }
+                    //$scope.formComplete = true;
+
+
                 });
 
+            }
 
+        };
+
+        //
+        //$scope.userForm = {};
+        $scope.getLogin = function(formValid) {
+            //console.log($scope.userForm);
+            if (formValid.$valid) {
+
+                NavigationService.getExpertLogin($scope.userForm, function(data) {
+                    if (data.value == true) {
+                        $scope.userForm = data;
+                        $state.go("expert-profile");
+                    } else {
+
+                    }
+                });
             }
         };
+
 
 
 
@@ -784,13 +850,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.navigation = NavigationService.getnav();
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
-
-
-        $scope.wishlists = {};
         NavigationService.getWishlist($scope.wishlists, function(data) {
             //console.log("in edit blog");
-            $scope.wishlists = data.data;
-            console.log('wishlists', $scope.wishlists);
+            $scope.wishlists = data.data.shortList;
+            console.log('wishlists',$scope.wishlists);
         });
     })
     .controller('SearchCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -810,21 +873,28 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
         $scope.addToWishlist = function(id) {
-            var input = {
+          console.log('funid',id);
+            $scope.input = {
                 expertUser: id,
-
+                timestamp: new Date()
             };
-            NavigationService.addWishlist(input, function(data) {
-                console.log('addWishlist', data);
-                if (data.value === true) {
-                    $scope.mesg.push({
-                        type: 'success',
-                        msg: 'adding to the wishlist'
-                    });
-                }
 
 
-            });
+            NavigationService.getUser(function(user) {
+                user.shortList.push(input);
+                console.log('userid',user._id);
+
+                delete user._id;
+                NavigationService.editProfile(user, function(data) {
+                    // console.log('addWishlist', data);
+                    if (data.value === true) {
+                        $scope.mesg.push({
+                            type: 'success',
+                            msg: 'added to the wishlist'
+                        });
+                    }
+                });
+            })
             $scope.mesg = [];
         };
 
@@ -845,13 +915,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.userMaxPrice = $scope.maxPrice;
     })
 
-.controller('ProfileCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+.controller('ProfileCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
     $scope.template = TemplateService.changecontent("profile");
     $scope.menutitle = NavigationService.makeactive("Profile");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.expertlogo = "";
     $scope.userlogo = "user-page";
+
+    NavigationService.getExpertProfile($stateParams.id, function(data) {
+        console.log('getExpertProfile', data.data);
+        $scope.expertprofile = data.data;
+    });
 
     $scope.tab2 = 'summary';
     $scope.classa = 'expert-active';
@@ -909,18 +984,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
     $scope.userdata = {};
-    NavigationService.getUser($scope.userdata, function(data) {
-      $scope.userdata = data;
-      console.log($scope.userdata._id);
+    NavigationService.getUser(function(data) {
+        $scope.userdata = data;
+        console.log($scope.userdata._id);
 
-      //$scope.
-      // if($scope.userdata._id){
-      //  $window.alert("")
-      //    $scope.loginuser=true;
-      //    $state.go("login");
-      //  }
+        //$scope.
+        // if($scope.userdata._id){
+        //  $window.alert("")
+        //    $scope.loginuser=true;
+        //    $state.go("login");
+        //  }
 
-        console.log('getuser',data);
+        console.log('getuser', data);
     });
     $scope.logout = function() {
         console.log("in me logout/////////////////////////////////");

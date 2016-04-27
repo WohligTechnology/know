@@ -39,24 +39,24 @@
                                         <div class="error-msg" ng-if="user.firstName.$error.required && user.firstName.$touched">Please Enter Your First Name.</div>
                                     </div>
                                     <div class="form-group mt25">
-                                        <label>EMAIL <span class="f10 color-success">( NOT TO BE SHARED PUBLICALY )</span></label>
-                                        <input type="email" name="email" class="form-control" ng-model="userForm.email" required>
-                                        <div class="error-msg" ng-show="user.email.$error.required && user.email.$touched">Please Enter Your Email.</div>
+                                        <label>Sales Pitch <span class="f10 color-success"></span></label>
+                                        <input type="text" name="salesPitch" class="form-control" ng-model="userForm.salesPitch" required>
+                                        <div class="error-msg" ng-show="user.salesPitch.$error.required && user.salesPitch.$touched">Please Enter Your Sales Pitch.</div>
                                     </div>
-                                    <div class="form-group mt25">
+                                    <!--<div class="form-group mt25">
                                         <label>PASSWORD</label>
                                         <input type="password" name="password" class="form-control" ng-model="userForm.password" required>
                                         <div class="error-msg" ng-show="user.password.$error.required && user.password.$touched">Please Enter Password.</div>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group mt25">
                                         <label>GENDER</label>
                                         <div class="rad">
                                             <div class="radio display-inline">
-                                                <input type="radio" id="radio01" name="radio" value="male" ng-model="userForm.gender" required/>
+                                                <input type="radio" id="radio01" name="gender" value="male" ng-model="userForm.gender" required/>
                                                 <label for="radio01"><span></span>MALE</label>
                                             </div>
                                             <div class="radio display-inline pl12">
-                                                <input type="radio" id="radio02" name="radio" value="female" ng-model="userForm.gender" required/>
+                                                <input type="radio" id="radio02" name="gender" value="female" ng-model="userForm.gender" required/>
                                                 <label for="radio02"><span></span>FEMALE</label>
                                             </div>
                                             <div class="error-msg" ng-show="user.gender.$error.required && user.gender.$touched">Please Select Gender.</div>
@@ -76,11 +76,11 @@
                                         <input type="text" name="mobileno" class="form-control" ng-model="userForm.mobileno" required>
                                         <div class="error-msg" ng-show="user.mobileno.$error.required && user.mobileno.$touched">Please Enter Your Mobile No.</div>
                                     </div>
-                                    <div class="form-group mt25">
+                                    <!-- <div class="form-group mt25">
                                         <label>CONFIRM PASSWORD</label>
                                         <input type="password" name="confirmPassword" class="form-control" ng-model="userForm.confirmPassword" required>
                                         <div class="error-msg" ng-show="user.confirmPassword.$error.required && user.confirmPassword.$touched">Please Confirm Your Password.</div>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group mt25">
                                         <label>PROFILE IMAGE</label>
 
@@ -121,7 +121,7 @@
                             <div class="row">
                                 <div class="col-md-12" style="border-top: 1px solid #ccc;">
                                     <div class="save-btn mt25">
-                                        <button class="btn btn-blue font-light text-up f13" ng-click="userSubmitForm(user)">save</button>
+                                        <button class="btn btn-blue font-light text-up f13"  ng-click="userSubmitForm(user);tabchange('professional',2);">save</button>
                                     </div>
                                 </div>
                             </div>
@@ -424,7 +424,7 @@
                             <div class="row ">
                                 <div class="col-md-12" style="border-top: 1px solid #ccc;">
                                     <div class="save-btn mt25">
-                                        <button class="btn btn-blue font-light text-up f13" ng-click="userSubmitForm(user)">save</button>
+                                        <button class="btn btn-blue font-light text-up f13" ng-click="userSubmitForm(user);tabchange('call',3);">save</button>
                                     </div>
                                 </div>
                             </div>
@@ -538,7 +538,7 @@
                             <div class="row">
                                 <div class="col-md-12" style="border-top: 1px solid #ccc;">
                                     <div class="save-btn mt25">
-                                        <button class="btn btn-blue font-light text-up f13" ng-click="userSubmitForm(user)">save</button>
+                                        <button class="btn btn-blue font-light text-up f13" ng-click="userSubmitForm(user);tabchange('bank',4);">save</button>
                                     </div>
                                 </div>
                             </div>
