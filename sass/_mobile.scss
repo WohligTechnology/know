@@ -1,0 +1,21 @@
+@media (max-width: 1200px) {
+
+}
+@media (max-width: $screen-sm-max) {
+
+}
+@media (max-width: $screen-xs-max) {
+//contact
+.form-input{
+  margin-top: 8%;
+}
+}
+@media (max-width: 480px) {
+//contact
+.contact-add{
+  font-size: 12px;
+}
+.form-input {
+    margin-top: 15%;
+}
+}
