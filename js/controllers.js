@@ -30,17 +30,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log('categories', $scope.categories);
     });
 
-$scope.forgotpswd = {};
+    $scope.forgotpswd = {};
     $scope.forgotpswd = function(formValid) {
+        console.log('in fun');
         if (formValid.$valid) {
 
 
-    NavigationService.getForgotpswd($scope.forgotpswd, function(data) {
-        $scope.forgotpswd = data.data;
-        console.log('forgotpswd', $scope.forgotpswd);
-    });
-  }
-};
+            NavigationService.getForgotpswd($scope.forgotpswd, function(data) {
+                $scope.forgotpswd = data.data;
+                console.log('forgotpswd', $scope.forgotpswd);
+            });
+        }
+    };
 
 
     $scope.newsletter = {};
@@ -534,7 +535,7 @@ $scope.forgotpswd = {};
                 NavigationService.getExpertLogin($scope.userForm, function(data) {
                     if (data.value == true) {
                         $scope.userForm = data;
-                        $state.go("expert-profile");
+                        $state.go("expert-booking");
                     } else {
 
                     }
@@ -592,6 +593,13 @@ $scope.forgotpswd = {};
 
             }
         };
+
+        $scope.categorydata = {};
+        NavigationService.getCategory($scope.categorydata, function(data) {
+            $scope.categorydata = data.data;
+            console.log('$scope.categorydata', $scope.categorydata);
+
+        });
         //
         //
         //       $scope.data = {
@@ -853,10 +861,10 @@ $scope.forgotpswd = {};
         NavigationService.getWishlist($scope.wishlists, function(data) {
             //console.log("in edit blog");
             $scope.wishlists = data.data.shortList;
-            console.log('wishlists',$scope.wishlists);
+            console.log('wishlists', $scope.wishlists);
         });
     })
-    .controller('SearchCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('SearchCtrl', function($scope, TemplateService, NavigationService, $timeout, $filter) {
         $scope.template = TemplateService.changecontent("search");
         $scope.menutitle = NavigationService.makeactive("Search");
         TemplateService.title = $scope.menutitle;
@@ -869,20 +877,24 @@ $scope.forgotpswd = {};
         NavigationService.getAllExpert($scope.expertdata, function(data) {
             $scope.expertdata = data.data;
             console.log('expertdata', $scope.expertdata);
+            NavigationService.getUser(function(logindata) {
+                _.each($scope.expertdata, function(n) {
+                    n.showbtn = $filter('showbtn')(n._id, logindata);
+                })
+            })
         });
 
 
+
         $scope.addToWishlist = function(id) {
-          console.log('funid',id);
-            $scope.input = {
+            console.log('funid', id);
+            var input = {
                 expertUser: id,
                 timestamp: new Date()
             };
-
-
             NavigationService.getUser(function(user) {
                 user.shortList.push(input);
-                console.log('userid',user._id);
+                console.log('userid', user._id);
 
                 delete user._id;
                 NavigationService.editProfile(user, function(data) {
@@ -922,11 +934,29 @@ $scope.forgotpswd = {};
     $scope.navigation = NavigationService.getnav();
     $scope.expertlogo = "";
     $scope.userlogo = "user-page";
+    $scope.start = "";
 
     NavigationService.getExpertProfile($stateParams.id, function(data) {
         console.log('getExpertProfile', data.data);
         $scope.expertprofile = data.data;
+        console.log($scope.expertprofile.experience);
+
+        //     for(i=$scope.expertprofile.experience[0];i<$scope.expertprofile.experience.length;i++)
+        // {
+        //   $scope.start=$scope.expertprofile.experience.startDate;
+        //   console.log('start',$scope.start);
+        // }
     });
+    // $scope.monthdiff = function(start, end) {
+    //     var tempDate = new Date(start);
+    //     var monthCount = 0;
+    //     while ((tempDate.getMonth() + '' + tempDate.getFullYear()) != (end.getMonth() + '' + end.getFullYear())) {
+    //         monthCount++;
+    //         tempDate.setMonth(tempDate.getMonth() + 1);
+    //     }
+    //     return monthCount + 1;
+    // }
+
 
     $scope.tab2 = 'summary';
     $scope.classa = 'expert-active';

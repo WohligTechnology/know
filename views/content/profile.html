@@ -26,20 +26,22 @@
               <h4 class="margin0 color-base font-raleway font-bold">{{expertprofile.firstName + " " +expertprofile.lastName}}</h4>
             </div>
             <div class="avl-time">
-              <span class="color-success font-light">Available Time: Mon to Fri, 5pm to 7pm</span>
+              <span class="color-success font-light">Available Time: {{expertprofile.callSettings[0].day}}</span>
             </div>
             <div class="price">
-              <h4 class="color-primary font-bold"> ₹ 500/ 30 MIN</h4>
+              <h4 class="color-primary font-bold"> ₹ {{expertprofile.priceForService}}/ 30 MIN</h4>
             </div>
             <div class="location">
-              <i class="ln-map-marker"> <span>Mumbai, Maharashtra</span> </i>
+              <i class="ln-map-marker"> <span>{{expertprofile.addressDetails}}</span> </i>
             </div>
             <div class="descp ">
-              <p class="color-grey line-80">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                <p class="color-grey line-80">  {{expertprofile.description}}</p>
+              <!-- <p class="color-grey line-80">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p> -->
             </div>
+
             <div class="spl pt15 mt25">
               <h4 class="margin0 color-primary">SPECIALIZATION</h4>
-              <p class="font-bold color-base f10 mt10">WEB DEVELOPER, APP  DEVELOPER, WEB DESIGNER </p>
+              <p class="font-bold color-base f10 mt10">{{expertprofile.specilization}}</p>
             </div>
             <div class="btn-book mt25">
               <button class="btn btn-blue font-raleway text-up" width="100%" ui-sref="book-now">book now</button>
@@ -57,13 +59,19 @@
             </ul>
           </div>
           <div class="summary mt50" ng-if="tab2=='summary'">
-            <h4 class="font-raleway color-success font-med">WEB DEVELOPER</h4>
+            <h4 class="font-raleway color-success font-med">{{expertprofile.areaOfExpertise}}</h4>
             <p class="color-base font-light f16">2 year of experience in MSBI.</p>
-            <p class="color-base font-light f16">My job is direct interaction with client,writing store procedures,functions,Creating and Maintaing Staging Database, backup,restore and optimization of queries in both platform sql_server as well as oracle.creating reports and dashboards.
+            <p class="color-base font-light f16">{{expertprofile.descriptionAndSkills}}
             </p>
           </div>
-          <div class="exps mt50" ng-if="tab2=='exp'">
-            <div class="exp-sec summary">
+          <div class="exps mt50" ng-if="tab2=='exp'" ng-repeat="expertpro in expertprofile.experience">
+             <div class="exp-sec summary">
+              <h4 class="font-raleway color-success font-med margin0">{{expertpro.jobTitle}}</h4>
+              <span class="color-base ">{{expertpro.companyName}}</span>
+              <p class="color-base font-light f16 mt10">{{expertpro.startDate| date:'MMM-yyyy'}} – {{expertpro.endDate| date:'MMM-yyyy'}}</p>
+              <p class="color-base font-light f16">{{expertpro.jobDescription}}</p>
+            </div>
+            <!-- <div class="exp-sec summary">
               <h4 class="font-raleway color-success font-med margin0">JOB TITLE</h4>
               <span class="color-base ">Company name / self employed</span>
               <p class="color-base font-light f16 mt10">October 2015 – Present (6 months)</p>
@@ -74,26 +82,38 @@
               <span class="color-base ">MindCraft Software Pvt. Ltd.</span>
               <p class="color-base font-light f16 mt10">May 2015 – October 2015 (6 months)</p>
               <p class="color-base font-light f16">Consulting companies on their web deveopment needs</p>
-            </div>
+            </div> -->
 
           </div>
-          <div class="edc mt50" ng-if="tab2=='edc'">
+          <div class="edc mt50" ng-if="tab2=='edc'" ng-repeat="exp in expertprofile.educationalQualification">
             <div class="exp-sec summary">
-              <h4 class="font-raleway color-success font-med margin0">BACHELOR OF ENGINEERING</h4>
-              <span class="color-base ">Jorhat Engineering College</span>
-              <p class="color-base font-light f16 mt10">October 2008 (PASSING YEAR)</p>
-              <p class="color-base ">City, Country</p>
+              <h4 class="font-raleway color-success font-med margin0">{{exp.degreeTitle}}</h4>
+              <span class="color-base ">{{exp.instituteName}}</span>
+              <p class="color-base font-light f16 mt10">{{exp.yearOfPassing| date:'MMM-yyyy'}} (PASSING YEAR)</p>
+              <p class="color-base ">{{exp.city}}, {{exp.country}}</p>
             </div>
-            <div class="exp-sec pt20">
+            <!-- <div class="exp-sec pt20">
               <h4 class="font-raleway color-success font-med margin0">HSC</h4>
               <span class="color-base ">Bharat Science College</span>
               <p class="color-base font-light f16 mt10">October 2004 (PASSING YEAR)</p>
               <p class="color-base ">Mumbai, India</p>
-            </div>
+            </div> -->
           </div>
           <div class="awd mt50" ng-if="tab2=='awd'">
             <h4 class="font-raleway color-success font-med margin0">AWARDS AND HONORS</h4>
             <div class="awd-list summary">
+              <ul class="padding0 mt10" ng-repeat="expertaward in expertprofile.awards">
+                <li>
+                  {{expertaward.awardsandhonors}}
+                </li>
+                <!-- <li>
+                  All India Bhartiya Vidyapith Awards
+                </li>
+                <li>Padma Bhushan Awards</li>
+                <li>Angular Hackothan Awards </li> -->
+              </ul>
+            </div>
+            <!-- <div class="awd-list summary">
               <ul class="padding0 mt10">
                 <li>
                   IBN 7 Innovation Awards
@@ -104,49 +124,50 @@
                 <li>Padma Bhushan Awards</li>
                 <li>Angular Hackothan Awards </li>
               </ul>
-            </div>
+            </div> -->
             <div class="awd-list summary pt20">
               <h4 class="font-raleway color-success font-med margin0 text-up">VIDEO</h4>
               <div class="row mt10">
-                <div class="col-md-2">
+                <div class="col-md-2" ng-repeat="video in expertprofile.videoLinks">
                   <div class="video-box pointer">
                   <img src="img/v2.jpg" alt="" class="img-responsive">
                     <div class="play-layer">
-                      <a class="various fancybox.iframe" fancybox href="http://www.youtube.com/embed/daIvWD7U_D8?autoplay=1">  <img src="img/play.png" alt=""></a>
+                      <a class="various fancybox.iframe" fancybox href="{{video.name}}">  <img src="img/play.png" alt=""></a>
                     </div>
                   </div>
                 </div>
-                <div class="col-md-2">
+                <!-- <div class="col-md-2">
                   <div class="video-box pointer">
                     <img src="img/v2.jpg" alt="" class="img-responsive">
                     <div class="play-layer">
                     <a class="various fancybox.iframe" fancybox href="http://www.youtube.com/embed/daIvWD7U_D8?autoplay=1">  <img src="img/play.png" alt=""></a>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="awd-list summary pt20">
               <h4 class="font-raleway color-success font-med margin0 text-up" >photos</h4>
               <div class="row mt10">
-                <div class="col-md-2">
+                <div class="col-md-2" ng-repeat="img in expertprofile.addPhotos">
                   <div class="video-box pointer">
-                    <a class="fancybox2" href="http://farm2.staticflickr.com/1617/24108587812_6c9825d0da_b.jpg" title="Morning Godafoss (Brads5)"><img src="img/v2.jpg" alt="" class="img-responsive"></a>
+                    <a class="fancybox2" href="http://farm2.staticflickr.com/1617/24108587812_6c9825d0da_b.jpg" title="Morning Godafoss (Brads5)"><img src="{{img.image2}}" alt="" class="img-responsive"></a>
                   </div>
                 </div>
-                <div class="col-md-2">
+                <!-- <div class="col-md-2">
                   <div class="video-box pointer">
                       <a class="fancybox2" href="http://farm2.staticflickr.com/1617/24108587812_6c9825d0da_b.jpg" title="Morning Godafoss (Brads5)"><img src="img/v2.jpg" alt="" class="img-responsive"></a>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="awd-list pt20">
               <h4 class="font-raleway color-success font-med margin0 text-up" >publication link</h4>
               <div class="row mt10">
-                <div class="col-md-10">
+                <div class="col-md-10" ng-repeat="publink in expertprofile.publicationLinks">
                   <div class="pub-link">
-                    <a href="" class="color-success">wohlig.co.in/jacknowstest</a>
+                      <a href="" class="color-success">{{publink.name}}</a>
+                    <!-- <a href="" class="color-success">wohlig.co.in/jacknowstest</a> -->
                   </div>
 
                 </div>

@@ -139,11 +139,11 @@
                                     <div class="form-group ">
                                         <label for="exampleInputEmail1">AREA OF EXPERTISE</label>
                                         <select name="areaOfExpertise" class="form-control text-up" ng-model="userForm.areaOfExpertise" required>
-                                            <option>Lawyer</option>
-                                            <option>Financial Adviser</option>
+                                            <option ng-repeat="cat in categorydata">{{cat.name}}</option>
+                                            <!-- <option>Financial Adviser</option>
                                             <option>Musician</option>
                                             <option>Fitness Expert</option>
-                                            <option>Travel Consultant</option>
+                                            <option>Travel Consultant</option> -->
                                         </select>
                                         <div class="error-msg" ng-show="user.areaOfExpertise.$error.required && user.areaOfExpertise.$touched">Please Select Area of Expertise.</div>
                                     </div>
@@ -184,21 +184,21 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">DEGREE TITLE</label>
-                                                <input type="text" name="degreeTitle" class="form-control" ng-model="edu.title" required>
+                                                <input type="text" name="degreeTitle" class="form-control" ng-model="edu.degreeTitle" required>
                                                 <div class="error-msg" ng-show="user.degreeTitle.$error.required && user.degreeTitle.$touched">Please Enter Degree Title.</div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">INSTITUTE NAME</label>
-                                                <input type="text" name="instituteName" class="form-control" ng-model="edu.name" required>
+                                                <input type="text" name="instituteName" class="form-control" ng-model="edu.instituteName" required>
                                                 <div class="error-msg" ng-show="user.instituteName.$error.required && user.instituteName.$touched">Please Enter Institute Name.</div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">YEAR OF PASSING</label>
-                                                <input class="form-control" name="yearOfPassing" ng-model="edu.year" required>
+                                                <input class="form-control" name="yearOfPassing" ng-model="edu.yearOfPassing" required>
                                                 <div class="error-msg" ng-show="user.yearOfPassing.$error.required && user.yearOfPassing.$touched">Please Enter Year Of Passing.</div>
                                             </div>
                                         </div>
@@ -239,11 +239,11 @@
                                     <div class="tab-dis mt25">
                                         <div class="rad">
                                             <div class="radio display-inline">
-                                                <input type="radio" id="radio01" name="radio" value="company" ng-model="experi.experienceType" required />
+                                                <input type="radio" id="radio01" name="company" value="company" ng-model="experi.experienceType" required />
                                                 <label for="radio01"><span></span>COMPANY</label>
                                             </div>
                                             <div class="radio display-inline pl12">
-                                                <input type="radio" id="radio02" name="radio" value="selfemployed" ng-model="experi.experienceType" required />
+                                                <input type="radio" id="radio02" name="selfemployed" value="selfemployed" ng-model="experi.experienceType" required />
                                                 <label for="radio02"><span></span>SELF EMPLOYED</label>
                                             </div>
 
@@ -356,7 +356,7 @@
                                         <div class="form-group mt25">
                                             <label for="exampleInputPassword1">AWARDS AND HONORS</label>
                                             <div ng-repeat="award in moreAwards" ng-value="userForm.awards = moreAwards">
-                                                <input type="text" name="awardsandhonors" class="form-control" id="exampleInputPassword1" ng-model="award.name">
+                                                <input type="text" name="awardsandhonors" class="form-control" id="exampleInputPassword1" ng-model="award.awardsandhonors">
                                             </div>
                                         </div>
                                         <!-- </form> -->
@@ -372,7 +372,7 @@
                                         <div class="form-group mt25">
                                             <label for="exampleInputPassword1">VIDEO LINKS</label>
                                             <div ng-repeat="video in moreVideos" ng-value="userForm.videoLinks = moreVideos">
-                                                <input type="text" name="videoLink" class="form-control" id="exampleInputPassword1" ng-model="video.name">
+                                                <input type="text" name="name" class="form-control" id="exampleInputPassword1" ng-model="video.name">
                                             </div>
                                         </div>
                                         <!-- </form> -->
@@ -387,7 +387,7 @@
                                         <div class="pic custom-li mt25">
                                             <ul class="padding0">
                                                 <li>
-                                                    <img ng-src="{{userForm.image2|uploadpath}}" ng-if="userForm.image2" style="height:200px;">
+                                                    <img ng-src="{{userForm.image2}}" ng-if="userForm.image2" style="height:200px;">
 
                                                 </li>
                                                 <!-- <li>
@@ -414,7 +414,7 @@
                                         <div class="form-group mt25">
                                             <label>ENTER PUBLICATION LINK</label>
                                             <div ng-repeat="link in publilink" ng-value="userForm.publicationLinks = publilink">
-                                                <input type="text" name="" class="form-control" ng-model="link.name">
+                                                <input type="text" name="name" class="form-control" ng-model="link.name">
                                             </div>
                                         </div>
                                         <!-- </form> -->
@@ -441,7 +441,7 @@
                                     <div class="select-dt">
                                         <span class="f13 color-grey">PLEASE SELECT YOUR PREFERRED CALL TIME</span>
                                     </div>
-                                    <div class="rad mt10">
+                                    <div class="rad mt10" ng-value="userForm.callSettings = calldetail">
                                         <div class="radio display-inline">
                                             <input type="radio" id="radio01" name="radio" ng-model="userForm.callTime" value="weekdays" required />
                                             <label for="radio01"><span></span>WEEKDAYS (9AM - 9PM)</label>
@@ -466,7 +466,7 @@
                                                 <div class="form-group display-inline">
                                                     <label for="exampleInputPassword1">SELECT DAY</label>
                                                     <select class="form-control text-up" ng-model="userForm.callday">
-                                                        <option value="{{weekday}}" ng-repeat="weekday in weekdays"></option>
+                                                        <option value="{{weekday}}" ng-repeat="weekday in weekdays">{{weekday}}</option>
                                                         <!-- <option>TUESDAY</option>
                                                         <option>WEDNESDAY</option>
                                                         <option>THURSDAY</option>
@@ -480,7 +480,7 @@
                                                 <!-- </form> -->
                                                 <div class="day-opt custom-li mt25" ng-hide="userForm.callTime=='custom'">
                                                     <ul class="padding0">
-                                                        <li ng-repeat="calls in calldetail track by $index" ng-value="userForm.callSettings = calldetail">{{calls}}
+                                                        <li ng-repeat="calls in calldetail track by $index" ng-value="userForm.customSettings = calldetail">{{calls}}
                                                             <p class="color-success op2 pointer">{{calls.day}}</p>
                                                             <p class="op pointer" ng-click="removeCalls($index)">REMOVE</p>
                                                         </li>
@@ -491,7 +491,7 @@
                                                     </ul>
                                                 </div>
                                                 <div ng-hide="userForm.callTime=='unavailable'">
-                                                    <div class="day-opt2 mt25" ng-repeat="calls in calldetail" ng-value="userForm.callSettings = calldetail">
+                                                    <div class="day-opt2 mt25" ng-repeat="calls in calldetail" ng-value="userForm.unavailableSettings = calldetail">
 
                                                         <div class="closes pull-right">
                                                             <img src="img/close.png" alt="" ng-click="removeCalls($index)">
