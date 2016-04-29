@@ -41,6 +41,13 @@
 .h5center{
   text-align: center;
 }
+//searchbar
+.search-br {
+    width: 75% !important;
+}
+.mrl48{
+  margin-left: 48px;
+}
 }
 @media (max-width: 480px) {
 //contact
@@ -50,4 +57,15 @@
 .form-input {
     margin-top: 15%;
 }
+//searchbar
+.search-br {
+    width: 72% !important;
+}
+.search-btn button {
+    font-size: 12px !important;
+    padding: 10px 12px !important;
+  }
+  .mrl48{
+    margin-left: 0px;
+  }
 }
