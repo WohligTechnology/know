@@ -1080,10 +1080,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log('id headerctrl ', $scope.userdata._id);
         if ($scope.userdata._id) {
             $scope.userLogedin = true;
-        }else{
-          $scope.userLogedin = false;
-          $state.go("login")
-        }
+          }
+        // else{
+        //   $scope.userLogedin = false;
+        //   $state.go("login")
+        // }
 
 
         //$scope.
@@ -1098,7 +1099,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.logout = function() {
         console.log("in me logout/////////////////////////////////");
         NavigationService.getLogout($scope.userdata, function(data) {
-            // $scope.userdata = data;
+            $state.go("home");
             // console.log('headeruserdata', $scope.userdata);
         });
     }
