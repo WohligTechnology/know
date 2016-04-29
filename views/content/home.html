@@ -24,10 +24,10 @@
                     <img src="img/search-mini.png" alt="">
                   </div>
                   <div class="search-br">
-                    <input type="text" name="name" value="" class="form-control" placeholder="Search category, expertname, skill..">
+                    <input type="text" name="name"  class="form-control" placeholder="Search category, expertname, skill.." ng-model="expertdata.search">
                   </div>
-                  <div class="search-btn display-inline">
-                    <button class="btn btn-animate-org" ui-sref="search">SEARCH</button>
+                  <div class="search-btn display-inline"><a ui-sref="search({search:expertdata.search})">
+                    <button class="btn btn-animate-org">SEARCH</button></a>
                   </div>
                 </form>
               </div>

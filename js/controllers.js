@@ -2,7 +2,7 @@ window.uploadurl = "http://wohlig.biz/uploadfile/upload/";
 
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'jkuri.timepicker', 'imageupload'])
 
-.controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
+.controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, $stateParams) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("home");
     $scope.menutitle = NavigationService.makeactive("Home");
@@ -11,6 +11,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.expertlogo = "";
     $scope.userlogo = "";
     $scope.home = "home-page"
+
+
+    // ----for search expert------
+    NavigationService.getSearch($stateParams.search, function(data) {
+        $scope.expertdata = data.data;
+        console.log('getSearchdata', $scope.expertdata);
+        // NavigationService.getUser(function(logindata) {
+        //     _.each($scope.expertdata, function(n) {
+        //         n.showbtn = $filter('showbtn')(n._id, logindata);
+        //     })
+        // })
+    });
 
     $scope.testimonial = {};
     NavigationService.getTestimonial($scope.testimonial, function(data) {
@@ -1042,7 +1054,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 })
 
-.controller('headerctrl', function($scope, TemplateService, NavigationService) {
+.controller('headerctrl', function($scope, TemplateService, NavigationService, $state) {
     $scope.template = TemplateService;
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams, $state) {
         $(window).scrollTop(0);
@@ -1068,6 +1080,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log('id headerctrl ', $scope.userdata._id);
         if ($scope.userdata._id) {
             $scope.userLogedin = true;
+        }else{
+          $scope.userLogedin = false;
+          $state.go("login")
         }
 
 
