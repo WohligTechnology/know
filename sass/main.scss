@@ -1342,7 +1342,7 @@ padding-bottom: 20px;
   @include keyframes(shake) {
     0% { @include transform(rotatez(-25deg)); }
     50% { @include transform(rotatez(25deg)); }
-    100% { @include transform(rotatez(-25deg)); } 
+    100% { @include transform(rotatez(-25deg)); }
   }
 }
 .img-box{
