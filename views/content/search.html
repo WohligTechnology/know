@@ -111,7 +111,8 @@
                     <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center">{{alert.msg}}</uib-alert>
                     <div class="search">
                         <div class="filter-title">
-                            <h4>SEARCH RESULT : 200 RESULT FOUND</h4>
+                            <h4 ng-if="expertdata.length==1 && expertdata.length!>1">SEARCH RESULT : {{expertdata.length}} RESULT FOUND</h4>
+                            <h4 ng-if="expertdata.length>=1">SEARCH RESULT : {{expertdata.length}} RESULT'S FOUND</h4>
                         </div>
                         <div class="search-box" ng-repeat="experts in expertdata">
                             <div class="row">

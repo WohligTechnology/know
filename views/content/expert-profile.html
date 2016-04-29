@@ -480,7 +480,7 @@
                                                 <!-- </form> -->
                                                 <div class="day-opt custom-li mt25" ng-hide="userForm.callTime=='custom'">
                                                     <ul class="padding0">
-                                                        <li ng-repeat="calls in calldetail track by $index" ng-value="userForm.customSettings = calldetail">{{calls}}
+                                                        <li ng-repeat="calls in calldetail track by $index" ng-value="userForm.customSettings = calldetail">
                                                             <p class="color-success op2 pointer">{{calls.day}}</p>
                                                             <p class="op pointer" ng-click="removeCalls($index)">REMOVE</p>
                                                         </li>

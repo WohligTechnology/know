@@ -15,6 +15,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
             templateUrl: "views/template.html",
             controller: 'HomeCtrl'
         })
+
         .state('user-booking', {
             url: "/user-booking",
             templateUrl: "views/template.html",
@@ -61,7 +62,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
             controller: 'ExpertProfileCtrl'
         })
         .state('search', {
-            url: "/search",
+            url: "/search/:search",
             templateUrl: "views/template.html",
             controller: 'SearchCtrl'
         })

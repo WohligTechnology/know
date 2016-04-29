@@ -400,6 +400,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
+        $scope.expertlogo = "";
+        $scope.userlogo = "user-page";
+
+
+
 
         // $scope.userForm = {};
         NavigationService.getUserEditDetail($stateParams.id, function(data) {
@@ -428,6 +433,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("change-expert-password");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+
+        $scope.expertlogo = "expert-page";
+        $scope.userlogo = "";
+
+
 
         //$scope.userForm={};
 
@@ -670,7 +680,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
 
-        $scope.notfound="";
+
         $scope.calldetail = [];
 
         $scope.addCalls = function() {
@@ -678,37 +688,35 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             var matchcall = $scope.userForm.callday;
             //console.log('$scope.userForm.callday', $scope.userForm.callday);
             //console.log('$scope.calldetail', $scope.calldetail);
-            _.each($scope.calldetail, function(data) {
-              console.log('each',data);
-              if (data && data.day) {
-                  var foundIndex = _.findIndex(data, {
-                      "data.day": $scope.userForm.callday
-                  })
-                  if (foundIndex != -1) {
-                    console.log('return No');
-                  } else {
-                    return addCalls;
-                      console.log('return yes');
-                  }
-              } else {
-                  console.log('return yes');
-              }
 
-            });
+            console.log('after $scope.calldetail', $scope.calldetail);
 
-
-            if(addCalls){
-              $scope.calldetail.push({
-                  id: '' + addCalls,
-                  callTime: '',
-                  day: $scope.userForm.callday,
-                  fromTime: '',
-                  toTime: ''
-              });
+            if ($scope.calldetail) {
+                var foundIndex = _.findIndex($scope.calldetail, {
+                    "day": $scope.userForm.callday
+                })
+                if (foundIndex != -1) {
+                    console.log('This is already in array');
+                } else {
+                    $scope.calldetail.push({
+                        id: '' + addCalls,
+                        callTime: '',
+                        day: $scope.userForm.callday,
+                        fromTime: '',
+                        toTime: ''
+                    });
+                }
+            } else {
+                $scope.calldetail.push({
+                    id: '' + addCalls,
+                    callTime: '',
+                    day: $scope.userForm.callday,
+                    fromTime: '',
+                    toTime: ''
+                });
             }
 
-              console.log('after $scope.calldetail', $scope.calldetail);
-
+            //  });
 
         };
 
@@ -888,7 +896,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log('wishlists', $scope.wishlists);
         });
     })
-    .controller('SearchCtrl', function($scope, TemplateService, NavigationService, $timeout, $filter) {
+    .controller('SearchCtrl', function($scope, TemplateService, NavigationService, $timeout, $filter, $stateParams) {
         $scope.template = TemplateService.changecontent("search");
         $scope.menutitle = NavigationService.makeactive("Search");
         TemplateService.title = $scope.menutitle;
@@ -898,15 +906,32 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.mesg = [];
         // TemplateService.header = "./views/header2.html";
 
-        NavigationService.getAllExpert($scope.expertdata, function(data) {
-            $scope.expertdata = data.data;
-            console.log('expertdata', $scope.expertdata);
-            NavigationService.getUser(function(logindata) {
-                _.each($scope.expertdata, function(n) {
-                    n.showbtn = $filter('showbtn')(n._id, logindata);
+        // NavigationService.getAllExpert($scope.expertdata, function(data) {
+        //     $scope.expertdata = data.data;
+        //     console.log('expertdata', $scope.expertdata);
+        //     NavigationService.getUser(function(logindata) {
+        //         _.each($scope.expertdata, function(n) {
+        //             n.showbtn = $filter('showbtn')(n._id, logindata);
+        //         })
+        //     })
+        // });
+
+        $scope.searchExpert = function() {
+            NavigationService.getSearch($stateParams.search, function(data) {
+                $scope.expertdata = data.data;
+                console.log('getSearchdata', $scope.expertdata);
+                NavigationService.getUser(function(logindata) {
+                    _.each($scope.expertdata, function(n) {
+                        n.showbtn = $filter('showbtn')(n._id, logindata);
+                    })
                 })
-            })
-        });
+            });
+        };
+        $scope.searchExpert();
+
+
+
+
 
 
 
@@ -963,7 +988,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     NavigationService.getExpertProfile($stateParams.id, function(data) {
         console.log('getExpertProfile', data.data);
         $scope.expertprofile = data.data;
-        console.log($scope.expertprofile.experience);
+        console.log('$scope.expertprofile.experience', $scope.expertprofile.experience);
 
         //     for(i=$scope.expertprofile.experience[0];i<$scope.expertprofile.experience.length;i++)
         // {
@@ -1040,7 +1065,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.userdata = {};
     NavigationService.getUser(function(data) {
         $scope.userdata = data;
-        console.log($scope.userdata._id);
+        console.log('id headerctrl ', $scope.userdata._id);
+        if ($scope.userdata._id) {
+            $scope.userLogedin = true;
+        }
+
 
         //$scope.
         // if($scope.userdata._id){
@@ -1049,7 +1078,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         //    $state.go("login");
         //  }
 
-        console.log('getuser', data);
+        console.log('getuser in headerctrl', data);
     });
     $scope.logout = function() {
         console.log("in me logout/////////////////////////////////");
@@ -1058,11 +1087,4 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             // console.log('headeruserdata', $scope.userdata);
         });
     }
-})
-
-.controller('ComingsoonCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
-   $scope.template = TemplateService.changecontent("comingsoon");
-   $scope.menutitle = NavigationService.makeactive("Jacknows Coming Soon");
-   TemplateService.title = $scope.menutitle;
-   $scope.navigation = NavigationService.getnav();
 });
