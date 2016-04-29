@@ -670,21 +670,45 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
 
-
+        $scope.notfound="";
         $scope.calldetail = [];
 
         $scope.addCalls = function() {
             var addCalls = $scope.calldetail.length + 1;
             var matchcall = $scope.userForm.callday;
-            console.log('$scope.userForm.callday', $scope.userForm.callday);
-            console.log('$scope.calldetail', $scope.calldetail);
-            $scope.calldetail.push({
-                id: '' + addCalls,
-                callTime: '',
-                day: $scope.userForm.callday,
-                fromTime: '',
-                toTime: ''
+            //console.log('$scope.userForm.callday', $scope.userForm.callday);
+            //console.log('$scope.calldetail', $scope.calldetail);
+            _.each($scope.calldetail, function(data) {
+              console.log('each',data);
+              if (data && data.day) {
+                  var foundIndex = _.findIndex(data, {
+                      "data.day": $scope.userForm.callday
+                  })
+                  if (foundIndex != -1) {
+                    console.log('return No');
+                  } else {
+                    return addCalls;
+                      console.log('return yes');
+                  }
+              } else {
+                  console.log('return yes');
+              }
+
             });
+
+
+            if(addCalls){
+              $scope.calldetail.push({
+                  id: '' + addCalls,
+                  callTime: '',
+                  day: $scope.userForm.callday,
+                  fromTime: '',
+                  toTime: ''
+              });
+            }
+
+              console.log('after $scope.calldetail', $scope.calldetail);
+
 
         };
 
@@ -1034,4 +1058,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             // console.log('headeruserdata', $scope.userdata);
         });
     }
+})
+
+.controller('ComingsoonCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
+   $scope.template = TemplateService.changecontent("comingsoon");
+   $scope.menutitle = NavigationService.makeactive("Jacknows Coming Soon");
+   TemplateService.title = $scope.menutitle;
+   $scope.navigation = NavigationService.getnav();
 });

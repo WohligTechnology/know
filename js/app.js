@@ -104,7 +104,12 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
             url: "/profile/:id",
             templateUrl: "views/template.html",
             controller: 'ProfileCtrl'
-        });
+        })
+        .state('comingsoon', {
+           url: "/comingsoon",
+           templateUrl: "views/template.html",
+           controller: 'ComingsoonCtrl'
+       });
     $urlRouterProvider.otherwise("/home");
     $locationProvider.html5Mode(isproduction);
 });
@@ -129,6 +134,8 @@ firstapp.filter('uploadpath', function() {
 
 firstapp.filter('showbtn', function(NavigationService) {
     return function(input, data) {
+      console.log('input',input);
+      console.log('data',data);
         if (input && data && input != "" && data != "") {
             if (data._id && data.shortList && data.shortList.length > 0) {
                 var foundIndex = _.findIndex(data.shortList, {
