@@ -19,12 +19,12 @@
             <div class="conten-box">
                 <div class="edit-user">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-3 col-xs-7">
                             <h5 class="font-raleway font-bold f17 color-base">EDIT PROFILE</h5>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-2 text-center">
+                        <div class="col-md-2 col-sm-2 col-xs-12 text-center">
                             <div class="user-img mt25">
                                 <!-- <img ng-src="{{userForm.image|uploadpath}}" ng-if="userForm.image" style="height:200px;"> -->
                                 <img ng-src="{{userForm.image}}" ng-if="userForm.image" alt="" class="img-responsive margin-auto">
@@ -36,7 +36,7 @@
               </div> -->
                             </div>
                         </div>
-                        <div class="col-md-offset-1 col-md-4">
+                        <div class="col-md-offset-1 col-md-4 col-sm-offset-1 col-sm-5 col-xs-12">
                                 <div class="form-group mt25">
                                 <label for="exampleInputEmail1">FIRST NAME</label>
                                 <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" ng-model="userForm.firstName" required>
@@ -76,7 +76,7 @@
 
                     </div>
                     <div class="row">
-                        <div class="col-md-12" style="border-top: 1px solid #ccc;">
+                        <div class="col-md-12 col-sm-12 " style="border-top: 1px solid #ccc;">
                             <div class="save-btn mt25">
                                 <button class="btn btn-blue font-light text-up f13" ng-click="userSubmitForm(user)">UPDATE</button>
                                 <button class="btn btn-blue font-light text-up f13" ui-sref="home">CANCEL</button>
