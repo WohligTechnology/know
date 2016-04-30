@@ -7,6 +7,11 @@
   .icon-bx{
     display:block;
   }
+  //profile-expert
+  .f10 {
+    font-size: 9px;
+  }
+
 }
 @media (max-width: $screen-sm-max) {
 //home-expert
@@ -24,7 +29,13 @@
   .padd{
     padding:6px 6px;
   }
-
+ //profile-expert
+ .f10 {
+    font-size: 8px;
+}
+.exp-setting ul li {
+    padding: 0px 15px 10px 15px;
+  }
 }
 @media (max-width: $screen-xs-max) {
 //contact
@@ -80,5 +91,15 @@
   }
   .mrl48{
     margin-left: 0px;
+  }
+  //expert-profile
+  .exp-setting ul li {
+    padding: 0px 42px 10px 42px;
+  }
+  .conten-box{
+        padding: 16px 20px 30px 20px;
+  }
+  .f10{
+    font-size: 7px;
   }
 }
