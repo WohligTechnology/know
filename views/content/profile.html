@@ -26,7 +26,7 @@
               <h4 class="margin0 color-base font-raleway font-bold">{{expertprofile.firstName + " " +expertprofile.lastName}}</h4>
             </div>
             <div class="avl-time">
-              <span class="color-success font-light">Available Time: {{expertprofile.callSettings[0].day}}</span>
+              <span class="color-success font-light">Available Time:<h6 ng-repeat="myday in expertprofile.callSettings"> {{myday.day}}</h6></span>
             </div>
             <div class="price">
               <h4 class="color-primary font-bold"> ₹ {{expertprofile.priceForService}}/ 30 MIN</h4>
@@ -60,15 +60,16 @@
           </div>
           <div class="summary mt50" ng-if="tab2=='summary'">
             <h4 class="font-raleway color-success font-med">{{expertprofile.areaOfExpertise}}</h4>
-            <p class="color-base font-light f16">2 year of experience in MSBI.</p>
-            <p class="color-base font-light f16">{{expertprofile.descriptionAndSkills}}
+            <!-- <p class="color-base font-light f16">2 year of experience in MSBI.</p> -->
+            <p class="color-base font-light f16">{{expertprofile.descriptionAndSkills}}</p>
+            <p class="color-base font-light f16">{{expertprofile.specilization}}
             </p>
           </div>
           <div class="exps mt50" ng-if="tab2=='exp'" ng-repeat="expertpro in expertprofile.experience">
              <div class="exp-sec summary">
               <h4 class="font-raleway color-success font-med margin0">{{expertpro.jobTitle}}</h4>
               <span class="color-base ">{{expertpro.companyName}}</span>
-              <p class="color-base font-light f16 mt10">{{expertpro.startDate| date:'MMM-yyyy'}} – {{expertpro.endDate| date:'MMM-yyyy'}}</p>
+              <p class="color-base font-light f16 mt10">{{expertpro.startDate| date:'MMM-yyyy'}} – {{expertpro.endDate| date:'MMM-yyyy'}} ({{expertpro.duration}} months)</p>
               <p class="color-base font-light f16">{{expertpro.jobDescription}}</p>
             </div>
             <!-- <div class="exp-sec summary">
@@ -92,12 +93,7 @@
               <p class="color-base font-light f16 mt10">{{exp.yearOfPassing| date:'MMM-yyyy'}} (PASSING YEAR)</p>
               <p class="color-base ">{{exp.city}}, {{exp.country}}</p>
             </div>
-            <!-- <div class="exp-sec pt20">
-              <h4 class="font-raleway color-success font-med margin0">HSC</h4>
-              <span class="color-base ">Bharat Science College</span>
-              <p class="color-base font-light f16 mt10">October 2004 (PASSING YEAR)</p>
-              <p class="color-base ">Mumbai, India</p>
-            </div> -->
+
           </div>
           <div class="awd mt50" ng-if="tab2=='awd'">
             <h4 class="font-raleway color-success font-med margin0">AWARDS AND HONORS</h4>

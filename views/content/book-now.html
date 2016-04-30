@@ -1,68 +1,76 @@
 <section class="mt70">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="main-links mt25">
-          <ul class="breadcrumb padding0">
-            <li><a href="#/home" class="text-uppercase">Home</a></li>
-            <li><a href="#" class=" text-uppercase">profile</a></li>
-            <li><a href="#" class="active text-uppercase">book now</a></li>
-          </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="main-links mt25">
+                    <ul class="breadcrumb padding0">
+                        <li><a href="#/home" class="text-uppercase">Home</a></li>
+                        <li><a href="#" class=" text-uppercase">profile</a></li>
+                        <li><a href="#" class="active text-uppercase">book now</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 <section class="">
-  <div class="container">
+    <div class="container">
 
-    <div class="row">
-      <div class="col-md-offset-4 col-md-4">
-        <div class="conten-box">
-          <div class="login-form cust-form">
-            <h4 class="text-up text-center color-base">book now</h4>
+        <div class="row">
+            <div class="col-md-offset-4 col-md-4">
+                <div class="conten-box" ng-hide="formComplete">
+                    <form name="user"  class="form-input">
+                    <div class="login-form cust-form">
+                        <h4 class="text-up text-center color-base">book now</h4>
 
-            <div class="mail mt15 pos-relative">
-              <label for="">Select Date</label>
-              <p class="input-group">
-                <input type="text" class="form-control" uib-datepicker-popup ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
-                <span class="input-group-btn">
+                            <div class="mail mt15 pos-relative">
+                                <label for="">Select Date</label>
+                                <p class="input-group">
+                                    <!-- <input name="bookDate" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.bookDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" /> -->
+                                    <input type="text" name="bookDate" class="form-control" uib-datepicker-popup  is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-model="userForm.bookDate" />
+                                    <span class="input-group-btn">
            <button type="button" class="btn btn-default pad" ng-click="open2()"><i class="ln-calendar3"></i></button>
          </span>
-              </p>
+                                </p>
+                            </div>
+                    </div>
+                    <div class="mail mt15 pos-relative">
+                        <label for="">Select Time</label>
+                        <br>
+
+                        <input type="time" name="" style="width: 100%;height: 34px;" ng-model="userForm.bookTime" required>
+                    </div>
+                    <div class="mail mt15 pos-relative">
+                        <label for="">Select Duration</label>
+                        <select name="duration" class="form-control display-inline pos-relative pointer" ng-model="userForm.CallDuration" value="{{dur}}" required>
+                            <!-- <option>SELECT DURATION</option> -->
+                            <option ng-repeat="dur in duration">{{dur}}</option>
+                            <!-- <option>30 Min</option>
+                            <option>1:30 Min</option>
+                            <option>2 Hr</option> -->
+                        </select>
+                        <div class="error-msg" ng-show="user.duration.$error.required && user.duration.$touched">Please Enter Duration.
+                        </div>
+                        <div class="icon-mail display-inline arrow" style="top: 33px;">
+                            <i class="ln-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="mail mt15">
+                        <label for="">Ask Query</label>
+                        <textarea class="form-control" rows="6" style="resize:none" placeholder="ASK QUERY" ng-model="userForm.query" required></textarea>
+                    </div>
+                    <div class="login-btn mt50">
+                        <button class="btn btn-animate-org f10 font-light" ng-click="userSubmitForm(user)">BOOK NOW</button>
+                    </div>
+
+
+                    </form>
+                </div>
+                <div class="text-center" ng-show="formComplete">
+            <h3>Booking Successfully, Thank You!</h3>
+          </div>
             </div>
-          </div>
-          <div class="mail mt15 pos-relative">
-            <label for="">Select Time</label><br>
-
-           <input type="time" name="" style="width: 100%;height: 34px;"> 
-          </div>
-          <div class="mail mt15 pos-relative">
-            <label for="">Select Duration</label>
-            <select class="form-control display-inline pos-relative pointer">
-              <option>SELECT DURATION</option>
-              <option>1 Hr</option>
-              <option>30 Min</option>
-              <option>1:30 Min</option>
-              <option>2 Hr</option>
-            </select>
-            <div class="icon-mail display-inline arrow" style="top: 33px;">
-              <i class="ln-chevron-down"></i>
-            </div>
-          </div>
-          <div class="mail mt15">
-            <label for="">Ask Query</label>
-            <textarea class="form-control" rows="6" style="resize:none" placeholder="ASK QUERY"></textarea>
-          </div>
-          <div class="login-btn mt50">
-            <button class="btn btn-animate-org f10 font-light">BOOK NOW</button>
-          </div>
-
-
-          </form>
         </div>
-      </div>
     </div>
-  </div>
-  </div>
+    </div>
 </section>

@@ -314,6 +314,14 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
+        getBooking: function(input, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'Booking/saveData',
+                method: 'POST',
+                data: input
+            }).success(callback);
+        },
 
         makeactive: function(menuname) {
             for (var i = 0; i < navigation.length; i++) {

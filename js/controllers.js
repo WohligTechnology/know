@@ -241,6 +241,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
 
+        $scope.duration=['1 Hr','30 Min','1:30 Min','2 Hr'];
+
+        $scope.userForm = {};
+        $scope.userSubmitForm = function(formValid) {
+            console.log($scope.userForm);
+            if (formValid.$valid) {
+                $scope.formComplete = true;
+                NavigationService.getBooking($scope.userForm, function(data) {
+                    //console.log('userformctrl', $scope.userForm);
+
+                });
+
+            }
+
+        };
+
         $scope.today = function() {
             $scope.dt = new Date();
         };
@@ -931,12 +947,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.searchExpert = function() {
             NavigationService.getSearch($stateParams.search, function(data) {
                 $scope.expertdata = data.data;
-                console.log('getSearchdata', $scope.expertdata);
-                NavigationService.getUser(function(logindata) {
-                    _.each($scope.expertdata, function(n) {
-                        n.showbtn = $filter('showbtn')(n._id, logindata);
-                    })
-                })
+                if($scope.expertdata.length==0)
+                {
+                  $scope.notfound=true;
+                }else {
+                  console.log('getSearchdata', $scope.expertdata);
+                  NavigationService.getUser(function(logindata) {
+                      _.each($scope.expertdata, function(n) {
+                          n.showbtn = $filter('showbtn')(n._id, logindata);
+                      })
+                  })
+                }
+
             });
         };
         $scope.searchExpert();
@@ -1001,22 +1023,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log('getExpertProfile', data.data);
         $scope.expertprofile = data.data;
         console.log('$scope.expertprofile.experience', $scope.expertprofile.experience);
-
-        //     for(i=$scope.expertprofile.experience[0];i<$scope.expertprofile.experience.length;i++)
+        //
+        //     for(i=0;i<$scope.expertprofile.experience.length;i++)
         // {
-        //   $scope.start=$scope.expertprofile.experience.startDate;
-        //   console.log('start',$scope.start);
-        // }
+        var length = $scope.expertprofile.experience.length;
+        // console.log('length',length);
+        for (var i = 0; i < length; i++) {
+          var oneDay = 24 * 60 * 60 * 1000;
+          var startdt=new Date($scope.expertprofile.experience[i].startDate);
+          var enddt=new Date($scope.expertprofile.experience[i].endDate);
+          var diffDays = Math.round(Math.abs((startdt.getTime() - enddt.getTime()) / (oneDay)));
+          console.log(diffDays);
+          var diffDays=parseInt(diffDays);
+          console.log('diffDays',diffDays);
+          var months = Math.floor(diffDays/31);
+          console.log('months',months);
+          $scope.expertprofile.experience[i].duration =months;
+
+};
+
+
     });
-    // $scope.monthdiff = function(start, end) {
-    //     var tempDate = new Date(start);
-    //     var monthCount = 0;
-    //     while ((tempDate.getMonth() + '' + tempDate.getFullYear()) != (end.getMonth() + '' + end.getFullYear())) {
-    //         monthCount++;
-    //         tempDate.setMonth(tempDate.getMonth() + 1);
-    //     }
-    //     return monthCount + 1;
-    // }
 
 
     $scope.tab2 = 'summary';

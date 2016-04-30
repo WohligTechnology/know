@@ -114,7 +114,7 @@
                             <h4 ng-if="expertdata.length==1 && expertdata.length<=1">SEARCH RESULT : {{expertdata.length}} RESULT FOUND</h4>
                             <h4 ng-if="expertdata.length>=1 && expertdata.length!=1">SEARCH RESULT : {{expertdata.length}} RESULT'S FOUND</h4>
                         </div>
-                        <div class="search-box" ng-repeat="experts in expertdata">
+                        <div class="search-box" ng-repeat="experts in expertdata" ng-hide="notfound">
                             <div class="row">
                                 <div class="col-md-3 col-sm-4">
                                     <div class="search-img margin-auto">
@@ -163,6 +163,9 @@
                                 </div>
                             </div>
                         </div>
+                        <div ng-show="notfound" class="showerror">
+   <h3 class="text-center">No Result Found!</h3>
+ </div>
                         <!-- <div class="search-box mt20">
               <div class="row">
                 <div class="col-md-3">
