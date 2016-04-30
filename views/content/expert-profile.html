@@ -17,7 +17,7 @@
     <div class="container">
         <div class="conten-box">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 col-sm-12">
                     <div class="exp-setting custom-li">
                         <ul class="padding0">
                             <li class="{{classa}} text-up" ng-click="tabchange('personal',1)">Personal DetailS</li>
@@ -32,7 +32,7 @@
                                 <h5 class="font-raleway font-bold f17 color-base">PERSONAL INFORMATION</h5>
                             </div>
                             <div class="row mt25">
-                                <div class="col-md-4">
+                                <div class="col-md-4 col-sm-5">
                                     <div class="form-group ">
                                         <label for="exampleInputEmail1">FIRST NAME</label>
                                         <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" ng-model="userForm.firstName" required>
@@ -64,7 +64,7 @@
                                     </div>
                                     <!-- </form> -->
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 col-sm-5">
                                     <!-- <form action=""  class="form-input"> -->
                                     <div class="form-group ">
                                         <label>LAST NAME</label>
@@ -108,7 +108,7 @@
                                 <h5 class="font-raleway font-bold f17 color-base">ADDRESS DETAILS</h5>
                             </div>
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-md-8 col-sm-9">
                                     <!-- <form action="" name="user" class="form-input "> -->
                                     <div class="form-group mt25 pb20">
                                         <label>FULL ADDRESS <span class="f10 color-success">( NOT TO BE SHARED PUBLICALY )</span></label>
@@ -118,8 +118,8 @@
                                     <!-- </form> -->
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12" style="border-top: 1px solid #ccc;">
+                            <div class="row" style="border-top: 1px solid #ccc;margin:0px">
+                                <div class="col-md-12 col-sm-12" >
                                     <div class="save-btn mt25">
                                         <button class="btn btn-blue font-light text-up f13"  ng-click="userSubmitForm(user);tabchange('professional',2);">save</button>
                                     </div>
@@ -134,7 +134,7 @@
                             </div>
 
                             <div class="row mt25">
-                                <div class="col-md-4">
+                                <div class="col-md-6 col-sm-6">
                                     <!-- <form name="user" class="form-input"> -->
                                     <div class="form-group ">
                                         <label for="exampleInputEmail1">AREA OF EXPERTISE</label>
@@ -154,7 +154,7 @@
                                     </div>
                                     <!-- </form> -->
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6 col-sm-6">
                                     <!-- <form action="" class="form-input"> -->
                                     <div class="form-group">
                                         <label>short descrpition</label>
@@ -181,21 +181,21 @@
 
                                     <div class="row mt25">
                                         <!-- <form action="" class="form-input"> -->
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 col-sm-4">
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">DEGREE TITLE</label>
                                                 <input type="text" name="degreeTitle" class="form-control" ng-model="edu.degreeTitle" required>
                                                 <div class="error-msg" ng-show="user.degreeTitle.$error.required && user.degreeTitle.$touched">Please Enter Degree Title.</div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 col-sm-4">
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">INSTITUTE NAME</label>
                                                 <input type="text" name="instituteName" class="form-control" ng-model="edu.instituteName" required>
                                                 <div class="error-msg" ng-show="user.instituteName.$error.required && user.instituteName.$touched">Please Enter Institute Name.</div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 col-sm-4">
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">YEAR OF PASSING</label>
                                                 <input class="form-control" name="yearOfPassing" ng-model="edu.yearOfPassing" required>
@@ -206,14 +206,14 @@
                                     </div>
                                     <div class="row mt25">
                                         <!-- <form action="" class="form-input"> -->
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 col-sm-4">
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">CITY</label>
                                                 <input type="text" name="city" class="form-control" ng-model="edu.city" required>
                                                 <div class="error-msg" ng-show="user.city.$error.required && user.city.$touched">Please Enter City.</div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 col-sm-4">
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">COUNTRY</label>
                                                 <input type="text" name="country" class="form-control" ng-model="edu.country" required>
@@ -250,14 +250,14 @@
                                         </div>
                                     </div>
                                     <div class="row mt25">
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 col-sm-4">
                                             <div class="form-group" ng-if="experi.experienceType=='company'">
                                                 <label for="exampleInputPassword1">COMPANY NAME</label>
                                                 <input type="text" name="companyName" class="form-control" id="exampleInputPassword1" ng-model="experi.companyName" required>
                                                 <div class="error-msg" ng-show="user.companyName.$error.required && user.companyName.$touched">Please Enter Company Name.</div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 col-sm-4">
                                             <div class="form-group" ng-if="experi.experienceType=='company'">
                                                 <label for="exampleInputPassword1">JOB TITLE</label>
                                                 <input type="text" name="jobTitle" class="form-control" id="exampleInputPassword1" ng-model="experi.jobTitle" required>
@@ -266,7 +266,7 @@
                                         </div>
                                     </div>
                                     <div class="row mt25">
-                                        <div class="col-md-8">
+                                        <div class="col-md-8 col-sm-8">
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">JOB DESCRIPTION</label>
                                                 <textarea class="form-control" name="jobDescription" rows="4" style="resize: none;" ng-model="experi.jobDescription" required></textarea>
@@ -275,7 +275,7 @@
                                         </div>
                                     </div>
                                     <div class="row mt25">
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 col-sm-4">
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">START DATE</label>
                                                 <p class="input-group">
@@ -288,7 +288,7 @@
                                                 </p>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 col-sm-4">
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">END DATE</label>
                                                 <p class="input-group">
@@ -301,7 +301,7 @@
                                                 </p>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 col-sm-4">
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">COMPANY LOGO</label>
                                                 <div class="pro-im mt10">
@@ -330,7 +330,7 @@
                                     <h5 class="font-raleway font-bold f17 color-base text-up">DESCRIPTION AND SKILL </h5>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-8 col-sm-8">
                                         <!-- <form action="" class="form-input"> -->
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">DETAIL DESCRIPTION <span class="f10 color-success">(TELL US ABOUT YOUR  SKILL)</span></label>
@@ -345,7 +345,7 @@
                             <div class="awd mt20 pt20" style="border-top: 1px solid #ccc;">
                                 <span class="color-success f13">INFORMATION BELOW THE OPTIONAL</span>
                                 <div class="row mt25 pb20">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 col-sm-4">
                                         <div class="set-title display-inline">
                                             <h5 class="font-raleway font-bold f17 color-base text-up">AWARDS AND HONORS</h5>
                                         </div>
@@ -361,7 +361,7 @@
                                         </div>
                                         <!-- </form> -->
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 col-sm-4">
                                         <div class="set-title display-inline">
                                             <h5 class="font-raleway font-bold f17 color-base text-up">VIDEO LINKS</h5>
                                         </div>
@@ -377,7 +377,7 @@
                                         </div>
                                         <!-- </form> -->
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 col-sm-4">
                                         <div class="set-title display-inline">
                                             <h5 class="font-raleway font-bold f17 color-base text-up">ADD PHOTOS</h5>
                                         </div>
@@ -403,7 +403,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 col-sm-5">
                                         <div class="set-title display-inline">
                                             <h5 class="font-raleway font-bold f17 color-base text-up">PUBLICATION LINK</h5>
                                         </div>
@@ -422,7 +422,7 @@
                                 </div>
                             </div>
                             <div class="row ">
-                                <div class="col-md-12" style="border-top: 1px solid #ccc;">
+                                <div class="col-md-12 col-sm-12" style="border-top: 1px solid #ccc;">
                                     <div class="save-btn mt25">
                                         <button class="btn btn-blue font-light text-up f13" ng-click="userSubmitForm(user);tabchange('call',3);">save</button>
                                     </div>
