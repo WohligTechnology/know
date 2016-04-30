@@ -21,16 +21,16 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-4">
                     <div class="filter">
                         <div class="filter-title">
                             <h4 class="text-uppercase">filter</h4>
                         </div>
                         <div class="filter-box">
-                            <form action="">
+                            <form>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">AREA OF EXPERTISE</label>
-                                    <input type="email" class="form-control filter-input" id="exampleInputEmail1" placeholder="eg. doctor, surgeon, etc.">
+                                    <input type="email" class="form-control padd filter-input" id="exampleInputEmail1" placeholder="eg. doctor, surgeon, etc.">
                                     <div class="checkbox">
                                         <div class="">
                                             <input type="checkbox" id="doc">
@@ -107,7 +107,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8 col-sm-8">
                     <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center">{{alert.msg}}</uib-alert>
                     <div class="search">
                         <div class="filter-title">
@@ -116,7 +116,7 @@
                         </div>
                         <div class="search-box" ng-repeat="experts in expertdata">
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-3 col-sm-4">
                                     <div class="search-img margin-auto">
                                         <img ng-src="{{experts.image}}" alt="">
                                     </div>
@@ -127,7 +127,7 @@
                                         <button type="button" name="button " class="btn btn-animate-inverse-org text-uppercase mt10" ui-sref="profile({id:experts._id})">View detail</button>
                                     </div>
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-md-9 col-sm-8">
                                     <div class="search-info">
                                         <div class="pull-right">
                                             <div class="pric font-bold color-success">

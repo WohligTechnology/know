@@ -20,6 +20,11 @@
   .icon-bx{
     display:inline-block;
   }
+  //search
+  .padd{
+    padding:6px 6px;
+  }
+
 }
 @media (max-width: $screen-xs-max) {
 //contact
@@ -47,6 +52,14 @@
 }
 .mrl48{
   margin-left: 48px;
+}
+//search
+
+.filter {
+   padding-right: 0;
+  .filter-title h4{
+    font-size: 16px;
+  }
 }
 }
 @media (max-width: 480px) {
