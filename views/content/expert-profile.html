@@ -128,7 +128,7 @@
                         </form>
                     </div>
                     <div class="exp-prof mt30" ng-if="tab2=='professional'">
-                        <form name="user" class="form-input">
+                        <form name="user" class="form-input fsize">
                             <div class="set-title">
                                 <h5 class="font-raleway font-bold f17 color-base text-up">Professional INFORMATION</h5>
                             </div>
@@ -345,7 +345,7 @@
                             <div class="awd mt20 pt20" style="border-top: 1px solid #ccc;">
                                 <span class="color-success f13">INFORMATION BELOW THE OPTIONAL</span>
                                 <div class="row mt25 pb20">
-                                    <div class="col-md-4 col-sm-4">
+                                    <div class="col-md-4 col-sm-7">
                                         <div class="set-title display-inline">
                                             <h5 class="font-raleway font-bold f17 color-base text-up">AWARDS AND HONORS</h5>
                                         </div>
@@ -361,7 +361,7 @@
                                         </div>
                                         <!-- </form> -->
                                     </div>
-                                    <div class="col-md-4 col-sm-4">
+                                    <div class="col-md-4 col-sm-7">
                                         <div class="set-title display-inline">
                                             <h5 class="font-raleway font-bold f17 color-base text-up">VIDEO LINKS</h5>
                                         </div>
@@ -377,7 +377,7 @@
                                         </div>
                                         <!-- </form> -->
                                     </div>
-                                    <div class="col-md-4 col-sm-4">
+                                    <div class="col-md-4 col-sm-7">
                                         <div class="set-title display-inline">
                                             <h5 class="font-raleway font-bold f17 color-base text-up">ADD PHOTOS</h5>
                                         </div>
@@ -441,7 +441,7 @@
                                     <div class="select-dt">
                                         <span class="f13 color-grey">PLEASE SELECT YOUR PREFERRED CALL TIME</span>
                                     </div>
-                                    <div class="rad mt10" ng-value="userForm.callSettings = calldetail">
+                                    <div class="rad radi mt10" ng-value="userForm.callSettings = calldetail">
                                         <div class="radio display-inline">
                                             <input type="radio" id="radio01" name="radio" ng-model="userForm.callTime" value="weekdays" required />
                                             <label for="radio01"><span></span>WEEKDAYS (9AM - 9PM)</label>
@@ -461,7 +461,7 @@
                                     </div>
                                     <div class="call-det mt25">
                                         <div class="row" ng-if="userForm.callTime=='custom' || userForm.callTime=='unavailable'">
-                                            <div class="col-md-3 pb20" ng-value="userForm.callSettings = calldetail">
+                                            <div class="col-md-4 col-sm-5 col-xs-12 pb20" ng-value="userForm.callSettings = calldetail">
                                                 <!-- <form action="" class="form-input"> -->
                                                 <div class="form-group display-inline">
                                                     <label for="exampleInputPassword1">SELECT DAY</label>
@@ -536,7 +536,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12" style="border-top: 1px solid #ccc;">
+                                <div class="col-md-12 col-sm-12 ol-xs-12" style="border-top: 1px solid #ccc;">
                                     <div class="save-btn mt25">
                                         <button class="btn btn-blue font-light text-up f13" ng-click="userSubmitForm(user);tabchange('bank',4);">save</button>
                                     </div>
@@ -545,13 +545,13 @@
                         </form>
                     </div>
                     <div class="exp-bank mt30" ng-if="tab2=='bank'">
-                        <span class="text-up color-success f13">THese details are important for us to remit funds for the calls that you have made</span>
+                        <span class="text-up color-success f13">These details are important for us to remit funds for the calls that you have made</span>
                         <div class="set-title mt25">
                             <h5 class="font-raleway font-bold f17 color-base text-up">BANK DETAILS</h5>
                         </div>
                         <form name="user" class="form-input">
                             <div class="row mt25 pb20">
-                                <div class="col-md-4">
+                                <div class="col-md-4 col-sm-5">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">NAME OF ACCOUNT HOLDER</label>
                                         <input type="text" name="accountHolderName" class="form-control" id="exampleInputEmail1" ng-model="userForm.accountHolderName" required>
@@ -587,7 +587,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 col-sm-5">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">TYPE OF ACCOUNT</label>
                                         <select class="form-control" ng-model="userForm.typeOfAccount" >
@@ -617,7 +617,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-md-12" style="border-top: 1px solid #ccc;">
+                                <div class="col-md-12 col-sm-12 col-xs-12" style="border-top: 1px solid #ccc;">
                                     <div class="save-btn mt25">
                                         <button class="btn btn-blue font-light text-up f13" ng-click="userSubmitForm(user)">save</button>
                                     </div>

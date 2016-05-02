@@ -11,7 +11,11 @@
   .f10 {
     font-size: 9px;
   }
-
+  .login-btn{
+    .f10 {
+      font-size: 12px;
+    }
+  }
 }
 @media (max-width: $screen-sm-max) {
 //home-expert
@@ -33,6 +37,11 @@
  .f10 {
     font-size: 8px;
 }
+.login-btn{
+  .f10 {
+    font-size: 12px;
+  }
+}
 .exp-setting ul li {
     padding: 0px 15px 10px 15px;
   }
@@ -53,6 +62,11 @@
 .mt30{
   margin-top: 0;
 }
+.day-opt2{
+  .mt30{
+    margin-top: 30px;
+  }
+}
 //changepassword and changeexpertpassword
 .h5center{
   text-align: center;
@@ -70,6 +84,39 @@
    padding-right: 0;
   .filter-title h4{
     font-size: 16px;
+  }
+}
+//expert-profile
+.fsize{
+  label{
+    font-size: 11px;
+  }
+}
+.add {
+    padding: 0px 4px 0px 4px;
+    i{
+      font-size: 11px;
+    }
+}
+.f17{
+  font-size: 14px;
+}
+.call-sett{
+  .f13{
+    font-size: 12px;
+  }
+}
+.call-time{
+  .f13{
+    font-size: 12px;
+  }
+}
+.radi{
+  .display-inline{
+    display: block;
+  }
+  .pl12{
+    padding-left: 0px;
   }
 }
 }
@@ -101,5 +148,11 @@
   }
   .f10{
     font-size: 7px;
+  }
+  //book-now
+  .login-btn{
+  .f10{
+    font-size: 12px;
+  }
   }
 }
