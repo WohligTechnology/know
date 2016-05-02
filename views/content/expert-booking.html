@@ -25,15 +25,15 @@
               <p class="font-bold tag-line ">These calls have been requested for  </p>
             </div>
             <div class="row mt20">
-              <div class="col-md-3">
+              <!-- <div class="col-md-3" ng-repeat="book in bookexpert">
                 <div class="outline-single">
                   <div class="single-payment">
                     <div class="user-bg">
-                      <!-- <div class="user-imgholder margin-auto">
+                      / <div class="user-imgholder margin-auto">
                         <img src="img/search-pro2.jpg" alt="" class="img-responsive">
-                      </div> -->
+                      /</div>
                       <div class="display-inline">
-                        <span class="name block font-bold mt5">Sohan Honakeri</span>
+                        <span class="name block font-bold mt5">{{book.expert.firstName + " " +book.expert.lastName}}</span>
                       </div>
                       <div class="display-inline pull-right">
                         <span class="price color-success block font-bold mt5"><i class="fa fa-inr"></i> 500/-</span>
@@ -88,13 +88,13 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
               <div class="col-md-3">
                 <div class="outline-single">
                   <div class="single-payment">
                     <div class="user-bg">
-                      <!-- <div class="user-imgholder margin-auto">
+                       <!-- <div class="user-imgholder margin-auto">
                         <img src="img/search-pro2.jpg" alt="" class="img-responsive">
                       </div> -->
                       <div class="display-inline">

@@ -201,18 +201,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.formComplete = true;
         };
 
-        $scope.userBook = function() {
+        $scope.userBook = function(status) {
+          console.log("here");
+            $scope.userBooking.status = status;
             NavigationService.getUserBooking($scope.userBooking, function(data) {
-                $scope.userBooking = data.data;
-                $scope.userBooking.bookDate = new Date();
-                $scope.userBooking.bookTime = new Date();
+                // $scope.userBooking = data.data;
+                // $scope.userBooking.bookDate = new Date();
+                // $scope.userBooking.bookTime = new Date();
                 // $scope.userBooking.bookDate=$scope.userBooking.bookDate.toString().split('TO');
                 // console.log('var dateParts',$scope.userBooking.bookDate);
                 console.log('userBooking', $scope.userBooking);
             });
         }
 
-        $scope.userBook();
+        $scope.userBook('accept');
 
 
     })
@@ -226,9 +228,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.userlogo = "";
 
 
-        NavigationService.getBooking($scope.bookexpert, function(data) {
+        NavigationService.getBookingData($scope.bookexpert, function(data) {
             //console.log("in edit blog");
-            $scope.bookexpert = data.data.shortList;
+            $scope.bookexpert = data.data;
             console.log('bookexpert', $scope.bookexpert);
         });
 
@@ -249,7 +251,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
 
-        $scope.duration=['1 Hr','30 Min','1:30 Min','2 Hr'];
+        $scope.duration = ['1 Hr', '30 Min', '1:30 Min', '2 Hr'];
 
         $scope.userForm = {};
         $scope.userSubmitForm = function(formValid) {
@@ -257,16 +259,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             if (formValid.$valid) {
 
                 NavigationService.getBooking($scope.userForm, function(data) {
-                  $scope.userForm=data.data;
-                  $scope.userForm.bookDate=new Date();
-                  $scope.userForm.bookTime=new Date();
-                  if(data.value==true)
-                  {
-                    $scope.formComplete = true;
-                    console.log('booknow', $scope.userForm);
-                  }else{
-                    $window.alert("User Not Logged in");
-                  }
+                    $scope.userForm = data.data;
+                    $scope.userForm.bookDate = new Date();
+                    $scope.userForm.bookTime = new Date();
+                    if (data.value == true) {
+                        $scope.formComplete = true;
+                        console.log('booknow', $scope.userForm);
+                    } else {
+                        $window.alert("User Not Logged in");
+                    }
 
                 });
 
@@ -970,16 +971,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.searchExpert = function() {
             NavigationService.getSearch($stateParams.search, function(data) {
                 $scope.expertdata = data.data;
-                if($scope.expertdata.length==0)
-                {
-                  $scope.notfound=true;
-                }else {
-                  console.log('getSearchdata', $scope.expertdata);
-                  NavigationService.getUser(function(logindata) {
-                      _.each($scope.expertdata, function(n) {
-                          n.showbtn = $filter('showbtn')(n._id, logindata);
-                      })
-                  })
+                if ($scope.expertdata.length == 0) {
+                    $scope.notfound = true;
+                } else {
+                    console.log('getSearchdata', $scope.expertdata);
+                    NavigationService.getUser(function(logindata) {
+                        _.each($scope.expertdata, function(n) {
+                            n.showbtn = $filter('showbtn')(n._id, logindata);
+                        })
+                    })
                 }
 
             });
@@ -1050,18 +1050,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         var length = $scope.expertprofile.experience.length;
         // console.log('length',length);
         for (var i = 0; i < length; i++) {
-          var oneDay = 24 * 60 * 60 * 1000;
-          var startdt=new Date($scope.expertprofile.experience[i].startDate);
-          var enddt=new Date($scope.expertprofile.experience[i].endDate);
-          var diffDays = Math.round(Math.abs((startdt.getTime() - enddt.getTime()) / (oneDay)));
-          console.log(diffDays);
-          var diffDays=parseInt(diffDays);
-          console.log('diffDays',diffDays);
-          var months = Math.floor(diffDays/31);
-          console.log('months',months);
-          $scope.expertprofile.experience[i].duration =months;
+            var oneDay = 24 * 60 * 60 * 1000;
+            var startdt = new Date($scope.expertprofile.experience[i].startDate);
+            var enddt = new Date($scope.expertprofile.experience[i].endDate);
+            var diffDays = Math.round(Math.abs((startdt.getTime() - enddt.getTime()) / (oneDay)));
+            console.log(diffDays);
+            var diffDays = parseInt(diffDays);
+            console.log('diffDays', diffDays);
+            var months = Math.floor(diffDays / 31);
+            console.log('months', months);
+            $scope.expertprofile.experience[i].duration = months;
 
-};
+        };
 
 
     });
@@ -1128,7 +1128,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log('id headerctrl ', $scope.userdata._id);
         if ($scope.userdata._id) {
             $scope.userLogedin = true;
-          }
+        }
         // else{
         //   $scope.userLogedin = false;
         //   $state.go("login")

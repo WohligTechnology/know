@@ -47,7 +47,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
             controller: 'ChangeExpertPasswordCtrl'
         })
         .state('book-now', {
-            url: "/book-now",
+            url: "/book-now/:id",
             templateUrl: "views/template.html",
             controller: 'BookNowCtrl'
         })

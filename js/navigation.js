@@ -126,10 +126,13 @@ var navigationservice = angular.module('navigationservice', [])
         getUserBooking: function(formData, callback) {
             //console.log('Navigation form data: ', formData);
             $http({
-                url: adminurl + 'Booking/getAll',
+                url: adminurl + 'Booking/getBooking',
                 method: 'POST',
                 withCredentials: true,
-                data: formData
+                data:{
+                    "status": formData.status
+                }
+
             }).success(callback);
         },
         feedbackSubmit: function(formData, callback) {
@@ -322,7 +325,7 @@ var navigationservice = angular.module('navigationservice', [])
                 data: input
             }).success(callback);
         },
-        getBooking: function(formData, callback) {
+        getBookingData: function(formData, callback) {
             //console.log('Navigation form data: ', formData);
             $http({
                 url: adminurl + 'Booking/getBooking',
