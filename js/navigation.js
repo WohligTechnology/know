@@ -322,6 +322,16 @@ var navigationservice = angular.module('navigationservice', [])
                 data: input
             }).success(callback);
         },
+        getBooking: function(formData, callback) {
+            //console.log('Navigation form data: ', formData);
+            $http({
+                url: adminurl + 'Booking/getBooking',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+
+            }).success(callback);
+        },
 
         makeactive: function(menuname) {
             for (var i = 0; i < navigation.length; i++) {

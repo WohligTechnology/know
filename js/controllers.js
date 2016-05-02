@@ -224,6 +224,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         // TemplateService.header = "./views/header2.html";
         $scope.expertlogo = "expert-page";
         $scope.userlogo = "";
+
+
+        NavigationService.getBooking($scope.bookexpert, function(data) {
+            //console.log("in edit blog");
+            $scope.bookexpert = data.data.shortList;
+            console.log('bookexpert', $scope.bookexpert);
+        });
+
     })
     .controller('AboutCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("about");
@@ -233,7 +241,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
     })
-    .controller('BookNowCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+    .controller('BookNowCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $window) {
         $scope.template = TemplateService.changecontent("book-now");
         $scope.menutitle = NavigationService.makeactive("Book-Now");
         TemplateService.title = $scope.menutitle;
@@ -247,9 +255,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.userSubmitForm = function(formValid) {
             console.log($scope.userForm);
             if (formValid.$valid) {
-                $scope.formComplete = true;
+
                 NavigationService.getBooking($scope.userForm, function(data) {
-                    //console.log('userformctrl', $scope.userForm);
+                  $scope.userForm=data.data;
+                  $scope.userForm.bookDate=new Date();
+                  $scope.userForm.bookTime=new Date();
+                  if(data.value==true)
+                  {
+                    $scope.formComplete = true;
+                    console.log('booknow', $scope.userForm);
+                  }else{
+                    $window.alert("User Not Logged in");
+                  }
 
                 });
 
@@ -923,6 +940,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.wishlists = data.data.shortList;
             console.log('wishlists', $scope.wishlists);
         });
+
+        NavigationService.getExpertProfile($stateParams.id, function(data) {
+            console.log('getExpertProfile', data.data);
+            $scope.expertprofile = data.data;
+            // console.log('$scope.expertprofile.experience', $scope.expertprofile.experience);
+        });
     })
     .controller('SearchCtrl', function($scope, TemplateService, NavigationService, $timeout, $filter, $stateParams) {
         $scope.template = TemplateService.changecontent("search");
@@ -1023,9 +1046,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log('getExpertProfile', data.data);
         $scope.expertprofile = data.data;
         console.log('$scope.expertprofile.experience', $scope.expertprofile.experience);
-        //
-        //     for(i=0;i<$scope.expertprofile.experience.length;i++)
-        // {
+
         var length = $scope.expertprofile.experience.length;
         // console.log('length',length);
         for (var i = 0; i < length; i++) {
