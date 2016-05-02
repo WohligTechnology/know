@@ -21,7 +21,7 @@
     .f10 {
     font-size: 12px;
   }
-  }
+}
 }
 @media (max-width: $screen-sm-max) {
 //home-expert
@@ -57,6 +57,13 @@
     font-size: 12px;
   }
   }
+    //home
+    .search-input .search-br{
+      width:75%
+    }
+    .cat-list{
+      width: 86%;
+    }
 }
 @media (max-width: $screen-xs-max) {
 //contact
@@ -135,6 +142,18 @@
 .video-box {
     height: 50px;
   }
+  //footer
+  .tcenter{
+    text-align: center;
+  }
+  .padd1
+  {
+    float: right;
+  padding-right: 30px;
+  }
+  .f-size{
+    font-size:13px ;
+  }
 }
 @media (max-width: 480px) {
 //contact
@@ -175,4 +194,13 @@
   .tablescroll{
     overflow-x: scroll;
   }
+//footer
+.padd1
+{
+  float: none;
+padding: 0;
+}
+.f-size{
+  font-size:7px ;
+}
 }
