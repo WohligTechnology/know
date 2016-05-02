@@ -16,6 +16,12 @@
       font-size: 12px;
     }
   }
+  //profile
+  .spl{
+    .f10 {
+    font-size: 12px;
+  }
+  }
 }
 @media (max-width: $screen-sm-max) {
 //home-expert
@@ -44,6 +50,12 @@
 }
 .exp-setting ul li {
     padding: 0px 15px 10px 15px;
+  }
+  //profile
+  .spl{
+    .f10 {
+    font-size: 12px;
+  }
   }
 }
 @media (max-width: $screen-xs-max) {
@@ -154,5 +166,9 @@
   .f10{
     font-size: 12px;
   }
+  }
+  //wishlist
+  .tablescroll{
+    overflow-x: scroll;
   }
 }

@@ -1,45 +1,48 @@
 <section class="mt70">
-  <div class="">
-    <div class="" ng-include="template.searchbar"></div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="main-links mt25">
-          <ul class="breadcrumb padding0">
-            <li><a href="#/home" class="text-uppercase">Home</a></li>
-            <li><a href="#" class="active text-uppercase">wishlist </a></li>
-          </ul>
-        </div>
-      </div>
+    <div class="">
+        <div class="" ng-include="template.searchbar"></div>
     </div>
-  </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="main-links mt25">
+                    <ul class="breadcrumb padding0">
+                        <li><a href="#/home" class="text-uppercase">Home</a></li>
+                        <li><a href="#" class="active text-uppercase">wishlist </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <section>
-  <div class="container">
-    <div class="conten-box">
-      <div class="row">
-        <div class="col-md-12">
-          <h4 class="color-primary text-up">wishlist</h4>
-          <table class="table text-uppercase account-history text-center">
-            <tr>
-              <th>Expert Name</th>
-              <th>Area of expert</th>
-              <th>SPECIALIZATION</th>
+    <div class="container">
+        <div class="conten-box">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <h4 class="color-primary text-up">wishlist</h4>
+                    <div class="tablescroll">
+                        <table class="table text-uppercase account-history text-center">
+                            <tr>
+                                <th>Expert Name</th>
+                                <th>Area of expert</th>
+                                <th>SPECIALIZATION</th>
 
-              <th>Price</th>
-            </tr>
-            <tr ng-repeat="wish in wishlists">
-              <td><img ng-src="{{wishlist.image}}" alt="" class="img-responsive display-inline img-circle completed" /> {{wish.expertUser.firstName + " " +wish.expertUser.lastName }}</td>
-              <td>{{wish.expertUser.areaOfExpertise}}</td>
-              <td>{{wish.expertUser.specilization}}</td>
+                                <th>Price</th>
+                            </tr>
+                            <tr ng-repeat="wish in wishlists">
+                                <td><img ng-src="{{wishlist.image}}" alt="" class="img-responsive display-inline img-circle completed" /> {{wish.expertUser.firstName + " " +wish.expertUser.lastName }}</td>
+                                <td>{{wish.expertUser.areaOfExpertise}}</td>
+                                <td>{{wish.expertUser.specilization}}</td>
 
-              <td>₹ {{wish.expertUser.priceForService}}/ 30 MIN
-                <br>
-                <button class="btn btn-animate-success mt10 f12">VIEW DETAIL</button></td>
-            </tr>
-          </table>
-          <!-- <table class="table text-uppercase account-history text-center">
+                                <td>₹ {{wish.expertUser.priceForService}}/ 30 MIN
+                                    <br>
+                                    <button class="btn btn-animate-success mt10 f12">VIEW DETAIL</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- <table class="table text-uppercase account-history text-center">
             <tr>
               <th>Expert Name</th>
               <th>Area of expert</th>
@@ -57,8 +60,8 @@
                 <button class="btn btn-animate-success mt10 f12">VIEW DETAIL</button></td>
             </tr>
           </table> -->
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
