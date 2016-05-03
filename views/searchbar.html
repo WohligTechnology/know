@@ -9,10 +9,10 @@
               <div class="search-icon display-inline">
                 <img src="img/search-mini.png" alt="">
               </div>
-              <div class="search-br">
+              <div class="search-br searchbr">
                 <input type="text" name="name" class="form-control" placeholder="Search category, expertname, skill.." ng-model="expertdata.search">
               </div>
-              <div class="search-btn display-inline"><a ui-sref="search({search:expertdata.search})">
+              <div class="search-btn searchbtn display-inline"><a ui-sref="search({search:expertdata.search})">
                 <button class="btn btn-animate-org" ng-disabled="expertdata.search.length==null || expertdata.search.length==0">SEARCH</button></a>
               </div>
             </form>
