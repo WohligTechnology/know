@@ -22,6 +22,11 @@
             font-size: 12px;
         }
     }
+    //user-booking
+    .booking-section .nav-tabs > li > a {
+    margin: 0px 10px;
+    font-size: 14px;
+}
 }
 @media (max-width: $screen-sm-max) {
     //home-expert
@@ -78,6 +83,14 @@
         font-size: 24px;
       }
     }
+//user-booking
+.booking-section .nav-tabs > li > a {
+    margin: 0;
+    font-size: 13px;
+  }
+  .nav > li > a {
+    padding: 4px 8px;
+}
 }
 @media (max-width: $screen-xs-max) {
     //contact
@@ -212,6 +225,21 @@
     font-size: 12px !important;
     padding: 8px 8px !important;
 }
+//user-booking
+.completed-section{
+  overflow-x: scroll;
+  margin-top: 12px;
+}
+  .booking-section .nav-tabs > li > a {
+      margin: 0 78px !important;
+      font-size: 13px;
+    }
+    .booking-section .tab-content {
+    padding: 20px 15px;
+  }
+  .filt {
+    margin-left: 0px;
+ }
 }
 @media (max-width: 480px) {
     //contact
@@ -272,4 +300,9 @@
     .modal-dialog {
     width: 75%;
   }
+  //user-booking
+  .booking-section .nav-tabs > li > a {
+      margin: 0 33px !important;
+      font-size: 13px;
+    }
 }

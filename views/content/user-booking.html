@@ -21,7 +21,7 @@
               <p class="font-bold tag-line"></p>
             </div> -->
             <div class="row">
-              <div class="col-md-3"  ng-repeat="booking in userBooking track by $index" ng-if="booking.status=='awaitingpayment'">
+              <div class="col-md-3 col-sm-4 col-xs-12"  ng-repeat="booking in userBooking track by $index" ng-if="booking.status=='awaitingpayment'">
                 <div class="outline-single">
                   <div class="single-payment">
                     <div class="user-bg text-center">
@@ -153,7 +153,7 @@
             <uib-tab-heading class="text-uppercase" ng-click="userBook('paid')">Schedule Call</uib-tab-heading>
             <p class="font-bold tag-line">Following calls are confirmed. We will connect you at the scheduled time.</p>
             <div class="row">
-              <div class="col-md-3" ng-repeat="booking in userBooking track by $index" ng-if="booking.status=='schedulecall'">
+              <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="booking in userBooking track by $index" ng-if="booking.status=='schedulecall'">
                 <div class="outline-single">
                   <div class="single-payment">
                     <div class="user-bg text-center">
@@ -285,7 +285,7 @@
             <uib-tab-heading class="text-uppercase" ng-click="userBook('pending')">Awaiting Confirmation</uib-tab-heading>
             <p class="font-bold tag-line">Following calls are yet to be confirmed by the experts. Upon confirmation you will be prompted to pay.</p>
             <div class="row">
-              <div class="col-md-3" ng-repeat="booking in userBooking track by $index" ng-if="booking.status=='pending'">
+              <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="booking in userBooking track by $index" ng-if="booking.status=='pending'">
                 <div class="outline-single">
                   <div class="single-payment">
                     <div class="user-bg text-center">
@@ -429,7 +429,7 @@
             <uib-tab-heading class="text-uppercase">Completed</uib-tab-heading>
             <p class="font-bold tag-line">These is your completed call history. You can print an invoice and even retrieve a recording of your call.</p>
             <div class="row">
-              <div class="col-md-3" ng-repeat="booking in userBooking track by $index" ng-if="booking.status=='completed'" >
+              <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="booking in userBooking track by $index" ng-if="booking.status=='completed'" >
                 <div class="outline-single">
                   <div class="single-payment">
                     <div class="user-bg text-center">
@@ -615,7 +615,7 @@
                   <th>Total Amount</th>
                 </tr>
                 <tr>
-                  <td><img src="{{booking.image}}" alt="" class="img-responsive display-inline img-circle completed" /> {{booking.expert}}</td>
+                  <td><img src="{{booking.image}}" alt="" class="img-responsive display-inline img-circle completed" /> {{booking.expert.name}}</td>
                   <td>{{booking.callDuration |date : "h:mm a"}}</td>
                   <td>{{booking.bookDate | date : "dd.MM.y"}}</td>
                   <td>{{booking.status}}
