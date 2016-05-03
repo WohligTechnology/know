@@ -187,7 +187,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         // TemplateService.header = "./views/header2.html";
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
-        $scope.userBooking = {};
+        $scope.userBookings = {};
         $scope.userBookingsubmit = {};
 
         $scope.feedback = function(formValid) {
@@ -202,10 +202,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
         $scope.userBook = function(status) {
-          console.log("here");
-            $scope.userBooking.status = status;
-            NavigationService.getUserBooking($scope.userBooking, function(data) {
-                // $scope.userBooking = data.data;
+            console.log("here");
+            $scope.userBookings.status = status;
+            NavigationService.getUserBooking($scope.userBookings, function(data) {
+              console.log(data);
+                $scope.userBooking = data.data;
                 // $scope.userBooking.bookDate = new Date();
                 // $scope.userBooking.bookTime = new Date();
                 // $scope.userBooking.bookDate=$scope.userBooking.bookDate.toString().split('TO');
@@ -243,7 +244,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
     })
-    .controller('BookNowCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $window) {
+    .controller('BookNowCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $window,$stateParams) {
         $scope.template = TemplateService.changecontent("book-now");
         $scope.menutitle = NavigationService.makeactive("Book-Now");
         TemplateService.title = $scope.menutitle;
@@ -257,7 +258,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.userSubmitForm = function(formValid) {
             console.log($scope.userForm);
             if (formValid.$valid) {
-
+                $scope.userForm.expert=$stateParams.id;
                 NavigationService.getBooking($scope.userForm, function(data) {
                     $scope.userForm = data.data;
                     $scope.userForm.bookDate = new Date();

@@ -284,7 +284,7 @@
           <uib-tab>
             <uib-tab-heading class="text-uppercase" ng-click="userBook('pending')">Awaiting Confirmation</uib-tab-heading>
             <p class="font-bold tag-line">Following calls are yet to be confirmed by the experts. Upon confirmation you will be prompted to pay.</p>
-            <div class="row">{{userBooking}}
+            <div class="row">
               <div class="col-md-3" ng-repeat="booking in userBooking track by $index" ng-if="booking.status=='pending'">
                 <div class="outline-single">
                   <div class="single-payment">
@@ -292,8 +292,20 @@
                       <div class="user-imgholder margin-auto">
                         <img src="img/search-pro2.jpg" alt="" class="img-responsive">
                       </div>
-                      <span class="name block font-bold mt5">{{booking.expert}}</span>
-                      <span class="price color-success block font-bold mt5"><i class="fa fa-inr"></i> {{booking.finalAmount}}/-</span>
+                      <span class="name block font-bold mt5">{{booking.expert.name}}</span>
+                      <span class="price color-success block font-bold mt5"><i class="fa fa-inr"></i> {{booking.expert.priceForService}}/-</span>
+
+                      <!-- <div class="feedback text-left" ng-hide="formComplete">
+                        <form name="user" class="form-input">
+                        <span class="color-grey">Provide Feedback</span>
+                        <textarea class="form-control" name="feedback" ng-model="userBookingsubmit.feedback" required> </textarea>
+                        <div class="error-msg" ng-show="user.feedback.$error.required && user.feedback.$touched">Please Enter Your Feedback.</div>
+                        <div class="text-center mb10">
+                          <button type="button" class="btn btn-animate-success text-uppercase" ng-click="feedback(user,booking._id)">Submit</button>
+                        </div>
+                        </form>
+                      </div> -->
+
                     </div>
                     <div class="user-info">
                       <div class="media">
@@ -302,7 +314,7 @@
                         </a>
                         <div class="media-body">
                           <h5 class="media-heading">Travel</h5>
-                          <span class="color-grey">{{booking.areaOfExpertise}}</span>
+                          <span class="color-grey">{{booking.expert.areaOfExpertise}}</span>
                         </div>
                       </div>
                       <div class="media">
