@@ -239,6 +239,14 @@ var navigationservice = angular.module('navigationservice', [])
                 withCredentials: true
             }).success(callback);
         },
+        getExpert: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'expertuser/profile',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
         getUserLogin: function(input, callback) {
             // console.log('form data: ', formData);
             $http({
@@ -325,13 +333,26 @@ var navigationservice = angular.module('navigationservice', [])
                 data: input
             }).success(callback);
         },
-        getBookingData: function(formData, callback) {
+        // acceptRequest: function(formData, callback) {
+        //     // console.log('form data: ', formData);
+        //     $http({
+        //         url: adminurl + 'Booking/saveData',
+        //         method: 'POST',
+        //         data: {
+        //
+        //           "status": formData.status
+        //         }
+        //     }).success(callback);
+        // },
+        getExpertBooking: function(formData, callback) {
             //console.log('Navigation form data: ', formData);
             $http({
-                url: adminurl + 'Booking/getBooking',
+                url: adminurl + 'Booking/getExpertBooking',
                 method: 'POST',
                 withCredentials: true,
-                data: formData
+                data: {
+                  "status": formData.status
+                }
 
             }).success(callback);
         },

@@ -227,13 +227,54 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         // TemplateService.header = "./views/header2.html";
         $scope.expertlogo = "expert-page";
         $scope.userlogo = "";
+        $scope.bookexpert={};
+        $scope.expertBook = function(status) {
+            console.log("here");
+            $scope.bookexpert.status = status;
+            NavigationService.getExpertBooking($scope.bookexpert, function(data) {
+              console.log(data);
+                $scope.bookexpert = data.data;
+                $scope.userBooking.bookDate = new Date();
+                $scope.userBooking.bookTime = new Date();
+                // $scope.userBooking.bookDate=$scope.userBooking.bookDate.toString().split('TO');
+                // console.log('var dateParts',$scope.userBooking.bookDate);
+                console.log('bookexpert', $scope.bookexpert);
+            });
+        }
 
 
-        NavigationService.getBookingData($scope.bookexpert, function(data) {
-            //console.log("in edit blog");
-            $scope.bookexpert = data.data;
-            console.log('bookexpert', $scope.bookexpert);
-        });
+
+        // $scope.userForm = {};
+        // $scope.userSubmitForm = function(formValid) {
+        //     console.log($scope.userForm);
+        //     if (formValid.$valid) {
+        //         $scope.userForm.__id=$stateParams.id;
+        //         NavigationService.acceptRequest($scope.userForm, function(data) {
+        //             $scope.userForm = data.data;
+        //             $scope.userForm.bookDate = new Date();
+        //             $scope.userForm.bookTime = new Date();
+        //             if (data.value == true) {
+        //                 $scope.formComplete = true;
+        //                 console.log('booknow', $scope.userForm);
+        //             } else {
+        //                 $window.alert("User Not Logged in");
+        //             }
+        //
+        //         });
+        //
+        //     }
+        //
+        // };
+
+        $scope.expertBook('pending');
+
+
+
+        // NavigationService.getBookingData($scope.bookexpert, function(data) {
+        //     //console.log("in edit blog");
+        //     $scope.bookexpert = data.data;
+        //     console.log('bookexpert', $scope.bookexpert);
+        // });
 
     })
     .controller('AboutCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -1122,7 +1163,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     //   $state.go("login");
     // }
 
-
+  // --------User Login----------
     $scope.userdata = {};
     NavigationService.getUser(function(data) {
         $scope.userdata = data;
@@ -1144,6 +1185,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         //  }
 
         console.log('getuser in headerctrl', data);
+    });
+
+    // --------Expert Login----------
+    $scope.expertdata = {};
+    NavigationService.getExpert(function(data) {
+        $scope.userdata = data;
+        console.log('id headerctrl ', $scope.expertdata._id);
+        if ($scope.userdata._id) {
+            $scope.userLogedin = true;
+        }
+        // else{
+        //   $scope.userLogedin = false;
+        //   $state.go("login")
+        // }
+
+
+        //$scope.
+        // if($scope.userdata._id){
+        //  $window.alert("")
+        //    $scope.loginuser=true;
+        //    $state.go("login");
+        //  }
+
+        console.log('getexpert in headerctrl', data);
     });
     $scope.logout = function() {
         console.log("in me logout/////////////////////////////////");
