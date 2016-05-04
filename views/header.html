@@ -81,14 +81,17 @@
                   <img class="color-base black-img" src="img/close2.png" alt="" width="30" ng-show="userLogedin">
                   <img class="color-base black-img" src="img/close2.png" alt="" width="30" ui-sref="login" ng-show="!userLogedin"/>
                 </a>
-                <ul class="view-dropdown" ng-show="userLogedin">
+                <ul class="view-dropdown" ng-show="userLogedin || expertLogedin">
                   <li><a href="" class="text-uppercase" title="Your Booking" ui-sref="user-booking">your booking</a></li>
                   <li><a href="" class="text-uppercase" title="short list" ui-sref="wishlist">short list</a></li>
                   <li><a href="" class="text-uppercase" title="Edit Account" ui-sref="edit-user({id:userdata._id})">edit account</a></li>
-                  <li><a ui-sref="home" class="text-uppercase" title="Logout" ng-click="logout();">logout</a></li>
-                </ul>
+                  <li  ng-show="userLogedin"><a href="" class="text-uppercase" title="Change Password" ui-sref="change-password({id:userdata._id})">change password</a></li>
+                  <li ng-show="expertLogedin"><a class="text-uppercase" title="Change Password" ui-sref="change-expert-password({id:userdata._id})">change password</a></li>
+                  <li ng-show="userLogedin"><a ui-sref="home" class="text-uppercase" title="Logout" ng-click="userLogout();">logout</a></li>
+                  <li ng-show="expertLogedin"><a ui-sref="home" class="text-uppercase" title="Logout" ng-click="expertLogout();">logout</a></li>
+                  </ul>
 
-                <ul class="view-dropdown" ng-show="!userLogedin">
+                <ul class="view-dropdown" ng-show="!expertLogedin && !userLogedin">
 
                 </ul>
               </li>

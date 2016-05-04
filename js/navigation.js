@@ -288,7 +288,19 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
-        getLogout: function(input, callback) {
+        changeExpertPassword: function(input, callback) {
+            // console.log('form data: ', formData);
+            delete input._id;
+            $http({
+                url: adminurl + 'ExpertUser/changePassword',
+                method: 'POST',
+                data: {
+                    "password": input.password,
+                    "changePassword": input.changePassword
+                }
+            }).success(callback);
+        },
+        getUserLogout: function(input, callback) {
             // console.log('form data: ', formData);
             $http({
                 url: adminurl + 'user/logout',
@@ -296,12 +308,23 @@ var navigationservice = angular.module('navigationservice', [])
                 data: input
             }).success(callback);
         },
+        getExpertLogout: function(input, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'ExpertUser/logout',
+                method: 'POST',
+                data: input
+            }).success(callback);
+        },
         getForgotpswd: function(input, callback) {
             // console.log('form data: ', formData);
+            console.log(input)
             $http({
                 url: adminurl + 'user/forgotPassword',
                 method: 'POST',
-                data: input
+                data: {
+                    "email": input.email
+                }
             }).success(callback);
         },
         getExpertProfile: function(_id, callback) {
