@@ -205,7 +205,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log("here");
             $scope.userBookings.status = status;
             NavigationService.getUserBooking($scope.userBookings, function(data) {
-              console.log(data);
+                console.log(data);
                 $scope.userBooking = data.data;
                 // $scope.userBooking.bookDate = new Date();
                 // $scope.userBooking.bookTime = new Date();
@@ -227,12 +227,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         // TemplateService.header = "./views/header2.html";
         $scope.expertlogo = "expert-page";
         $scope.userlogo = "";
-        $scope.bookexpert={};
+        $scope.bookexpert = {};
         $scope.expertBook = function(status) {
             console.log("here");
             $scope.bookexpert.status = status;
             NavigationService.getExpertBooking($scope.bookexpert, function(data) {
-              console.log(data);
+                console.log(data);
                 $scope.bookexpert = data.data;
                 $scope.userBooking.bookDate = new Date();
                 $scope.userBooking.bookTime = new Date();
@@ -285,7 +285,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
     })
-    .controller('BookNowCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $window,$stateParams) {
+    .controller('BookNowCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $window, $stateParams) {
         $scope.template = TemplateService.changecontent("book-now");
         $scope.menutitle = NavigationService.makeactive("Book-Now");
         TemplateService.title = $scope.menutitle;
@@ -299,7 +299,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.userSubmitForm = function(formValid) {
             console.log($scope.userForm);
             if (formValid.$valid) {
-                $scope.userForm.expert=$stateParams.id;
+                $scope.userForm.expert = $stateParams.id;
                 NavigationService.getBooking($scope.userForm, function(data) {
                     $scope.userForm = data.data;
                     $scope.userForm.bookDate = new Date();
@@ -1163,13 +1163,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     //   $state.go("login");
     // }
 
-  // --------User Login----------
+    // --------User Login----------
     $scope.userdata = {};
     NavigationService.getUser(function(data) {
-        $scope.userdata = data;
-        console.log('id headerctrl ', $scope.userdata._id);
-        if ($scope.userdata._id) {
+
+        // console.log('id headerctrl ', $scope.userdata._id);
+        if (data._id) {
+            $scope.userdata = data;
             $scope.userLogedin = true;
+        } else {
+            if (window.location.href.indexOf('user-')!=-1) {
+                $state.go('home');
+            }
         }
         // else{
         //   $scope.userLogedin = false;
@@ -1188,12 +1193,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     });
 
     // --------Expert Login----------
-    $scope.expertdata = {};
     NavigationService.getExpert(function(data) {
-        $scope.userdata = data;
-        console.log('id headerctrl ', $scope.expertdata._id);
-        if ($scope.userdata._id) {
+        // console.log('id headerctrl ', $scope.expertdata._id);
+        if (data._id) {
+            $scope.userdata = data;
             $scope.userLogedin = true;
+        } else {
+            if (window.location.href.indexOf('expert-')!=-1) {
+                $state.go('home');
+            }
         }
         // else{
         //   $scope.userLogedin = false;
