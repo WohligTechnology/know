@@ -27,6 +27,10 @@
     margin: 0px 10px;
     font-size: 14px;
 }
+//expert-booking
+.btn-ac li .grey-link,.btn-ac li .blue-link {
+    padding: 9px 26px;
+  }
 }
 @media (max-width: $screen-sm-max) {
     //home-expert
@@ -240,6 +244,10 @@
   .filt {
     margin-left: 0px;
  }
+ //expert-booking
+ .btn-ac li .grey-link,.btn-ac li .blue-link {
+     padding: 9px 86px;
+   }
 }
 @media (max-width: 480px) {
     //contact
@@ -305,4 +313,8 @@
       margin: 0 33px !important;
       font-size: 13px;
     }
+    //expert-booking
+    .btn-ac li .grey-link,.btn-ac li .blue-link {
+        padding: 9px 32px;
+      }
 }
