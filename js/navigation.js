@@ -1,4 +1,4 @@
-var adminurl = "http://192.168.1.127:1337/";
+var adminurl = "http://localhost:1337/";
 // var adminurl1 = "http://wohlig.io:81/callApi/jacknows/";
 var imgurl = "http://192.168.1.131/upload";
 var imgpath = imgurl + "/readFile";
@@ -356,17 +356,30 @@ var navigationservice = angular.module('navigationservice', [])
                 data: input
             }).success(callback);
         },
-        // acceptRequest: function(formData, callback) {
-        //     // console.log('form data: ', formData);
-        //     $http({
-        //         url: adminurl + 'Booking/saveData',
-        //         method: 'POST',
-        //         data: {
-        //
-        //           "status": formData.status
-        //         }
-        //     }).success(callback);
-        // },
+        acceptRequest: function(status,id, callback) {
+           console.log(status);
+           console.log(id);
+            $http({
+                url: adminurl + 'Booking/saveData',
+                method: 'POST',
+                data: {
+                  "_id": id,
+                  "status": status
+                }
+            }).success(callback);
+        },
+        getPayment: function(status,id, callback) {
+           console.log(status);
+           console.log(id);
+            $http({
+                url: adminurl + 'Booking/saveData',
+                method: 'POST',
+                data: {
+                  "_id": id,
+                  "status": status
+                }
+            }).success(callback);
+        },
         getExpertBooking: function(formData, callback) {
             //console.log('Navigation form data: ', formData);
             $http({

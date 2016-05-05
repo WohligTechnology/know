@@ -217,9 +217,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.userBook('accept');
 
+        $scope.userpay = {};
+        $scope.getPay = function(status, id) {
+          console.log("Hiii");
+            NavigationService.getPayment(status, id, function(data) {
+                console.log('userpay', $scope.userpay);
+            });
+        };
+
+        $scope.getPay('paid',$scope.userpay._id);
+
+
 
     })
-    .controller('ExpertBookingCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('ExpertBookingCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
         $scope.template = TemplateService.changecontent("expert-booking");
         $scope.menutitle = NavigationService.makeactive("Expert-Booking");
         TemplateService.title = $scope.menutitle;
@@ -227,11 +238,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         // TemplateService.header = "./views/header2.html";
         $scope.expertlogo = "expert-page";
         $scope.userlogo = "";
-        $scope.bookexpert = {};
+        $scope.bookexperts = {};
         $scope.expertBook = function(status) {
             console.log("here");
-            $scope.bookexpert.status = status;
-            NavigationService.getExpertBooking($scope.bookexpert, function(data) {
+            $scope.bookexperts.status = status;
+            NavigationService.getExpertBooking($scope.bookexperts, function(data) {
                 console.log(data);
                 $scope.bookexpert = data.data;
                 // $scope.userBooking.bookDate = new Date();
@@ -243,28 +254,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
 
 
+        $scope.userdata = {};
+        $scope.acceptRequest = function(status, id) {
+            NavigationService.acceptRequest(status, id, function(data) {
+                console.log('userdata', $scope.userdata);
+            });
+        };
 
-        // $scope.userForm = {};
-        // $scope.userSubmitForm = function(formValid) {
-        //     console.log($scope.userForm);
-        //     if (formValid.$valid) {
-        //         $scope.userForm.__id=$stateParams.id;
-        //         NavigationService.acceptRequest($scope.userForm, function(data) {
-        //             $scope.userForm = data.data;
-        //             $scope.userForm.bookDate = new Date();
-        //             $scope.userForm.bookTime = new Date();
-        //             if (data.value == true) {
-        //                 $scope.formComplete = true;
-        //                 console.log('booknow', $scope.userForm);
-        //             } else {
-        //                 $window.alert("User Not Logged in");
-        //             }
-        //
-        //         });
-        //
-        //     }
-        //
-        // };
+        $scope.acceptRequest('accept', $scope.userdata._id);
+
+
+
+
 
         $scope.expertBook('pending');
 
@@ -484,7 +485,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     })
 
-.controller('EditUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
+.controller('EditUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
         $scope.template = TemplateService.changecontent("edit-user");
         $scope.menutitle = NavigationService.makeactive("Edit-User");
         TemplateService.title = $scope.menutitle;
@@ -509,6 +510,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.userForm = data.data;
                 });
             }
+            $state.go("home");
 
 
         };
@@ -558,7 +560,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
 
-        $scope.userForm={};
+        $scope.userForm = {};
 
         NavigationService.getExpert($stateParams.id, function(data) {
             console.log('getUserEditDetail', data);
