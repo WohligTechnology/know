@@ -15,13 +15,14 @@
       <div class="booking-section">
         <uib-tabset>
           <uib-tab>
-            <uib-tab-heading class="text-uppercase" ng-click="userBook('accept')">Awaiting Payment</uib-tab-heading>
+            <uib-tab-heading class="text-uppercase" ng-click="userBook('accept','user')">Awaiting Payment</uib-tab-heading>
             <p class="font-bold tag-line">Following calls are awaiting payment. Please pay now to confirm the call.</p>
             <!-- <div class="choose-color">
               <p class="font-bold tag-line"></p>
             </div> -->
             <div class="row">
               <div class="col-md-3 col-sm-4 col-xs-12"  ng-repeat="booking in userBooking track by $index" >
+
                 <div class="outline-single">
                   <div class="single-payment">
                     <div class="user-bg text-center">
@@ -65,7 +66,7 @@
 
                 </div>
                 <div>
-                  <button class="btn btn-animate-org f13" ng-click="getPay('paid',booking._id)">Payment</button>
+                  <button class="btn btn-animate-org f13" ng-click="getPay('paid',booking._id,'user')">Payment</button>
                 </div>
               </div>
               <!-- <div class="col-md-3">
@@ -155,10 +156,10 @@
             </div>
           </uib-tab>
           <uib-tab>
-            <uib-tab-heading class="text-uppercase" ng-click="userBook('paid')">Schedule Call</uib-tab-heading>
+            <uib-tab-heading class="text-uppercase" ng-click="userBook('paid','user')">Schedule Call</uib-tab-heading>
             <p class="font-bold tag-line">Following calls are confirmed. We will connect you at the scheduled time.</p>
-            <div class="row">{{userBooking}}
-              <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="booking in userBooking track by $index" ng-if="booking.status=='schedulecall'">
+            <div class="row">
+              <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="booking in userBooking track by $index">
                 <div class="outline-single">
                   <div class="single-payment">
                     <div class="user-bg text-center">
@@ -287,10 +288,10 @@
             </div>
           </uib-tab>
           <uib-tab>
-            <uib-tab-heading class="text-uppercase" ng-click="userBook('pending')">Awaiting Confirmation</uib-tab-heading>
+            <uib-tab-heading class="text-uppercase" ng-click="userBook('pending','user')">Awaiting Confirmation</uib-tab-heading>
             <p class="font-bold tag-line">Following calls are yet to be confirmed by the experts. Upon confirmation you will be prompted to pay.</p>
             <div class="row">
-              <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="booking in userBooking track by $index" ng-if="booking.status=='pending'">
+              <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="booking in userBooking track by $index">
                 <div class="outline-single">
                   <div class="single-payment">
                     <div class="user-bg text-center">

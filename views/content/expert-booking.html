@@ -20,7 +20,7 @@
       <div class="booking-section">
         <uib-tabset>
           <uib-tab>
-            <uib-tab-heading class="text-uppercase" ng-click="expertBook('pending')">REQUESTED CALLS</uib-tab-heading>
+            <uib-tab-heading class="text-uppercase" ng-click="expertBook('pending','expert')">REQUESTED CALLS</uib-tab-heading>
             <div class="b-order mt30">
               <p class="font-bold tag-line ">These calls have been requested for  </p>
             </div>
@@ -74,11 +74,11 @@
                     <div class="btn-ac custom-li mt30">
                       <ul class="padding0">
                         <li class="pull-left">
-                        <a href="" class="blue-link" ng-click="acceptRequest('accept',book._id)">Accept</a>
+                        <a href="" class="blue-link" ng-click="acceptRequest(1,book._id)">Accept</a>
 
                         </li>
                         <li class="pull-right">
-                            <a href="" class="grey-link">Reject</a>
+                            <a href="" class="grey-link" ng-click="acceptRequest(0,book._id)">Reject</a>
                         </li>
 
                       </ul>
@@ -289,7 +289,7 @@
 
 
           <uib-tab>
-            <uib-tab-heading class="text-uppercase" ng-click="expertBook('paid')">CONFIRMed CALLs</uib-tab-heading>
+            <uib-tab-heading class="text-uppercase" ng-click="expertBook('paid','expert')">CONFIRMed CALLs</uib-tab-heading>
             <div class="b-order mt30">
               <p class="font-bold tag-line">These calls have been confirmed. We will connect you at the scheduled time. Please ensure that you ae in a mobile accessible location.</p>
             </div>

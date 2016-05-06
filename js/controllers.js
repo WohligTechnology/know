@@ -180,57 +180,59 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 })
 
 .controller('UserBookingCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("user-booking");
-        $scope.menutitle = NavigationService.makeactive("User-Booking");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        // TemplateService.header = "./views/header2.html";
-        $scope.expertlogo = "";
-        $scope.userlogo = "user-page";
-        $scope.userBookings = {};
-        $scope.userBookingsubmit = {};
+    $scope.template = TemplateService.changecontent("user-booking");
+    $scope.menutitle = NavigationService.makeactive("User-Booking");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    // TemplateService.header = "./views/header2.html";
+    $scope.expertlogo = "";
+    $scope.userlogo = "user-page";
+    $scope.userBookings = {};
+    $scope.userBookingsubmit = {};
+    $scope.userBooking = {};
 
-        $scope.feedback = function(formValid) {
-            if (formValid.$valid) {
+    // $scope.feedback = function(formValid) {
+    //     if (formValid.$valid) {
+    //
+    //         NavigationService.feedbackSubmit($scope.userBookingsubmit, function(data) {
+    //             $scope.userBookingsubmit = data.data;
+    //             console.log('userBookingsubmit', $scope.userBookingsubmit);
+    //         });
+    //     }
+    //     $scope.formComplete = true;
+    // };
 
-                NavigationService.feedbackSubmit($scope.userBookingsubmit, function(data) {
-                    $scope.userBookingsubmit = data.data;
-                    console.log('userBookingsubmit', $scope.userBookingsubmit);
-                });
+    $scope.userBook = function(status, user) {
+        console.log("here");
+        $scope.userBookings.status = status;
+        $scope.userBookings.from = user;
+        NavigationService.getUserBooking($scope.userBookings, function(data) {
+            console.log(data);
+            $scope.userBooking = data.data;
+            // $scope.userBooking.bookDate = new Date();
+            // $scope.userBooking.bookTime = new Date();
+            // $scope.userBooking.bookDate=$scope.userBooking.bookDate.toString().split('TO');
+            // console.log('var dateParts',$scope.userBooking.bookDate);
+            console.log('userBooking', $scope.userBooking);
+        });
+    }
+
+    $scope.userBook('accept', 'user');
+
+    $scope.userpay = {};
+    $scope.getPay = function(status, id, user) {
+        NavigationService.getPayment(status, id, user, function(data) {
+            console.log('userpay', $scope.userpay);
+            if (data.value != false) {
+
+                $scope.userBook('accept', 'user');
             }
-            $scope.formComplete = true;
-        };
+        });
+    };
 
-        $scope.userBook = function(status) {
-            console.log("here");
-            $scope.userBookings.status = status;
-            NavigationService.getUserBooking($scope.userBookings, function(data) {
-                console.log(data);
-                $scope.userBooking = data.data;
-                // $scope.userBooking.bookDate = new Date();
-                // $scope.userBooking.bookTime = new Date();
-                // $scope.userBooking.bookDate=$scope.userBooking.bookDate.toString().split('TO');
-                // console.log('var dateParts',$scope.userBooking.bookDate);
-                console.log('userBooking', $scope.userBooking);
-            });
-        }
+})
 
-        $scope.userBook('accept');
-
-        $scope.userpay = {};
-        $scope.getPay = function(status, id) {
-          console.log("Hiii");
-            NavigationService.getPayment(status, id, function(data) {
-                console.log('userpay', $scope.userpay);
-            });
-        };
-
-        $scope.getPay('paid',$scope.userpay._id);
-
-
-
-    })
-    .controller('ExpertBookingCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
+.controller('ExpertBookingCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
         $scope.template = TemplateService.changecontent("expert-booking");
         $scope.menutitle = NavigationService.makeactive("Expert-Booking");
         TemplateService.title = $scope.menutitle;
@@ -239,9 +241,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "expert-page";
         $scope.userlogo = "";
         $scope.bookexperts = {};
-        $scope.expertBook = function(status) {
+        $scope.expertBook = function(status, expert) {
             console.log("here");
             $scope.bookexperts.status = status;
+            $scope.bookexperts.from = expert;
             NavigationService.getExpertBooking($scope.bookexperts, function(data) {
                 console.log(data);
                 $scope.bookexpert = data.data;
@@ -253,30 +256,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         }
 
-
-        $scope.userdata = {};
-        $scope.acceptRequest = function(status, id) {
-            NavigationService.acceptRequest(status, id, function(data) {
+        $scope.sendData = {};
+        $scope.sendData.from = "expert";
+        $scope.acceptRequest = function(val,id) {
+            if (val == 1) {
+                $scope.sendData.status = "accept";
+                $scope.sendData._id =id;
+            } else {
+                $scope.sendData.status = "reject";
+                $scope.sendData._id = id;
+            }
+            NavigationService.acceptRequest($scope.sendData, function(data) {
                 console.log('userdata', $scope.userdata);
+                if (data.value != false) {
+
+                    $scope.expertBook('pending', 'expert');
+                }
             });
         };
-
-        $scope.acceptRequest('accept', $scope.userdata._id);
-
-
-
-
-
-        $scope.expertBook('pending');
-
-
-
+        $scope.expertBook('pending', 'expert');
         // NavigationService.getBookingData($scope.bookexpert, function(data) {
         //     //console.log("in edit blog");
         //     $scope.bookexpert = data.data;
         //     console.log('bookexpert', $scope.bookexpert);
         // });
-
     })
     .controller('AboutCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("about");
