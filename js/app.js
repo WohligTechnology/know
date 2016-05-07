@@ -3,7 +3,8 @@ var firstapp = angular.module('firstapp', [
     'ui.router',
     'phonecatControllers',
     'templateservicemod',
-    'navigationservice'
+    'navigationservice',
+    'imageupload'
 ]);
 
 firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
@@ -152,6 +153,16 @@ firstapp.filter('showbtn', function(NavigationService) {
             }
         } else {
             return true;
+        }
+    };
+});
+firstapp.directive('imageonload', function() {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            element.bind('load', function() {
+                scope.$apply(attrs.imageonload);
+            });
         }
     };
 });

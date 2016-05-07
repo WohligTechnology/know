@@ -889,6 +889,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
 
+        $scope.morephotos = [{
+            image2: ''
+        }];
+
+        $scope.addphotos = function() {
+            var addphotos = $scope.morephotos.length + 1;
+            $scope.morephotos.splice(0, 0, {
+                'id': '' + addphotos
+            });
+        };
+
         // TemplateService.header = "./views/header2.html";
         $scope.expertlogo = "expert-page";
         $scope.userlogo = "";
@@ -1208,67 +1219,44 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.closeMenu = function() {
         $scope.menu = "menu-out";
     };
-    //
-    // if($scope.userdata._id){
-    //   $scope.loginuser=true;
-    // }else{
-    //   $state.go("login");
-    // }
+    // $scope.fromUrl = $state.
+
+
+
 
     // --------User Login----------
     $scope.userdata = {};
     NavigationService.getUser(function(data) {
-
-        // console.log('id headerctrl ', $scope.userdata._id);
         if (data._id) {
             $scope.userdata = data;
             $scope.userLogedin = true;
+            NavigationService.getNotification({
+              from:"user"
+            }, function(data) {
+                $scope.notificationdata = data.data;
+            });
         } else {
             if (window.location.href.indexOf('user-') != -1) {
                 $state.go('home');
             }
         }
-        // else{
-        //   $scope.userLogedin = false;
-        //   $state.go("login")
-        // }
-
-
-        //$scope.
-        // if($scope.userdata._id){
-        //  $window.alert("")
-        //    $scope.loginuser=true;
-        //    $state.go("login");
-        //  }
-
-        console.log('getuser in headerctrl', data);
     });
 
     // --------Expert Login----------
     NavigationService.getExpert(function(data) {
-        // console.log('id headerctrl ', $scope.expertdata._id);
         if (data._id) {
             $scope.userdata = data;
             $scope.expertLogedin = true;
+            NavigationService.getNotification({
+              from:"expert"
+            }, function(data) {
+                $scope.notificationdata = data.data;
+            });
         } else {
             if (window.location.href.indexOf('expert-') != -1) {
                 $state.go('home');
             }
         }
-        // else{
-        //   $scope.userLogedin = false;
-        //   $state.go("login")
-        // }
-
-
-        //$scope.
-        // if($scope.userdata._id){
-        //  $window.alert("")
-        //    $scope.loginuser=true;
-        //    $state.go("login");
-        //  }
-
-        console.log('getexpert in headerctrl', data);
     });
     $scope.userLogout = function() {
         console.log("in me user logout/////////////////////////////////");

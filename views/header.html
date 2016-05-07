@@ -40,18 +40,28 @@
                   <button class="btn-animate-become b btn font-bold btn-1 btn-1b">Become an expert</button>
                 </a>
               </li>
-              <li class="notify-bell profile pointer">
+              <li class="notify-bell profile pointer" ng-show="userLogedin || expertLogedin">
                 <a href="" class=" display-inline">
-                  <img src="img/noti-white.png" alt="" class=" noti-icon white-img" width="30">
-                  <img src="img/noti-black.png" alt="" class=" noti-icon black-img" width="30">
+                  <img src="img/noti-white.png" alt="" class=" noti-icon white-img" width="30" ng-show="userLogedin || expertLogedin">
+                  <img src="img/noti-black.png" alt="" class=" noti-icon black-img" width="30" ng-show="userLogedin || expertLogedin">
                 </a>
-                <div class="noti-badge">
-                  <a href=""><span>2</span></a>
+                <div class="noti-badge" ng-show="userLogedin || expertLogedin">
+                  <a href=""><span>{{notificationdata.length}}</span></a>
                 </div>
                 <div class="notification view-dropdown" ui-sref="user-booking">
                   <h4 class="text-center font-light color-grey">Notifications</h4>
-                  <div class="notify">
+                  <div class="notify" ng-repeat="noti in notificationdata track by $index">
                     <div class="notification-list clearfix">
+                      <div class="pull-left">
+                        <div class="notify-imgholder">
+                          <img src="img/search-pro2.jpg" alt="" class="img-circle img-responsive" width="30">
+                        </div>
+                      </div>
+                      <div class="descp-noti">
+                        <p>{{noti.notification}}</p>
+                      </div>
+                    </div>
+                    <!-- <div class="notification-list clearfix">
                       <div class="pull-left">
                         <div class="notify-imgholder">
                           <img src="img/search-pro2.jpg" alt="" class="img-circle img-responsive" width="30">
@@ -70,7 +80,7 @@
                       <div class="descp-noti">
                         <p>Your call has been confirmed with <b>Jay Visariya</b> on 5th jan 2016 @ 3pm. <a href="" class="color-success">PAY NOW</a> to book your call</p>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </li>
