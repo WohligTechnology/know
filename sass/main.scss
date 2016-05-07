@@ -202,6 +202,12 @@ a {
     @include transition(background-color 0.4s linear);
   }
 }
+.checkbox-blue {
+  input[type="checkbox"] + label span { @include square(10px); }
+  input[type="checkbox"] + label span { border: 1px solid #efefef; }
+  input[type="checkbox"]:checked + label span {  background-color: $brand-success; }
+  input[type="checkbox"] + label span { background-color: #efefef;  }
+}
 // button animate
 .btn-animate-become {
   border-color: #fff;
