@@ -1,4 +1,4 @@
-<section class="mt70">
+<section class="mt70 space-top">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -571,21 +571,21 @@
                                         </div>
                                     </div>
                                     <div class="radio mt25">
-                                        <input type="radio" id="radio01" name="radio" value="sameas" ng-model="userForm.sameaddress" />
-                                        <label for="radio01"><span></span>SAME AS USER ADDRESS</label>
+                                        <input type="checkbox" id="radio011" ng-model="userForm.sameaddress" ng-change="changeAddress(userForm.sameaddress)"/>
+                                        <label for="radio011"><span></span>SAME AS USER ADDRESS</label>
                                     </div>
-                                    <div class="form-group" ng-if="userForm.sameaddress=='sameas'">
+                                    <div class="form-group">
                                         <label for="exampleInputEmail1">ACCOUNT HOLDER ADDRESS</label>
-                                        <textarea class="form-control" rows="3" style="resize:none" ng-model="userForm.addressDetails" required></textarea>
+                                        <textarea class="form-control" rows="3" style="resize:none" ng-model="userForm.accountHolderAddress" required></textarea>
                                         <div class="error-msg" ng-show="user.accountHolderAddress.$error.required && user.accountHolderAddress.$touched">Please Enter Address.
                                         </div>
                                     </div>
-                                    <div class="form-group" ng-hide="userForm.sameaddress=='sameas'">
+                                    <!-- <div class="form-group" ng-if="userForm.sameaddress=='!sameas'">
                                         <label for="exampleInputEmail1">ACCOUNT HOLDER ADDRESS</label>
                                         <textarea class="form-control" rows="3" style="resize:none" ng-model="userForm.accountHolderAddress" ></textarea>
                                         <div class="error-msg" ng-show="user.accountHolderAddress.$error.required && user.accountHolderAddress.$touched">Please Enter Address.
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="col-md-4 col-sm-5">
                                     <div class="form-group">

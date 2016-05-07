@@ -258,10 +258,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.sendData = {};
         $scope.sendData.from = "expert";
-        $scope.acceptRequest = function(val,id) {
+        $scope.acceptRequest = function(val, id) {
             if (val == 1) {
                 $scope.sendData.status = "accept";
-                $scope.sendData._id =id;
+                $scope.sendData._id = id;
             } else {
                 $scope.sendData.status = "reject";
                 $scope.sendData._id = id;
@@ -698,6 +698,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.navigation = NavigationService.getnav();
         $scope.userForm = {};
         $scope.userForm.callday = "MONDAY";
+        $scope.userForm.sameaddress = false;
+        //
+        // if(document.getElementById("RadioBtn").checked){
+        //   $scope.sameaddress=true;
+        // }else{
+        //     $scope.sameaddress=false;
+        // }
+
+        $scope.changeAddress = function(val) {
+            if (val) {
+                $scope.userForm.accountHolderAddress = $scope.userForm.addressDetails;
+            } else {
+                $scope.userForm.accountHolderAddress = '';
+            }
+        }
+
 
         $scope.done = function(data) {
             console.log(data);
