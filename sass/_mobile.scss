@@ -95,6 +95,7 @@
   .nav > li > a {
     padding: 4px 8px;
 }
+.abt-desc { text-align: center; }
 }
 @media (max-width: $screen-xs-max) {
   // header start
@@ -106,8 +107,7 @@
   .btn-become,
   .home-page button { font-size: 12px; }
   .righ-side ul li { padding: 0px 5px; }
-  // .noti-icon { width: 25px; }
-  // .user-icon img { width: 25px; }
+  .righ-side ul { padding: 0; }
   .white-img,
   .black-img { width: 25px; }
 
@@ -212,7 +212,7 @@
         margin: 12px 0 0;
     }
     .need-help {
-        right: -65px;
+        right: -62px;
         button {
             font-size: 12px;
             padding: 4px;
@@ -265,6 +265,18 @@
    }
 }
 @media (max-width: 480px) {
+  // header
+  .navbar-header {
+    float: none !important;
+    text-align: center;
+  }
+  .righ-side {
+    float: none !important;
+    text-align: center;
+  }
+  .navbar-brand { padding: 19px 0; }
+  .side-menu .navbar-nav li a { padding: 10px 0; }
+  // header end
     //contact
     .contact-add {
         font-size: 12px;
