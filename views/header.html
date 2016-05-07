@@ -74,7 +74,7 @@
                   </div>
                 </div>
               </li>
-              <li class="profile pointer">{{userdata.firstName}}
+              <li class="profile pointer">
                 <a href="" class="display-inline user-icon">
                   <img class="color-white white-img" src="img/log.png" alt="" width="30" ng-show="userLogedin"/>
                   <img class="color-white white-img" src="img/log.png" alt="" width="30" ui-sref="login" ng-show="!userLogedin"/>
@@ -82,6 +82,7 @@
                   <img class="color-base black-img" src="img/close2.png" alt="" width="30" ui-sref="login" ng-show="!userLogedin"/>
                 </a>
                 <ul class="view-dropdown" ng-show="userLogedin || expertLogedin">
+                  <li><a href="" class="text-uppercase color-primary" title="{{userdata.firstName}}">{{userdata.firstName}} {{userdata.lastName}}</a></li>
                   <li><a href="" class="text-uppercase" title="Your Booking" ui-sref="user-booking">your booking</a></li>
                   <li><a href="" class="text-uppercase" title="short list" ui-sref="wishlist">short list</a></li>
                   <li><a href="" class="text-uppercase" title="Edit Account" ui-sref="edit-user({id:userdata._id})">edit account</a></li>

@@ -97,6 +97,21 @@
 }
 }
 @media (max-width: $screen-xs-max) {
+  // header start
+  .navbar-brand { padding: 19px 10px 19px 0; }
+  .logo {
+    margin: 17px 0 0 0;
+    img { width: 130px; }
+  }
+  .btn-become,
+  .home-page button { font-size: 12px; }
+  .righ-side ul li { padding: 0px 5px; }
+  // .noti-icon { width: 25px; }
+  // .user-icon img { width: 25px; }
+  .white-img,
+  .black-img { width: 25px; }
+
+  // header end
     //contact
     .form-input {
         margin-top: 8%;
