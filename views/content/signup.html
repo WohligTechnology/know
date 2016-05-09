@@ -45,8 +45,8 @@
                 </div>
               </div>
               <div class="mail mt10 pos-relative">
-                <input type="text" name="mobileno" placeholder="MOBILE NUMBER" class="form-control display-inline log" ng-model="userForm.mobileno" required>
-                <div class="error-msg" ng-show="user.mobileno.$error.required && user.mobileno.$touched">Please Enter Your Mobile No.</div>
+                <input type="text" name="mobile" placeholder="MOBILE NUMBER" class="form-control display-inline log" ng-model="userForm.mobile" required>
+                <div class="error-msg" ng-show="user.mobile.$error.required && user.mobile.$touched">Please Enter Your Mobile No.</div>
 
                 <div class="icon-mail display-inline">
                   <i class="ln-phone"></i>
@@ -63,6 +63,7 @@
               <div class="mail mt10 pos-relative">
                 <input type="password" name="confirmPassword" placeholder="CONFIRM PASSWORD" class="form-control display-inline log" ng-model="userForm.confirmPassword" required>
                 <div class="error-msg" ng-show="user.confirmPassword.$error.required && user.confirmPassword.$touched">Please Confirm Your Password.</div>
+                  <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center">{{alert.msg}}</uib-alert>
 
                 <div class="icon-mail display-inline">
                   <i class="ln-lock"></i>

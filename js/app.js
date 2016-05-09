@@ -58,7 +58,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
             controller: 'ExpertBookingCtrl'
         })
         .state('expert-profile', {
-            url: "/expert-profile",
+            url: "/expert-profile/:id",
             templateUrl: "views/template.html",
             controller: 'ExpertProfileCtrl'
         })

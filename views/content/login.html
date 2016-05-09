@@ -37,6 +37,7 @@
                 <i class="ln-envelope"></i>
               </div>
             </div>
+
             <div class="mail mt10 pos-relative">
               <input type="password" placeholder="PASSWORD" class="form-control display-inline log" ng-model="userForm.password" required>
               <div class="error-msg" ng-show="user.password.$error.required && user.password.$touched">Please Enter Password.</div>
@@ -47,6 +48,7 @@
             <div class="forg-pass pull-right mt5">
               <a href="" class="color-primary font-light f13" ng-click="open3('sm'); $dismiss()">Forgot password?</a>
             </div>
+            <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center">{{alert.msg}}</uib-alert>
             <div class="login-btn mt50">
               <button class="btn btn-animate-org f10 font-light" ng-click="getLogin(user)">LOGIN</button>
             </div>

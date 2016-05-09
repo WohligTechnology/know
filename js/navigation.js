@@ -1,7 +1,7 @@
 var adminurl = "http://192.168.1.127:1337/";
 // var adminurl1 = "http://wohlig.io:81/callApi/jacknows/";
 var imgurl = "http://192.168.1.131:81/upload/";
-var imgpath = imgurl + "/readFile";
+var imgpath = imgurl + "readFile";
 var uploadurl = imgurl;
 
 var navigationservice = angular.module('navigationservice', [])
@@ -53,6 +53,16 @@ var navigationservice = angular.module('navigationservice', [])
                 method: 'POST',
                 withCredentials: true,
                 data: formData
+
+            }).success(callback);
+        },
+        getExpertEditDetail: function(_id, callback) {
+            //console.log('Navigation form data: ', formData);
+            $http({
+                url: adminurl + 'ExpertUser/profile',
+                method: 'POST',
+                withCredentials: true,
+                data: {_id:_id}
 
             }).success(callback);
         },
