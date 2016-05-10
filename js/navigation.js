@@ -77,6 +77,16 @@ var navigationservice = angular.module('navigationservice', [])
 
             }).success(callback);
         },
+        getFreqSearch: function(formData, callback) {
+            //console.log('Navigation form data: ', formData);
+            $http({
+                url: adminurl + 'SearchLog/getAll',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+
+            }).success(callback);
+        },
         ExpertRegistrationSubmit: function(formData, callback) {
             //console.log('Navigation form data: ', formData);
             $http({

@@ -146,14 +146,14 @@
           <div class="icon-head display-inline pl12">
             <span class="font-raleway font-med">Frequently Searched</span>
           </div>
-          <div class="cat-list mt20 pad-list">
+          <div class="cat-list mt20 pad-list" ng-repeat="freq in freqSearch">
             <ul class="padding0">
               <li>
-                <a href="">
-                 Fitness Expert <span class="badge pull-right">25</span>
-                </a>
+
+                 {{freq.search}} <span class="badge pull-right">{{freq.time}}</span>
+
               </li>
-              <li>
+              <!-- <li>
                 <a href="">
                Travel Consultant <span class="badge pull-right">21</span>
                 </a>
@@ -167,7 +167,7 @@
                 <a href="">
                  Real Estate Consultant <span class="badge pull-right">18</span>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </div>
         </div>

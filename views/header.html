@@ -104,7 +104,7 @@
                   <li ng-show="expertLogedin"><a ui-sref="home" class="text-uppercase" title="Logout" ng-click="expertLogout();">logout</a></li>
                   </ul>
 
-                <ul class="view-dropdown" ng-show="!expertLogedin && !userLogedin">
+                <ul class="view-dropdown" ng-hide="!userLogedin || !expertLogedin">
 
                 </ul>
               </li>

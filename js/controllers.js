@@ -13,16 +13,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.home = "home-page"
 
 
-    // ----for search expert------
-    NavigationService.getSearch($stateParams.search, function(data) {
-        $scope.expertdata = data.data;
-        console.log('getSearchdata', $scope.expertdata);
-        // NavigationService.getUser(function(logindata) {
-        //     _.each($scope.expertdata, function(n) {
-        //         n.showbtn = $filter('showbtn')(n._id, logindata);
-        //     })
-        // })
+    $scope.freqSearch = {};
+    NavigationService.getFreqSearch($scope.freqSearch, function(data) {
+        $scope.freqSearch = data.data;
+        console.log('$scope.freqSearch', $scope.freqSearch);
+
     });
+
+    // ----for search expert------
+
+
+
 
     $scope.testimonial = {};
     NavigationService.getTestimonial($scope.testimonial, function(data) {
@@ -1122,6 +1123,17 @@ $scope.mesg = [];
         //         })
         //     })
         // });
+
+
+              // NavigationService.getSearch($stateParams.search, function(data) {
+              //     $scope.expertdata = data.data;
+              //     console.log('getSearchdata', $scope.expertdata);
+              //     // NavigationService.getUser(function(logindata) {
+              //     //     _.each($scope.expertdata, function(n) {
+              //     //         n.showbtn = $filter('showbtn')(n._id, logindata);
+              //     //     })
+              //     // })
+              // });
 
         $scope.searchExpert = function() {
             NavigationService.getSearch($stateParams.search, function(data) {
