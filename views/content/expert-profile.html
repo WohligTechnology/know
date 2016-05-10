@@ -83,7 +83,7 @@
                                     </div> -->
                                     <div class="form-group mt25">
                                         <label>PROFILE IMAGE</label>
-                                          <img ng-src="{{userForm.image|uploadpath}}" class="img-responsive margin-auto" ng-if="userForm.image" style="height:200px;">
+                                        <!-- <img ng-src="{{userForm.image|uploadpath}}" class="img-responsive margin-auto"> -->
 
 
 
@@ -128,9 +128,9 @@
                                 <div class="error-msg" ng-show="user.city.$error.required && user.city.$touched">Please Enter Your City.</div>
                             </div>
                             <div class="row" style="border-top: 1px solid #ccc;margin:0px">
-                                <div class="col-md-12 col-sm-12" >
+                                <div class="col-md-12 col-sm-12">
                                     <div class="save-btn mt25">
-                                        <button class="btn btn-blue font-light text-up f13"  ng-click="userSubmitForm(user);tabchange('professional',2);">save</button>
+                                        <button class="btn btn-blue font-light text-up f13" ng-click="userSubmitForm(user);tabchange('professional',2);">save</button>
                                     </div>
                                 </div>
                             </div>
@@ -244,7 +244,6 @@
                                 </div>
                                 <!-- <form action="" class="form-input"> -->
                                 <div ng-repeat="experi in experiencedetail" ng-value="userForm.experience = experiencedetail">
-
                                     <div class="tab-dis mt25">
                                         <div class="rad">
                                             <div class="radio display-inline">
@@ -288,11 +287,12 @@
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">START DATE</label>
                                                 <p class="input-group">
-                                                    <input name="startDate" class="form-control" uib-datepicker-popup="{{format}}" ng-model="experi.startDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+
+                                                    <input type="date" ng-model="experi.startDate" name="startDate" class="form-control" />
                                                     <!-- <div class="error-msg" ng-show="user.startDate.$error.required && user.startDate.$touched">Please Enter Start Date.
                                                   </div> -->
                                                     <span class="input-group-btn">
-                  <button type="button" class="btn btn-default cal-btn" ng-click="open1()"><i class="fa fa-calendar"></i></button>
+                  <button type="button" class="btn btn-default cal-btn" ng-click="open1(experi.popupModel)"><i class="fa fa-calendar"></i></button>
                 </span>
                                                 </p>
                                             </div>
@@ -301,7 +301,7 @@
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">END DATE</label>
                                                 <p class="input-group">
-                                                    <input name="endDate" class="form-control" uib-datepicker-popup="{{format}}" ng-model="experi.endDate" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                                    <input type="date" ng-model="experi.endDate" name="endDate" class="form-control" />
                                                     <!-- <div class="error-msg" ng-show="user.endDate.$error.required && user.endDate.$touched">Please Enter End Date.
                                                   </div> -->
                                                     <span class="input-group-btn">
@@ -314,10 +314,11 @@
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">COMPANY LOGO</label>
                                                 <div class="pro-im mt10">
+                                                    <!-- <img ng-src="{{experi.image1|uploadpath}}" class="img-responsive margin-auto" style="height:200px;"> -->
                                                     <!-- <div class="user-img display-inline">
-                                                      <img src="img/user.png" alt="">
+                                                      <img ng-src="{{experi.image1|uploadpath}}" alt="">
                                                   </div> -->
-                                                    <upload-image ng-model="userForm.image1">
+                                                    <upload-image ng-model="experi.image1">
                                                     </upload-image>
                                                     <!-- <div class="sub-btn display-inline">
                                                       <upload-image ng-model="" no-view></upload-image>
@@ -394,7 +395,7 @@
                                         <div class="pic custom-li mt25" ng-repeat="photo in morephotos" ng-value="userForm.addPhotos = morephotos">
                                             <ul class="padding0">
                                                 <li>
-                                                    <!-- <img ng-src="{{userForm.image2}}" ng-if="userForm.image2" style="height:200px;"> -->
+                                                    <!-- <img ng-src="{{userForm.image2|uploadpath}}" ng-if="userForm.image2" style="height:200px;"> -->
                                                     <upload-image ng-model="photo.image2">
                                                     </upload-image>
                                                 </li>
@@ -420,7 +421,7 @@
                                         <!-- <form action="" class="form-input"> -->
                                         <div class="form-group mt25">
                                             <label>ENTER PUBLICATION LINK</label>
-                                            <div ng-repeat="link in publilink" ng-value="userForm.publicationLinks = publilink">
+                                            <div ng-repeat="link in userForm.publicationLinks" ng-value="userForm.publicationLinks = publilink">
                                                 <input type="text" name="name" class="form-control" ng-model="link.name">
                                             </div>
                                         </div>
@@ -578,7 +579,7 @@
                                         </div>
                                     </div>
                                     <div class="checkbox-blue checkbox mt25">
-                                        <input type="checkbox" id="radio011" ng-model="userForm.sameaddress" ng-change="changeAddress(userForm.sameaddress)"/>
+                                        <input type="checkbox" id="radio011" ng-model="userForm.sameaddress" ng-change="changeAddress(userForm.sameaddress)" />
                                         <label for="radio011"><span></span>SAME AS USER ADDRESS</label>
                                     </div>
                                     <div class="form-group">
@@ -597,7 +598,7 @@
                                 <div class="col-md-4 col-sm-5">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">TYPE OF ACCOUNT</label>
-                                        <select class="form-control" ng-model="userForm.typeOfAccount" >
+                                        <select class="form-control" ng-model="userForm.typeOfAccount">
                                             <option>CURRENT</option>
                                             <option>SAVING</option>
                                             <!-- <option>3</option>

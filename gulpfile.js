@@ -13,7 +13,7 @@ var jsArray = [
   './bower_components/ui-router/release/angular-ui-router.min.js',
   './bower_components/angular-flexslider/angular-flexslider.js',
   './bower_components/angular-rangeslider/angular.rangeSlider.js',
-  './bower_components/lodash/lodash.js',
+  './bower_components/lodash/dist/lodash.core.js',
   './bower_components/angularjs-imageupload-directive/public/javascripts/imageupload.js',
   './js/app.js',
   './js/controllers.js',

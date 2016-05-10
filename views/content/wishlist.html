@@ -31,7 +31,7 @@
                                 <th>Price</th>
                             </tr>
                             <tr ng-repeat="wish in wishlists">
-                                <td><img ng-src="{{wishlist.image}}" alt="" class="img-responsive display-inline img-circle completed" /> {{wish.expertUser.firstName + " " +wish.expertUser.lastName }}</td>
+                                <td><img ng-src="{{wish.expertUser.image|uploadpath}}" alt="" class="img-responsive display-inline img-circle completed" /> {{wish.expertUser.firstName + " " +wish.expertUser.lastName }}</td>
                                 <td>{{wish.expertUser.areaOfExpertise}}</td>
                                 <td>{{wish.expertUser.specilization}}</td>
 

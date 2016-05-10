@@ -20,7 +20,7 @@
         <div class="col-md-4 col-sm-4 col-xs-12">
           <div class="profile-bx text-center">
             <div class="pro-img-box">
-              <img ng-src="{{experts.image|uploadpath}}" alt="">
+              <img ng-src="{{expertprofile.image|uploadpath:200}}" alt="">
             </div>
             <div class="pro-name">
               <h4 class="margin0 color-base font-raleway font-bold">{{expertprofile.firstName + " " +expertprofile.lastName}}</h4>
@@ -124,14 +124,21 @@
             <div class="awd-list summary pt20">
               <h4 class="font-raleway color-success font-med margin0 text-up">VIDEO</h4>
               <div class="row mt10">
-                <div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="video in expertprofile.videoLinks">
-                  <div class="video-box pointer">
-                  <img src="img/v2.jpg" alt="" class="img-responsive">
+                <!-- <div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="video in expertprofile.videoLinks"> -->
+                  <!-- <div class="video-box pointer"> -->
+                  <!-- <img src="img/v2.jpg" alt="" class="img-responsive"> -->
                     <div class="play-layer">
-                      <a class="various fancybox.iframe" fancybox href="{{video.name}}">  <img src="img/play.png" alt=""></a>
+                      <ul class="padding0 mt10" ng-repeat="video in expertprofile.videoLinks">
+                        <li>
+                          {{video.name}}
+                        </li>
+                        </ul>
+                      <!-- <a class="various fancybox.iframe" fancybox href="{{video.name}}"> -->
+                        <!-- <img src="img/play.png" alt=""> -->
+                      <!-- </a> -->
                     </div>
-                  </div>
-                </div>
+                  <!-- </div> -->
+                <!-- </div> -->
                 <!-- <div class="col-md-2">
                   <div class="video-box pointer">
                     <img src="img/v2.jpg" alt="" class="img-responsive">
@@ -147,7 +154,7 @@
               <div class="row mt10">
                 <div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="img in expertprofile.addPhotos">
                   <div class="video-box pointer">
-                    <a class="fancybox2" href="http://farm2.staticflickr.com/1617/24108587812_6c9825d0da_b.jpg" title="Morning Godafoss (Brads5)"><img src="{{img.image2}}" alt="" class="img-responsive"></a>
+                    <a class="fancybox2"  href="{{img.image2|uploadpath}}" title="Morning Godafoss (Brads5)"><img ng-src="{{img.image2|uploadpath}}" alt="" class="img-responsive"></a>
                   </div>
                 </div>
                 <!-- <div class="col-md-2">

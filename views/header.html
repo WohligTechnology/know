@@ -93,8 +93,9 @@
                 </a>
                 <ul class="view-dropdown" ng-show="userLogedin || expertLogedin">
                   <li><a href="" class="text-uppercase color-primary" title="{{userdata.firstName}}">{{userdata.firstName}} {{userdata.lastName}}</a></li>
-                  <li><a href="" class="text-uppercase" title="Your Booking" ui-sref="user-booking">your booking</a></li>
-                  <li><a href="" class="text-uppercase" title="short list" ui-sref="wishlist">short list</a></li>
+                  <li ng-show="userLogedin"><a href="" class="text-uppercase" title="Your Booking" ui-sref="user-booking">your booking</a></li>
+                  <li ng-show="expertLogedin"><a href="" class="text-uppercase" title="Your Booking" ui-sref="expert-booking">your booking</a></li>
+                  <li ng-show="userLogedin"><a href="" class="text-uppercase" title="short list" ui-sref="wishlist">short list</a></li>
                   <li ng-show="userLogedin"><a href="" class="text-uppercase" title="Edit Account" ui-sref="edit-user({id:userdata._id})">edit account</a></li>
                   <li ng-show="expertLogedin"><a href="" class="text-uppercase" title="Edit Account" ui-sref="expert-profile({id:userdata._id})">edit account</a></li>
                   <li  ng-show="userLogedin"><a href="" class="text-uppercase" title="Change Password" ui-sref="change-password({id:userdata._id})">change password</a></li>

@@ -1,5 +1,5 @@
 window.uploadurl = "http://wohlig.biz/uploadfile/upload/";
-
+var abc = {};
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'jkuri.timepicker', 'imageupload'])
 
 .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, $stateParams) {
@@ -733,6 +733,31 @@ $scope.mesg = [];
         $scope.editExpert=function(){
           NavigationService.getExpertEditDetail($stateParams.id, function(data) {
               console.log('getUserEditDetail', data);
+              $scope.publilink = data.publicationLinks;
+              $scope.edudetail = data.educationalQualification;
+              $scope.experiencedetail = data.experience;
+
+
+              console.log(data.experience);
+              abc = $scope.experiencedetail;
+              for (var i = 0; i < $scope.experiencedetail.length; i++) {
+                console.log($scope.experiencedetail.length);
+                $scope.experiencedetail[i].popupModel = false;
+                console.log("Experience",$scope.experiencedetail[i]);
+                $scope.experiencedetail[i].startDate = new Date($scope.experiencedetail[i].startDate);
+                console.log("startDate",$scope.experiencedetail[i].startDate);
+                $scope.experiencedetail[i].endDate = new Date($scope.experiencedetail[i].endDate);
+              }
+              console.log($scope.experiencedetail);
+
+              $scope.moreAwards = data.awards;
+              $scope.moreVideos = data.videoLinks;
+              $scope.morephotos = data.addPhotos;
+
+              $scope.calldetail = data.callSettings;
+              $scope.calldetail = data.customSettings;
+              $scope.calldetail = data.unavailableSettings;
+
               $scope.userForm = data;
           });
         };
@@ -830,8 +855,9 @@ $scope.mesg = [];
             companyName: '',
             jobTitle: '',
             jobDescription: '',
-            startDate: '',
-            endDate: ''
+            startDate: Date(),
+            endDate: Date(),
+            image1:''
         }];
 
         $scope.addexperience = function() {
@@ -993,8 +1019,11 @@ $scope.mesg = [];
 
         $scope.toggleMin();
 
-        $scope.open1 = function() {
-            $scope.popup1.opened = true;
+        $scope.open1 = function(popupmod) {
+          console.log(popupmod);
+            popupmod = true;
+            console.log(popupmod);
+
         };
 
         $scope.open2 = function() {
