@@ -44,7 +44,7 @@
               <p class="font-bold color-base f10 mt10">{{expertprofile.specilization}}</p>
             </div>
             <div class="btn-book mt25">
-              <button class="btn btn-blue font-raleway text-up" width="100%" ui-sref="book-now">book now</button>
+              <button class="btn btn-blue font-raleway text-up" width="100%" ui-sref="book-now({id:expertprofile._id})">book now</button>
             </div>
           </div>
         </div>
@@ -121,34 +121,36 @@
                 <li>Angular Hackothan Awards </li>
               </ul>
             </div> -->
-            <div class="awd-list summary pt20">
+
+            <!-- <div class="awd-list summary pt20">
               <h4 class="font-raleway color-success font-med margin0 text-up">VIDEO</h4>
               <div class="row mt10">
-                <!-- <div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="video in expertprofile.videoLinks"> -->
-                  <!-- <div class="video-box pointer"> -->
-                  <!-- <img src="img/v2.jpg" alt="" class="img-responsive"> -->
+                <div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="video in expertprofile.videoLinks">
+                   <div class="video-box pointer">
+                  <img src="img/v2.jpg" alt="" class="img-responsive">
                     <div class="play-layer">
                       <ul class="padding0 mt10" ng-repeat="video in expertprofile.videoLinks">
                         <li>
                           {{video.name}}
                         </li>
                         </ul>
-                      <!-- <a class="various fancybox.iframe" fancybox href="{{video.name}}"> -->
-                        <!-- <img src="img/play.png" alt=""> -->
-                      <!-- </a> -->
+                      <a class="various fancybox.iframe" fancybox href="{{video.name}}">
+                         <img src="img/play.png" alt="">
+                      </a>
                     </div>
-                  <!-- </div> -->
-                <!-- </div> -->
-                <!-- <div class="col-md-2">
+                  </div>
+                </div>
+                 <div class="col-md-2">
                   <div class="video-box pointer">
                     <img src="img/v2.jpg" alt="" class="img-responsive">
                     <div class="play-layer">
                     <a class="various fancybox.iframe" fancybox href="http://www.youtube.com/embed/daIvWD7U_D8?autoplay=1">  <img src="img/play.png" alt=""></a>
                     </div>
                   </div>
-                </div> -->
+                </div>
               </div>
-            </div>
+            </div> -->
+
             <div class="awd-list summary pt20">
               <h4 class="font-raleway color-success font-med margin0 text-up" >photos</h4>
               <div class="row mt10">

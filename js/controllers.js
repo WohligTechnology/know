@@ -61,18 +61,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.newsletterSubmit = function(data) {
         console.log('newsletterSubmitd', data);
-        // if(data){
-
         NavigationService.getNewsletter($scope.newsletter, function(data) {
-            $scope.newsletter = data;
+            $scope.newsletter = data.data;
             console.log('newsletter', $scope.newsletter);
-            $state.go("home");
+            //$state.go("home");
         });
-        // }
-
-
-        //$scope.newsletter={};
-
     };
 
 
@@ -385,7 +378,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.navigation = NavigationService.getnav();
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
-$scope.mesg=[];
+        $scope.mesg = [];
         $scope.userForm = {};
         $scope.getLogin = function(formValid) {
             //console.log($scope.userForm);
@@ -397,10 +390,10 @@ $scope.mesg=[];
                         $state.go("home");
                     } else {
 
-                      $scope.mesg.push({
-                          type: 'success',
-                          msg: 'Incorrect Email or Password'
-                      });
+                        $scope.mesg.push({
+                            type: 'success',
+                            msg: 'Incorrect Email or Password'
+                        });
                     }
                 });
             }
@@ -465,7 +458,7 @@ $scope.mesg=[];
         $scope.navigation = NavigationService.getnav();
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
-$scope.mesg = [];
+        $scope.mesg = [];
         $scope.userForm = {};
         $scope.userSignup = function(formValid) {
             console.log('SignupCtrl', $scope.userForm);
@@ -479,10 +472,10 @@ $scope.mesg = [];
                         //console.log('userformctrl', $scope.userForm);
                         $state.go("home");
                     } else {
-                      $scope.mesg.push({
-                          type: 'success',
-                          msg: 'Password do not match.'
-                      });
+                        $scope.mesg.push({
+                            type: 'success',
+                            msg: 'Password do not match.'
+                        });
                         $scope.userForm.confirmPassword = "";
                     }
 
@@ -642,7 +635,7 @@ $scope.mesg = [];
         $scope.experthome = "expert-home";
 
 
-        $scope.mesg=[];
+        $scope.mesg = [];
         $scope.userForm = {};
         $scope.expertSignup = function(formValid) {
             console.log('HomeExpertCtrl', $scope.userForm);
@@ -656,10 +649,10 @@ $scope.mesg = [];
                         //console.log('userformctrl', $scope.userForm);
                         $state.go("expert-profile");
                     } else {
-                      $scope.mesg.push({
-                          type: 'success',
-                          msg: 'Password do not match.'
-                      });
+                        $scope.mesg.push({
+                            type: 'success',
+                            msg: 'Password do not match.'
+                        });
                         //$window.alert("Password do not match.");
                         $scope.userForm.confirmPassword = "";
                     }
@@ -731,36 +724,36 @@ $scope.mesg = [];
             console.log(data);
         }
 
-        $scope.editExpert=function(){
-          NavigationService.getExpertEditDetail($stateParams.id, function(data) {
-              console.log('getUserEditDetail', data);
-              $scope.publilink = data.publicationLinks;
-              $scope.edudetail = data.educationalQualification;
-              $scope.experiencedetail = data.experience;
+        $scope.editExpert = function() {
+            NavigationService.getExpertEditDetail($stateParams.id, function(data) {
+                console.log('getUserEditDetail', data);
+                $scope.publilink = data.publicationLinks;
+                $scope.edudetail = data.educationalQualification;
+                $scope.experiencedetail = data.experience;
 
 
-              console.log(data.experience);
-              abc = $scope.experiencedetail;
-              for (var i = 0; i < $scope.experiencedetail.length; i++) {
-                console.log($scope.experiencedetail.length);
-                $scope.experiencedetail[i].popupModel = false;
-                console.log("Experience",$scope.experiencedetail[i]);
-                $scope.experiencedetail[i].startDate = new Date($scope.experiencedetail[i].startDate);
-                console.log("startDate",$scope.experiencedetail[i].startDate);
-                $scope.experiencedetail[i].endDate = new Date($scope.experiencedetail[i].endDate);
-              }
-              console.log($scope.experiencedetail);
+                console.log(data.experience);
+                abc = $scope.experiencedetail;
+                for (var i = 0; i < $scope.experiencedetail.length; i++) {
+                    console.log($scope.experiencedetail.length);
+                    $scope.experiencedetail[i].popupModel = false;
+                    console.log("Experience", $scope.experiencedetail[i]);
+                    $scope.experiencedetail[i].startDate = new Date($scope.experiencedetail[i].startDate);
+                    console.log("startDate", $scope.experiencedetail[i].startDate);
+                    $scope.experiencedetail[i].endDate = new Date($scope.experiencedetail[i].endDate);
+                }
+                console.log($scope.experiencedetail);
 
-              $scope.moreAwards = data.awards;
-              $scope.moreVideos = data.videoLinks;
-              $scope.morephotos = data.addPhotos;
+                $scope.moreAwards = data.awards;
+                $scope.moreVideos = data.videoLinks;
+                $scope.morephotos = data.addPhotos;
 
-              $scope.calldetail = data.callSettings;
-              $scope.calldetail = data.customSettings;
-              $scope.calldetail = data.unavailableSettings;
+                $scope.calldetail = data.callSettings;
+                $scope.calldetail = data.customSettings;
+                $scope.calldetail = data.unavailableSettings;
 
-              $scope.userForm = data;
-          });
+                $scope.userForm = data;
+            });
         };
         $scope.editExpert();
 
@@ -858,7 +851,7 @@ $scope.mesg = [];
             jobDescription: '',
             startDate: Date(),
             endDate: Date(),
-            image1:''
+            image1: ''
         }];
 
         $scope.addexperience = function() {
@@ -1021,7 +1014,7 @@ $scope.mesg = [];
         $scope.toggleMin();
 
         $scope.open1 = function(popupmod) {
-          console.log(popupmod);
+            console.log(popupmod);
             popupmod = true;
             console.log(popupmod);
 
@@ -1125,33 +1118,38 @@ $scope.mesg = [];
         // });
 
 
-              // NavigationService.getSearch($stateParams.search, function(data) {
-              //     $scope.expertdata = data.data;
-              //     console.log('getSearchdata', $scope.expertdata);
-              //     // NavigationService.getUser(function(logindata) {
-              //     //     _.each($scope.expertdata, function(n) {
-              //     //         n.showbtn = $filter('showbtn')(n._id, logindata);
-              //     //     })
-              //     // })
-              // });
+        // NavigationService.getSearch($stateParams.search, function(data) {
+        //     $scope.expertdata = data.data;
+        //     console.log('getSearchdata', $scope.expertdata);
+        //     // NavigationService.getUser(function(logindata) {
+        //     //     _.each($scope.expertdata, function(n) {
+        //     //         n.showbtn = $filter('showbtn')(n._id, logindata);
+        //     //     })
+        //     // })
+        // });
 
         $scope.searchExpert = function() {
             NavigationService.getSearch($stateParams.search, function(data) {
-                $scope.expertdata = data.data.data;
-              $scope.expertiseFilter=data.data.arr;
+                if (data && data.data && data.data.data) {
+                    $scope.expertdata = data.data.data;
+                    $scope.expertiseFilter = data.data.arr;
 
-                console.log('arr',data.data.arr.expertise);
-                if ($scope.expertdata.length == 0) {
-                    $scope.notfound = true;
-                } else {
-                    console.log('getSearchdata111', $scope.expertdata);
-                    NavigationService.getUser(function(logindata) {
-                        _.each($scope.expertdata, function(n) {
-                            n.showbtn = $filter('showbtn')(n._id, logindata);
+                    console.log('arr', data.data.arr.expertise);
+                    //console.log('$scope.expertdata.length',$scope.expertdata.length);
+                    if ($scope.expertdata.length == 0) {
+                        //console.log('$scope.expertdata.length22',$scope.expertdata.length);
+                        $scope.notfound = true;
+                    } else {
+                        console.log('getSearchdata111', $scope.expertdata);
+                        NavigationService.getUser(function(logindata) {
+                            _.each($scope.expertdata, function(n) {
+                                n.showbtn = $filter('showbtn')(n._id, logindata);
+                            })
                         })
-                    })
+                    }
+                } else {
+                    $scope.notfound = true;
                 }
-
             });
         };
         $scope.searchExpert();
@@ -1296,9 +1294,10 @@ $scope.mesg = [];
             $scope.userdata = data;
             $scope.userLogedin = true;
             NavigationService.getNotification({
-              from:"user"
+                from: "user"
             }, function(data) {
                 $scope.notificationdata = data.data;
+                console.log('$scope.notificationdata user', $scope.notificationdata);
             });
         } else {
             if (window.location.href.indexOf('user-') != -1) {
@@ -1309,14 +1308,15 @@ $scope.mesg = [];
 
     // --------Expert Login----------
     NavigationService.getExpert(function(data) {
-      console.log('false');
+        console.log('false');
         if (data._id) {
             $scope.userdata = data;
             $scope.expertLogedin = true;
             NavigationService.getNotification({
-              from:"expert"
+                from: "expert"
             }, function(data) {
                 $scope.notificationdata = data.data;
+                console.log('$scope.notificationdata expert', $scope.notificationdata);
             });
         } else {
             if (window.location.href.indexOf('expert-') != -1) {
@@ -1339,7 +1339,7 @@ $scope.mesg = [];
     $scope.expertLogout = function() {
         console.log("in me expert logout/////////////////////////////////");
         NavigationService.getExpertLogout($scope.userdata, function(data) {
-          console.log(data);
+            console.log(data);
             if (data.value == true) {
                 $scope.expertNotAvail = true;
                 console.log('trueeeeeeeeeeeeeeeee');

@@ -51,10 +51,11 @@
                 <div class="notification view-dropdown" ui-sref="user-booking">
                   <h4 class="text-center font-light color-grey">Notifications</h4>
                   <div class="notify" ng-repeat="noti in notificationdata track by $index">
+
                     <div class="notification-list clearfix">
                       <div class="pull-left">
                         <div class="notify-imgholder">
-                          <img src="img/search-pro2.jpg" alt="" class="img-circle img-responsive" width="30">
+                          <img ng-src="{{noti.image|uploadpath}}" alt="" class="img-circle img-responsive" width="30">
                         </div>
                       </div>
                       <div class="descp-noti">
