@@ -391,17 +391,17 @@
                                         </div>
 
                                     </div> -->
-                                    <div class="col-md-4 col-sm-7">
+                                    <div class="col-md-8 col-sm-8">
                                         <div class="set-title display-inline">
                                             <h5 class="font-raleway font-bold f17 color-base text-up">ADD PHOTOS</h5>
                                         </div>
                                         <div class="add display-inline">
                                             <i class="ln-cross" ng-click="addphotos()"></i>
                                         </div>
-                                        <div class="pic custom-li mt25" ng-repeat="photo in morephotos" ng-value="userForm.addPhotos = morephotos">
-                                      
+                                        <div class="pic custom-li mt25" >
+
                                             <ul class="padding0">
-                                                <li>
+                                                <li ng-repeat="photo in morephotos" ng-value="userForm.addPhotos = morephotos">
                                                   <upload-image ng-model="photo.image2">
                                                   </upload-image>
                                                     <!-- <img ng-src="{{userForm.image2|uploadpath}}" ng-if="userForm.image2" style="height:200px;"> -->
