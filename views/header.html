@@ -93,6 +93,8 @@
                   <img class="color-white white-img" src="img/log.png" alt="" width="30" ui-sref="login" ng-show="!userLogedin"/>
                   <img class="color-base black-img" src="img/close2.png" alt="" width="30" ng-show="userLogedin">
                   <img class="color-base black-img" src="img/close2.png" alt="" width="30" ui-sref="login" ng-show="!userLogedin"/>
+                <!-- <a ng-click="openform('Login')">  <img class="color-base black-img" src="img/close2.png" alt="" width="30"  ng-show="expertloginlogo"/></a> -->
+
                 </a>
                 <ul class="view-dropdown" ng-show="userLogedin || expertLogedin">
                   <li><a href="" class="text-uppercase color-primary" title="{{userdata.firstName}}">{{userdata.firstName}} {{userdata.lastName}}</a></li>
@@ -132,7 +134,7 @@
         <div class="template menu" ng-include="template.menu"></div>
         <div class="mt30">
           <button class="btn btn-become text-uppercase ask-jack">ask jack</button>
-        <button class="btn btn-become text-uppercase become-expert" ui-sref="expert-home">become an expert</button>
+        <button class="btn btn-become text-uppercase become-expert" ui-sref="home-expert">become an expert</button>
         </div>
       </div>
     </div>
