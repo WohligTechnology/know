@@ -1128,6 +1128,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         //     // })
         // });
 
+        $scope.pushExpertise = function(val, key) {
+            if (key == 13) {
+                $scope.expertiseFilter.expertise.unshift(val);
+                //$scope.searchExpert();
+            }
+        }
+
+        $scope.pushLocation = function(val, key) {
+            if (key == 13) {
+                $scope.expertiseFilter.location.unshift(val);
+                //$scope.searchExpert();
+            }
+        }
+
         $scope.searchExpert = function() {
             NavigationService.getSearch($stateParams.search, function(data) {
                 if (data && data.data && data.data.data) {

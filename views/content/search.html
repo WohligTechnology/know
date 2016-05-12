@@ -30,9 +30,9 @@
                             <form>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">AREA OF EXPERTISE</label>
-                                    <input type="text" class="form-control padd filter-input" ng-model="searchExpertise" id="exampleInputEmail1" placeholder="eg. doctor, surgeon, etc.">
+                                    <input type="text" class="form-control padd filter-input" ng-model="searchExpertise" id="exampleInputEmail1" placeholder="eg. doctor, surgeon, etc." ng-keyup="pushExpertise(searchExpertise,$event.keyCode)">
                                     <div class="checkbox">
-                                        <div class="" ng-repeat="expertise in expertiseFilter.expertise | filter:searchExpertise track by $index">
+                                        <div class="" ng-repeat="expertise in expertiseFilter.expertise track by $index">
                                             <input type="checkbox" id="doc">
                                             <label for="doc">
                                                 <span></span> {{expertise}}
@@ -61,9 +61,9 @@
                                 <div class="form-group">
                                     <!-- <h5 class="text-uppercase">Location</h5> -->
                                     <label for="exampleInputEmail1">LOCATION</label>
-                                    <input type="text" ng-model="searchLocation" class="form-control filter-input" id="exampleInputEmail1" placeholder="eg. Mumbai, Pune, etc.">
+                                    <input type="text" ng-model="searchLocation" class="form-control filter-input" id="exampleInputEmail1" placeholder="eg. Mumbai, Pune, etc." ng-keyup="pushLocation(searchLocation,$event.keyCode)">
                                     <div class="checkbox">
-                                        <div class=""  ng-repeat="expertise in expertiseFilter.location | filter:searchLocation track by $index">
+                                        <div class=""  ng-repeat="expertise in expertiseFilter.location track by $index">
                                             <input type="checkbox" id="mum">
                                             <label for="mum">
                                                 <span></span> {{expertise}}
