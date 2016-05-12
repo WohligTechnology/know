@@ -1328,6 +1328,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     };
 
+    if(window.location.hash=='#/home-expert')
+    {
+        $scope.expertloginlogo=true;
+      $scope.openform = function(param) {
+          if (param == 'Login') {
+              $scope.showform = true;
+          } else {
+              $scope.showform = false;
+          }
+          $(window).scrollTop(0)
+      }
+
+
+
+    }
+
+
 
 
     // --------User Login----------
