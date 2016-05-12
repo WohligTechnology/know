@@ -1367,6 +1367,12 @@ padding-bottom: 20px;
       max-height: 100%;
     }
 }
+.alert {
+    padding: 6px;
+    margin-top: 40px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
 // animation end
 @import "amit";
 @import "mobile";
