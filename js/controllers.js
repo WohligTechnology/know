@@ -57,16 +57,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     // };
 
 
-    $scope.newsletter = {};
-
-    $scope.newsletterSubmit = function(data) {
-        console.log('newsletterSubmitd', data);
-        NavigationService.getNewsletter($scope.newsletter, function(data) {
-            $scope.newsletter = data.data;
-            console.log('newsletter', $scope.newsletter);
-            //$state.go("home");
-        });
-    };
 
 
 
@@ -1102,6 +1092,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Search");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.expertdata = {
+            search: $stateParams.search
+        };
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
         $scope.mesg = [];
@@ -1127,6 +1120,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         //     //     })
         //     // })
         // });
+
+        $scope.pushExpertise = function(val, key) {
+            if (key == 13) {
+                $scope.expertiseFilter.expertise.unshift(val);
+                //$scope.searchExpert();
+            }
+        }
+
+        $scope.pushLocation = function(val, key) {
+            if (key == 13) {
+                $scope.expertiseFilter.location.unshift(val);
+                //$scope.searchExpert();
+            }
+        }
 
         $scope.searchExpert = function() {
             NavigationService.getSearch($stateParams.search, function(data) {
@@ -1284,6 +1291,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
     // $scope.fromUrl = $state.
 
+    $scope.newsletter = {};
+
+    $scope.newsletterSubmit = function(data) {
+        console.log('newsletterSubmitd', data);
+        if (data) {
+            NavigationService.getNewsletter($scope.newsletter, function(data) {
+                $scope.newsletter = data.data;
+                console.log('newsletter', $scope.newsletter);
+                //$state.go("home");
+            });
+        } else {
+            $scope.newsletter.comment = "incorrectEmail";
+            $scope.newsletter.message = "incorrectEmail";
+        }
+
+    };
 
 
 
