@@ -88,11 +88,11 @@
                 </div>
               </li>
               <li class="profile pointer">
-                <a href="" class="display-inline user-icon">
+                <a  class="display-inline user-icon">
                   <img class="color-white white-img" src="img/log.png" alt="" width="30" ng-show="userLogedin"/>
-                  <img class="color-white white-img" src="img/log.png" alt="" width="30" ui-sref="login" ng-show="!userLogedin"/>
-                  <img class="color-base black-img" src="img/close2.png" alt="" width="30" ng-show="userLogedin">
-                  <img class="color-base black-img" src="img/close2.png" alt="" width="30" ui-sref="login" ng-show="!userLogedin"/>
+                  <img class="color-white white-img" src="img/log.png" alt="" width="30" ng-click="goToLogin()" ng-show="!userLogedin"/>
+                  <img class="color-base black-img" src="img/close2.png" alt="" width="30" ng-show="userLogedin" >
+                  <img class="color-base black-img" src="img/close2.png" alt="" width="30" ng-click="goToLogin()" ng-show="!userLogedin"/>
                 <!-- <a ng-click="openform('Login')">  <img class="color-base black-img" src="img/close2.png" alt="" width="30"  ng-show="expertloginlogo"/></a> -->
 
                 </a>
@@ -105,8 +105,8 @@
                   <li ng-show="expertLogedin"><a href="" class="text-uppercase" title="Edit Account" ui-sref="expert-profile({id:userdata._id})">edit account</a></li>
                   <li  ng-show="userLogedin"><a href="" class="text-uppercase" title="Change Password" ui-sref="change-password({id:userdata._id})">change password</a></li>
                   <li ng-show="expertLogedin"><a class="text-uppercase" title="Change Password" ui-sref="change-expert-password({id:userdata._id})">change password</a></li>
-                  <li ng-show="userLogedin"><a ui-sref="home" class="text-uppercase" title="Logout" ng-click="userLogout();">logout</a></li>
-                  <li ng-show="expertLogedin"><a ui-sref="home" class="text-uppercase" title="Logout" ng-click="expertLogout();">logout</a></li>
+                  <li ng-show="userLogedin"><a ui-sref="login" class="text-uppercase" title="Logout" ng-click="userLogout();">logout</a></li>
+                  <li ng-show="expertLogedin"><a ui-sref="home-expert" class="text-uppercase" title="Logout" ng-click="expertLogout();">logout</a></li>
                   </ul>
 
                 <ul class="view-dropdown" ng-hide="!userLogedin || !expertLogedin">

@@ -31,7 +31,7 @@
               <span>OR</span>
             </div>
             <div class="mail mt10 pos-relative">
-              <input type="mail" placeholder="EMAIL ADDRESS" class="form-control display-inline log" ng-model="userForm.email" required>
+              <input type="email" placeholder="EMAIL ADDRESS" class="form-control display-inline log" ng-model="userForm.email" required>
               <div class="error-msg" ng-show="user.email.$error.required && user.email.$touched">Please Enter Your Email.</div>
               <div class="icon-mail display-inline">
                 <i class="ln-envelope"></i>
@@ -48,7 +48,7 @@
             <div class="forg-pass pull-right mt5">
               <a href="" class="color-primary font-light f13" ng-click="open3('sm'); $dismiss()">Forgot password?</a>
             </div>
-            <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center">{{alert.msg}}</uib-alert>
+            <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="3000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
             <div class="login-btn mt50">
               <button class="btn btn-animate-org f10 font-light" ng-click="getLogin(user)">LOGIN</button>
             </div>

@@ -1,5 +1,6 @@
 window.uploadurl = "http://wohlig.biz/uploadfile/upload/";
 var abc = {};
+var global = {};
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'jkuri.timepicker', 'imageupload'])
 
 .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, $stateParams) {
@@ -379,14 +380,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         $scope.userForm = data;
                         $state.go("home");
                     } else {
-
                         $scope.mesg.push({
-                            type: 'success',
+                            type: 'danger',
                             msg: 'Incorrect Email or Password'
                         });
+
+                        $scope.closeAlert = function(index) {
+                            $scope.mesg.splice(index, 1);
+                        }
+
                     }
+
                 });
+
             }
+            $scope.mesg = [];
         };
 
         $scope.forgotpswd = {};
@@ -395,7 +403,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.getForgotpswd(formValid, function(data) {
                 $scope.forgotpswd = data.data;
                 console.log('forgotpswd', $scope.forgotpswd);
+                if ($scope.forgotpswd.comment == 'User not found') {
+                    $scope.mesg.push({
+                        type: 'danger',
+                        msg: 'Incorrect Email'
+                    });
+
+                    $scope.closeAlert = function(index) {
+                        $scope.mesg.splice(index, 1);
+                    }
+
+                }
             });
+            $scope.mesg = [];
         };
 
         $scope.open3 = function(size) {
@@ -406,39 +426,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 //controller: 'HomeCtrl',
                 size: size,
                 scope: $scope
-                    // resolve: {
-                    //     items: function() {
-                    //         return $scope.items;
-                    //     }
-                    // }
             });
 
         };
 
-        //          var modalInstances = '';
-        //
-        //        $scope.animationsEnabled = true;
-        //        $scope.open3 = function(size) {
-        // $scope.modalData = {};
-        //            var modalInstance = $uibModal.open({
-        //                animation: $scope.animationsEnabled,
-        //                templateUrl: 'views/modal/forgetpassword.html',
-        //              scope: $scope
-        //
-        //            });
-        //
-        //        modalInstance.result.then(function(data) {
-        //            $scope.selected = data;
-        //        }, function() {});
-        //    };
 
-        // $scope.forgotpswdClick = function(data){
-        //   console.log("in ctrl");
-        // }
-
-        // $scope.toggleAnimation = function() {
-        //     $scope.animationsEnabled = !$scope.animationsEnabled;
-        // };
 
     })
     .controller('SignupCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $window) {
@@ -466,6 +458,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             type: 'success',
                             msg: 'Password do not match.'
                         });
+                        $scope.closeAlert = function(index) {
+                            $scope.mesg.splice(index, 1);
+                        }
                         $scope.userForm.confirmPassword = "";
                     }
 
@@ -473,7 +468,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 });
 
             }
-
+              $scope.mesg = [];
         };
 
 
@@ -684,6 +679,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
             $(window).scrollTop(0)
         }
+        global.open = $scope.openform;
     })
 
 .controller('ExpertProfileCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $window, $stateParams) {
@@ -1076,12 +1072,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
 
-        $scope.showWishlist=function(){
-          NavigationService.getWishlist($scope.wishlists, function(data) {
-              //console.log("in edit blog");
-              $scope.wishlists = data.data.shortList;
-              console.log('wishlists', $scope.wishlists);
-          });
+        $scope.showWishlist = function() {
+            NavigationService.getWishlist($scope.wishlists, function(data) {
+                //console.log("in edit blog");
+                $scope.wishlists = data.data.shortList;
+                console.log('wishlists', $scope.wishlists);
+            });
         };
 
 
@@ -1092,20 +1088,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
 
 
-    $scope.removeWishlist=function(id){
-      console.log('formvalid', formValid);
-       NavigationService.deleteWishlist({
-           id: formValid
-       }, function(data) {
-           console.log('delete data:', data);
-           if (data.value === true) {
+        $scope.removeWishlist = function(id) {
+            console.log('formvalid', formValid);
+            NavigationService.deleteWishlist({
+                id: formValid
+            }, function(data) {
+                console.log('delete data:', data);
+                if (data.value === true) {
 
-              $scope.showWishlist();
-           }
+                    $scope.showWishlist();
+                }
 
-       });
-     };
-       $scope.showWishlist();
+            });
+        };
+        $scope.showWishlist();
     })
     .controller('SearchCtrl', function($scope, TemplateService, NavigationService, $timeout, $filter, $stateParams) {
         $scope.template = TemplateService.changecontent("search");
@@ -1297,7 +1293,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 })
 
-.controller('headerctrl', function($scope, TemplateService, NavigationService, $state) {
+.controller('headerctrl', function($scope, TemplateService, NavigationService, $state, $rootScope) {
     $scope.template = TemplateService;
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams, $state) {
         $(window).scrollTop(0);
@@ -1313,6 +1309,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.newsletter = {};
 
+    $scope.goToLogin = function() {
+
+        if ($state.current.name == "home-expert") {
+            global.open('Login');
+        } else {
+            console.log("Getting");
+            $state.go("login");
+        }
+    };
+
     $scope.newsletterSubmit = function(data) {
         console.log('newsletterSubmitd', data);
         if (data) {
@@ -1323,26 +1329,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         } else {
             $scope.newsletter.comment = "incorrectEmail";
-            $scope. newsletter.message = "incorrectEmail";
+            $scope.newsletter.message = "incorrectEmail";
         }
 
     };
-
-    if(window.location.hash=='#/home-expert')
-    {
-        $scope.expertloginlogo=true;
-      $scope.openform = function(param) {
-          if (param == 'Login') {
-              $scope.showform = true;
-          } else {
-              $scope.showform = false;
-          }
-          $(window).scrollTop(0)
-      }
-
-
-
-    }
 
 
 
@@ -1385,26 +1375,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
     });
     $scope.userLogout = function() {
+        //$state.go('login');
         NavigationService.getUserLogout($scope.userdata, function(data) {
             // if(id==data._id){
             if (data.value == true) {
+
                 $scope.userNotAvail = true;
                 console.log('true');
                 if (window.location.href.indexOf('home')) {
-                    $state.go('login');
+
                 }
             }
         });
     };
     $scope.expertLogout = function() {
+        //$state.go('home-expert');
         console.log("in me expert logout/////////////////////////////////");
         NavigationService.getExpertLogout($scope.userdata, function(data) {
             console.log(data);
             if (data.value == true) {
+
                 $scope.expertNotAvail = true;
                 console.log('trueeeeeeeeeeeeeeeee');
                 if (window.location.href.indexOf('home')) {
-                    $state.go('home-expert');
+
                 }
             }
         });

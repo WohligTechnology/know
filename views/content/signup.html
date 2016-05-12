@@ -63,7 +63,7 @@
               <div class="mail mt10 pos-relative">
                 <input type="password" name="confirmPassword" placeholder="CONFIRM PASSWORD" class="form-control display-inline log" ng-model="userForm.confirmPassword" required>
                 <div class="error-msg" ng-show="user.confirmPassword.$error.required && user.confirmPassword.$touched">Please Confirm Your Password.</div>
-                  <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center">{{alert.msg}}</uib-alert>
+                  <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="3000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
 
                 <div class="icon-mail display-inline">
                   <i class="ln-lock"></i>
