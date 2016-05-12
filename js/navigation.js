@@ -20,6 +20,7 @@ var navigationservice = angular.module('navigationservice', [])
         name: "My Calendar",
         classis: "active",
         anchor: "home",
+
     }, {
         name: "My Booking Page",
         classis: "active",
@@ -35,11 +36,12 @@ var navigationservice = angular.module('navigationservice', [])
     }, {
         name: "About Us",
         classis: "active",
-        anchor: "home",
+        anchor: "about",
     }, {
         name: "Contact Us",
         classis: "active",
-        anchor: "home",
+        anchor: "contact"
+
     }];
 
     return {

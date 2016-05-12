@@ -399,11 +399,13 @@
                                             <i class="ln-cross" ng-click="addphotos()"></i>
                                         </div>
                                         <div class="pic custom-li mt25" ng-repeat="photo in morephotos" ng-value="userForm.addPhotos = morephotos">
+                                      
                                             <ul class="padding0">
                                                 <li>
+                                                  <upload-image ng-model="photo.image2">
+                                                  </upload-image>
                                                     <!-- <img ng-src="{{userForm.image2|uploadpath}}" ng-if="userForm.image2" style="height:200px;"> -->
-                                                    <upload-image ng-model="photo.image2">
-                                                    </upload-image>
+
                                                 </li>
                                                 <!-- <li>
                                                     <img src="img/cr2.jpg" alt="">
@@ -427,7 +429,7 @@
                                         <!-- <form action="" class="form-input"> -->
                                         <div class="form-group mt25">
                                             <label>ENTER PUBLICATION LINK</label>
-                                            <div ng-repeat="link in userForm.publicationLinks" ng-value="userForm.publicationLinks = publilink">
+                                            <div ng-repeat="link in userForm.publicationLinks" ng-value="userForm.publicationLinks = publilink" class="mt15">
                                                 <input type="text" name="name" class="form-control" ng-model="link.name">
                                             </div>
                                         </div>
