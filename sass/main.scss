@@ -660,7 +660,7 @@ input {
 .badge {
   display: inline-block;
   /* min-width: 10px; */
-  padding: 10px;
+  padding: 12px 0px;
   font-size: 12px;
   font-weight: 300;
   color: #fff;
@@ -670,6 +670,8 @@ input {
   background-color: #FF8521;
   border-radius: 100%;
   margin: -5px 0 0;
+  height: 35px;
+  width: 35px;
 }
 .update-box {
   width: 80%;
