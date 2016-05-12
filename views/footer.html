@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-sm-3 col-xs-6">
-        <div class="footer-menu">
+        <div class="footer-menu" ng-controller="headerctrl">
           <ul>
             <li>
               <a ui-sref="login">
@@ -20,21 +20,27 @@
                   Calendar
                 </a>
             </li>
-            <li>
-              <a href="">
+            <li ng-if="userLogedin || expertLogedin">
+              <a ng-show="userLogedin" ui-sref="user-booking">
                   Bookings Page
                 </a>
+                <a ng-show="expertLogedin" ui-sref="expert-booking">
+                    Bookings Page
+                  </a>
             </li>
-            <li>
-              <a href="">
+            <li ng-if="userLogedin || expertLogedin" controller="headerctrl">
+              <a ng-show="userLogedin" ui-sref="edit-user({id:userdata._id})">
+                Profile Page
+                </a>
+              <a ng-show="expertLogedin" ui-sref="expert-profile({id:userdata._id})">
                 Profile Page
                 </a>
             </li>
-            <li>
+            <!-- <li ng-if="userLogedin || expertLogedin" controller="headerctrl">
               <a href="">
                 Account
                 </a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
