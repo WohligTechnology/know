@@ -283,31 +283,18 @@ firstapp.directive('fancybox', function($compile, $parse) {
         }
     };
 });
-firstapp.directive('fancyboxImage', function($document) {
+firstapp.directive('fancybox2', function($compile, $parse) {
     return {
-        restrict: 'EA',
+        restrict: 'C',
         replace: false,
-        link: function(scope, element, attr) {
-            var $element = $(element);
-            var target;
-            setTimeout(function() {
-              if (attr.rel) {
-                  target = $("[rel='" + attr.rel + "']");
-              } else {
-                  target = element;
-              }
-              target.fancybox({
-                  type: 'image',
-                  openEffect: 'fade',
-                  closeEffect: 'fade',
-                  padding: '0',
-                  closeBtn: true,
-                  helpers: {
-                      media: {}
-                  }
-              });
+        link: function($scope, element, attrs) {
 
-            }, 100);
+            $(".fancybox2").fancybox({
+                openEffect: 'none',
+                closeEffect: 'none'
+            });
+
+
         }
     };
 });

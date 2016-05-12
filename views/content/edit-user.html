@@ -15,8 +15,9 @@
 <section>
 
     <div class="container">
-        <form name="user" class="form-input">
-            <div class="conten-box">
+
+            <div class="conten-box"  ng-hide="formComplete">
+                <form name="user" class="form-input">
                 <div class="edit-user">
                     <div class="row">
                         <div class="col-md-4 col-sm-3 col-xs-7">
@@ -85,7 +86,10 @@
                     </div>
 
                 </div>
+                  </form>
             </div>
-        </form>
+            <div class="text-center" ng-show="formComplete">
+        <h3>Update Successfully, Thank You!</h3>
+      </div>
     </div>
 </section>

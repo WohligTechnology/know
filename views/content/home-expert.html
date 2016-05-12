@@ -43,7 +43,7 @@
                 <input type="password" name="confirmPassword" class="form-control" id="exampleInputEmail1" ng-model="userForm.confirmPassword" required>
                 <div class="color-white" class="error-msg" ng-if="user.confirmPassword.$error.required && user.confirmPassword.$touched">Please Confirm Password.</div>
               </div>
-              <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center">{{alert.msg}}</uib-alert>
+              <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="3000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
               <div class="row">
                 <div class="col-md-3 col-sm-3 col-xs-4">
                   <div class="form-group">
@@ -92,6 +92,7 @@
                   <input type="password" class="form-control" id="exampleInputEmail1" ng-model="userForm.password" required>
                   <div class="error-msg" ng-show="user.password.$error.required && user.password.$touched">Please Enter Password.</div>
                 </div>
+                <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="3000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
                 <div class="mt25">
                   <button class="btn btn-org" ng-click="getLogin(user)">SUBMIT</button>
                 </div>

@@ -468,7 +468,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 });
 
             }
-              $scope.mesg = [];
+            $scope.mesg = [];
         };
 
 
@@ -493,13 +493,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             //console.log('on the user');
             if (formValid.$valid) {
-
+                $scope.formComplete = true;
                 NavigationService.editProfile($scope.userForm, function(data) {
+
+
 
                     $scope.userForm = data.data;
                 });
             }
-            $state.go("home");
+
 
 
         };
@@ -512,7 +514,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
-
+        $scope.mesg=[];
 
 
 
@@ -529,11 +531,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             if (formValid.$valid) {
 
                 NavigationService.changePassword($scope.userForm, function(data) {
+                  console.log('chhhhhhhhhhhhh',data.value);
+                  if (data.value == true) {
+                      $scope.userForm = data.data;
+                      console.log('chngpswd',$scope.userForm);
+                      $state.go("home");
+                  } else {
+                      $scope.mesg.push({
+                          type: 'danger',
+                          msg: 'Incorrect Password'
+                      });
 
-                    $scope.userForm = data.data;
+                      $scope.closeAlert = function(index) {
+                          $scope.mesg.splice(index, 1);
+                      }
+
+                  }
+
+
                 });
             }
-
+              $scope.mesg=[];
 
         };
     })
@@ -638,6 +656,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             type: 'success',
                             msg: 'Password do not match.'
                         });
+                        $scope.closeAlert = function(index) {
+                            $scope.mesg.splice(index, 1);
+                        }
                         //$window.alert("Password do not match.");
                         $scope.userForm.confirmPassword = "";
                     }
@@ -645,7 +666,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
                 });
-
+                  $scope.mesg = [];
             }
 
         };
@@ -661,9 +682,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         $scope.userForm = data;
                         $state.go("expert-booking");
                     } else {
+                      $scope.mesg.push({
+                          type: 'danger',
+                          msg: 'Incorrect Email or Password'
+                      });
+
+                      $scope.closeAlert = function(index) {
+                          $scope.mesg.splice(index, 1);
+                      }
 
                     }
                 });
+                  $scope.mesg = [];
             }
         };
 
@@ -1064,14 +1094,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
     })
-    .controller('WishlistCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
+    .controller('WishlistCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams,$state) {
         $scope.template = TemplateService.changecontent("wishlist");
         $scope.menutitle = NavigationService.makeactive("Wishlist");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
-
         $scope.showWishlist = function() {
             NavigationService.getWishlist($scope.wishlists, function(data) {
                 //console.log("in edit blog");
@@ -1086,20 +1115,35 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.expertprofile = data.data;
             // console.log('$scope.expertprofile.experience', $scope.expertprofile.experience);
         });
-
+        $scope.userdata = {};
+        NavigationService.getUser(function(data) {
+          $scope.userdata=data;
+        });
 
         $scope.removeWishlist = function(id) {
-            console.log('formvalid', formValid);
-            NavigationService.deleteWishlist({
-                id: formValid
-            }, function(data) {
-                console.log('delete data:', data);
-                if (data.value === true) {
-
-                    $scope.showWishlist();
-                }
-
+            var index = _.findIndex($scope.userdata.shortList, function(o) {
+                return o.expertUser == id;
             });
+            if (index != -1) {
+                $scope.userdata.shortList.splice(index, 1);
+            }
+            NavigationService.editProfile($scope.userdata,function(data){
+              if(data.value){
+                $state.reload();
+              }else{
+
+              }
+            });
+            // NavigationService.deleteWishlist({
+            //     id: formValid
+            // }, function(data) {
+            //     console.log('delete data:', data);
+            //     if (data.value === true) {
+            //
+            //         $scope.showWishlist();
+            //     }
+            //
+            // });
         };
         $scope.showWishlist();
     })
