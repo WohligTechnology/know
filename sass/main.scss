@@ -1327,7 +1327,7 @@ padding-bottom: 20px;
   }
 }
 .over-flow{
-  height: 220px;
+  height:267px;
   overflow: hidden;
   overflow-y: scroll;
 }
@@ -1378,6 +1378,25 @@ padding-bottom: 20px;
 .reg-msg{
   text-align: center;
 min-height: 400px;
+}
+.img-holder {
+    height: 170px;
+    width: auto;
+    overflow: hidden;
+    display: block;
+    border-radius: 100%;
+    position: relative;
+    img{
+      position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+    }
+}
+.testi-descp{
+  p{
+    min-height: 76px;
+  }
 }
 // animation end
 @import "amit";
