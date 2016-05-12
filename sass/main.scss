@@ -151,9 +151,7 @@ a {
 .mt30 {
   margin-top: 30px;
 }
-.pro-img-box img {
-    width: 47%;
-}
+
 .custom-li {
   ul {
     display: block;
@@ -1205,6 +1203,10 @@ padding: 13px 0px 11px 0px;
   left: 50%;
   transform: translate(-50%,-50%);
     }
+    a{
+      height: 100%;
+      display: block;
+    }
 }
 .fancybox-image {
   opacity: 1 !important;
@@ -1404,6 +1406,23 @@ min-height: 400px;
   p{
     min-height: 76px;
   }
+}
+.pro-img-box {
+    height: 150px;
+    /* overflow: hidden; */
+    border-radius: 100%;
+    display: block;
+    position: relative;
+    width: 150px;
+    margin: 0 auto;
+    img{
+      position: absolute;
+ left: 50%;
+ top: 50%;
+ transform: translate(-50%,-50%);
+ max-width: 100%;
+ max-height: 100%;
+    }
 }
 // animation end
 @import "amit";

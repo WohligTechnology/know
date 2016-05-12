@@ -152,11 +152,11 @@
             </div> -->
 
             <div class="awd-list summary pt20">
-              <h4 class="font-raleway color-success font-med margin0 text-up" >photos</h4>
+              <h4 class="font-raleway color-success font-med margin0 text-up">photos</h4>
               <div class="row mt10">
                 <div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="img in expertprofile.addPhotos">
                   <div class="video-box pointer">
-                    <a class="fancybox2"  href="{{img.image2|uploadpath}}" title="Morning Godafoss (Brads5)"><img ng-src="{{img.image2|uploadpath}}" alt="" class="img-responsive"></a>
+                    <a ng-href="{{img.image2|uploadpath}}" fancybox-image><img ng-src="{{img.image2|uploadpath}}" class="img-responsive"></a>
                   </div>
                 </div>
                 <!-- <div class="col-md-2">
