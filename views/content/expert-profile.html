@@ -120,13 +120,19 @@
                                         <div class="error-msg" ng-show="user.addressDetails.$error.required && user.addressDetails.$touched">Please Enter Your Address.</div>
                                     </div>
                                     <!-- </form> -->
+
+
                                 </div>
                             </div>
-                            <div class="form-group ">
-                                <label>City</label>
-                                <input type="text" name="city" class="form-control" ng-model="userForm.city" required>
-                                <div class="error-msg" ng-show="user.city.$error.required && user.city.$touched">Please Enter Your City.</div>
-                            </div>
+<div class="row">
+  <div class="col-md-4 col-sm-5">
+    <div class="form-group ">
+        <label>City</label>
+        <input type="text" name="city" class="form-control" ng-model="userForm.city" required>
+        <div class="error-msg" ng-show="user.city.$error.required && user.city.$touched">Please Enter Your City.</div>
+    </div>
+  </div>
+</div>
                             <div class="row" style="border-top: 1px solid #ccc;margin:0px">
                                 <div class="col-md-12 col-sm-12">
                                     <div class="save-btn mt25">
@@ -363,28 +369,28 @@
                                         <!-- <form action="" class="form-input"> -->
                                         <div class="form-group mt25">
                                             <label for="exampleInputPassword1">AWARDS AND HONORS</label>
-                                            <div ng-repeat="award in moreAwards" ng-value="userForm.awards = moreAwards">
+                                            <div class="mt15" ng-repeat="award in moreAwards" ng-value="userForm.awards = moreAwards">
                                                 <input type="text" name="awardsandhonors" class="form-control" id="exampleInputPassword1" ng-model="award.awardsandhonors">
                                             </div>
                                         </div>
                                         <!-- </form> -->
                                     </div>
-                                    <div class="col-md-4 col-sm-7">
+                                    <!-- <div class="col-md-4 col-sm-7">
                                         <div class="set-title display-inline">
                                             <h5 class="font-raleway font-bold f17 color-base text-up">VIDEO LINKS</h5>
                                         </div>
                                         <div class="add display-inline">
                                             <i class="ln-cross" ng-click="addvideos()"></i>
                                         </div>
-                                        <!-- <form action="" class="form-input"> -->
+
                                         <div class="form-group mt25">
                                             <label for="exampleInputPassword1">VIDEO LINKS</label>
                                             <div ng-repeat="video in moreVideos" ng-value="userForm.videoLinks = moreVideos">
                                                 <input type="text" name="name" class="form-control" id="exampleInputPassword1" ng-model="video.name">
                                             </div>
                                         </div>
-                                        <!-- </form> -->
-                                    </div>
+
+                                    </div> -->
                                     <div class="col-md-4 col-sm-7">
                                         <div class="set-title display-inline">
                                             <h5 class="font-raleway font-bold f17 color-base text-up">ADD PHOTOS</h5>
