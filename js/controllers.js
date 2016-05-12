@@ -1075,17 +1075,37 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.navigation = NavigationService.getnav();
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
-        NavigationService.getWishlist($scope.wishlists, function(data) {
-            //console.log("in edit blog");
-            $scope.wishlists = data.data.shortList;
-            console.log('wishlists', $scope.wishlists);
-        });
+
+        $scope.showWishlist=function(){
+          NavigationService.getWishlist($scope.wishlists, function(data) {
+              //console.log("in edit blog");
+              $scope.wishlists = data.data.shortList;
+              console.log('wishlists', $scope.wishlists);
+          });
+        };
+
 
         NavigationService.getExpertProfile($stateParams.id, function(data) {
             console.log('getExpertProfile', data.data);
             $scope.expertprofile = data.data;
             // console.log('$scope.expertprofile.experience', $scope.expertprofile.experience);
         });
+
+
+    $scope.removeWishlist=function(id){
+      console.log('formvalid', formValid);
+       NavigationService.deleteWishlist({
+           id: formValid
+       }, function(data) {
+           console.log('delete data:', data);
+           if (data.value === true) {
+
+              $scope.showWishlist();
+           }
+
+       });
+     };
+       $scope.showWishlist();
     })
     .controller('SearchCtrl', function($scope, TemplateService, NavigationService, $timeout, $filter, $stateParams) {
         $scope.template = TemplateService.changecontent("search");
@@ -1303,7 +1323,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         } else {
             $scope.newsletter.comment = "incorrectEmail";
-            $scope.newsletter.message = "incorrectEmail";
+            $scope. newsletter.message = "incorrectEmail";
         }
 
     };

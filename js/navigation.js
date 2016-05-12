@@ -66,6 +66,16 @@ var navigationservice = angular.module('navigationservice', [])
 
             }).success(callback);
         },
+        deleteWishlist: function(_id, callback) {
+
+            $http({
+                url: adminurl + 'user/',
+                method: 'POST',
+                withCredentials: true,
+                data: {_id:_id}
+
+            }).success(callback);
+        },
 
         getAllExpert: function(formData, callback) {
             //console.log('Navigation form data: ', formData);
