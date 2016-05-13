@@ -32,9 +32,9 @@
                                     <label for="exampleInputEmail1">AREA OF EXPERTISE</label>
                                     <input type="text" class="form-control padd filter-input" ng-model="searchExpertise" id="exampleInputEmail1" placeholder="eg. doctor, surgeon, etc." ng-keyup="pushExpertise(searchExpertise,$event.keyCode)">
                                     <div class="checkbox">
-                                        <div class="" ng-repeat="expertise in expertiseFilter.expertise track by $index">
-                                            <input type="checkbox" id="{{expertise}}">
-                                            <label for="{{expertise}}">
+                                        <div class="" ng-repeat="expertise in expertiseFilter.expertise track by $index" >
+                                            <input type="checkbox" ng-model="expertModel[$index].check" id="{{expertise}}" ng-change="filterLocation(expertModel[$index].check,expertise);">
+                                            <label for="{{expertise}}" >
                                                 <span></span> {{expertise}}
                                             </label>
                                         </div>
@@ -45,8 +45,8 @@
                                     <input type="text" ng-model="searchLocation" class="form-control filter-input" id="exampleInputEmail1" placeholder="eg. Mumbai, Pune, etc." ng-keyup="pushLocation(searchLocation,$event.keyCode)">
                                     <div class="checkbox">
                                         <div class=""  ng-repeat="expertise in expertiseFilter.location track by $index">
-                                            <input type="checkbox" id="{{expertise}">
-                                            <label for="{{expertise}">
+                                            <input type="checkbox" ng-model="expertModel[$index].check" id="{{expertise}">
+                                            <label for="{{expertise}"  ng-change="filterLocation(expertModel[$index].check,expertise);">
                                                 <span></span> {{expertise}}
                                             </label>
                                         </div>

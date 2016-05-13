@@ -227,7 +227,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.userlogo = "";
         $scope.bookexperts = {};
         $scope.expertBook = function(status, expert) {
-            console.log("here");
+            console.log(status);
             $scope.bookexperts.status = status;
             $scope.bookexperts.from = expert;
             NavigationService.getExpertBooking($scope.bookexperts, function(data) {
@@ -293,11 +293,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.userForm.bookDate = new Date();
                     $scope.userForm.bookTime = new Date();
                     $scope.userForm.callDuration = new Date();
+                    console.log('booknow',data.value);
                     if (data.value == true) {
                         $scope.formComplete = true;
                         console.log('booknow', $scope.userForm);
                     } else {
-                        //$window.alert("User Not Logged in");
+                        $scope.alreadyBooked = true;
                     }
 
                 });
@@ -1165,7 +1166,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.userlogo = "user-page";
         $scope.mesg = [];
 
-
+        $scope.filter = {};
+        $scope.filter.expert= [];
+        $scope.filter.location= [];
         $scope.pushExpertise = function(val, key) {
             if (key == 13) {
                 $scope.expertiseFilter.expertise.unshift(val);
@@ -1173,35 +1176,45 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 //$scope.searchExpert();
             }
         }
-
+        $scope.filterLocation = function(check,text){
+          console.log(check +"     "+ text);
+          if(check){
+            $scope.filter.expert.push(text);
+          }else{
+            $scope.filter.expert.splice(_.findIndex($scope.filter.expert,function(key){
+              return key == text;
+            }),1);
+          }
+          console.log($scope.filter.expert);
+        };
+        $scope.expertModel =[];
         $scope.pushLocation = function(val, key) {
             if (key == 13) {
                 $scope.expertiseFilter.location.unshift(val);
                 $scope.filterlocation=$scope.expertiseFilter.location;
-                NavigationService.getSearchLocation($stateParams.search,$scope.filterlocation, function(data) {
-                    if (data && data.data && data.data.data) {
-                        $scope.expertdata = data.data.data;
-                        $scope.expertiseFilter = data.data.arr;
-
-                        console.log('arr', data.data.arr.expertise);
-                        //console.log('$scope.expertdata.length',$scope.expertdata.length);
-                        if ($scope.expertdata.length == 0) {
-                            //console.log('$scope.expertdata.length22',$scope.expertdata.length);
-                            $scope.notfound = true;
-                        } else {
-                            console.log('getSearchdata111', $scope.expertdata);
-                            NavigationService.getUser(function(logindata) {
-                                _.each($scope.expertdata, function(n) {
-                                    n.showbtn = $filter('showbtn')(n._id, logindata);
-
-                                })
-                            })
-
-                        }
-                    } else {
-                        $scope.notfound = true;
-                    }
-                });
+                // NavigationService.getSearchLocation($stateParams.search,$scope.filterlocation, function(data) {
+                //     if (data && data.data && data.data.data) {
+                //         $scope.expertdata = data.data.data;
+                //         $scope.expertiseFilter = data.data.arr;
+                //
+                //         console.log('arr', data.data.arr.expertise);
+                //         //console.log('$scope.expertdata.length',$scope.expertdata.length);
+                //         if ($scope.expertdata.length == 0) {
+                //             //console.log('$scope.expertdata.length22',$scope.expertdata.length);
+                //             $scope.notfound = true;
+                //         } else {
+                //             console.log('getSearchdata111', $scope.expertdata);
+                //             NavigationService.getUser(function(logindata) {
+                //                 _.each($scope.expertdata, function(n) {
+                //                     n.showbtn = $filter('showbtn')(n._id, logindata);
+                //
+                //                 })
+                //             });
+                //         }
+                //     } else {
+                //         $scope.notfound = true;
+                //     }
+                // });
                 //$scope.searchExpert();
             }
         }

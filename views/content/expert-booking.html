@@ -1,93 +1,93 @@
 <section class="mt70 space-top">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="main-links mt25">
-          <ul class="breadcrumb padding0">
-            <li><a href="#/home" class="text-uppercase">Home</a></li>
-            <li><a href="#" class="active text-uppercase">expert booking</a></li>
-          </ul>
-        </div>
+   <div class="container">
+      <div class="row">
+         <div class="col-md-4">
+            <div class="main-links mt25">
+               <ul class="breadcrumb padding0">
+                  <li><a href="#/home" class="text-uppercase">Home</a></li>
+                  <li><a href="#" class="active text-uppercase">expert booking</a></li>
+               </ul>
+            </div>
+         </div>
       </div>
-    </div>
 
-  </div>
+   </div>
 </section>
 <section>
 
-  <div class="expert-booking">
-    <div class="container">
-      <div class="booking-section">
-        <uib-tabset>
-          <uib-tab>
-            <uib-tab-heading class="text-uppercase" ng-click="expertBook('pending','expert')">REQUESTED CALLS</uib-tab-heading>
-            <div class="b-order mt30">
-              <p class="font-bold tag-line ">These calls have been requested for  </p>
-            </div>
-            <div class="row mt20">
-              <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="book in bookexpert">
-                <div class="outline-single">
-                  <div class="single-payment">
-                    <div class="user-bg">
-                      <!-- / <div class="user-imgholder margin-auto">
+   <div class="expert-booking">
+      <div class="container">
+         <div class="booking-section">
+            <uib-tabset>
+               <uib-tab>
+                  <uib-tab-heading class="text-uppercase" ng-click="expertBook('pending','expert')">REQUESTED CALLS</uib-tab-heading>
+                  <div class="b-order mt30">
+                     <p class="font-bold tag-line ">These calls have been requested for </p>
+                  </div>
+                  <div class="row mt20">
+                     <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="book in bookexpert">
+                        <div class="outline-single">
+                           <div class="single-payment">
+                              <div class="user-bg">
+                                 <!-- / <div class="user-imgholder margin-auto">
                         <img src="img/search-pro2.jpg" alt="" class="img-responsive">
                       /</div> -->
-                      <div class="display-inline">
-                        <span class="name block font-bold mt5">{{book.user.firstName + " " +book.user.lastName}}</span>
-                      </div>
-                      <div class="display-inline pull-right">
-                        <span class="price color-success block font-bold mt5"><i class="fa fa-inr"></i> {{book.expert.priceForService}}/-</span>
-                      </div>
-                    </div>
-                    <div class="user-info">
+                                 <div class="display-inline">
+                                    <span class="name block font-bold mt5">{{book.user.firstName + " " +book.user.lastName}}</span>
+                                 </div>
+                                 <div class="display-inline pull-right">
+                                    <span class="price color-success block font-bold mt5"><i class="fa fa-inr"></i> {{book.expert.priceForService}}/-</span>
+                                 </div>
+                              </div>
+                              <div class="user-info">
 
-                      <div class="media mt20">
-                        <a class="media-left" href="#">
-                          <span class="media-object ln-calendar2 user-info-icon color-success"></span>
-                        </a>
-                        <div class="media-body">
-                          <h5 class="media-heading">{{book.bookDate| date : "dd.MM.y"}}</h5>
-                          <span class="color-grey">Book Date</span>
-                        </div>
-                      </div>
-                      <div class="media">
-                        <a class="media-left" href="#">
-                          <span class="media-object ln-clock user-info-icon color-success"></span>
-                        </a>
-                        <div class="media-body">
-                          <h5 class="media-heading">{{book.bookTime |date : "h:mm a"}}</h5>
-                          <span class="color-grey">Book Time</span>
-                        </div>
-                      </div>
-                      <div class="media">
-                        <a class="media-left" href="#">
-                          <span class="media-object ln-register user-info-icon color-success"></span>
-                        </a>
-                        <div class="media-body">
-                          <h5 class="media-heading">User Query</h5>
-                        <div class="u-query">
-                          <p class="color-grey f13">{{book.query}} </p>
-                        </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="btn-ac custom-li mt30">
-                      <ul class="padding0">
-                        <li class="pull-left">
-                        <a href="" class="blue-link" ng-click="acceptRequest(1,book._id)">Accept</a>
+                                 <div class="media mt20">
+                                    <a class="media-left" href="#">
+                                       <span class="media-object ln-calendar2 user-info-icon color-success"></span>
+                                    </a>
+                                    <div class="media-body">
+                                       <h5 class="media-heading">{{book.bookDate| date : "dd.MM.y"}}</h5>
+                                       <span class="color-grey">Book Date</span>
+                                    </div>
+                                 </div>
+                                 <div class="media">
+                                    <a class="media-left" href="#">
+                                       <span class="media-object ln-clock user-info-icon color-success"></span>
+                                    </a>
+                                    <div class="media-body">
+                                       <h5 class="media-heading">{{book.bookTime |date : "h:mm a"}}</h5>
+                                       <span class="color-grey">Book Time</span>
+                                    </div>
+                                 </div>
+                                 <div class="media">
+                                    <a class="media-left" href="#">
+                                       <span class="media-object ln-register user-info-icon color-success"></span>
+                                    </a>
+                                    <div class="media-body">
+                                       <h5 class="media-heading">User Query</h5>
+                                       <div class="u-query">
+                                          <p class="color-grey f13">{{book.query}} </p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="btn-ac custom-li mt30">
+                                 <ul class="padding0">
+                                    <li class="pull-left">
+                                       <a href="" class="blue-link" ng-click="acceptRequest(1,book._id)">Accept</a>
 
-                        </li>
-                        <li class="pull-right">
-                            <a href="" class="grey-link" ng-click="acceptRequest(0,book._id)">Reject</a>
-                        </li>
+                                    </li>
+                                    <li class="pull-right">
+                                       <a href="" class="grey-link" ng-click="acceptRequest(0,book._id)">Reject</a>
+                                    </li>
 
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
 
-              <!-- <div class="col-md-3">
+                     <!-- <div class="col-md-3">
                 <div class="outline-single">
                   <div class="single-payment">
                     <div class="user-bg">
@@ -151,59 +151,59 @@
                   </div>
                 </div>
               </div> -->
-            </div>
-            <!-- <div class="reg-msg">
+                  </div>
+                  <!-- <div class="reg-msg">
               <h3>No requested call</h3>
             </div> -->
-          </uib-tab>
+               </uib-tab>
 
-          <uib-tab>
-            <uib-tab-heading class="text-uppercase" ng-click="expertBook('paid','expert')">Schedule Call</uib-tab-heading>
-            <p class="font-bold tag-line">Following calls are confirmed. We will connect you at the scheduled time.</p>
-            <div class="row">
-              <div class="col-md-3 col-sm-4 col-xs-12"  ng-if="booking.status=='schedulecall'">
-                <div class="outline-single">
-                  <div class="single-payment">
-                    <div class="user-bg text-center">
-                      <div class="user-imgholder margin-auto">
-                        <img src="img/search-pro3.jpg" alt="" class="img-responsive">
-                      </div>
-                      <span class="name block font-bold mt5">{{booking.expert}}</span>
-                      <span class="price color-success block font-bold mt5"><i class="fa fa-inr"></i> {{booking.finalAmount}}/-</span>
-                    </div>
-                    <div class="user-info">
-                      <div class="media">
-                        <a class="media-left" href="#">
-                          <span class="media-object user-info-icon ln-trophy color-success"></span>
-                        </a>
-                        <div class="media-body">
-                          <h5 class="media-heading">Travel</h5>
-                          <span class="color-grey">{{booking.areaOfExpertise}}</span>
+               <uib-tab>
+                  <uib-tab-heading class="text-uppercase" ng-click="expertBook('paid','expert')">Schedule Call</uib-tab-heading>
+                  <p class="font-bold tag-line">Following calls are confirmed. We will connect you at the scheduled time.</p>
+                  <div class="row">
+                     <div class="col-md-3 col-sm-4 col-xs-12" ng-if="booking.status=='schedulecall'">
+                        <div class="outline-single">
+                           <div class="single-payment">
+                              <div class="user-bg text-center">
+                                 <div class="user-imgholder margin-auto">
+                                    <img src="img/search-pro3.jpg" alt="" class="img-responsive">
+                                 </div>
+                                 <span class="name block font-bold mt5">{{booking.expert}}</span>
+                                 <span class="price color-success block font-bold mt5"><i class="fa fa-inr"></i> {{booking.finalAmount}}/-</span>
+                              </div>
+                              <div class="user-info">
+                                 <div class="media">
+                                    <a class="media-left" href="#">
+                                       <span class="media-object user-info-icon ln-trophy color-success"></span>
+                                    </a>
+                                    <div class="media-body">
+                                       <h5 class="media-heading">Travel</h5>
+                                       <span class="color-grey">{{booking.areaOfExpertise}}</span>
+                                    </div>
+                                 </div>
+                                 <div class="media">
+                                    <a class="media-left" href="#">
+                                       <span class="media-object ln-calendar2 user-info-icon color-success"></span>
+                                    </a>
+                                    <div class="media-body">
+                                       <h5 class="media-heading">{{booking.bookDate| date : "dd.MM.y"}}</h5>
+                                       <span class="color-grey">Book Date</span>
+                                    </div>
+                                 </div>
+                                 <div class="media">
+                                    <a class="media-left" href="#">
+                                       <span class="media-object ln-clock user-info-icon color-success"></span>
+                                    </a>
+                                    <div class="media-body">
+                                       <h5 class="media-heading">{{booking.bookTime |date : "h:mm a"}}</h5>
+                                       <span class="color-grey">Book Time</span>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
                         </div>
-                      </div>
-                      <div class="media">
-                        <a class="media-left" href="#">
-                          <span class="media-object ln-calendar2 user-info-icon color-success"></span>
-                        </a>
-                        <div class="media-body">
-                          <h5 class="media-heading">{{booking.bookDate| date : "dd.MM.y"}}</h5>
-                          <span class="color-grey">Book Date</span>
-                        </div>
-                      </div>
-                      <div class="media">
-                        <a class="media-left" href="#">
-                          <span class="media-object ln-clock user-info-icon color-success"></span>
-                        </a>
-                        <div class="media-body">
-                          <h5 class="media-heading">{{booking.bookTime |date : "h:mm a"}}</h5>
-                          <span class="color-grey">Book Time</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- <div class="col-md-3">
+                     </div>
+                     <!-- <div class="col-md-3">
                 <div class="outline-single">
                   <div class="single-payment">
                     <div class="user-bg text-center">
@@ -287,70 +287,70 @@
                   </div>
                 </div>
               </div> -->
-            </div>
-            <!-- <div class="reg-msg">
+                  </div>
+                  <!-- <div class="reg-msg">
               <h3>No schedule call</h3>
             </div> -->
-          </uib-tab>
+               </uib-tab>
 
 
-          <uib-tab>
-            <uib-tab-heading class="text-uppercase" ng-click="expertBook('paid','expert')">CONFIRMed CALLs</uib-tab-heading>
-            <div class="b-order mt30">
-              <p class="font-bold tag-line">These calls have been confirmed. We will connect you at the scheduled time. Please ensure that you ae in a mobile accessible location.</p>
-            </div>
-            <div class="row mt20">
-              <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="book in bookexpert track by $index">
-                <div class="outline-single">
-                  <div class="single-payment">
-                    <div class="user-bg">
-                      <!-- <div class="user-imgholder margin-auto">
+               <uib-tab>
+                  <uib-tab-heading class="text-uppercase" ng-click="expertBook('paid','expert')">CONFIRMed CALLs</uib-tab-heading>
+                  <div class="b-order mt30">
+                     <p class="font-bold tag-line">These calls have been confirmed. We will connect you at the scheduled time. Please ensure that you ae in a mobile accessible location.</p>
+                  </div>
+                  <div class="row mt20">
+                     <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="book in bookexpert track by $index">
+                        <div class="outline-single">
+                           <div class="single-payment">
+                              <div class="user-bg">
+                                 <!-- <div class="user-imgholder margin-auto">
                         <img src="img/search-pro2.jpg" alt="" class="img-responsive">
                       </div> -->
-                      <div class="display-inline">
-                        <span class="name block font-bold mt5">{{book.user.firstName + " " +book.user.lastName}}</span>
-                      </div>
-                      <div class="display-inline pull-right">
-                        <span class="price color-success block font-bold mt5"><i class="fa fa-inr"></i> {{book.expert.priceForService}}/-</span>
-                      </div>
-                    </div>
-                    <div class="user-info">
+                                 <div class="display-inline">
+                                    <span class="name block font-bold mt5">{{book.user.firstName + " " +book.user.lastName}}</span>
+                                 </div>
+                                 <div class="display-inline pull-right">
+                                    <span class="price color-success block font-bold mt5"><i class="fa fa-inr"></i> {{book.expert.priceForService}}/-</span>
+                                 </div>
+                              </div>
+                              <div class="user-info">
 
-                      <div class="media mt20">
-                        <a class="media-left" href="#">
-                          <span class="media-object ln-calendar2 user-info-icon color-success"></span>
-                        </a>
-                        <div class="media-body">
-                          <h5 class="media-heading">{{book.bookDate| date : "dd.MM.y"}}</h5>
-                          <span class="color-grey">Book Date</span>
-                        </div>
-                      </div>
-                      <div class="media">
-                        <a class="media-left" href="#">
-                          <span class="media-object ln-clock user-info-icon color-success"></span>
-                        </a>
-                        <div class="media-body">
-                          <h5 class="media-heading">{{book.bookTime |date : "h:mm a"}}</h5>
-                          <span class="color-grey">Book Time</span>
-                        </div>
-                      </div>
-                      <div class="media">
-                        <a class="media-left" href="#">
-                          <span class="media-object ln-register user-info-icon color-success"></span>
-                        </a>
-                        <div class="media-body">
-                          <h5 class="media-heading">User Query</h5>
-                        <div class="u-query">
-                          <p class="color-grey f13">{{book.query}}</p>
-                        </div>
-                        </div>
-                      </div>
-                    </div>
+                                 <div class="media mt20">
+                                    <a class="media-left" href="#">
+                                       <span class="media-object ln-calendar2 user-info-icon color-success"></span>
+                                    </a>
+                                    <div class="media-body">
+                                       <h5 class="media-heading">{{book.bookDate| date : "dd.MM.y"}}</h5>
+                                       <span class="color-grey">Book Date</span>
+                                    </div>
+                                 </div>
+                                 <div class="media">
+                                    <a class="media-left" href="#">
+                                       <span class="media-object ln-clock user-info-icon color-success"></span>
+                                    </a>
+                                    <div class="media-body">
+                                       <h5 class="media-heading">{{book.bookTime |date : "h:mm a"}}</h5>
+                                       <span class="color-grey">Book Time</span>
+                                    </div>
+                                 </div>
+                                 <div class="media">
+                                    <a class="media-left" href="#">
+                                       <span class="media-object ln-register user-info-icon color-success"></span>
+                                    </a>
+                                    <div class="media-body">
+                                       <h5 class="media-heading">User Query</h5>
+                                       <div class="u-query">
+                                          <p class="color-grey f13">{{book.query}}</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
 
-                  </div>
-                </div>
-              </div>
-              <!-- <div class="col-md-3 col-sm-4 col-xs-12">
+                           </div>
+                        </div>
+                     </div>
+                     <!-- <div class="col-md-3 col-sm-4 col-xs-12">
                 <div class="outline-single">
                   <div class="single-payment">
                     <div class="user-bg">
@@ -404,68 +404,68 @@
                 </div>
               </div> -->
 
-            </div>
-            <!-- <div class="reg-msg">
+                  </div>
+                  <!-- <div class="reg-msg">
               <h3>No confirmed call</h3>
             </div> -->
-          </uib-tab>
+               </uib-tab>
 
-          <uib-tab>
-            <uib-tab-heading class="text-uppercase" ng-click="expertBook('','expert')">Account History</uib-tab-heading>
-<div class="b-order">
-  <div class="display-inline mt30">
-      <p class="font-bold tag-line">Account History</p>
-  </div>
-    <div class="filt display-inline">
-      <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          SORT BY CATEGORY
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <li><a ng-click="expertBook('completed','user')">Completed</a></li>
-          <li><a ng-click="expertBook('reject','user')">Cancelled</a></li>
-          <li><a ng-click="expertBook('refunded','user')">Refunded</a></li>
+               <uib-tab>
+                  <uib-tab-heading class="text-uppercase" ng-click="expertBook('','expert')">Account History</uib-tab-heading>
+                  <div class="b-order">
+                     <div class="display-inline mt30">
+                        <p class="font-bold tag-line">Account History</p>
+                     </div>
+                     <div class="filt display-inline">
+                        <div class="dropdown">
+                           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                              SORT BY CATEGORY
+                              <span class="caret"></span>
+                           </button>
+                           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                              <li><a ng-click="expertBook('completed','user')">Completed</a></li>
+                              <li><a ng-click="expertBook('reject','user')">Cancelled</a></li>
+                              <li><a ng-click="expertBook('refunded','user')">Refunded</a></li>
 
-        </ul>
-      </div>
-    </div>
-</div>
-            <div class="completed-section mt30" ng-repeat="book in bookexpert track by $index">
-              <p class="text-uppercase font-bold color-success">{{book.status}}</p>
-              <table class="table text-uppercase account-history font-light text-center">
-                <tr>
-                  <th>Expert Name</th>
-                  <th>Call Duration</th>
-                  <th>Book Date</th>
-                  <th>Status</th>
-                  <th>Total Amount</th>
-                </tr>
-                <tr>
-                  <td> {{book.user.firstName + " " +book.user.lastName}}</td>
-                  <td>{{book.duration}}</td>
-                  <td>{{book.bookDate| date : "dd.MM.y"}}</td>
-                  <td>{{book.status}}
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="completed-section mt30" ng-repeat="book in bookexpert track by $index">
+                     <p class="text-uppercase font-bold color-success">{{book.status}}</p>
+                     <table class="table text-uppercase account-history font-light text-center">
+                        <tr>
+                           <th>Expert Name</th>
+                           <th>Call Duration</th>
+                           <th>Book Date</th>
+                           <th>Status</th>
+                           <th>Total Amount</th>
+                        </tr>
+                        <tr>
+                           <td> {{book.user.firstName + " " +book.user.lastName}}</td>
+                           <td>{{book.callDuration}}</td>
+                           <td>{{book.bookDate| date : "dd.MM.y"}}</td>
+                           <td>{{book.status}}
 
 
-                  </td>
-                  <td>{{book.expert.priceForService}}
-                    <br>
-                    <button class="btn btn-animate-success mt10 f12">PRINT INVOICE</button>
-                    <!-- <br>
+                           </td>
+                           <td>{{book.expert.priceForService}}
+                              <br>
+                              <button class="btn btn-animate-success mt10 f12">PRINT INVOICE</button>
+                              <!-- <br>
                       <button class="btn btn-animate-success text-uppercase mt10 f12">Retrieve Call (Coming Soon)</button> -->
-                  </td>
-                </tr>
-              </table>
-          
-            </div>
-            <!-- <div class="reg-msg">
+                           </td>
+                        </tr>
+                     </table>
+
+                  </div>
+                  <!-- <div class="reg-msg">
               <h3>No account history</h3>
             </div> -->
 
-          </uib-tab>
-        </uib-tabset>
+               </uib-tab>
+            </uib-tabset>
+         </div>
       </div>
-    </div>
-  </div>
+   </div>
 </section>

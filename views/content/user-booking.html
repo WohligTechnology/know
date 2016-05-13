@@ -271,10 +271,10 @@
                                     </a>
                                     <div class="media-body">
                                        <h5 class="media-heading">{{booking.bookTime |date : "h:mm a"}}</h5>
-                                       <span class="color-grey">Book Time</span>{{booking.callDuration}}
+                                       <span class="color-grey">Book Time</span>
                                     </div>
                                  </div>
-                                
+
                                  <div class="media">
                                     <a class="media-left" href="#">
                                        <span class="media-object ln-register user-info-icon color-success"></span>
@@ -559,7 +559,7 @@
                            <li><a ng-click="userBook('refunded','user')">Refunded</a></li>
                         </ul>
                      </div>
-                  </div>{{userBooking.length}}
+                  </div>
                   <div class="completed-section mt30" ng-repeat="booking in userBooking track by $index">
                      <p class="text-uppercase font-bold color-success">{{booking.status}}</p>
                      <table class="table text-uppercase account-history font-light text-center">
