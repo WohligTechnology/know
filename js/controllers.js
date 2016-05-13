@@ -1227,6 +1227,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
         }
 
+        $scope.priceFilter = {
+            range: {
+                min: 100,
+                max: 10000,
+            },
+            minPrice: undefined,
+            maxPrice: undefined
+        };
 
 
         $scope.searchExpert = function() {
@@ -1234,8 +1242,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 search: $scope.expertdata2.search,
                 areaofexpert: [],
                 location: [],
-                minprice: undefined,
-                maxprice: undefined
+                minprice: $scope.priceFilter.minPrice,
+                maxprice:  $scope.priceFilter.maxPrice,
             };
             dataToSend.location = _.map(_.filter($scope.locationArr, function(n) {
                 return n.model
@@ -1247,8 +1255,31 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             NavigationService.getSearch(dataToSend, function(data) {
                 if (data && data.data && data.data.data) {
+                  $scope.notfound = false;
                     $scope.expertdata = data.data.data;
+
                     $scope.expertiseFilter = data.data.arr;
+
+                    console.log(data.data.data);
+                    var min = _.minBy(data.data.data,'priceForService').priceForService;
+
+                    var max = _.maxBy(data.data.data,'priceForService').priceForService;
+
+                    console.log(min,max);
+
+                    if($scope.expertiseArr.length==0 && $scope.locationArr.length==0)
+                    {
+                      $scope.priceFilter = {
+                          range: {
+                              min: min,
+                              max: max,
+                          },
+                          minPrice: min,
+                          maxPrice: max
+                      };
+                    }
+
+
                     if($scope.expertiseArr.length==0)
                     {
                       _.each(data.data.arr.expertise, function(n) {
@@ -1267,6 +1298,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                           });
                       });
                     }
+
+
 
 
                     //console.log('$scope.expertdata.length',$scope.expertdata.length);
@@ -1332,17 +1365,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         };
 
-        $scope.demo2 = {
-            range: {
-                min: 100,
-                max: 10000,
-            },
-            minPrice: 1000,
-            maxPrice: 4000
-        };
-        // set available range
-        $scope.minPrice = 100;
-        $scope.maxPrice = 999;
+
+
+
 
         // default the user's values to the available range
         $scope.userMinPrice = $scope.minPrice;
