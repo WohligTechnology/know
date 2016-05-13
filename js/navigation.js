@@ -322,7 +322,6 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         changeExpertPassword: function(input, callback) {
-            // console.log('form data: ', formData);
             delete input._id;
             $http({
                 url: adminurl + 'ExpertUser/changePassword',
