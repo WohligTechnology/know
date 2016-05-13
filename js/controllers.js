@@ -1164,28 +1164,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
         $scope.mesg = [];
-        // TemplateService.header = "./views/header2.html";
 
-        // NavigationService.getAllExpert($scope.expertdata, function(data) {
-        //     $scope.expertdata = data.data;
-        //     console.log('expertdata', $scope.expertdata);
-        //     NavigationService.getUser(function(logindata) {
-        //         _.each($scope.expertdata, function(n) {
-        //             n.showbtn = $filter('showbtn')(n._id, logindata);
-        //         })
-        //     })
-        // });
-
-
-        // NavigationService.getSearch($stateParams.search, function(data) {
-        //     $scope.expertdata = data.data;
-        //     console.log('getSearchdata', $scope.expertdata);
-        //     // NavigationService.getUser(function(logindata) {
-        //     //     _.each($scope.expertdata, function(n) {
-        //     //         n.showbtn = $filter('showbtn')(n._id, logindata);
-        //     //     })
-        //     // })
-        // });
 
         $scope.pushExpertise = function(val, key) {
             if (key == 13) {
@@ -1198,7 +1177,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.pushLocation = function(val, key) {
             if (key == 13) {
                 $scope.expertiseFilter.location.unshift(val);
-                NavigationService.getSearch($stateParams.search, function(data) {
+                $scope.filterlocation=$scope.expertiseFilter.location;
+                NavigationService.getSearchLocation($stateParams.search,$scope.filterlocation, function(data) {
                     if (data && data.data && data.data.data) {
                         $scope.expertdata = data.data.data;
                         $scope.expertiseFilter = data.data.arr;
