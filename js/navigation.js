@@ -368,14 +368,12 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
-        getSearch: function(search, callback) {
+        getSearch: function(data, callback) {
             // console.log('form data: ', formData);
             $http({
                 url: adminurl + 'ExpertUser/searchData',
                 method: 'POST',
-                data: {
-                    "search": search
-                }
+                data: data
             }).success(callback);
         },
         getSearchLocation: function(search,location, callback) {

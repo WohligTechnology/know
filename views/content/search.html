@@ -30,24 +30,26 @@
                             <form>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">AREA OF EXPERTISE</label>
-                                    <input type="text" class="form-control padd filter-input" ng-model="searchExpertise" id="exampleInputEmail1" placeholder="eg. doctor, surgeon, etc." ng-keyup="pushExpertise(searchExpertise,$event.keyCode)">
+                                    <!-- <input type="text" class="form-control padd filter-input" ng-model="searchExpertise" id="exampleInputEmail1" placeholder="eg. doctor, surgeon, etc." ng-keyup="pushExpertise(searchExpertise,$event.keyCode)"> -->
                                     <div class="checkbox">
-                                        <div class="" ng-repeat="expertise in expertiseFilter.expertise track by $index" >
-                                            <input type="checkbox" ng-model="expertModel[$index].check" id="{{expertise}}" ng-change="filterLocation(expertModel[$index].check,expertise);">
-                                            <label for="{{expertise}}" >
-                                                <span></span> {{expertise}}
+                                        <div class="" ng-repeat="expertise in expertiseArr track by $index" >
+                                            <input type="checkbox" ng-model="expertiseArr[$index].model" id="{{expertise.value}}" ng-change="searchExpert()">
+                                            <label for="{{expertise.value}}" >
+                                                <span></span> {{expertise.value}}
                                             </label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
+
                                     <label for="exampleInputEmail1">LOCATION</label>
-                                    <input type="text" ng-model="searchLocation" class="form-control filter-input" id="exampleInputEmail1" placeholder="eg. Mumbai, Pune, etc." ng-keyup="pushLocation(searchLocation,$event.keyCode)">
+
+                                    <!-- <input type="text" ng-model="searchLocation" class="form-control filter-input" id="exampleInputEmail1" placeholder="eg. Mumbai, Pune, etc." ng-keyup="pushLocation(searchLocation,$event.keyCode)"> -->
                                     <div class="checkbox">
-                                        <div class=""  ng-repeat="expertise in expertiseFilter.location track by $index">
-                                            <input type="checkbox" ng-model="expertModel[$index].check" id="{{expertise}">
-                                            <label for="{{expertise}"  ng-change="filterLocation(expertModel[$index].check,expertise);">
-                                                <span></span> {{expertise}}
+                                        <div class=""  ng-repeat="location in locationArr track by $index">
+                                            <input type="checkbox" ng-model="locationArr[$index].model"  id="{{location.value}}" ng-change="searchExpert()">
+                                            <label for="{{location.value}}" >
+                                                <span></span> {{location.value}}
                                             </label>
                                         </div>
                                     </div>
@@ -102,7 +104,7 @@
                                             <h4 class="color-primary font-bold">{{experts.firstName + " " +experts.lastName}}</h4>
                                         </div>
                                         <div class="exp-city">
-                                            <span class="color-grey">{{experts.addressDetails}}</span>
+                                            <span class="color-grey">{{experts.city}}</span>
                                         </div>
                                         <div class="exp-brief">
                                             <span class="color-success-light font-bold">Brief BIO:</span>
