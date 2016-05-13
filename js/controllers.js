@@ -752,21 +752,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 console.log('getUserEditDetail', data);
                 $scope.publilink = data.publicationLinks;
                 $scope.edudetail = data.educationalQualification;
-                $scope.experiencedetail = data.experience;
+                if(data.experience) {
+                    $scope.experiencedetail = data.experience;
+                }
+
 
 
                 console.log(data.experience);
                 abc = $scope.experiencedetail;
-                if(data && data.length!=''){
-                  for (var i = 0; i < $scope.experiencedetail.length; i++) {
-                      console.log($scope.experiencedetail.length);
-                      $scope.experiencedetail[i].popupModel = false;
-                      console.log("Experience", $scope.experiencedetail[i]);
-                      $scope.experiencedetail[i].startDate = new Date($scope.experiencedetail[i].startDate);
-                      console.log("startDate", $scope.experiencedetail[i].startDate);
-                      $scope.experiencedetail[i].endDate = new Date($scope.experiencedetail[i].endDate);
-                  }
-                }
+                // if(data && data.length!=''){
+                //   for (var i = 0; i < $scope.experiencedetail.length; i++) {
+                //       console.log($scope.experiencedetail.length);
+                //       $scope.experiencedetail[i].popupModel = false;
+                //       console.log("Experience", $scope.experiencedetail[i]);
+                //       $scope.experiencedetail[i].startDate = new Date($scope.experiencedetail[i].startDate);
+                //       console.log("startDate", $scope.experiencedetail[i].startDate);
+                //       $scope.experiencedetail[i].endDate = new Date($scope.experiencedetail[i].endDate);
+                //   }
+                // }
 
                 console.log($scope.experiencedetail);
 
@@ -875,12 +878,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             companyName: '',
             jobTitle: '',
             jobDescription: '',
-            startDate: Date(),
-            endDate: Date(),
+            startDate:'' ,
+            endDate:'' ,
             image1: ''
         }];
 
         $scope.addexperience = function() {
+        //  console.log($scope.experiencedetail);
             var addexperience = $scope.experiencedetail.length + 1;
             $scope.experiencedetail.splice(0, 0, {
                 'id': '' + addexperience
