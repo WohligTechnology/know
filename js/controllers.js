@@ -254,7 +254,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.acceptRequest($scope.sendData, function(data) {
                 console.log('userdata', $scope.userdata);
                 if (data.value != false) {
-
                     $scope.expertBook('pending', 'expert');
                 }
             });
@@ -293,11 +292,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.userForm = data.data;
                     $scope.userForm.bookDate = new Date();
                     $scope.userForm.bookTime = new Date();
+                    $scope.userForm.callDuration = new Date();
                     if (data.value == true) {
                         $scope.formComplete = true;
                         console.log('booknow', $scope.userForm);
                     } else {
-                        $window.alert("User Not Logged in");
+                        //$window.alert("User Not Logged in");
                     }
 
                 });
@@ -1190,6 +1190,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.pushExpertise = function(val, key) {
             if (key == 13) {
                 $scope.expertiseFilter.expertise.unshift(val);
+
                 //$scope.searchExpert();
             }
         }
@@ -1197,6 +1198,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.pushLocation = function(val, key) {
             if (key == 13) {
                 $scope.expertiseFilter.location.unshift(val);
+                NavigationService.getSearch($stateParams.search, function(data) {
+                    if (data && data.data && data.data.data) {
+                        $scope.expertdata = data.data.data;
+                        $scope.expertiseFilter = data.data.arr;
+
+                        console.log('arr', data.data.arr.expertise);
+                        //console.log('$scope.expertdata.length',$scope.expertdata.length);
+                        if ($scope.expertdata.length == 0) {
+                            //console.log('$scope.expertdata.length22',$scope.expertdata.length);
+                            $scope.notfound = true;
+                        } else {
+                            console.log('getSearchdata111', $scope.expertdata);
+                            NavigationService.getUser(function(logindata) {
+                                _.each($scope.expertdata, function(n) {
+                                    n.showbtn = $filter('showbtn')(n._id, logindata);
+
+                                })
+                            })
+
+                        }
+                    } else {
+                        $scope.notfound = true;
+                    }
+                });
                 //$scope.searchExpert();
             }
         }
@@ -1237,7 +1262,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.mesg = [];
 
         $scope.addToWishlist = function(id) {
-    
+
             console.log('funid', id);
             var input = {
                 expertUser: id,
@@ -1255,6 +1280,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             type: 'success',
                             msg: 'added to the wishlist'
                         });
+                        NavigationService.getUser(function(logindata) {
+                            _.each($scope.expertdata, function(n) {
+                                n.showbtn = $filter('showbtn')(n._id, logindata);
+
+                            })
+                        })
                     }
                     $scope.closeAlert = function(index) {
                           $scope.mesg.splice(index, 1);
