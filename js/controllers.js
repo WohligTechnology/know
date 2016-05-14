@@ -281,7 +281,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
 
-        $scope.duration = ['1 Hr', '30 Min', '1:30 Min', '2 Hr'];
+        $scope.duration = ['30 Min', '60 Min', '90 Min', '120 Min'];
 
         $scope.userForm = {};
         $scope.userSubmitForm = function(formValid) {
@@ -1486,9 +1486,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         if ($state.current.name == "home-expert") {
             global.open('Login');
-        } else {
+        } else if($state.current.name == "home"){
             console.log("Getting");
             $state.go("login");
+        }else{
+            console.log("Getting");
         }
     };
 

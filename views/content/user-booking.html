@@ -571,7 +571,7 @@
                            <th>Total Amount</th>
                         </tr>
                         <tr>
-                           <td><img ng-src="{{booking.image|uploadpath}}" alt="" class="img-responsive display-inline img-circle completed" /> {{booking.expert.name}}</td>
+                           <td><img ng-src="{{booking.expert.image|uploadpath}}" alt="" class="img-responsive display-inline img-circle completed" /> {{booking.expert.name}}</td>
                            <td>{{booking.callDuration |date : "h"}}</td>
                            <td>{{booking.bookDate | date : "dd.MM.y"}}</td>
                            <td>{{booking.status}}
@@ -582,7 +582,7 @@
                               <br>
                               <button class="btn btn-animate-success mt10 f12">PRINT INVOICE</button>
                               <br>
-                              <button class="btn btn-animate-success text-uppercase mt10 f12">Retrieve Call (Coming Soon)</button>
+                              <!-- <button class="btn btn-animate-success text-uppercase mt10 f12">Retrieve Call (Coming Soon)</button> -->
                            </td>
                         </tr>
                      </table>
