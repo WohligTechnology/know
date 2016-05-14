@@ -753,6 +753,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.publilink = data.publicationLinks;
                 $scope.edudetail = data.educationalQualification;
                 $scope.experiencedetail = data.experience;
+                if(data.experience) {
+                   $scope.experiencedetail = data.experience;
+               }
 
 
                 console.log(data.experience);
