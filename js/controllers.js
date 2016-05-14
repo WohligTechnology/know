@@ -752,19 +752,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 console.log('getUserEditDetail', data);
                 $scope.publilink = data.publicationLinks;
                 $scope.edudetail = data.educationalQualification;
-                $scope.experiencedetail = data.experience;
+                  $scope.experiencedetail = data.experience;
+                if(data.experience){
+                    $scope.experiencedetail = data.experience;
+                }
+
 
 
                 console.log(data.experience);
                 abc = $scope.experiencedetail;
-                for (var i = 0; i < $scope.experiencedetail.length; i++) {
-                    console.log($scope.experiencedetail.length);
-                    $scope.experiencedetail[i].popupModel = false;
-                    console.log("Experience", $scope.experiencedetail[i]);
-                    $scope.experiencedetail[i].startDate = new Date($scope.experiencedetail[i].startDate);
-                    console.log("startDate", $scope.experiencedetail[i].startDate);
-                    $scope.experiencedetail[i].endDate = new Date($scope.experiencedetail[i].endDate);
-                }
+                // for (var i = 0; i < $scope.experiencedetail.length; i++) {
+                //     console.log($scope.experiencedetail.length);
+                //     $scope.experiencedetail[i].popupModel = false;
+                //     console.log("Experience", $scope.experiencedetail[i]);
+                //     $scope.experiencedetail[i].startDate = new Date($scope.experiencedetail[i].startDate);
+                //     console.log("startDate", $scope.experiencedetail[i].startDate);
+                //     $scope.experiencedetail[i].endDate = new Date($scope.experiencedetail[i].endDate);
+                // }
                 console.log($scope.experiencedetail);
 
                 $scope.moreAwards = data.awards;
@@ -855,7 +859,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.edudetail = [{
             title: '',
             name: '',
-            year: '',
+            year: Date(),
             city: '',
             country: ''
         }];
