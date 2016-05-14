@@ -727,6 +727,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.userForm = {};
         $scope.userForm.callday = "MONDAY";
         $scope.userForm.sameaddress = false;
+        $scope.calldetail = [];
         //
         // if(document.getElementById("RadioBtn").checked){
         //   $scope.sameaddress=true;
@@ -746,16 +747,28 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.done = function(data) {
             console.log(data);
         }
+        $scope.oldCallSettings = [];
 
         $scope.editExpert = function() {
             NavigationService.getExpertEditDetail($stateParams.id, function(data) {
                 console.log('getUserEditDetail', data);
                 $scope.publilink = data.publicationLinks;
                 $scope.edudetail = data.educationalQualification;
-                  $scope.experiencedetail = data.experience;
-                if(data.experience){
+                $scope.experiencedetail = data.experience;
+                if (data.experience) {
                     $scope.experiencedetail = data.experience;
+                    _.each($scope.experiencedetail,function(n) {
+                      n.startDate = new Date(n.startDate);
+                      n.endDate = new Date(n.endDate);
+                    });
                 }
+                if (data.callSettings && data.callSettings.length > 0) {
+                    $scope.calldetail = data.callSettings;
+
+                } else {
+                    $scope.calldetail = [];
+                }
+                $scope.oldCallSettings =  _.cloneDeep($scope.calldetail);
 
 
 
@@ -775,11 +788,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.moreVideos = data.videoLinks;
                 $scope.morephotos = data.addPhotos;
 
-                $scope.calldetail = data.callSettings;
-                $scope.calldetail = data.customSettings;
-                $scope.calldetail = data.unavailableSettings;
-
                 $scope.userForm = data;
+                $scope.userForm.callday = "MONDAY";
+                $scope.userForm.sameaddress = false;
             });
         };
         $scope.editExpert();
@@ -789,23 +800,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.userSubmitForm = function(formValid) {
 
             if (formValid.$valid) {
+                console.log("////", $scope.userForm);
+                if ($scope.userForm.callTime == "weekdays") {
+                    $scope.calldetail = [];
+                    $scope.userForm.callSettings = [];
+                } else if ($scope.userForm.callTime == "weekends") {
+                    $scope.calldetail = [];
+                    $scope.userForm.callSettings = [];
+                }
+                console.log("////", $scope.userForm);
                 NavigationService.ExpertUSerCreateSubmit($scope.userForm, function(data) {
-                    //$scope.userForm=data.data;
-                    //console.log('userformctrl', $scope.userForm);
-                    //console.log('$scope.userForm.experienceType',$scope.userForm.experienceType);
-                    // if($scope.userForm.experienceType==company)
-                    // {
-                    //   $scope.myexp=true;
-                    // }
-                    // if ($scope.userForm.password == $scope.userForm.confirmPassword) {
-                    //     //$scope.userForm = data.data;
-                    //     //console.log('userformctrl', $scope.userForm);
-                    //     $state.go("expert-profile");
-                    // } else {
-                    //     //$window.alert("Password do not match.");
-                    //     $scope.userForm.confirmPassword = "";
-                    // }
-                    //$state.go("expert-profile");
+
                 });
 
             }
@@ -888,8 +893,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
 
+        $scope.removeAllDays = function() {
+            $scope.calldetail = _.cloneDeep($scope.oldCallSettings);
+        };
 
-        $scope.calldetail = [];
 
         $scope.addCalls = function() {
             var addCalls = $scope.calldetail.length + 1;
@@ -899,30 +906,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             console.log('after $scope.calldetail', $scope.calldetail);
 
-            if ($scope.calldetail) {
-                var foundIndex = _.findIndex($scope.calldetail, {
-                    "day": $scope.userForm.callday
-                })
-                if (foundIndex != -1) {
-                    console.log('This is already in array');
-                } else {
-                    $scope.calldetail.push({
-                        id: '' + addCalls,
-                        callTime: '',
-                        day: $scope.userForm.callday,
-                        fromTime: '',
-                        toTime: ''
-                    });
-                }
+            // if ($scope.calldetail) {
+            var foundIndex = _.findIndex($scope.calldetail, {
+                "day": $scope.userForm.callday
+            })
+            if (foundIndex != -1) {
+                console.log('This is already in array');
             } else {
                 $scope.calldetail.push({
                     id: '' + addCalls,
-                    callTime: '',
+                    callTime: $scope.userForm.callTime,
                     day: $scope.userForm.callday,
                     fromTime: '',
                     toTime: ''
                 });
             }
+            // } else {
+            //     $scope.calldetail.push({
+            //         id: '' + addCalls,
+            //         callTime: '',
+            //         day: $scope.userForm.callday,
+            //         fromTime: '',
+            //         toTime: ''
+            //     });
+            // }
 
             //  });
 
@@ -1247,60 +1254,57 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 areaofexpert: [],
                 location: [],
                 minprice: $scope.priceFilter.minPrice,
-                maxprice:  $scope.priceFilter.maxPrice,
+                maxprice: $scope.priceFilter.maxPrice,
             };
             dataToSend.location = _.map(_.filter($scope.locationArr, function(n) {
                 return n.model
-            }),'value');
+            }), 'value');
 
             dataToSend.areaofexpert = _.map(_.filter($scope.expertiseArr, function(n) {
                 return n.model
-            }),'value');
+            }), 'value');
 
             NavigationService.getSearch(dataToSend, function(data) {
                 if (data && data.data && data.data.data) {
-                  $scope.notfound = false;
+                    $scope.notfound = false;
                     $scope.expertdata = data.data.data;
 
                     $scope.expertiseFilter = data.data.arr;
 
                     console.log(data.data.data);
-                    var min = _.minBy(data.data.data,'priceForService').priceForService;
+                    var min = _.minBy(data.data.data, 'priceForService').priceForService;
 
-                    var max = _.maxBy(data.data.data,'priceForService').priceForService;
+                    var max = _.maxBy(data.data.data, 'priceForService').priceForService;
 
-                    console.log(min,max);
+                    console.log(min, max);
 
-                    if($scope.expertiseArr.length==0 && $scope.locationArr.length==0)
-                    {
-                      $scope.priceFilter = {
-                          range: {
-                              min: min,
-                              max: max,
-                          },
-                          minPrice: min,
-                          maxPrice: max
-                      };
+                    if ($scope.expertiseArr.length == 0 && $scope.locationArr.length == 0) {
+                        $scope.priceFilter = {
+                            range: {
+                                min: min,
+                                max: max,
+                            },
+                            minPrice: min,
+                            maxPrice: max
+                        };
                     }
 
 
-                    if($scope.expertiseArr.length==0)
-                    {
-                      _.each(data.data.arr.expertise, function(n) {
-                          $scope.expertiseArr.push({
-                              value: n,
-                              model: true
-                          });
-                      });
+                    if ($scope.expertiseArr.length == 0) {
+                        _.each(data.data.arr.expertise, function(n) {
+                            $scope.expertiseArr.push({
+                                value: n,
+                                model: true
+                            });
+                        });
                     }
-                    if($scope.locationArr.length==0)
-                    {
-                      _.each(data.data.arr.location, function(n) {
-                          $scope.locationArr.push({
-                              value: n,
-                              model: true
-                          });
-                      });
+                    if ($scope.locationArr.length == 0) {
+                        _.each(data.data.arr.location, function(n) {
+                            $scope.locationArr.push({
+                                value: n,
+                                model: true
+                            });
+                        });
                     }
 
 
@@ -1486,10 +1490,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         if ($state.current.name == "home-expert") {
             global.open('Login');
-        } else if($state.current.name == "home"){
+        } else if ($state.current.name == "home") {
             console.log("Getting");
             $state.go("login");
-        }else{
+        } else {
             console.log("Getting");
         }
     };

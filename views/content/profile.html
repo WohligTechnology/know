@@ -25,8 +25,9 @@
             <div class="pro-name">
               <h4 class="margin0 color-base font-raleway font-bold">{{expertprofile.firstName + " " +expertprofile.lastName}}</h4>
             </div>
-            <div class="avl-time">
-              <span class="color-success font-light" >Available Day: <span ng-repeat="myday in expertprofile.callSettings" class="text-cap cpointer" ng-click="open()" >{{myday.day}}</s pan></span>
+            <div class="avl-time">{{expertprofile.callTime}}
+              <span class="color-success font-light" ng-if="expertprofile.callSettings.day">Available Day: <span ng-repeat="myday in expertprofile.callSettings" class="text-cap cpointer" ng-click="open()" >{{myday.day}}</s pan></span>
+              <span class="color-success font-light" ng-if="expertprofile.callSettings.callTime">Available Day: <span ng-repeat="myday in expertprofile.callSettings" class="text-cap cpointer" ng-click="open()" >{{myday.callTime}}</s pan></span>
             </div>
             <div class="price">
               <h4 class="color-primary font-bold"> ₹ {{expertprofile.priceForService}}/ 30 MIN</h4>
