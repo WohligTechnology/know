@@ -11,7 +11,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.navigation = NavigationService.getnav();
     $scope.expertlogo = "";
     $scope.userlogo = "";
-    $scope.home = "home-page"
+    $scope.home = "home-page";
 
 
     $scope.freqSearch = {};
