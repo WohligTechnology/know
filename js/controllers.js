@@ -1378,7 +1378,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.userMaxPrice = $scope.maxPrice;
     })
 
-.controller('ProfileCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
+.controller('ProfileCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $uibModal) {
     $scope.template = TemplateService.changecontent("profile");
     $scope.menutitle = NavigationService.makeactive("Profile");
     TemplateService.title = $scope.menutitle;
@@ -1448,7 +1448,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
     };
 
+    $scope.animationsEnabled = true;
+    $scope.open = function(size) {
 
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'views/modal/day.html',
+            controller: 'ProfileCtrl',
+            size: size,
+            resolve: {
+                items: function() {
+                    return $scope.items;
+                }
+            }
+        });
+
+    };
 })
 
 .controller('headerctrl', function($scope, TemplateService, NavigationService, $state, $rootScope) {
