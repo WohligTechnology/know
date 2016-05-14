@@ -753,9 +753,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.publilink = data.publicationLinks;
                 $scope.edudetail = data.educationalQualification;
                 $scope.experiencedetail = data.experience;
-                if(data.experience) {
-                   $scope.experiencedetail = data.experience;
-               }
 
 
                 console.log(data.experience);
@@ -1253,7 +1250,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }),'value');
 
             dataToSend.areaofexpert = _.map(_.filter($scope.expertiseArr, function(n) {
-                return n.model;
+                return n.model
             }),'value');
 
             NavigationService.getSearch(dataToSend, function(data) {
@@ -1270,7 +1267,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
                     console.log(min,max);
 
-                    if($scope.expertiseArr.length===0 && $scope.locationArr.length===0)
+                    if($scope.expertiseArr.length==0 && $scope.locationArr.length==0)
                     {
                       $scope.priceFilter = {
                           range: {
@@ -1283,7 +1280,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     }
 
 
-                    if($scope.expertiseArr.length===0)
+                    if($scope.expertiseArr.length==0)
                     {
                       _.each(data.data.arr.expertise, function(n) {
                           $scope.expertiseArr.push({
@@ -1292,7 +1289,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                           });
                       });
                     }
-                    if($scope.locationArr.length===0)
+                    if($scope.locationArr.length==0)
                     {
                       _.each(data.data.arr.location, function(n) {
                           $scope.locationArr.push({
@@ -1385,6 +1382,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.expertlogo = "";
     $scope.userlogo = "user-page";
     $scope.start = "";
+
+    $scope.expertdata2 = {
+        search: ""
+    };
 
     NavigationService.getExpertProfile($stateParams.id, function(data) {
         console.log('getExpertProfile', data.data);
