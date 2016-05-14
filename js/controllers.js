@@ -293,7 +293,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.userForm.bookDate = new Date();
                     $scope.userForm.bookTime = new Date();
                     $scope.userForm.callDuration = new Date();
-                    console.log('booknow',data.value);
+                    console.log('booknow', data.value);
                     if (data.value == true) {
                         $scope.formComplete = true;
                         console.log('booknow', $scope.userForm);
@@ -532,7 +532,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             if (formValid.$valid) {
                 console.log('in validate');
                 NavigationService.changePassword($scope.userForm, function(data) {
-                  console.log('$scope.userForm',$scope.userForm);
+                    console.log('$scope.userForm', $scope.userForm);
                     if (data.value == true) {
                         $scope.changpswd = true;
                         $scope.userForm = data.data;
@@ -576,7 +576,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             if (formValid.$valid) {
                 console.log('in validate');
                 NavigationService.changeExpertPassword($scope.userForm, function(data) {
-                  console.log('$scope.userForm',$scope.userForm);
+                    console.log('$scope.userForm', $scope.userForm);
                     if (data.value == true) {
                         $scope.changpswd = true;
                         $scope.userForm = data.data;
@@ -752,25 +752,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 console.log('getUserEditDetail', data);
                 $scope.publilink = data.publicationLinks;
                 $scope.edudetail = data.educationalQualification;
-                if(data.experience) {
-                    $scope.experiencedetail = data.experience;
-                }
-
+                $scope.experiencedetail = data.experience;
 
 
                 console.log(data.experience);
                 abc = $scope.experiencedetail;
-                // if(data && data.length!=''){
-                //   for (var i = 0; i < $scope.experiencedetail.length; i++) {
-                //       console.log($scope.experiencedetail.length);
-                //       $scope.experiencedetail[i].popupModel = false;
-                //       console.log("Experience", $scope.experiencedetail[i]);
-                //       $scope.experiencedetail[i].startDate = new Date($scope.experiencedetail[i].startDate);
-                //       console.log("startDate", $scope.experiencedetail[i].startDate);
-                //       $scope.experiencedetail[i].endDate = new Date($scope.experiencedetail[i].endDate);
-                //   }
-                // }
-
+                for (var i = 0; i < $scope.experiencedetail.length; i++) {
+                    console.log($scope.experiencedetail.length);
+                    $scope.experiencedetail[i].popupModel = false;
+                    console.log("Experience", $scope.experiencedetail[i]);
+                    $scope.experiencedetail[i].startDate = new Date($scope.experiencedetail[i].startDate);
+                    console.log("startDate", $scope.experiencedetail[i].startDate);
+                    $scope.experiencedetail[i].endDate = new Date($scope.experiencedetail[i].endDate);
+                }
                 console.log($scope.experiencedetail);
 
                 $scope.moreAwards = data.awards;
@@ -878,13 +872,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             companyName: '',
             jobTitle: '',
             jobDescription: '',
-            startDate:'' ,
-            endDate:'' ,
+            startDate: Date(),
+            endDate: Date(),
             image1: ''
         }];
 
         $scope.addexperience = function() {
-        //  console.log($scope.experiencedetail);
             var addexperience = $scope.experiencedetail.length + 1;
             $scope.experiencedetail.splice(0, 0, {
                 'id': '' + addexperience
@@ -1169,13 +1162,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertdata = {
             search: $stateParams.search
         };
+        $scope.expertdata2 = {
+            search: $stateParams.search
+        };
+        $scope.expertiseArr = [];
+        $scope.locationArr = [];
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
         $scope.mesg = [];
 
         $scope.filter = {};
-        $scope.filter.expert= [];
-        $scope.filter.location= [];
+        $scope.filter.expert = [];
+        $scope.filter.location = [];
         $scope.pushExpertise = function(val, key) {
             if (key == 13) {
                 $scope.expertiseFilter.expertise.unshift(val);
@@ -1183,22 +1181,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 //$scope.searchExpert();
             }
         }
-        $scope.filterLocation = function(check,text){
-          console.log(check +"     "+ text);
-          if(check){
-            $scope.filter.expert.push(text);
-          }else{
-            $scope.filter.expert.splice(_.findIndex($scope.filter.expert,function(key){
-              return key == text;
-            }),1);
-          }
-          console.log($scope.filter.expert);
+        $scope.filterLocation = function(check, text) {
+            console.log(check + "  " + text);
+            if (check) {
+                $scope.filter.expert.push(text);
+            } else {
+                $scope.filter.expert.splice(_.findIndex($scope.filter.expert, function(key) {
+                    return key == text;
+                }), 1);
+            }
+            console.log($scope.filter.expert);
         };
-        $scope.expertModel =[];
+        $scope.expertModel = [];
         $scope.pushLocation = function(val, key) {
             if (key == 13) {
                 $scope.expertiseFilter.location.unshift(val);
-                $scope.filterlocation=$scope.expertiseFilter.location;
+                $scope.filterlocation = $scope.expertiseFilter.location;
+
+
+
                 // NavigationService.getSearchLocation($stateParams.search,$scope.filterlocation, function(data) {
                 //     if (data && data.data && data.data.data) {
                 //         $scope.expertdata = data.data.data;
@@ -1226,13 +1227,81 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
         }
 
+        $scope.priceFilter = {
+            range: {
+                min: 100,
+                max: 10000,
+            },
+            minPrice: undefined,
+            maxPrice: undefined
+        };
+
+
         $scope.searchExpert = function() {
-            NavigationService.getSearch($stateParams.search, function(data) {
+            var dataToSend = {
+                search: $scope.expertdata2.search,
+                areaofexpert: [],
+                location: [],
+                minprice: $scope.priceFilter.minPrice,
+                maxprice:  $scope.priceFilter.maxPrice,
+            };
+            dataToSend.location = _.map(_.filter($scope.locationArr, function(n) {
+                return n.model
+            }),'value');
+
+            dataToSend.areaofexpert = _.map(_.filter($scope.expertiseArr, function(n) {
+                return n.model
+            }),'value');
+
+            NavigationService.getSearch(dataToSend, function(data) {
                 if (data && data.data && data.data.data) {
+                  $scope.notfound = false;
                     $scope.expertdata = data.data.data;
+
                     $scope.expertiseFilter = data.data.arr;
 
-                    console.log('arr', data.data.arr.expertise);
+                    console.log(data.data.data);
+                    var min = _.minBy(data.data.data,'priceForService').priceForService;
+
+                    var max = _.maxBy(data.data.data,'priceForService').priceForService;
+
+                    console.log(min,max);
+
+                    if($scope.expertiseArr.length==0 && $scope.locationArr.length==0)
+                    {
+                      $scope.priceFilter = {
+                          range: {
+                              min: min,
+                              max: max,
+                          },
+                          minPrice: min,
+                          maxPrice: max
+                      };
+                    }
+
+
+                    if($scope.expertiseArr.length==0)
+                    {
+                      _.each(data.data.arr.expertise, function(n) {
+                          $scope.expertiseArr.push({
+                              value: n,
+                              model: true
+                          });
+                      });
+                    }
+                    if($scope.locationArr.length==0)
+                    {
+                      _.each(data.data.arr.location, function(n) {
+                          $scope.locationArr.push({
+                              value: n,
+                              model: true
+                          });
+                      });
+                    }
+
+
+
+
                     //console.log('$scope.expertdata.length',$scope.expertdata.length);
                     if ($scope.expertdata.length == 0) {
                         //console.log('$scope.expertdata.length22',$scope.expertdata.length);
@@ -1259,7 +1328,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
 
-  $scope.mesg = [];
+        $scope.mesg = [];
 
         $scope.addToWishlist = function(id) {
 
@@ -1288,25 +1357,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         })
                     }
                     $scope.closeAlert = function(index) {
-                          $scope.mesg.splice(index, 1);
-                      }
+                        $scope.mesg.splice(index, 1);
+                    }
                 });
-                  $scope.mesg = [];
+                $scope.mesg = [];
             })
 
         };
 
-        $scope.demo2 = {
-            range: {
-                min: 100,
-                max: 10000,
-            },
-            minPrice: 1000,
-            maxPrice: 4000
-        };
-        // set available range
-        $scope.minPrice = 100;
-        $scope.maxPrice = 999;
+
+
+
 
         // default the user's values to the available range
         $scope.userMinPrice = $scope.minPrice;
