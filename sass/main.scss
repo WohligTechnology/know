@@ -1433,6 +1433,12 @@ min-height: 400px;
 
     display: block !important;
 }
+.no-data-found {
+    text-align: center;
+    min-height: 300px;
+    /* position: absolute; */
+    padding-top: 50px;
+}
 // animation end
 @import "amit";
 @import "mobile";
