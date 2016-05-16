@@ -286,10 +286,11 @@
                   <uib-tab-heading class="text-uppercase" ng-click="expertBook('','expert')">Account History</uib-tab-heading>
                   <div class="b-order">
                      <div class="display-inline mt30">
-                        <p class="font-bold tag-line">Account History</p>
+                        <p ng-hide="bookexpert.length==0" class="font-bold tag-line">Account History</p>
                      </div>
+                       <p ng-show="bookexpert.length==0" class="font-bold tag-line">No account history.</p>
                      <div class="filt display-inline">
-                        <div class="dropdown">
+                        <div class="dropdown" ng-hide="bookexpert.length==0">
                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                               SORT BY CATEGORY
                               <span class="caret"></span>

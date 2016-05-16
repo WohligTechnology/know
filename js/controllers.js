@@ -12,7 +12,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.expertlogo = "";
     $scope.userlogo = "";
     $scope.home = "home-page";
-
+    // $timeout(function () {
+    //     $scope.hidePreloader();
+    // }, 2000);
 
     $scope.freqSearch = {};
     NavigationService.getFreqSearch($scope.freqSearch, function(data) {
@@ -142,18 +144,69 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     //     });
     //
     // };
-    $scope.open4 = function(size) {
+    $scope.categorydata = {};
+    NavigationService.getCategory($scope.categorydata, function(data) {
+        $scope.categorydata = data.data;
+        console.log('$scope.categorydata', $scope.categorydata);
 
-        var modalInstance = $uibModal.open({
+    });
+$scope.userdata={};
+    $scope.userForm = {};
+    $scope.addQuery = function(id,cat, needhelp) {
+
+        // console.log('funid', cat);
+        // var input = {
+        //   user:id,
+        //     category: cat,
+        //     query: needhelp
+        // };
+        NavigationService.getUserData($scope.userdata,function(data) {
+          $scope.userdata=data;
+            console.log("$scope.userdata",$scope.userdata._id);
+            //$scope.getuserid=user
+            // if(user){
+            // if (user && findexpert.user) {
+            //     user.findCategory.push(input);
+            //     console.log('userid', user._id);
+            //     console.log('user.findCategory', user.findCategory);
+
+            //     delete user._id;
+                NavigationService.getHelp($scope.userForm, function(data) {
+                    if (data.value === true) {
+
+                        $scope.findcat = true;
+                        $timeout(function() {
+                            modalInstance1.dismiss();
+                        }, 2500)
+
+                    }else{
+                    $scope.nouser = true;
+                    $timeout(function() {
+                        modalInstance1.dismiss();
+                    }, 2500)
+                    }
+
+                });
+            // }
+        })
+
+    };
+    var modalInstance1 = '';
+    $scope.open4 = function(size) {
+        modalInstance1 = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'views/modal/needhelp.html',
-            controller: 'HomeCtrl',
+            //controller: 'HomeCtrl',
             size: size,
-            resolve: {
-                items: function() {
-                    return $scope.items;
-                }
-            }
+            scope: $scope,
+            //           myModalTimeout: setTimeout(function(){
+            //      $("#needhelp.html").hide();
+            //  }, 3000)
+            // resolve: {
+            //     items: function() {
+            //         return $scope.items;
+            //     }
+            // }
         });
 
     };
@@ -757,9 +810,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.experiencedetail = data.experience;
                 if (data.experience) {
                     $scope.experiencedetail = data.experience;
-                    _.each($scope.experiencedetail,function(n) {
-                      n.startDate = new Date(n.startDate);
-                      n.endDate = new Date(n.endDate);
+                    _.each($scope.experiencedetail, function(n) {
+                        n.startDate = new Date(n.startDate);
+                        n.endDate = new Date(n.endDate);
                     });
                 }
                 if (data.callSettings && data.callSettings.length > 0) {
@@ -768,7 +821,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 } else {
                     $scope.calldetail = [];
                 }
-                $scope.oldCallSettings =  _.cloneDeep($scope.calldetail);
+                $scope.oldCallSettings = _.cloneDeep($scope.calldetail);
 
 
 

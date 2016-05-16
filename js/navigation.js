@@ -1,4 +1,4 @@
-var adminurl = "http://146.148.4.222/";
+var adminurl = "http://192.168.1.119:1337/";
 // var adminurl1 = "http://wohlig.io:81/callApi/jacknows/";
 var imgurl = "http://146.148.4.222/upload/";
 var imgpath = imgurl + "readFile";
@@ -272,6 +272,15 @@ var navigationservice = angular.module('navigationservice', [])
                 withCredentials: true
             }).success(callback);
         },
+        getUserData: function(input,callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'user/profile',
+                method: 'POST',
+                withCredentials: true,
+                  data: input
+            }).success(callback);
+        },
         getExpert: function(callback) {
             // console.log('form data: ', formData);
             $http({
@@ -304,6 +313,17 @@ var navigationservice = angular.module('navigationservice', [])
             delete input.forgotpassword;
             $http({
                 url: adminurl + 'user/editProfile',
+                method: 'POST',
+                withCredentials: true,
+                data: input
+            }).success(callback);
+        },
+        getHelp: function(input, callback) {
+            // console.log('form data: ', formData);
+            // delete input.password;
+            // delete input.forgotpassword;
+            $http({
+                url: adminurl + 'findexpert/saveData',
                 method: 'POST',
                 withCredentials: true,
                 data: input

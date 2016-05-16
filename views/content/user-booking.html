@@ -16,7 +16,9 @@
             <uib-tabset>
                <uib-tab>
                   <uib-tab-heading class="text-uppercase" ng-click="userBook('accept','user')">Awaiting Payment</uib-tab-heading>
-                  <p class="font-bold tag-line">Following calls are awaiting payment. Please pay now to confirm the call.</p>
+                  <p ng-hide="userBooking.length==0" class="font-bold tag-line">Following calls are awaiting payment. Please pay now to confirm the call.</p>
+                  <p ng-show="userBooking.length==0" class="font-bold tag-line">No Awaiting payment.</p>
+
                   <!-- <div class="choose-color">
               <p class="font-bold tag-line"></p>
             </div> -->
@@ -170,7 +172,8 @@
                </uib-tab>
                <uib-tab>
                   <uib-tab-heading class="text-uppercase" ng-click="userBook('paid','user')">Schedule Call</uib-tab-heading>
-                  <p class="font-bold tag-line">Following calls are confirmed. We will connect you at the scheduled time.</p>
+                  <p ng-hide="userBooking.length==0"  class="font-bold tag-line">Following calls are confirmed. We will connect you at the scheduled time.</p>
+                  <p ng-show="userBooking.length==0"  class="font-bold tag-line">No Schedule Call.</p>
                   <div class="row">
                      <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="booking in userBooking track by $index">
                         <div class="outline-single">
@@ -233,7 +236,8 @@
                </uib-tab>
                <uib-tab>
                   <uib-tab-heading class="text-uppercase" ng-click="userBook('pending','user')">Awaiting Confirmation</uib-tab-heading>
-                  <p class="font-bold tag-line">Following calls are yet to be confirmed by the experts. Upon confirmation you will be prompted to pay.</p>
+                  <p ng-hide="userBooking.length==0"  class="font-bold tag-line">Following calls are yet to be confirmed by the experts. Upon confirmation you will be prompted to pay.</p>
+                  <p ng-show="userBooking.length==0"  class="font-bold tag-line">No Awaiting Call.</p>
                   <div class="row">
                      <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="booking in userBooking track by $index">
                         <div class="outline-single">
@@ -381,7 +385,8 @@
                </uib-tab>
                <uib-tab>
                   <uib-tab-heading class="text-uppercase" ng-click="userBook('completed','user')">Completed</uib-tab-heading>
-                  <p class="font-bold tag-line">These is your completed call history. You can print an invoice and even retrieve a recording of your call.</p>
+                  <p ng-hide="userBooking.length==0" class="font-bold tag-line">These is your completed call history. You can print an invoice and even retrieve a recording of your call.</p>
+                  <p ng-show="userBooking.length==0" class="font-bold tag-line">No completed Call.</p>
                   <div class="row">
                      <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="booking in userBooking track by $index" ng-if="booking.status=='completed'">
                         <div class="outline-single">
@@ -545,9 +550,10 @@
                <uib-tab>
                   <uib-tab-heading class="text-uppercase" ng-click="userBook('','user')">Account History</uib-tab-heading>
                   <div class="display-inline">
-                     <p class="font-bold tag-line">Account History</p>
+                     <p ng-hide="userBooking.length==0" class="font-bold tag-line">Account History</p>
                   </div>
-                  <div class="filt display-inline">
+                  <p ng-show="userBooking.length==0" class="font-bold tag-line">No account history.</p>
+                  <div class="filt display-inline" ng-hide="userBooking.length==0">
                      <div class="dropdown">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                            SORT BY CATEGORY
