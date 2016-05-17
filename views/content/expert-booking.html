@@ -23,7 +23,12 @@
                   <uib-tab-heading class="text-uppercase" ng-click="expertBook('pending','expert')">REQUESTED CALLS</uib-tab-heading>
                   <div class="b-order mt30">
                      <p ng-hide="bookexpert.length==0" class="font-bold tag-line ">These calls have been requested for </p>
-                     <p ng-show="bookexpert.length==0" class="font-bold tag-line ">No requested calls
+                     <!-- <p ng-show="bookexpert.length==0" class="font-bold tag-line ">No requested calls -->
+                     <div class="no-data-found" ng-show="bookexpert.length==0">
+                       <img src="img/owl.png" alt="">
+                       <h1 class="color-primary">Whoops !</h1>
+                       <p class="text-cap">We couldn't find any requested calls</p>
+                     </div>
                   </div>
                   <div class="row mt20">
                      <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="book in bookexpert">
@@ -97,7 +102,12 @@
                <uib-tab>
                   <uib-tab-heading class="text-uppercase" ng-click="expertBook('paid','expert')">Schedule Call</uib-tab-heading>
                   <p ng-hide="bookexpert.length==0" class="font-bold tag-line">Following calls are confirmed. We will connect you at the scheduled time.</p>
-                  <p ng-show="bookexpert.length==0" class="font-bold tag-line">No schedule calls.</p>
+                  <!-- <p ng-show="bookexpert.length==0" class="font-bold tag-line">No schedule calls.</p> -->
+                  <div class="no-data-found" ng-show="bookexpert.length==0">
+                    <img src="img/owl.png" alt="">
+                    <h1 class="color-primary">Whoops !</h1>
+                    <p class="text-cap">We couldn't find any Schedule Call</p>
+                  </div>
                   <div class="row">
                      <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="book in bookexpert track by $index">
                         <div class="outline-single">
@@ -167,7 +177,12 @@
                   <uib-tab-heading class="text-uppercase" ng-click="expertBook('paid','expert')">CONFIRMed CALLs</uib-tab-heading>
                   <div class="b-order mt30">
                      <p ng-hide="bookexpert.length==0" class="font-bold tag-line">These calls have been confirmed. We will connect you at the scheduled time. Please ensure that you ae in a mobile accessible location.</p>
-                     <p ng-show="bookexpert.length==0" class="font-bold tag-line">No Confirmed calls.</p>
+                     <!-- <p ng-show="bookexpert.length==0" class="font-bold tag-line">No Confirmed calls.</p> -->
+                     <div class="no-data-found" ng-show="bookexpert.length==0">
+                       <img src="img/owl.png" alt="">
+                       <h1 class="color-primary">Whoops !</h1>
+                       <p class="text-cap">We couldn't find any Confirmed calls</p>
+                     </div>
                   </div>
                   <div class="row mt20">
                      <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="book in bookexpert track by $index">
@@ -288,7 +303,12 @@
                      <div class="display-inline mt30">
                         <p ng-hide="bookexpert.length==0" class="font-bold tag-line">Account History</p>
                      </div>
-                       <p ng-show="bookexpert.length==0" class="font-bold tag-line">No account history.</p>
+                       <!-- <p ng-show="bookexpert.length==0" class="font-bold tag-line">No account history.</p> -->
+                       <div class="no-data-found" ng-show="bookexpert.length==0">
+                         <img src="img/owl.png" alt="">
+                         <h1 class="color-primary">Whoops !</h1>
+                         <p class="text-cap">We couldn't find any Account History</p>
+                       </div>
                      <div class="filt display-inline">
                         <div class="dropdown" ng-hide="bookexpert.length==0">
                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

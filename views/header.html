@@ -45,10 +45,10 @@
                   <img src="img/noti-white.png" alt="" class=" noti-icon white-img" width="30" ng-show="userLogedin || expertLogedin">
                   <img src="img/noti-black.png" alt="" class=" noti-icon black-img" width="30" ng-show="userLogedin || expertLogedin">
                 </a>
-                <div class="noti-badge" ng-show="userLogedin || expertLogedin">
+                <div class="noti-badge" ng-show="(userLogedin || expertLogedin) && notificationdata.length>0">
                   <a href=""><span>{{notificationdata.length}}</span></a>
                 </div>
-                <div class="notification view-dropdown" ui-sref="user-booking">
+                <div class="notification view-dropdown" ui-sref="user-booking" ng-if="notificationdata && notificationdata.length>0">
                   <h4 class="text-center font-light color-grey">Notifications</h4>
                   <div class="over-flow2">
                   <div class="notify" ng-repeat="noti in notificationdata track by $index">
@@ -63,26 +63,6 @@
                         <p>{{noti.notification}}</p>
                       </div>
                     </div>
-                    <!-- <div class="notification-list clearfix">
-                      <div class="pull-left">
-                        <div class="notify-imgholder">
-                          <img src="img/search-pro2.jpg" alt="" class="img-circle img-responsive" width="30">
-                        </div>
-                      </div>
-                      <div class="descp-noti">
-                        <p>You have to get on a call with <b>Raj Malhotra</b> on 2nd Jan 2016 @ 4:30 pm</p>
-                      </div>
-                    </div>
-                    <div class="notification-list clearfix" ui-sref="user-booking">
-                      <div class="pull-left">
-                        <div class="notify-imgholder">
-                          <img src="img/search-pro3.jpg" alt="" class="img-circle img-responsive" width="30">
-                        </div>
-                      </div>
-                      <div class="descp-noti">
-                        <p>Your call has been confirmed with <b>Jay Visariya</b> on 5th jan 2016 @ 3pm. <a href="" class="color-success">PAY NOW</a> to book your call</p>
-                      </div>
-                    </div> -->
                   </div>
                   </div>
                 </div>

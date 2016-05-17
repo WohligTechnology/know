@@ -129,66 +129,48 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
 
     };
-    // $scope.open3 = function(size) {
-    //
-    //     var modalInstance = $uibModal.open({
-    //         animation: $scope.animationsEnabled,
-    //         templateUrl: 'views/modal/forgetpassword.html',
-    //         controller: 'HomeCtrl',
-    //         size: size,
-    //         resolve: {
-    //             items: function() {
-    //                 return $scope.items;
-    //             }
-    //         }
-    //     });
-    //
-    // };
+
     $scope.categorydata = {};
     NavigationService.getCategory($scope.categorydata, function(data) {
         $scope.categorydata = data.data;
         console.log('$scope.categorydata', $scope.categorydata);
 
     });
-$scope.userdata={};
+    $scope.userdata = {};
     $scope.userForm = {};
-    $scope.addQuery = function(id,cat, needhelp) {
+    $scope.addQuery = function(id, cat, needhelp) {
 
-        // console.log('funid', cat);
-        // var input = {
-        //   user:id,
-        //     category: cat,
-        //     query: needhelp
-        // };
-        NavigationService.getUserData($scope.userdata,function(data) {
-          $scope.userdata=data;
-            console.log("$scope.userdata",$scope.userdata._id);
-            //$scope.getuserid=user
-            // if(user){
-            // if (user && findexpert.user) {
-            //     user.findCategory.push(input);
-            //     console.log('userid', user._id);
-            //     console.log('user.findCategory', user.findCategory);
+        NavigationService.getUserData($scope.userdata, function(data) {
+            $scope.userdata = data;
+            console.log("$scope.userdata", $scope.userdata._id);
+            NavigationService.getHelp($scope.userForm, function(data) {
+                if (data && data.value === true) {
 
-            //     delete user._id;
-                NavigationService.getHelp($scope.userForm, function(data) {
-                    if (data.value === true) {
-
-                        $scope.findcat = true;
-                        $timeout(function() {
+                    $scope.findcat = true;
+                    $timeout(function() {
                             modalInstance1.dismiss();
-                        }, 2500)
+                            $timeout(function(){
+                              $scope.findcat = "";
+                            }, 2000)
 
-                    }else{
+                        }, 3000)
+                        //$state.reload();
+
+                } else {
                     $scope.nouser = true;
                     $timeout(function() {
-                        modalInstance1.dismiss();
-                    }, 2500)
-                    }
+                            modalInstance1.dismiss();
+                            $timeout(function(){
+                              $scope.nouser = "";
+                            }, 2000)
+                        }, 3000)
+                        //$state.reload();
+                }
 
-                });
-            // }
-        })
+            });
+
+
+        });
 
     };
     var modalInstance1 = '';
