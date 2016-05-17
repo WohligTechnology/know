@@ -315,6 +315,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.navigation = NavigationService.getnav();
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
+        $scope.todaysdt=new Date();
 
         $scope.duration = ['30 Min', '60 Min', '90 Min', '120 Min'];
 
@@ -396,6 +397,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.time = "1970-01-01T05:00:40.000Z"; // (formatted: 10:30 AM)
         $scope.selectedTimeAsNumber = 37840000; // (formatted: 4:00 PM)
         $scope.sharedDate = "2016-04-06T05:30:00.116Z"; // (formatted: 4/6/16 11:00 AM)
+
 
     })
     .controller('LoginCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
@@ -763,7 +765,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.userForm.callday = "MONDAY";
         $scope.userForm.sameaddress = false;
         $scope.calldetail = [];
-        
+
         //
         // if(document.getElementById("RadioBtn").checked){
         //   $scope.sameaddress=true;
@@ -953,8 +955,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     id: '' + addCalls,
                     callTime: $scope.userForm.callTime,
                     day: $scope.userForm.callday,
-                    fromTime: '',
-                    toTime: ''
+                    fromTime: Date(),
+                    toTime: Date()
                 });
             }
             // } else {
@@ -1139,6 +1141,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             return '';
         }
+
     })
     .controller('FaqCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("faq");

@@ -10,6 +10,8 @@
             <table class="table">
                 <tr>
                     <th ng-repeat="myday in expertprofile.callSettings">{{myday.day}}</th>
+                    <!-- <th ng-if="expertprofile.callSettings.callTime=='weekend'">Weekend(SAT And SUN)
+                      <th ng-if="expertprofile.callSettings.callTime=='weekdays'">Weekdays(MON To SUN) -->
                     <!-- <th>MONADAY</th>
                     <th>MONADAY</th>
                     <th>MONADAY</th>
@@ -18,9 +20,9 @@
                 </tr>
                 <tr>
                     <td ng-repeat="myday in expertprofile.callSettings">
-                        {{9:00 AM}} to 10:00 PM
+                        {{myday.fromTime | date:'h:mm a'}} to {{myday.toTime | date:'h:mm a'}}
                     </td>
-                    <td>
+                    <!-- <td>
                         9:00 AM to 10:00 PM
                     </td>
                     <td>
@@ -34,7 +36,7 @@
                     </td>
                     <td>
                         9:00 AM to 10:00 PM
-                    </td>
+                    </td> -->
                 </tr>
             </table>
         </div>

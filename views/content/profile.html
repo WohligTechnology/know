@@ -25,14 +25,31 @@
                     <div class="pro-name">
                         <h4 class="margin0 color-base font-raleway font-bold">{{expertprofile.firstName + " " +expertprofile.lastName}}</h4>
                     </div>
-                    <div class="avl-time">
+                    <div ng-if="expertprofile.callSettings[0].callTime=='custom'" class="avl-time">
                         <span class="color-success font-light">
                           Available Day:
                           <span step="1" ng-repeat="myday in expertprofile.callSettings" class="text-cap cpointer" ng-click="open()">{{myday.day | limitTo:3}}
                             <span ng-if="$index!=expertprofile.callSettings.length-1" style="margin-left: -2px;">, </span>
                           </span>
                         </span>
-                        <!-- <span class="color-success font-light" ng-if="expertprofile.callSettings.callTime">Available Day: <span ng-repeat="myday in expertprofile.callSettings" class="text-cap cpointer" ng-click="open()"  >{{myday.callTime}}</s pan></span> -->
+                      </div>
+                      <div class="avl-time" ng-if="expertprofile.callSettings[0].callTime=='unavailable'">
+                        <span  class="color-success font-light">
+                          Unavailable Day:
+                          <span step="1" ng-repeat="myday in expertprofile.callSettings" class="text-cap cpointer">{{myday.day | limitTo:3}}
+                            <span ng-if="$index!=expertprofile.callSettings.length-1" style="margin-left: -2px;">, </span>
+                          </span>
+                        </span>
+                    </div>
+                      <div class="avl-time" ng-if="expertprofile.callTime=='weekdays'">
+                        <span  class="color-success font-light">
+                          Anavailable Day:Weekdays(9AM-9PM)
+                        </span>
+                    </div>
+                      <div class="avl-time" ng-if="expertprofile.callTime=='weekend'">
+                        <span  class="color-success font-light">
+                          Anavailable Day:Weekend(9AM-9PM)
+                        </span>
                     </div>
                     <div class="price">
                         <h4 class="color-primary font-bold"> ₹ {{expertprofile.priceForService}}/ 30 MIN</h4>
