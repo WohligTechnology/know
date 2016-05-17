@@ -1,79 +1,84 @@
 <section>
-  <div class="mt70 space-top">
-    <div class="" ng-include="template.searchbar"></div>
-  </div>
-  <div class="container">
-
-    <div class="row">
-      <div class="col-md-4">
-        <div class="main-links mt25">
-          <ul class="breadcrumb">
-            <li><a class="text-uppercase">Home</a></li>
-            <li><a class="active text-uppercase">Profile</a></li>
-          </ul>
-        </div>
-      </div>
+    <div class="mt70 space-top">
+        <div class="" ng-include="template.searchbar"></div>
     </div>
-  </div>
-  <div class="container">
-      <div class="row">
-        <div class="col-md-4 col-sm-4 col-xs-12">
-          <div class="profile-bx text-center">
-            <div class="pro-img-box">
-              <img ng-src="{{expertprofile.image|uploadpath:200}}" alt="">
-            </div>
-            <div class="pro-name">
-              <h4 class="margin0 color-base font-raleway font-bold">{{expertprofile.firstName + " " +expertprofile.lastName}}</h4>
-            </div>
-            <div class="avl-time">{{expertprofile.callTime}}
-              <span class="color-success font-light" ng-if="expertprofile.callSettings.day">Available Day: <span ng-repeat="myday in expertprofile.callSettings" class="text-cap cpointer" ng-click="open()" >{{myday.day}}</s pan></span>
-              <span class="color-success font-light" ng-if="expertprofile.callSettings.callTime">Available Day: <span ng-repeat="myday in expertprofile.callSettings" class="text-cap cpointer" ng-click="open()" >{{myday.callTime}}</s pan></span>
-            </div>
-            <div class="price">
-              <h4 class="color-primary font-bold"> ₹ {{expertprofile.priceForService}}/ 30 MIN</h4>
-            </div>
-            <div class="location">
-              <i class="ln-map-marker"> <span>{{expertprofile.addressDetails}}</span> </i>
-            </div>
-            <div class="descp ">
-                <p class="color-grey line-80">  {{expertprofile.description}}</p>
-              <!-- <p class="color-grey line-80">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p> -->
-            </div>
+    <div class="container">
 
-            <div class="spl pt15 mt25">
-              <h4 class="margin0 color-primary">SPECIALIZATION</h4>
-              <p class="font-bold color-base f10 mt10">{{expertprofile.specilization}}</p>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="main-links mt25">
+                    <ul class="breadcrumb">
+                        <li><a class="text-uppercase">Home</a></li>
+                        <li><a class="active text-uppercase">Profile</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="btn-book mt25">
-              <button class="btn btn-blue font-raleway text-up" width="100%" ui-sref="book-now({id:expertprofile._id})">book now</button>
-            </div>
-          </div>
         </div>
-        <div class="col-md-8 col-sm-8 col-xs-12">
-          <div class="pro-det-box">
-          <div class="pro-detail custom-li exp-setting">
-            <ul class="padding0">
-              <li class="{{classa}}" ng-click="tabchange('summary',1)">Summary</li>
-              <li class="{{classb}}" ng-click="tabchange('exp',2)">Experience</li>
-              <li class="{{classc}}" ng-click="tabchange('edc',3)">Education</li>
-              <li class="{{classd}}" ng-click="tabchange('awd',4)">MEDIA</li>
-            </ul>
-          </div>
-          <div class="summary mt50" ng-if="tab2=='summary'">
-            <h4 class="font-raleway color-success font-med">{{expertprofile.areaOfExpertise}}</h4>
-            <!-- <p class="color-base font-light f16">2 year of experience in MSBI.</p> -->
-            <p class="color-base font-light f16">{{expertprofile.descriptionAndSkills}}</p>
-            <p class="color-base font-light f16">{{expertprofile.specilization}}
-            </p>
-          </div>
-          <div class="exps mt50" ng-if="tab2=='exp'" ng-repeat="expertpro in expertprofile.experience">
-             <div class="exp-sec summary">
-              <h4 class="font-raleway color-success font-med margin0">{{expertpro.jobTitle}}</h4>
-              <span class="color-base ">{{expertpro.companyName}}</span>
-              <p class="color-base font-light f16 mt10">{{expertpro.startDate| date:'MMM-yyyy'}} – {{expertpro.endDate| date:'MMM-yyyy'}} ({{expertpro.duration}} months)</p>
-              <p class="color-base font-light f16">{{expertpro.jobDescription}}</p>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="profile-bx text-center">
+                    <div class="pro-img-box">
+                        <img ng-src="{{expertprofile.image|uploadpath:200}}" alt="">
+                    </div>
+                    <div class="pro-name">
+                        <h4 class="margin0 color-base font-raleway font-bold">{{expertprofile.firstName + " " +expertprofile.lastName}}</h4>
+                    </div>
+                    <div class="avl-time">
+                        <span class="color-success font-light">
+                          Available Day:
+                          <span step="1" ng-repeat="myday in expertprofile.callSettings" class="text-cap cpointer" ng-click="open()">{{myday.day | limitTo:3}}
+                            <span ng-if="$index!=expertprofile.callSettings.length-1" style="margin-left: -2px;">, </span>
+                          </span>
+                        </span>
+                        <!-- <span class="color-success font-light" ng-if="expertprofile.callSettings.callTime">Available Day: <span ng-repeat="myday in expertprofile.callSettings" class="text-cap cpointer" ng-click="open()"  >{{myday.callTime}}</s pan></span> -->
+                    </div>
+                    <div class="price">
+                        <h4 class="color-primary font-bold"> ₹ {{expertprofile.priceForService}}/ 30 MIN</h4>
+                    </div>
+                    <div class="location">
+                        <i class="ln-map-marker"> <span>{{expertprofile.addressDetails}}</span> </i>
+                    </div>
+                    <div class="descp ">
+                        <p class="color-grey line-80"> {{expertprofile.description}}</p>
+                        <!-- <p class="color-grey line-80">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p> -->
+                    </div>
+
+                    <div class="spl pt15 mt25">
+                        <h4 class="margin0 color-primary">SPECIALIZATION</h4>
+                        <p class="font-bold color-base f10 mt10">{{expertprofile.specilization}}</p>
+                    </div>
+                    <div class="btn-book mt25">
+                        <button class="btn btn-blue font-raleway text-up" width="100%" ui-sref="book-now({id:expertprofile._id})">book now</button>
+                    </div>
+                </div>
             </div>
-            <!-- <div class="exp-sec summary">
+            <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="pro-det-box">
+                    <div class="pro-detail custom-li exp-setting">
+                        <ul class="padding0">
+                            <li class="{{classa}}" ng-click="tabchange('summary',1)">Summary</li>
+                            <li class="{{classb}}" ng-click="tabchange('exp',2)">Experience</li>
+                            <li class="{{classc}}" ng-click="tabchange('edc',3)">Education</li>
+                            <li class="{{classd}}" ng-click="tabchange('awd',4)">MEDIA</li>
+                        </ul>
+                    </div>
+                    <div class="summary mt50" ng-if="tab2=='summary'">
+                        <h4 class="font-raleway color-success font-med">{{expertprofile.areaOfExpertise}}</h4>
+                        <!-- <p class="color-base font-light f16">2 year of experience in MSBI.</p> -->
+                        <p class="color-base font-light f16">{{expertprofile.descriptionAndSkills}}</p>
+                        <p class="color-base font-light f16">{{expertprofile.specilization}}
+                        </p>
+                    </div>
+                    <div class="exps mt50" ng-if="tab2=='exp'" ng-repeat="expertpro in expertprofile.experience">
+                        <div class="exp-sec summary">
+                            <h4 class="font-raleway color-success font-med margin0">{{expertpro.jobTitle}}</h4>
+                            <span class="color-base ">{{expertpro.companyName}}</span>
+                            <p class="color-base font-light f16 mt10">{{expertpro.startDate| date:'MMM-yyyy'}} – {{expertpro.endDate| date:'MMM-yyyy'}} ({{expertpro.duration}} months)</p>
+                            <p class="color-base font-light f16">{{expertpro.jobDescription}}</p>
+                        </div>
+                        <!-- <div class="exp-sec summary">
               <h4 class="font-raleway color-success font-med margin0">JOB TITLE</h4>
               <span class="color-base ">Company name / self employed</span>
               <p class="color-base font-light f16 mt10">October 2015 – Present (6 months)</p>
@@ -86,31 +91,31 @@
               <p class="color-base font-light f16">Consulting companies on their web deveopment needs</p>
             </div> -->
 
-          </div>
-          <div class="edc mt50" ng-if="tab2=='edc'" ng-repeat="exp in expertprofile.educationalQualification">
-            <div class="exp-sec summary">
-              <h4 class="font-raleway color-success font-med margin0">{{exp.degreeTitle}}</h4>
-              <span class="color-base ">{{exp.instituteName}}</span>
-              <p class="color-base font-light f16 mt10">{{exp.yearOfPassing| date:'MMM-yyyy'}} (PASSING YEAR)</p>
-              <p class="color-base ">{{exp.city}}, {{exp.country}}</p>
-            </div>
+                    </div>
+                    <div class="edc mt50" ng-if="tab2=='edc'" ng-repeat="exp in expertprofile.educationalQualification">
+                        <div class="exp-sec summary">
+                            <h4 class="font-raleway color-success font-med margin0">{{exp.degreeTitle}}</h4>
+                            <span class="color-base ">{{exp.instituteName}}</span>
+                            <p class="color-base font-light f16 mt10">{{exp.yearOfPassing| date:'MMM-yyyy'}} (PASSING YEAR)</p>
+                            <p class="color-base ">{{exp.city}}, {{exp.country}}</p>
+                        </div>
 
-          </div>
-          <div class="awd mt50" ng-if="tab2=='awd'">
-            <h4 class="font-raleway color-success font-med margin0">AWARDS AND HONORS</h4>
-            <div class="awd-list summary">
-              <ul class="padding0 mt10" ng-repeat="expertaward in expertprofile.awards">
-                <li>
-                  {{expertaward.awardsandhonors}}
-                </li>
-                <!-- <li>
+                    </div>
+                    <div class="awd mt50" ng-if="tab2=='awd'">
+                        <h4 class="font-raleway color-success font-med margin0">AWARDS AND HONORS</h4>
+                        <div class="awd-list summary">
+                            <ul class="padding0 mt10" ng-repeat="expertaward in expertprofile.awards">
+                                <li>
+                                    {{expertaward.awardsandhonors}}
+                                </li>
+                                <!-- <li>
                   All India Bhartiya Vidyapith Awards
                 </li>
                 <li>Padma Bhushan Awards</li>
                 <li>Angular Hackothan Awards </li> -->
-              </ul>
-            </div>
-            <!-- <div class="awd-list summary">
+                            </ul>
+                        </div>
+                        <!-- <div class="awd-list summary">
               <ul class="padding0 mt10">
                 <li>
                   IBN 7 Innovation Awards
@@ -123,7 +128,7 @@
               </ul>
             </div> -->
 
-            <!-- <div class="awd-list summary pt20">
+                        <!-- <div class="awd-list summary pt20">
               <h4 class="font-raleway color-success font-med margin0 text-up">VIDEO</h4>
               <div class="row mt10">
                 <div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="video in expertprofile.videoLinks">
@@ -152,37 +157,37 @@
               </div>
             </div> -->
 
-            <div class="awd-list summary pt20">
-              <h4 class="font-raleway color-success font-med margin0 text-up">photos</h4>
-              <div class="row mt10">
-                <div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="img in expertprofile.addPhotos">
-                  <div class="video-box pointer">
-                    <a ng-href="{{img.image2|uploadpath}}" fancybox-image><img ng-src="{{img.image2|uploadpath}}" class="img-responsive"></a>
-                  </div>
-                </div>
-                <!-- <div class="col-md-2">
+                        <div class="awd-list summary pt20">
+                            <h4 class="font-raleway color-success font-med margin0 text-up">photos</h4>
+                            <div class="row mt10">
+                                <div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="img in expertprofile.addPhotos">
+                                    <div class="video-box pointer">
+                                        <a ng-href="{{img.image2|uploadpath}}" fancybox-image><img ng-src="{{img.image2|uploadpath}}" class="img-responsive"></a>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-2">
                   <div class="video-box pointer">
                       <a class="fancybox2" href="http://farm2.staticflickr.com/1617/24108587812_6c9825d0da_b.jpg" title="Morning Godafoss (Brads5)"><img src="img/v2.jpg" alt="" class="img-responsive"></a>
                   </div>
                 </div> -->
-              </div>
-            </div>
-            <div class="awd-list pt20">
-              <h4 class="font-raleway color-success font-med margin0 text-up" >publication link</h4>
-              <div class="row mt10">
-                <div class="col-md-10 col-sm-10 col-xs-12" ng-repeat="publink in expertprofile.publicationLinks">
-                  <div class="pub-link">
-                      <a href="" class="color-success">{{publink.name}}</a>
-                    <!-- <a href="" class="color-success">wohlig.co.in/jacknowstest</a> -->
-                  </div>
+                            </div>
+                        </div>
+                        <div class="awd-list pt20">
+                            <h4 class="font-raleway color-success font-med margin0 text-up">publication link</h4>
+                            <div class="row mt10">
+                                <div class="col-md-10 col-sm-10 col-xs-12" ng-repeat="publink in expertprofile.publicationLinks">
+                                    <div class="pub-link">
+                                        <a href="" class="color-success">{{publink.name}}</a>
+                                        <!-- <a href="" class="color-success">wohlig.co.in/jacknowstest</a> -->
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
-
-              </div>
             </div>
-          </div>
-
-      </div>
-      </div>
-  </div>
+        </div>
 </section>

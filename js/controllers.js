@@ -763,6 +763,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.userForm.callday = "MONDAY";
         $scope.userForm.sameaddress = false;
         $scope.calldetail = [];
+        
         //
         // if(document.getElementById("RadioBtn").checked){
         //   $scope.sameaddress=true;

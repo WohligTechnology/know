@@ -1,17 +1,17 @@
 <section class="mt70 space-top">
-   <div class="container">
-      <div class="row">
-         <div class="col-md-4">
-            <div class="main-links mt25">
-               <ul class="breadcrumb padding0">
-                  <li><a href="#/home" class="text-uppercase">Home</a></li>
-                  <li><a href="#" class="active text-uppercase">expert profile</a></li>
-               </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="main-links mt25">
+                    <ul class="breadcrumb padding0">
+                        <li><a href="#/home" class="text-uppercase">Home</a></li>
+                        <li><a href="#" class="active text-uppercase">expert profile</a></li>
+                    </ul>
+                </div>
             </div>
-         </div>
-      </div>
+        </div>
 
-   </div>
+    </div>
 </section>
 <section>
     <div class="container">
@@ -88,10 +88,15 @@
 
 
 
-                                        <!--   <div class="pro-im mt10"><div class="user-img display-inline">
-                                        <img src="img/user.png" class="doneLoading"></div><div class="sub-btn display-inline">
-                                        <button class="btn btn-animate-inverse-success f10">CHOOSE FILE</button></div></div> -->
-                                        <upload-image ng-model="userForm.image"></upload-image>
+                                        <div class="pro-im mt10">
+                                            <div class="user-img display-inline">
+                                                <img ng-src="{{userForm.image | uploadpath}}" class="doneLoading" ng-if="userForm.image">
+                                            </div>
+                                            <!-- <div class="sub-btn display-inline">
+                                        <button class="btn btn-animate-inverse-success f10">CHOOSE FILE</button>
+                                      </div> -->
+                                        </div>
+                                        <upload-image ng-model="userForm.image" no-view></upload-image>
                                         <!-- <div class="pro-im mt10">
                                           <h4 ng-if="isloading">Loading...</h4>
                                             <div class="user-img display-inline">
@@ -124,15 +129,15 @@
 
                                 </div>
                             </div>
-<div class="row">
-  <div class="col-md-4 col-sm-5">
-    <div class="form-group ">
-        <label>City</label>
-        <input type="text" name="city" class="form-control" ng-model="userForm.city" required>
-        <div class="error-msg" ng-show="user.city.$error.required && user.city.$touched">Please Enter Your City.</div>
-    </div>
-  </div>
-</div>
+                            <div class="row">
+                                <div class="col-md-4 col-sm-5">
+                                    <div class="form-group ">
+                                        <label>City</label>
+                                        <input type="text" name="city" class="form-control" ng-model="userForm.city" required>
+                                        <div class="error-msg" ng-show="user.city.$error.required && user.city.$touched">Please Enter Your City.</div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row" style="border-top: 1px solid #ccc;margin:0px">
                                 <div class="col-md-12 col-sm-12">
                                     <div class="save-btn mt25">
@@ -213,7 +218,7 @@
                                         <div class="col-md-4 col-sm-4">
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">YEAR OF PASSING</label>
-                                                <input  class="form-control" name="yearOfPassing" ng-model="edu.yearOfPassing" required>
+                                                <input class="form-control" name="yearOfPassing" ng-model="edu.yearOfPassing" required>
                                                 <div class="error-msg" ng-show="user.yearOfPassing.$error.required && user.yearOfPassing.$touched">Please Enter Year Of Passing.</div>
                                             </div>
                                         </div>
@@ -397,12 +402,12 @@
                                         <div class="add display-inline">
                                             <i class="ln-cross" ng-click="addphotos()"></i>
                                         </div>
-                                        <div class="pic custom-li mt25" >
+                                        <div class="pic custom-li mt25">
 
                                             <ul class="padding0">
                                                 <li ng-repeat="photo in morephotos" ng-value="userForm.addPhotos = morephotos">
-                                                  <upload-image ng-model="photo.image2">
-                                                  </upload-image>
+                                                    <upload-image ng-model="photo.image2">
+                                                    </upload-image>
                                                     <!-- <img ng-src="{{userForm.image2|uploadpath}}" ng-if="userForm.image2" style="height:200px;"> -->
 
                                                 </li>
@@ -458,15 +463,15 @@
                                     </div>
                                     <div class="rad radi mt10" ng-value="userForm.callSettings = calldetail">
                                         <div class="radio display-inline">
-                                            <input type="radio" id="radio01" name="radio" ng-model="userForm.callTime" value="weekdays"  ng-change="removeAllDays()" required />
+                                            <input type="radio" id="radio01" name="radio" ng-model="userForm.callTime" value="weekdays" ng-change="removeAllDays()" required />
                                             <label for="radio01"><span></span>WEEKDAYS (9AM - 9PM)</label>
                                         </div>
                                         <div class="radio display-inline pl12">
-                                            <input type="radio" id="radio02" name="radio" ng-model="userForm.callTime" value="weekends"  ng-change="removeAllDays()" required />
+                                            <input type="radio" id="radio02" name="radio" ng-model="userForm.callTime" value="weekends" ng-change="removeAllDays()" required />
                                             <label for="radio02"><span></span>WEEKENDS (9AM - 9PM)</label>
                                         </div>
                                         <div class="radio display-inline pl12">
-                                            <input type="radio" id="radio03" name="radio" ng-model="userForm.callTime" value="custom"  ng-change="removeAllDays()" required />
+                                            <input type="radio" id="radio03" name="radio" ng-model="userForm.callTime" value="custom" ng-change="removeAllDays()" required />
                                             <label for="radio03"><span></span>CUSTOM TIMING</label>
                                         </div>
                                         <div class="radio display-inline pl12">
@@ -491,7 +496,7 @@
                                                 <!-- </form> -->
                                                 <div class="day-opt custom-li mt25" ng-hide="userForm.callTime=='custom'">
                                                     <ul class="padding0">
-                                                        <li ng-repeat="calls in calldetail track by $index" >
+                                                        <li ng-repeat="calls in calldetail track by $index">
                                                             <p class="color-success op2 pointer">{{calls.day}}</p>
                                                             <p class="op pointer" ng-click="removeCalls($index)">REMOVE</p>
                                                         </li>
