@@ -76,15 +76,24 @@
                             </li>
                             <li class="profile pointer">
                                 <a class="display-inline user-icon">
-                                    <img class="color-white white-img" src="img/log.png" alt="" width="30" ng-show="userLogedin" />
+                                    <img class="color-white white-img" src="img/log.png" alt="" width="30" ng-show="userLogedin" ng-if="!userdata.image"/>
+                                    <img class="color-white white-img" ng-src="{{userdata.image | uploadpath}}" alt="" width="30" ng-show="userLogedin" ng-if="userdata.image"/>
                                     <img class="color-white white-img" src="img/log.png" alt="" width="30" ng-click="goToLogin()" ng-show="!userLogedin" />
-                                    <img class="color-base black-img" src="img/close2.png" alt="" width="30" ng-show="userLogedin">
+                                    <img class="color-base black-img" src="img/close2.png" alt="" width="30" ng-show="userLogedin" ng-if="!userdata.image">
+                                    <img class="color-base black-img" src="{{userdata.image | uploadpath}}" alt="" width="30" ng-show="userLogedin" ng-if="userdata.image">
                                     <img class="color-base black-img" src="img/close2.png" alt="" width="30" ng-click="goToLogin()" ng-show="!userLogedin" />
                                     <!-- <a ng-click="openform('Login')">  <img class="color-base black-img" src="img/close2.png" alt="" width="30"  ng-show="expertloginlogo"/></a> -->
 
                                 </a>
                                 <ul class="view-dropdown" ng-show="userLogedin || expertLogedin">
-                                    <li><a href="" class="text-uppercase color-primary" title="{{userdata.firstName}}">{{userdata.firstName}} {{userdata.lastName}}</a></li>
+                                    <li>
+                                      <a href="" class="text-uppercase color-primary" ng-if="userdata.firstName">
+                                        {{userdata.firstName}} {{userdata.lastName}}
+                                      </a>
+                                      <a href="" class="text-uppercase color-primary" ng-if="userdata.name">
+                                        {{userdata.name}}
+                                      </a>
+                                    </li>
                                     <li ng-show="userLogedin"><a href="" class="text-uppercase" title="Your Booking" ui-sref="user-booking">your booking</a></li>
                                     <li ng-show="expertLogedin"><a href="" class="text-uppercase" title="Your Booking" ui-sref="expert-booking">your booking</a></li>
                                     <li ng-show="userLogedin"><a href="" class="text-uppercase" title="short list" ui-sref="wishlist">short list</a></li>

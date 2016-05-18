@@ -149,8 +149,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.findcat = true;
                     $timeout(function() {
                             modalInstance1.dismiss();
-                            $timeout(function(){
-                              $scope.findcat = "";
+                            $timeout(function() {
+                                $scope.findcat = "";
                             }, 2000)
 
                         }, 3000)
@@ -160,8 +160,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.nouser = true;
                     $timeout(function() {
                             modalInstance1.dismiss();
-                            $timeout(function(){
-                              $scope.nouser = "";
+                            $timeout(function() {
+                                $scope.nouser = "";
                             }, 2000)
                         }, 3000)
                         //$state.reload();
@@ -315,7 +315,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.navigation = NavigationService.getnav();
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
-        $scope.todaysdt=new Date();
+        $scope.todaysdt = new Date();
 
         $scope.duration = ['30 Min', '60 Min', '90 Min', '120 Min'];
 
@@ -400,7 +400,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
     })
-    .controller('LoginCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
+    .controller('LoginCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, $interval) {
         $scope.template = TemplateService.changecontent("login");
         $scope.menutitle = NavigationService.makeactive("Login");
         TemplateService.title = $scope.menutitle;
@@ -409,6 +409,49 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.userlogo = "user-page";
         $scope.mesg = [];
         $scope.userForm = {};
+
+        //-------------Social Login------------------------------
+        var checktwitter = function(data, status) {
+            if (data != "false") {
+                $interval.cancel(stopinterval);
+                ref.close();
+                NavigationService.getUseFbLogin(authenticatesuccess);
+            } else {
+
+            }
+
+        };
+
+        var callAtIntervaltwitter = function() {
+            NavigationService.getUseFbLogin(checktwitter);
+        };
+        var authenticatesuccess = function(data, status) {
+            if (data != "false") {
+                console.log(data);
+                $.jStorage.set("user", data);
+                user = data;
+                window.location.reload();
+            }
+        };
+
+        $scope.facebookLogin = function() {
+                window.location.href="http://chaitalee.com/user/loginFacebook";
+                // stopinterval = $interval(callAtIntervaltwitter, 2000);
+                // ref.addEventListener('exit', function(event) {
+                //     NavigationService.getUseFbLogin(authenticatesuccess);
+                //     $interval.cancel(stopinterval);
+                // });
+            }
+        $scope.googleLogin = function() {
+                window.location.href="http://chaitalee.com/user/loginGoogle";
+                // stopinterval = $interval(callAtIntervaltwitter, 2000);
+                // ref.addEventListener('exit', function(event) {
+                //     NavigationService.getUseFbLogin(authenticatesuccess);
+                //     $interval.cancel(stopinterval);
+                // });
+            }
+            //-------------------------------------------------------
+
         $scope.getLogin = function(formValid) {
             //console.log($scope.userForm);
             if (formValid.$valid) {
@@ -833,12 +876,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.editExpert();
 
-$scope.mesg=[];
+        $scope.mesg = [];
 
         $scope.userSubmitForm = function(formValid) {
 
             if (formValid.$valid) {
-              //$scope.formComplete = true;
+                //$scope.formComplete = true;
                 console.log("////", $scope.userForm);
                 if ($scope.userForm.callTime == "weekdays") {
                     $scope.calldetail = [];
@@ -849,20 +892,20 @@ $scope.mesg=[];
                 }
                 console.log("////", $scope.userForm);
                 NavigationService.ExpertUSerCreateSubmit($scope.userForm, function(data) {
-                  if (data.value === true) {
-                      $scope.mesg.push({
-                          type: 'success',
-                          msg: 'Submitted Successfully, Thank You!'
-                      });
-                      $scope.closeAlert = function(index) {
-                          $scope.mesg.splice(index, 1);
-                      }
+                    if (data.value === true) {
+                        $scope.mesg.push({
+                            type: 'success',
+                            msg: 'Submitted Successfully, Thank You!'
+                        });
+                        $scope.closeAlert = function(index) {
+                            $scope.mesg.splice(index, 1);
+                        }
                     }
 
                 });
 
             }
-            $scope.mesg=[];
+            $scope.mesg = [];
         };
 
         $scope.categorydata = {};
@@ -903,13 +946,13 @@ $scope.mesg=[];
         }];
 
         $scope.addlink = function() {
-          console.log('$scope.publilink[0]',$scope.publilink[0].name);
+            console.log('$scope.publilink[0]', $scope.publilink[0].name);
             var addlinks = $scope.publilink.length + 1;
-            console.log('$scope.publilink.length-1',$scope.publilink.length-1);
-            if($scope.publilink[0].name != 'null' || $scope.publilink[0].name != 'undefined'){
-              $scope.publilink.splice(0, 0, {
-                  'id': '' + addlinks
-              });
+            console.log('$scope.publilink.length-1', $scope.publilink.length - 1);
+            if ($scope.publilink[0].name != 'null' || $scope.publilink[0].name != 'undefined') {
+                $scope.publilink.splice(0, 0, {
+                    'id': '' + addlinks
+                });
             }
 
         };

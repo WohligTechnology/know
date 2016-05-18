@@ -17,7 +17,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
             controller: 'HomeCtrl'
         })
 
-        .state('user-booking', {
+    .state('user-booking', {
             url: "/user-booking",
             templateUrl: "views/template.html",
             controller: 'UserBookingCtrl'
@@ -108,10 +108,10 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
             controller: 'ProfileCtrl'
         })
         .state('comingsoon', {
-           url: "/comingsoon",
-           templateUrl: "views/template.html",
-           controller: 'ComingsoonCtrl'
-       });
+            url: "/comingsoon",
+            templateUrl: "views/template.html",
+            controller: 'ComingsoonCtrl'
+        });
     $urlRouterProvider.otherwise("/home");
     $locationProvider.html5Mode(isproduction);
 });
@@ -129,15 +129,20 @@ firstapp.filter('uploadpath', function() {
             other += "&style=" + style;
         }
         if (input) {
-            return imgpath + "?file=" + input + other;
+            console.log(input);
+            if (input.indexOf('https://') == -1) {
+                return imgpath + "?file=" + input + other;
+            } else {
+                return input;
+            }
         }
     };
 });
 
 firstapp.filter('showbtn', function(NavigationService) {
     return function(input, data) {
-      console.log('input',input);
-      console.log('data',data);
+        console.log('input', input);
+        console.log('data', data);
         if (input && data && input != "" && data != "") {
             if (data._id && data.shortList && data.shortList.length > 0) {
                 var foundIndex = _.findIndex(data.shortList, {
@@ -167,7 +172,7 @@ firstapp.directive('imageonload', function() {
     };
 });
 
-firstapp.directive('uploadImage', function($http,$filter) {
+firstapp.directive('uploadImage', function($http, $filter) {
     return {
         templateUrl: 'views/directive/uploadFile.html',
         scope: {
@@ -184,19 +189,18 @@ firstapp.directive('uploadImage', function($http,$filter) {
             if (attrs.noView || attrs.noView === "") {
                 $scope.noShow = true;
             }
-            if($scope.model)
-            {
-              if(_.isArray($scope.model))
-              {
-                $scope.image=[];
-                _.each($scope.model,function(n) {
-                  $scope.image.push({url:$filter("uploadpath")(n)});
-                });
-              }
-              else {
-                $scope.image={};
-                $scope.image.url=$filter("uploadpath")($scope.model);
-              }
+            if ($scope.model) {
+                if (_.isArray($scope.model)) {
+                    $scope.image = [];
+                    _.each($scope.model, function(n) {
+                        $scope.image.push({
+                            url: $filter("uploadpath")(n)
+                        });
+                    });
+                } else {
+                    $scope.image = {};
+                    $scope.image.url = $filter("uploadpath")($scope.model);
+                }
 
             }
             if (attrs.inobj || attrs.inobj === "") {

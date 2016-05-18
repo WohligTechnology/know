@@ -1,6 +1,6 @@
-var adminurl = "http://192.168.1.145:1337/";
+var adminurl = "http://chaitalee.com/";
 // var adminurl1 = "http://wohlig.io:81/callApi/jacknows/";
-var imgurl = "http://146.148.4.222/upload/";
+var imgurl = adminurl + "upload/";
 var imgpath = imgurl + "readFile";
 var uploadurl = imgurl;
 
@@ -58,13 +58,24 @@ var navigationservice = angular.module('navigationservice', [])
 
             }).success(callback);
         },
+        getUseFbLogin: function(callback) {
+            //console.log('Navigation form data: ', formData);
+            $http({
+                url: adminurl + 'user/loginFacebook',
+                method: 'POST',
+                withCredentials: true
+
+            }).success(callback);
+        },
         getExpertEditDetail: function(_id, callback) {
             //console.log('Navigation form data: ', formData);
             $http({
                 url: adminurl + 'ExpertUser/profile',
                 method: 'POST',
                 withCredentials: true,
-                data: {_id:_id}
+                data: {
+                    _id: _id
+                }
 
             }).success(callback);
         },
@@ -74,7 +85,9 @@ var navigationservice = angular.module('navigationservice', [])
                 url: adminurl + 'user/',
                 method: 'POST',
                 withCredentials: true,
-                data: {_id:_id}
+                data: {
+                    _id: _id
+                }
 
             }).success(callback);
         },
@@ -161,7 +174,7 @@ var navigationservice = angular.module('navigationservice', [])
                 url: adminurl + 'Booking/getBooking',
                 method: 'POST',
                 withCredentials: true,
-                data:{
+                data: {
                     "status": formData.status,
                     "from": formData.from
                 }
@@ -272,13 +285,13 @@ var navigationservice = angular.module('navigationservice', [])
                 withCredentials: true
             }).success(callback);
         },
-        getUserData: function(input,callback) {
+        getUserData: function(input, callback) {
             // console.log('form data: ', formData);
             $http({
                 url: adminurl + 'user/profile',
                 method: 'POST',
                 withCredentials: true,
-                  data: input
+                data: input
             }).success(callback);
         },
         getExpert: function(callback) {
@@ -396,14 +409,14 @@ var navigationservice = angular.module('navigationservice', [])
                 data: data
             }).success(callback);
         },
-        getSearchLocation: function(search,location, callback) {
+        getSearchLocation: function(search, location, callback) {
             // console.log('form data: ', formData);
             $http({
                 url: adminurl + 'ExpertUser/searchData',
                 method: 'POST',
                 data: {
                     "search": search,
-                    "location":location
+                    "location": location
                 }
             }).success(callback);
         },
@@ -422,16 +435,16 @@ var navigationservice = angular.module('navigationservice', [])
                 data: data
             }).success(callback);
         },
-        getPayment: function(status,id,user, callback) {
-           console.log(status);
-           console.log(id);
+        getPayment: function(status, id, user, callback) {
+            console.log(status);
+            console.log(id);
             $http({
                 url: adminurl + 'Booking/saveData',
                 method: 'POST',
                 data: {
-                  "_id": id,
-                  "status": status,
-                  "from":user
+                    "_id": id,
+                    "status": status,
+                    "from": user
                 }
             }).success(callback);
         },
@@ -442,8 +455,8 @@ var navigationservice = angular.module('navigationservice', [])
                 method: 'POST',
                 withCredentials: true,
                 data: {
-                  "status": formData.status,
-                  "from": formData.from
+                    "status": formData.status,
+                    "from": formData.from
                 }
 
             }).success(callback);
