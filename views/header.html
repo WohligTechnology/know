@@ -77,7 +77,7 @@
                             <li class="profile pointer">
                                 <a class="display-inline user-icon">
                                     <img class="color-white white-img" src="img/log.png" alt="" width="30"   tooltip-placement="{{placement.selected}}" uib-tooltip="NOTIFICATIONS {{placement.selected}}" ng-show="userLogedin" ng-if="!userdata.image"/>
-                                    <img class="color-white white-img" ng-src="{{userdata.image | uploadpath}}" alt="" width="30"   tooltip-placement="{{placement.selected}}" uib-tooltip="NOTIFICATIONS {{placement.selected}}"  ng-show="userLogedin" ng-if="userdata.image"/>
+                                    <img class="color-white white-img" ng-src="{{userdata.image | uploadpath}}" alt="" width="30"   tooltip-placement="{{placement.selected}}" ng-show="userLogedin" ng-if="userdata.image"/>
                                     <img class="color-white white-img" src="img/log.png" alt="" width="30" ng-click="goToLogin()"  tooltip-placement="{{placement.selected}}" uib-tooltip="NOTIFICATIONS {{placement.selected}}"  ng-show="!userLogedin" />
                                     <img class="color-base black-img" src="img/close2.png" alt="" width="30" ng-show="userLogedin" ng-if="!userdata.image">
                                     <img class="color-base black-img" src="{{userdata.image | uploadpath}}" alt="" width="30" ng-show="userLogedin" ng-if="userdata.image">
@@ -97,8 +97,8 @@
                                     <li ng-show="userLogedin"><a href="" class="text-uppercase" title="Your Booking" ui-sref="user-booking">your booking</a></li>
                                     <li ng-show="expertLogedin"><a href="" class="text-uppercase" title="Your Booking" ui-sref="expert-booking">your booking</a></li>
                                     <li ng-show="userLogedin"><a href="" class="text-uppercase" title="short list" ui-sref="wishlist">short list</a></li>
-                                    <li ng-show="userLogedin"><a href="" class="text-uppercase" title="Edit Account" ui-sref="edit-user({id:userdata._id})">edit account</a></li>
-                                    <li ng-show="expertLogedin"><a href="" class="text-uppercase" title="Edit Account" ui-sref="expert-profile({id:userdata._id})">edit account</a></li>
+                                    <li ng-show="userLogedin"><a href="" class="text-uppercase" title="Edit Account" ui-sref="edit-user({id:userdata._id})">edit profile</a></li>
+                                    <li ng-show="expertLogedin"><a href="" class="text-uppercase" title="Edit Account" ui-sref="expert-profile({id:userdata._id})">edit profile</a></li>
                                     <li ng-show="userLogedin"><a href="" class="text-uppercase" title="Change Password" ui-sref="change-password({id:userdata._id})">change password</a></li>
                                     <li ng-show="expertLogedin"><a class="text-uppercase" title="Change Password" ui-sref="change-expert-password({id:userdata._id})">change password</a></li>
                                     <li ng-show="userLogedin"><a ui-sref="login" class="text-uppercase" title="Logout" ng-click="userLogout();">logout</a></li>

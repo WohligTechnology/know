@@ -27,6 +27,7 @@
                     <div class="row">
                         <div class="col-md-2 col-sm-2 col-xs-12 text-center">
                             <div class="user-img mt25">
+                              <label >PROFILE IMAGE</label>
                                 <!-- <img ng-src="{{userForm.image|uploadpath}}" class="img-responsive margin-auto" ng-if="userForm.image" style="height:200px;"> -->
                                 <img ng-src="{{userForm.image|uploadpath}}" ng-if="userForm.image" alt="" class="img-responsive margin-auto">
                                 <upload-image ng-model="userForm.image" no-view></upload-image>
@@ -79,7 +80,7 @@
                     <div class="row">
                         <div class="col-md-12 col-sm-12 " style="border-top: 1px solid #ccc;">
                             <div class="save-btn mt25">
-                                <button class="btn btn-blue font-light text-up f13" ng-click="userSubmitForm(user)">UPDATE</button>
+                                <button class="btn btn-blue font-light text-up f13" ng-click="userSubmitForm(user)">SAVE</button>
                                 <button class="btn btn-blue font-light text-up f13" ui-sref="home">CANCEL</button>
                             </div>
                         </div>
@@ -91,8 +92,8 @@
 
       <div class="no-data-found" ng-show="formComplete" >
         <img src="img/owl.png" alt="">
-        <h1 class="color-primary">Congratulation !</h1>
-        <p class="text-cap">Profile updated Successfully.</p>
+        <h1 class="color-primary">Congratulations!</h1>
+        <p class="text-cap">Your Profile has been Updated Successfully.</p>
       </div>
     </div>
 </section>
