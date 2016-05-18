@@ -2,6 +2,8 @@
    <!-- <li ng-if="userLogedin || expertLogedin" ng-repeat="menu in navigation" class="{{menu.classis}}"> -->
    <li class="active">
       <a ui-sref="home">Home</a>
+      <a ui-sref="home">Profile</a>
+      <a ui-sref="home">Account</a>
       <a ng-show="userLogedin" ui-sref="user-booking">My Booking Page</a>
       <a ng-show="expertLogedin" ui-sref="expert-booking">My Booking Page</a>
       <a ng-show="userLogedin" ui-sref="edit-user({id:userdata._id})">My Profile Page</a>
