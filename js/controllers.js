@@ -903,10 +903,15 @@ $scope.mesg=[];
         }];
 
         $scope.addlink = function() {
+          console.log('$scope.publilink[0]',$scope.publilink[0].name);
             var addlinks = $scope.publilink.length + 1;
-            $scope.publilink.splice(0, 0, {
-                'id': '' + addlinks
-            });
+            console.log('$scope.publilink.length-1',$scope.publilink.length-1);
+            if($scope.publilink[0].name != 'null' || $scope.publilink[0].name != 'undefined'){
+              $scope.publilink.splice(0, 0, {
+                  'id': '' + addlinks
+              });
+            }
+
         };
 
 
