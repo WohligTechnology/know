@@ -2,121 +2,128 @@
   <param class="black-overlay"></param>
 </object> -->
 <header class="pos-relative {{expertlogo}} {{userlogo}} {{home}} {{experthome}}" ng-controller="headerctrl">
-  <nav class="navbar navbar-default navbar-fixed-top header-white-black wow fadeInDown" data-wow-delay="0.5s">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 col-sm-5">
-          <div class="navbar-header pull-left">
-            <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
+    <nav class="navbar navbar-default navbar-fixed-top header-white-black wow fadeInDown" data-wow-delay="0.5s">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-5">
+                    <div class="navbar-header pull-left">
+                        <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button> -->
-            <a class="navbar-brand display-inline">
-              <!-- <img src="img/options.png" alt="menu" width="30">  -->
-              <button type="button" class="hamburger" ng-click="getMenu();">
-                <span class=""></span>
-                <span class=""></span>
-                <span class=""></span>
-              </button>
-            </a>
-            <div class="logo display-inline ">
-              <a ui-sref="home" class="display-inline">
-                <img src="img/logop.png" alt="" class="img-responsive home-logo " width="180" alt="logo" title="logo">
-                <img src="img/logo2.png" alt="" class="img-responsive expertise-logo" width="180" alt="logo" title="logo">
-                <img src="img/logou.png" alt="" class="img-responsive user-logo " width="180" alt="logo" title="logo">
-                <img src="img/logoe.png" alt="" class="img-responsive expert-home " width="180" alt="logo" title="logo">
-              </a>
-              <!-- <span class="f13 font-bold color-success exp">EXPERT</span> -->
-            </div>
-          </div>
-        </div>
-        <div class="col-md-8 col-sm-7">
-          <div class="righ-side pull-right custom-li mt10">
-            <ul>
-              <li>
-                  <a ui-sref="home-expert">
-                  <button class="btn-animate-become b btn font-bold btn-1 btn-1b">Become an expert</button>
-                </a>
-              </li>
-              <li class="notify-bell profile pointer" ng-show="userLogedin || expertLogedin">
-                <a href="" class=" display-inline">
-                  <img src="img/noti-white.png" alt="" class=" noti-icon white-img" width="30" ng-show="userLogedin || expertLogedin">
-                  <img src="img/noti-black.png" alt="" class=" noti-icon black-img" width="30" ng-show="userLogedin || expertLogedin">
-                </a>
-                <div class="noti-badge" ng-show="(userLogedin || expertLogedin) && notificationdata.length>0">
-                  <a href=""><span>{{notificationdata.length}}</span></a>
-                </div>
-                <div class="notification view-dropdown" ui-sref="user-booking" ng-if="notificationdata && notificationdata.length>0">
-                  <h4 class="text-center font-light color-grey">Notifications</h4>
-                  <div class="over-flow2">
-                  <div class="notify" ng-repeat="noti in notificationdata track by $index">
+                        <a class="navbar-brand display-inline">
+                            <!-- <img src="img/options.png" alt="menu" width="30">  -->
+                            <button type="button" class="hamburger" ng-click="getMenu();">
+                                <span class=""></span>
+                                <span class=""></span>
+                                <span class=""></span>
+                            </button>
+                        </a>
+                        <div class="logo display-inline ">
+                            <a ui-sref="home" class="display-inline">
+                                <img src="img/logop.png" alt="" class="img-responsive home-logo " width="180" alt="logo" title="logo"> </a>
 
-                    <div class="notification-list clearfix">
-                      <div class="pull-left">
-                        <div class="notify-imgholder">
-                          <img ng-src="{{noti.image|uploadpath}}" alt="" class="img-circle img-responsive" width="30">
+                            <a ng-if="userLogedin" ui-sref="home" class="display-inline"> <img src="img/logo2.png" alt="" class="img-responsive expertise-logo" width="180" alt="logo" title="logo"> </a>
+
+                            <a ng-if="expertLogedin" class="display-inline"> <img src="img/logo2.png" alt="" class="img-responsive expertise-logo" width="180" alt="logo" title="logo"> </a>
+
+                            <a ng-if="userLogedin" ui-sref="home" class="display-inline"><img src="img/logou.png" alt="" class="img-responsive user-logo " width="180" alt="logo" title="logo"> </a>
+
+                            <a ng-if="expertLogedin" class="display-inline"><img src="img/logou.png" alt="" class="img-responsive user-logo " width="180" alt="logo" title="logo"> </a>
+
+                            <a ui-sref="home" class="display-inline"><img src="img/logoe.png" alt="" class="img-responsive expert-home " width="180" alt="logo" title="logo">
+                            </a>
+                            <!-- <span class="f13 font-bold color-success exp">EXPERT</span> -->
                         </div>
-                      </div>
-                      <div class="descp-noti">
-                        <p>{{noti.notification}}</p>
-                      </div>
                     </div>
-                  </div>
-                  </div>
                 </div>
-              </li>
-              <li class="profile pointer">
-                <a  class="display-inline user-icon">
-                  <img class="color-white white-img" src="img/log.png" alt="" width="30" ng-show="userLogedin"/>
-                  <img class="color-white white-img" src="img/log.png" alt="" width="30" ng-click="goToLogin()" ng-show="!userLogedin"/>
-                  <img class="color-base black-img" src="img/close2.png" alt="" width="30" ng-show="userLogedin" >
-                  <img class="color-base black-img" src="img/close2.png" alt="" width="30" ng-click="goToLogin()" ng-show="!userLogedin"/>
-                <!-- <a ng-click="openform('Login')">  <img class="color-base black-img" src="img/close2.png" alt="" width="30"  ng-show="expertloginlogo"/></a> -->
+                <div class="col-md-8 col-sm-7">
+                    <div class="righ-side pull-right custom-li mt10">
+                        <ul>
+                            <li>
+                                <a ui-sref="home-expert">
+                                    <button class="btn-animate-become b btn font-bold btn-1 btn-1b">Become an expert</button>
+                                </a>
+                            </li>
+                            <li class="notify-bell profile pointer" ng-show="userLogedin || expertLogedin">
+                                <a href="" class=" display-inline">
+                                    <img src="img/noti-white.png" alt="" class=" noti-icon white-img" width="30" ng-show="userLogedin || expertLogedin">
+                                    <img src="img/noti-black.png" alt="" class=" noti-icon black-img" width="30" ng-show="userLogedin || expertLogedin">
+                                </a>
+                                <div class="noti-badge" ng-show="(userLogedin || expertLogedin) && notificationdata.length>0">
+                                    <a href=""><span>{{notificationdata.length}}</span></a>
+                                </div>
+                                <div class="notification view-dropdown" ui-sref="user-booking" ng-if="notificationdata && notificationdata.length>0">
+                                    <h4 class="text-center font-light color-grey">Notifications</h4>
+                                    <div class="over-flow2">
+                                        <div class="notify" ng-repeat="noti in notificationdata track by $index">
 
-                </a>
-                <ul class="view-dropdown" ng-show="userLogedin || expertLogedin">
-                  <li><a href="" class="text-uppercase color-primary" title="{{userdata.firstName}}">{{userdata.firstName}} {{userdata.lastName}}</a></li>
-                  <li ng-show="userLogedin"><a href="" class="text-uppercase" title="Your Booking" ui-sref="user-booking">your booking</a></li>
-                  <li ng-show="expertLogedin"><a href="" class="text-uppercase" title="Your Booking" ui-sref="expert-booking">your booking</a></li>
-                  <li ng-show="userLogedin"><a href="" class="text-uppercase" title="short list" ui-sref="wishlist">short list</a></li>
-                  <li ng-show="userLogedin"><a href="" class="text-uppercase" title="Edit Account" ui-sref="edit-user({id:userdata._id})">edit account</a></li>
-                  <li ng-show="expertLogedin"><a href="" class="text-uppercase" title="Edit Account" ui-sref="expert-profile({id:userdata._id})">edit account</a></li>
-                  <li  ng-show="userLogedin"><a href="" class="text-uppercase" title="Change Password" ui-sref="change-password({id:userdata._id})">change password</a></li>
-                  <li ng-show="expertLogedin"><a class="text-uppercase" title="Change Password" ui-sref="change-expert-password({id:userdata._id})">change password</a></li>
-                  <li ng-show="userLogedin"><a ui-sref="login" class="text-uppercase" title="Logout" ng-click="userLogout();">logout</a></li>
-                  <li ng-show="expertLogedin"><a ui-sref="home-expert" class="text-uppercase" title="Logout" ng-click="expertLogout();">logout</a></li>
-                  </ul>
+                                            <div class="notification-list clearfix">
+                                                <div class="pull-left">
+                                                    <div class="notify-imgholder">
+                                                        <img ng-src="{{noti.image|uploadpath}}" alt="" class="img-circle img-responsive" width="30">
+                                                    </div>
+                                                </div>
+                                                <div class="descp-noti">
+                                                    <p>{{noti.notification}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="profile pointer">
+                                <a class="display-inline user-icon">
+                                    <img class="color-white white-img" src="img/log.png" alt="" width="30" ng-show="userLogedin" />
+                                    <img class="color-white white-img" src="img/log.png" alt="" width="30" ng-click="goToLogin()" ng-show="!userLogedin" />
+                                    <img class="color-base black-img" src="img/close2.png" alt="" width="30" ng-show="userLogedin">
+                                    <img class="color-base black-img" src="img/close2.png" alt="" width="30" ng-click="goToLogin()" ng-show="!userLogedin" />
+                                    <!-- <a ng-click="openform('Login')">  <img class="color-base black-img" src="img/close2.png" alt="" width="30"  ng-show="expertloginlogo"/></a> -->
 
-                <ul class="view-dropdown" ng-hide="!userLogedin || !expertLogedin">
+                                </a>
+                                <ul class="view-dropdown" ng-show="userLogedin || expertLogedin">
+                                    <li><a href="" class="text-uppercase color-primary" title="{{userdata.firstName}}">{{userdata.firstName}} {{userdata.lastName}}</a></li>
+                                    <li ng-show="userLogedin"><a href="" class="text-uppercase" title="Your Booking" ui-sref="user-booking">your booking</a></li>
+                                    <li ng-show="expertLogedin"><a href="" class="text-uppercase" title="Your Booking" ui-sref="expert-booking">your booking</a></li>
+                                    <li ng-show="userLogedin"><a href="" class="text-uppercase" title="short list" ui-sref="wishlist">short list</a></li>
+                                    <li ng-show="userLogedin"><a href="" class="text-uppercase" title="Edit Account" ui-sref="edit-user({id:userdata._id})">edit account</a></li>
+                                    <li ng-show="expertLogedin"><a href="" class="text-uppercase" title="Edit Account" ui-sref="expert-profile({id:userdata._id})">edit account</a></li>
+                                    <li ng-show="userLogedin"><a href="" class="text-uppercase" title="Change Password" ui-sref="change-password({id:userdata._id})">change password</a></li>
+                                    <li ng-show="expertLogedin"><a class="text-uppercase" title="Change Password" ui-sref="change-expert-password({id:userdata._id})">change password</a></li>
+                                    <li ng-show="userLogedin"><a ui-sref="login" class="text-uppercase" title="Logout" ng-click="userLogout();">logout</a></li>
+                                    <li ng-show="expertLogedin"><a ui-sref="home-expert" class="text-uppercase" title="Logout" ng-click="expertLogout();">logout</a></li>
+                                </ul>
 
-                </ul>
-              </li>
-              <li>
-                <a href="" class="display-inline">
-                  <img src="img/help2.png" class="black-img" alt="" width="30" ui-sref="faq">
-                  <img src="img/help.png" class="white-img" alt="" width="30" ui-sref="faq">
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+                                <ul class="view-dropdown" ng-hide="!userLogedin || !expertLogedin">
 
-      <!--
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="" class="display-inline">
+                                    <img src="img/help2.png" class="black-img" alt="" width="30" ui-sref="faq">
+                                    <img src="img/help.png" class="white-img" alt="" width="30" ui-sref="faq">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!--
         <div class="collapse navbar-collapse" id="nav-collapse">
                <div ng-include="template.menu" class="template menu"></div>
         </div> -->
-      <div class="side-menu {{menu}}">
-        <span ng-click="closeMenu();" class="closemenu {{menu}}"><i class="ln-cross"></i></span>
-        <span class="heading-menu">Menu</span>
-        <div class="template menu" ng-include="template.menu"></div>
-        <div class="mt30">
-          <button ui-sref="home" class="btn btn-become text-uppercase ask-jack">ask jack</button>
-        <button class="btn btn-become text-uppercase become-expert" ui-sref="home-expert">become an expert</button>
+            <div class="side-menu {{menu}}">
+                <span ng-click="closeMenu();" class="closemenu {{menu}}"><i class="ln-cross"></i></span>
+                <span class="heading-menu">Menu</span>
+                <div class="template menu" ng-include="template.menu"></div>
+                <div class="mt30">
+                    <button ui-sref="home" class="btn btn-become text-uppercase ask-jack">ask jack</button>
+                    <button class="btn btn-become text-uppercase become-expert" ui-sref="home-expert">become an expert</button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </nav>
+    </nav>
 </header>

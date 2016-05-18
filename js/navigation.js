@@ -1,4 +1,4 @@
-var adminurl = "http://192.168.1.119:1337/";
+var adminurl = "http://192.168.1.145:1337/";
 // var adminurl1 = "http://wohlig.io:81/callApi/jacknows/";
 var imgurl = "http://146.148.4.222/upload/";
 var imgpath = imgurl + "readFile";

@@ -563,6 +563,7 @@
                         </form>
                     </div>
                     <div class="exp-bank mt30" ng-if="tab2=='bank'">
+
                         <span class="text-up color-success f13">These details are important for us to remit funds for the calls that you have made</span>
                         <div class="set-title mt25">
                             <h5 class="font-raleway font-bold f17 color-base text-up">BANK DETAILS</h5>
@@ -633,6 +634,7 @@
                                     </div>
                                 </div>
                             </div>
+                              <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="5000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
 
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-xs-12" style="border-top: 1px solid #ccc;">
@@ -643,6 +645,10 @@
                             </div>
                         </form>
                     </div>
+
+                    <!-- <div class="text-center" ng-show="formComplete">
+                <h3>Submitted Successfully, Thank You!</h3>
+              </div> -->
                 </div>
             </div>
         </div>

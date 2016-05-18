@@ -833,11 +833,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.editExpert();
 
-
+$scope.mesg=[];
 
         $scope.userSubmitForm = function(formValid) {
 
             if (formValid.$valid) {
+              //$scope.formComplete = true;
                 console.log("////", $scope.userForm);
                 if ($scope.userForm.callTime == "weekdays") {
                     $scope.calldetail = [];
@@ -848,10 +849,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
                 console.log("////", $scope.userForm);
                 NavigationService.ExpertUSerCreateSubmit($scope.userForm, function(data) {
+                  if (data.value === true) {
+                      $scope.mesg.push({
+                          type: 'success',
+                          msg: 'Submitted Successfully, Thank You!'
+                      });
+                      $scope.closeAlert = function(index) {
+                          $scope.mesg.splice(index, 1);
+                      }
+                    }
 
                 });
 
             }
+            $scope.mesg=[];
         };
 
         $scope.categorydata = {};
