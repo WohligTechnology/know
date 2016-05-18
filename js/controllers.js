@@ -410,47 +410,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.mesg = [];
         $scope.userForm = {};
 
-        //-------------Social Login------------------------------
-        var checktwitter = function(data, status) {
-            if (data != "false") {
-                $interval.cancel(stopinterval);
-                ref.close();
-                NavigationService.getUseFbLogin(authenticatesuccess);
-            } else {
-
-            }
-
-        };
-
-        var callAtIntervaltwitter = function() {
-            NavigationService.getUseFbLogin(checktwitter);
-        };
-        var authenticatesuccess = function(data, status) {
-            if (data != "false") {
-                console.log(data);
-                $.jStorage.set("user", data);
-                user = data;
-                window.location.reload();
-            }
-        };
+//-------------Social Login------------------------------
 
         $scope.facebookLogin = function() {
-                window.location.href="http://chaitalee.com/user/loginFacebook";
-                // stopinterval = $interval(callAtIntervaltwitter, 2000);
-                // ref.addEventListener('exit', function(event) {
-                //     NavigationService.getUseFbLogin(authenticatesuccess);
-                //     $interval.cancel(stopinterval);
-                // });
-            }
+            window.location.href = "http://chaitalee.com/user/loginFacebook";
+        }
         $scope.googleLogin = function() {
-                window.location.href="http://chaitalee.com/user/loginGoogle";
-                // stopinterval = $interval(callAtIntervaltwitter, 2000);
-                // ref.addEventListener('exit', function(event) {
-                //     NavigationService.getUseFbLogin(authenticatesuccess);
-                //     $interval.cancel(stopinterval);
-                // });
+                window.location.href = "http://chaitalee.com/user/loginGoogle";
             }
-            //-------------------------------------------------------
+//-------------------------------------------------------
 
         $scope.getLogin = function(formValid) {
             //console.log($scope.userForm);
