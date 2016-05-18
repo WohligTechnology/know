@@ -76,12 +76,12 @@
                             </li>
                             <li class="profile pointer">
                                 <a class="display-inline user-icon">
-                                    <img class="color-white white-img" src="img/log.png" alt="" width="30" ng-show="userLogedin" ng-if="!userdata.image"/>
-                                    <img class="color-white white-img" ng-src="{{userdata.image | uploadpath}}" alt="" width="30" ng-show="userLogedin" ng-if="userdata.image"/>
-                                    <img class="color-white white-img" src="img/log.png" alt="" width="30" ng-click="goToLogin()" ng-show="!userLogedin" />
+                                    <img class="color-white white-img" src="img/log.png" alt="" width="30"   tooltip-placement="{{placement.selected}}" uib-tooltip="NOTIFICATIONS {{placement.selected}}" ng-show="userLogedin" ng-if="!userdata.image"/>
+                                    <img class="color-white white-img" ng-src="{{userdata.image | uploadpath}}" alt="" width="30"   tooltip-placement="{{placement.selected}}" uib-tooltip="NOTIFICATIONS {{placement.selected}}"  ng-show="userLogedin" ng-if="userdata.image"/>
+                                    <img class="color-white white-img" src="img/log.png" alt="" width="30" ng-click="goToLogin()"  tooltip-placement="{{placement.selected}}" uib-tooltip="NOTIFICATIONS {{placement.selected}}"  ng-show="!userLogedin" />
                                     <img class="color-base black-img" src="img/close2.png" alt="" width="30" ng-show="userLogedin" ng-if="!userdata.image">
                                     <img class="color-base black-img" src="{{userdata.image | uploadpath}}" alt="" width="30" ng-show="userLogedin" ng-if="userdata.image">
-                                    <img class="color-base black-img" src="img/close2.png" alt="" width="30" tooltip-placement="{{placement.selected}}" uib-tooltip="NOTIFICATIONS {{placement.selected}}" ng-click="goToLogin()" ng-show="!userLogedin" />
+                                    <img class="color-base black-img" src="img/close2.png" alt="" width="30" ng-click="goToLogin()" ng-show="!userLogedin" />
                                     <!-- <a ng-click="openform('Login')">  <img class="color-base black-img" src="img/close2.png" alt="" width="30"  ng-show="expertloginlogo"/></a> -->
 
                                 </a>
@@ -111,8 +111,8 @@
                             </li>
                             <li>
                                 <a href="" class="display-inline">
-                                    <img src="img/help2.png" class="black-img" alt="" width="30" ui-sref="faq" tooltip-placement="{{placement.selected}}" uib-tooltip="HELP {{placement.selected}}">
-                                    <img src="img/help.png" class="white-img" alt="" width="30" ui-sref="faq">
+                                    <img src="img/help2.png" class="black-img" alt="" width="30" ui-sref="faq">
+                                    <img src="img/help.png" class="white-img" alt="" width="30" ui-sref="faq"  tooltip-placement="{{placement.selected}}" uib-tooltip="HELP {{placement.selected}}">
                                 </a>
                             </li>
                         </ul>
