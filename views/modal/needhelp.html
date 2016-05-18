@@ -11,9 +11,10 @@
             <p class="font-light f13">If you got here by mistake click here to go back to <span ng-click="$dismiss()" class="color-success">Home/ Search</span></p>
         </div>
         <div class="mail mt20 pos-relative">
-            <select name="category" class="form-control display-inline log" ng-model="userForm.category" value="{{cat.name}}" required>
+            <select name="category" class="form-control display-inline log" placeholder="Please select a category" ng-model="userForm.category" value="{{cat.name}}" required>
                 <!-- <select class="form-control display-inline log"> -->
                 <!-- <option>PLEASE SELECT A CATEGORY</option> -->
+                <option value="" selected>Please select a category</option>
                 <option ng-repeat="cat in categorydata" ng-init="userForm.category='PLEASE SELECT A CATEGORY'">{{cat.name}}</option>
                 <!-- <option>2</option>
 <option>3</option>
@@ -25,7 +26,7 @@
             </div>
         </div>
         <div class="mt10">
-            <textarea class="form-control log" rows="6" ng-model="userForm.query"></textarea>
+            <textarea class="form-control log" rows="6" ng-model="userForm.query" placeholder="Please type your question here"></textarea>
         </div>
         <div class="login-btn mt20">
             <button class="btn btn-animate-org f10 font-light" ng-click="addQuery(userdata._id,userForm.category,userForm.query)">SUBMIT</button>
