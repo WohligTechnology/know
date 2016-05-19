@@ -139,6 +139,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.userdata = {};
     $scope.userForm = {};
     $scope.addQuery = function(id, cat, needhelp) {
+      // if(cat.$valid && needhelp.$valid) {
 
         NavigationService.getUserData($scope.userdata, function(data) {
             $scope.userdata = data;
@@ -171,7 +172,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
         });
-
+// }
     };
     var modalInstance1 = '';
     $scope.open4 = function(size) {

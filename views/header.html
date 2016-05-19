@@ -80,17 +80,24 @@
                                     <img class="color-white white-img" ng-src="{{userdata.image | uploadpath}}" alt="" width="30"   tooltip-placement="{{placement.selected}}" ng-show="userLogedin" ng-if="userdata.image"/>
                                     <img class="color-white white-img" src="img/log.png" alt="" width="30" ng-click="goToLogin()"  tooltip-placement="{{placement.selected}}" uib-tooltip="NOTIFICATIONS {{placement.selected}}"  ng-show="!userLogedin" />
                                     <img class="color-base black-img" src="img/close2.png" alt="" width="30" ng-show="userLogedin" ng-if="!userdata.image">
-                                    <img class="color-base black-img" src="{{userdata.image | uploadpath}}" alt="" width="30" ng-show="userLogedin" ng-if="userdata.image">
-                                    <img class="color-base black-img" src="img/close2.png" alt="" width="30" ng-click="goToLogin()" ng-show="!userLogedin" />
+                                    <img class="color-base black-img" ng-src="{{userdata.image | uploadpath}}" alt="" width="30" ng-show="userLogedin" ng-if="userdata.image">
+
+                                    <img class="color-base black-img" ng-src="{{userdata.image | uploadpath}}" alt="" width="30" ng-show="expertLogedin" ng-if="userdata.image">
+
+                                    <!-- <img class="color-base black-img" src="img/close2.png" alt="" width="30" ng-click="goToLogin()" ng-show="!userLogedin" /> -->
+
                                     <!-- <a ng-click="openform('Login')">  <img class="color-base black-img" src="img/close2.png" alt="" width="30"  ng-show="expertloginlogo"/></a> -->
 
                                 </a>
                                 <ul class="view-dropdown" ng-show="userLogedin || expertLogedin">
                                     <li>
-                                      <a href="" class="text-uppercase color-primary" ng-if="userdata.firstName">
+                                      <a href="" class="text-uppercase color-primary" ng-if="userdata.firstName && !userdata.name">
                                         {{userdata.firstName}} {{userdata.lastName}}
                                       </a>
-                                      <a href="" class="text-uppercase color-primary" ng-if="userdata.name">
+                                      <a href="" class="text-uppercase color-primary" ng-if="userdata.name && !userdata.firstName">
+                                        {{userdata.name}}
+                                      </a>
+                                      <a href="" class="text-uppercase color-primary" ng-if="userdata.name && userdata.firstName">
                                         {{userdata.name}}
                                       </a>
                                     </li>

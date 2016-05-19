@@ -53,9 +53,14 @@
               <button class="btn btn-animate-org f13" ng-click="userSubmitForm(user)">SUBMIT</button>
             </form>
           </div>
-          <div class="text-center" ng-show="formComplete">
+          <div class="no-data-found" ng-show="formComplete">
+            <img src="img/owl.png" alt="">
+            <h1 class="color-primary">Whoops !</h1>
+            <p class="text-cap">Submitted Successfully, Thank You!</p>
+          </div>
+          <!-- <div class="text-center" ng-show="formComplete">
       <h3>Submitted Successfully, Thank You!</h3>
-    </div>
+    </div> -->
         </div>
       </div>
 

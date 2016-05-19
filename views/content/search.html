@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">COST</label>
-                                    
+
                                     <div class="range-slider">
                                         <div range-slider min="priceFilter.range.min" max="priceFilter.range.max" model-min="priceFilter.minPrice" model-max="priceFilter.maxPrice" filter="currency:'₹'" step="100" on-handle-up="searchExpert()"></div>
                                     </div>
@@ -124,9 +124,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div ng-show="notfound" class="showerror">
+                        <div class="no-data-found" ng-show="notfound">
+                          <img src="img/owl.png" alt="">
+                          <h1 class="color-primary">Whoops !</h1>
+                          <p class="text-cap">No Result Found!</p>
+                        </div>
+                        <!-- <div ng-show="notfound" class="showerror">
    <h3 class="text-center">No Result Found!</h3>
- </div>
+ </div> -->
                         <!-- <div class="search-box mt20">
               <div class="row">
                 <div class="col-md-3">

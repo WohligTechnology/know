@@ -27,17 +27,27 @@
             </div>
         </div>
         <div class="mt10">
-            <textarea class="form-control log" rows="6" ng-model="userForm.query" placeholder="Please type your question here"></textarea>
+            <textarea class="form-control log" rows="6" ng-model="userForm.query" placeholder="Please type your question here" required></textarea>
         </div>
         <div class="login-btn mt20">
             <button class="btn btn-animate-org f10 font-light" ng-click="addQuery(userdata._id,userForm.category,userForm.query)">SUBMIT</button>
         </div>
     </div>
-    <div class="text-center" ng-if="findcat && !nouser">
-        <h3>Submitted Successfully, Thank You!</h3>
+    <div class="no-data-found" ng-if="findcat && !nouser">
+      <img src="img/owl.png" alt="">
+      <h1 class="color-primary">Whoops !</h1>
+      <p class="text-cap">Submitted Successfully, Thank You!</p>
     </div>
-    <div class="text-center" ng-if="!findcat && nouser">
+    <!-- <div class="text-center" ng-if="findcat && !nouser">
+        <h3>Submitted Successfully, Thank You!</h3>
+    </div> -->
+    <!-- <div class="text-center" ng-if="!findcat && nouser">
         <h3>User Not Logged In!</h3>
+    </div> -->
+    <div class="no-data-found" ng-if="!findcat && nouser">
+      <img src="img/owl.png" alt="">
+      <h1 class="color-primary">Whoops !</h1>
+      <p class="text-cap">User Not Logged In!</p>
     </div>
 
 </div>
