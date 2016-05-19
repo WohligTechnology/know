@@ -27,17 +27,23 @@
                                 <label for="">Select Date</label>
                                 <p class="input-group">
                                     <!-- <input name="bookDate" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.bookDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" /> -->
-                                    <!-- <input type="text" name="bookDate" class="form-control" uib-datepicker-popup  is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-model="userForm.bookDate" date-disabled="disabled(date,mode)" required/>
+                                    <input type="text" name="bookDate" class="form-control" uib-datepicker-popup  is-open="popup2.opened" datepicker-options="ptions" ng-required="true" close-text="Close" ng-model="userForm.bookDate" date-disabled="disabled(date,mode)" required/>
                                     <span class="input-group-btn">
            <button type="button" class="btn btn-default pad" ng-click="open2()"><i class="ln-calendar3"></i></button>
-         </span> -->
-                <input type="text" uib-datepicker-popup="{{dateformat}}" ng-model="dt" is-open="showdp" date-disabled="disabled(date, mode)" />
+         </span>
+                <!-- <input type="text" id="datepicker" uib-datepicker-popup="{{dateformat}}" ng-model="dt" is-open="showdp" date-disabled="disabled(date, mode)" />
                 <span>
                     <button type="button" class="btn btn-default" ng-click="showcalendar($event)">
                         <i class="glyphicon glyphicon-calendar"></i>
                     </button>
-                </span>
-
+                </span> -->
+                <!-- <p class="input-group">Date: <input type="text" id="datetimepicker5" /></p> -->
+                <!-- <div class='input-group date' id='datetimepicker5'>
+                                   <input type='text' class="form-control" />
+                                   <span class="input-group-addon">
+                                       <span class="glyphicon glyphicon-calendar"></span>
+                                   </span>
+                               </div> -->
 
                                 </p>
                             </div>
@@ -74,12 +80,25 @@
 
                     </form>
                 </div>
-                <div class="text-center" ng-show="formComplete">
+                <!-- <div class="text-center" ng-show="formComplete">
             <h3>Booking Successfully, Thank You!</h3>
+          </div> -->
+
+          <div class="no-data-found" ng-show="alreadyBooked">
+            <img src="img/owl.png" alt="">
+            <h1 class="color-primary">Whoops !</h1>
+            <p class="text-cap">Expert have been Already Booked!</p>
           </div>
-          <div class="text-center" ng-show="alreadyBooked">
+
+          <div class="no-data-found" ng-show="formComplete">
+            <img src="img/owl.png" alt="">
+            <h1 class="color-primary">Whoops !</h1>
+            <p class="text-cap">Booking Successfully, Thank You!</p>
+          </div>
+
+          <!-- <div class="text-center" ng-show="alreadyBooked">
       <h3>Expert have been Already Booked!</h3>
-    </div>
+    </div> -->
             </div>
         </div>
     </div>

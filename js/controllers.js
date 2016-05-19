@@ -1,7 +1,7 @@
 window.uploadurl = "http://wohlig.biz/uploadfile/upload/";
 var abc = {};
 var global = {};
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'jkuri.timepicker', 'imageupload','angular-loading-bar'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'jkuri.timepicker', 'imageupload', 'angular-loading-bar'])
 
 .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, $stateParams) {
     //Used to name the .html file
@@ -229,9 +229,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         NavigationService.getUserBooking($scope.userBookings, function(data) {
             console.log(data);
             $scope.userBooking = data.data;
-            if(data.data==""){
-              console.log('this iss null');
-              $scope.nodata=true;
+            if (data.data == "") {
+                console.log('this iss null');
+                $scope.nodata = true;
             }
             // $scope.userBooking.bookDate = new Date();
             // $scope.userBooking.bookTime = new Date();
@@ -319,21 +319,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.navigation = NavigationService.getnav();
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
-        $scope.mindt = '0';
 
-        $scope.today = function () {
-               $scope.dt = new Date(2016, 05, 19);
-           };
-           $scope.dateformat="MM/dd/yyyy";
-           $scope.today();
-           $scope.showcalendar = function ($event) {
-               $scope.showdp = true;
-           };
-            $scope.showdp = false;
-
-        $scope.disabled = function (date, mode) {
-    return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
-};
+        $scope.ptions = {
+            minDate: new Date()
+        }
 
         $scope.duration = ['30 Min', '60 Min', '90 Min', '120 Min'];
 
@@ -428,7 +417,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.mesg = [];
         $scope.userForm = {};
 
-//-------------Social Login------------------------------
+        //-------------Social Login------------------------------
 
         $scope.facebookLogin = function() {
             window.location.href = "http://chaitalee.com/user/loginFacebook";
@@ -436,7 +425,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.googleLogin = function() {
                 window.location.href = "http://chaitalee.com/user/loginGoogle";
             }
-//-------------------------------------------------------
+            //-------------------------------------------------------
 
         $scope.getLogin = function(formValid) {
             //console.log($scope.userForm);
@@ -1207,9 +1196,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.getWishlist($scope.wishlists, function(data) {
                 //console.log("in edit blog");
                 $scope.wishlists = data.data.shortList;
-                if(data.data.shortList==""){
-                  console.log('this iss null');
-                  $scope.nodata=true;
+                if (data.data.shortList == "") {
+                    console.log('this iss null');
+                    $scope.nodata = true;
                 }
                 console.log('wishlists', $scope.wishlists);
             });
@@ -1565,17 +1554,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     });
     $scope.menu = "menu-out";
     $scope.getMenu = function() {
-      $(".side-menu").addClass("menu-in");
-      $(".side-menu").removeClass("menu-out");
+        $(".side-menu").addClass("menu-in");
+        $(".side-menu").removeClass("menu-out");
     };
     $scope.closeMenu = function() {
-      $(".side-menu").removeClass("menu-in");
-      $(".side-menu").addClass("menu-out");
+        $(".side-menu").removeClass("menu-in");
+        $(".side-menu").addClass("menu-out");
     };
 
-    $(".template.content").click(function(){
-      $(".side-menu").removeClass("menu-in");
-      $(".side-menu").addClass("menu-out");
+    $(".template.content").click(function() {
+        $(".side-menu").removeClass("menu-in");
+        $(".side-menu").addClass("menu-out");
     });
     // $scope.fromUrl = $state.
 
