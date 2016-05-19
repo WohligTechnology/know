@@ -16,13 +16,17 @@
             <uib-tabset>
                <uib-tab>
                   <uib-tab-heading class="text-uppercase" ng-click="userBook('accept','user')">Awaiting Payment</uib-tab-heading>
-                  <p ng-hide="userBooking.length==0" class="font-bold tag-line">Following calls are awaiting payment. Please pay now to confirm the call.</p>
+                  <p ng-if="userBooking.length!=0" class="font-bold tag-line">Following calls are awaiting payment. Please pay now to confirm the call.</p>
                   <!-- <p ng-show="userBooking.length==0" class="font-bold tag-line">No Awaiting payment.</p> -->
-                  <div class="no-data-found" ng-show="userBooking.length==0">
+                  <div class="no-data-found" ng-show="nodata">
                     <img src="img/owl.png" alt="">
                     <h1 class="color-primary">Whoops !</h1>
                     <p class="text-cap">We couldn't find any awaiting payment</p>
                   </div>
+
+                  <!-- <div ng-if="userBooking.length==0 && !nodata">
+   <h3 class="text-center">Loading....</h3>
+ </div> -->
 
                   <!-- <div class="choose-color">
               <p class="font-bold tag-line"></p>

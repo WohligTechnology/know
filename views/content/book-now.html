@@ -27,10 +27,18 @@
                                 <label for="">Select Date</label>
                                 <p class="input-group">
                                     <!-- <input name="bookDate" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.bookDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" /> -->
-                                    <input type="text" name="bookDate" class="form-control" uib-datepicker-popup  is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-model="userForm.bookDate"  min="{{todaysdt}}" required  />
+                                    <!-- <input type="text" name="bookDate" class="form-control" uib-datepicker-popup  is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-model="userForm.bookDate" date-disabled="disabled(date,mode)" required/>
                                     <span class="input-group-btn">
            <button type="button" class="btn btn-default pad" ng-click="open2()"><i class="ln-calendar3"></i></button>
-         </span>
+         </span> -->
+                <input type="text" uib-datepicker-popup="{{dateformat}}" ng-model="dt" is-open="showdp" date-disabled="disabled(date, mode)" />
+                <span>
+                    <button type="button" class="btn btn-default" ng-click="showcalendar($event)">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+
+
                                 </p>
                             </div>
                     </div>

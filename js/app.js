@@ -7,7 +7,9 @@ var firstapp = angular.module('firstapp', [
     'imageupload'
 ]);
 
-firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
+firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider,cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeBar = true;
+    cfpLoadingBarProvider.includeSpinner = false;
     // for http request with session
     $httpProvider.defaults.withCredentials = true;
     $stateProvider
