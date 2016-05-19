@@ -779,6 +779,10 @@ padding-bottom: 20px;
     @include appearance(none);
     font-size: 11px;
     padding: 0 0 0 12px;
+    cursor: pointer;
+    position: relative;
+    z-index: 9;
+    background-color: transparent;
   }
 }
 .icon-mail {
