@@ -9,7 +9,7 @@
 @import "../bower_components/fancyBox/source/jquery.fancybox.css";
 @import "../bower_components/ngTimepicker/src/css/ngTimepicker.css";
 @import "../linearicons/icons.css";
-@import "../bower_components/animate.css/animate.min.css";"
+@import "../bower_components/animate.css/animate.min.css";
 
 /* Bootstrap Variables Goes Here */
 $brand-primary: #ff8621 !default;
@@ -779,6 +779,10 @@ padding-bottom: 20px;
     @include appearance(none);
     font-size: 11px;
     padding: 0 0 0 12px;
+    cursor: pointer;
+    position: relative;
+    z-index: 9;
+    background-color: transparent;
   }
 }
 .icon-mail {

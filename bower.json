@@ -34,5 +34,6 @@
     "ngTimepicker": "https://github.com/jkuri/ngTimepicker.git",
     "wow": "wowjs#^1.1.2",
     "angularjs-imageupload-directive": "https://github.com/Mischi/angularjs-imageupload-directive.git",
+    "angular-loading-bar": "^0.9.0"
   }
 }

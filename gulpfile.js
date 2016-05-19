@@ -11,7 +11,7 @@ var jsArray = [
   './bower_components/angular-bootstrap/ui-bootstrap.min.js',
   './bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
   './bower_components/ui-router/release/angular-ui-router.min.js',
-  './bower_components/angular-loading-bar/build/loading-bar.min.js'
+  './bower_components/angular-loading-bar/build/loading-bar.min.js',
   './bower_components/angular-flexslider/angular-flexslider.js',
   './bower_components/angular-rangeslider/angular.rangeSlider.js',
   './bower_components/lodash/dist/lodash.js',
