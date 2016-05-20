@@ -26,7 +26,7 @@
                                 <img ng-src="img/logop.png" alt="" class="img-responsive home-logo " width="180" alt="logo" title="logo"> </a>
 
                             <!-- -------- both are not logedin ------------------------------------ -->
-                            <a ng-if="!userLogedin || !expertLogedin" ui-sref="home" class="display-inline"> <img ng-src="img/logo2.png" alt="" class="img-responsive user-logo" width="180" alt="logo" title="logo"> </a>
+                            <a ng-if="!userLogedin && !expertLogedin" ui-sref="home" class="display-inline"> <img ng-src="img/logo2.png" alt="" class="img-responsive user-logo" width="180" alt="logo" title="logo"> </a>
                             <!---------------------------------------------------------------------- -->
 
                             <a ng-if="userLogedin" ui-sref="home" class="display-inline"> <img src="img/logo2.png" alt="" class="img-responsive expertise-logo" width="180" alt="logo" title="logo"> </a>
@@ -87,7 +87,7 @@
                                     <img class="color-base black-img" src="img/close2.png" alt="" width="30" ng-show="userLogedin || expertLogedin" ng-if="!userdata.image">
 
                                     <!-- -------- both are not logedin ---------------------------- -->
-                                    <img class="color-base black-img" src="img/close2.png" alt="" ui-sref="login" width="30" ng-show="!userLogedin || !expertLogedin" ng-if="!userdata.image">
+                                    <img class="color-base black-img" src="img/close2.png" alt="" ui-sref="login" width="30" ng-show="!userLogedin && !expertLogedin" ng-if="!userdata.image">
                                     <!-- ------------------------------------------- -->
 
 

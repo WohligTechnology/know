@@ -424,7 +424,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             window.location.href = "http://chaitalee.com/user/loginFacebook";
         }
         $scope.googleLogin = function() {
-                window.location.href = "http://chaitalee.com/user/loginGoogleCallback";
+                window.location.href = "http://chaitalee.com/user/loginGoogle";
             }
             //-------------------------------------------------------
 

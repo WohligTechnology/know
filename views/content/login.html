@@ -20,7 +20,7 @@
         <div class="conten-box">
         <div class="login-form">
             <h4 class="text-up text-center color-base">login</h4>
-          <form name="user" class="mt20">
+
             <div class="social-btn text-center">
               <button class="btn btn-facebook f10 font-light" ng-click="facebookLogin();"><span><i class="fa fa-facebook pull-left"></i></span>LOGIN WITH FACEBOOK</button>
             </div>
@@ -30,6 +30,7 @@
             <div class="or text-center mt15">
               <span>OR</span>
             </div>
+            <form name="user" class="mt20">
             <div class="mail mt10 pos-relative">
               <input type="email" placeholder="EMAIL ADDRESS" class="form-control display-inline log" ng-model="userForm.email" required>
               <div class="error-msg" ng-show="user.email.$error.required && user.email.$touched">Please Enter Your Email.</div>
