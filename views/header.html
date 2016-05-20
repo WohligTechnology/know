@@ -75,7 +75,7 @@
                                 </div>
                             </li>
                             <li class="profile pointer">
-                                <a class="display-inline user-icon">
+                                <a class="display-inline user-icon img-rounded">
                                     <img class="color-white white-img" src="img/log.png" alt="" width="30"   tooltip-placement="{{placement.selected}}" uib-tooltip="NOTIFICATIONS {{placement.selected}}" ng-show="userLogedin" ng-if="!userdata.image"/>
                                     <img class="color-white white-img" ng-src="{{userdata.image | uploadpath}}" alt="" width="30"   tooltip-placement="{{placement.selected}}" ng-show="userLogedin" ng-if="userdata.image"/>
                                     <img class="color-white white-img" src="img/log.png" alt="" width="30" ng-click="goToLogin()"  tooltip-placement="{{placement.selected}}" uib-tooltip="NOTIFICATIONS {{placement.selected}}"  ng-show="!userLogedin" />
