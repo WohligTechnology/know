@@ -362,7 +362,7 @@
                                         <div class="set-title display-inline">
                                             <h5 class="font-raleway font-bold f17 color-base text-up">AWARDS AND HONORS</h5>
                                         </div>
-                                        <div class="add display-inline">
+                                        <div ng-if="!moreAwards[0] ||(moreAwards[0] && moreAwards[0].awardsandhonors)" class="add display-inline">
                                             <i class="ln-cross" ng-click="addawards()"></i>
                                         </div>
                                         <!-- <form action="" class="form-input"> -->
@@ -394,7 +394,7 @@
                                         <div class="set-title display-inline">
                                             <h5 class="font-raleway font-bold f17 color-base text-up">ADD PHOTOS</h5>
                                         </div>
-                                        <div class="add display-inline">
+                                        <div ng-if="!morephotos[0] ||(morephotos[0] && morephotos[0].image2)" class="add display-inline">
                                             <i class="ln-cross" ng-click="addphotos()"></i>
                                         </div>
                                         <div class="pic custom-li mt25">
@@ -422,7 +422,7 @@
                                         <div class="set-title display-inline">
                                             <h5 class="font-raleway font-bold f17 color-base text-up">PUBLICATION LINK</h5>
                                         </div>
-                                        <div class="add display-inline">
+                                        <div ng-if="!userForm.publicationLinks[0] ||(userForm.publicationLinks[0] && userForm.publicationLinks[0].name)" class="add display-inline">
                                             <i class="ln-cross" ng-click="addlink()"></i>
                                         </div>
                                         <!-- <form action="" class="form-input"> -->

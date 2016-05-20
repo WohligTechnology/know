@@ -921,17 +921,26 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             name: ''
         }];
 
+
+        //console.log('$scope.publilink.length-1', $scope.publilink.length - 1);
+      //  if ($scope.publilink[0].name && ($scope.publilink[1].name != 'null' || $scope.publilink[1].name != 'undefined')) {
+  //}
+
+    //  do{
         $scope.addlink = function() {
-            console.log('$scope.publilink[0]', $scope.publilink[0].name);
+            //console.log('$scope.publilink[0]', $scope.publilink[0].name);
             var addlinks = $scope.publilink.length + 1;
-            console.log('$scope.publilink.length-1', $scope.publilink.length - 1);
-            if ($scope.publilink[0].name != 'null' || $scope.publilink[0].name != 'undefined') {
+
+
                 $scope.publilink.splice(0, 0, {
                     'id': '' + addlinks
                 });
-            }
 
         };
+                  //
+                  // }while ($scope.publilink[0].name != 'null');
+                  // console.log("$scope.publilink Arrayyyyyyyyyyyyyyyyyyyyyyyyy",$scope.publilink[0]);
+
 
 
         $scope.edudetail = [{
