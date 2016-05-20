@@ -1,5 +1,5 @@
 var adminurl = "http://chaitalee.com/";
-var adminurl = "http://192.168.1.145/";
+// var adminurl = "http://192.168.1.145/";
 // var adminurl1 = "http://wohlig.io:81/callApi/jacknows/";
 var imgurl = adminurl + "upload/";
 var imgpath = imgurl + "readFile";
@@ -59,15 +59,15 @@ var navigationservice = angular.module('navigationservice', [])
 
             }).success(callback);
         },
-        getUseFbLogin: function(callback) {
-            //console.log('Navigation form data: ', formData);
-            $http({
-                url: adminurl + 'user/loginFacebook',
-                method: 'POST',
-                withCredentials: true
-
-            }).success(callback);
-        },
+        // getUseFbLogin: function(callback) {
+        //     //console.log('Navigation form data: ', formData);
+        //     $http({
+        //         url: adminurl + 'user/loginFacebook',
+        //         method: 'POST',
+        //         withCredentials: true
+        //
+        //     }).success(callback);
+        // },
         getExpertEditDetail: function(_id, callback) {
             //console.log('Navigation form data: ', formData);
             $http({
