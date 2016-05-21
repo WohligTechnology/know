@@ -1260,16 +1260,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Search");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-
+$scope.selectedAll = true;
 
         $scope.checkAll = function () {
     if ($scope.selectedAll) {
-        $scope.selectedAll = true;
-    } else {
         $scope.selectedAll = false;
+    } else {
+        $scope.selectedAll = true;
     }
     angular.forEach($scope.expertiseArr, function (expertise) {
         expertise.model = $scope.selectedAll;
+    });
+
+};
+
+
+$scope.selectedAllLocation=true;
+        $scope.checkAllLocation = function () {
+    if ($scope.selectedAllLocation) {
+        $scope.selectedAllLocation = false;
+    } else {
+        $scope.selectedAllLocation = true;
+    }
+    angular.forEach($scope.locationArr, function (location) {
+        location.model = $scope.selectedAllLocation;
     });
 
 };
