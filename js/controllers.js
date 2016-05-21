@@ -819,6 +819,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         n.endDate = new Date(n.endDate);
                     });
                 }
+                else {
+                  $scope.experiencedetail = [];
+                }
                 if (data.callSettings && data.callSettings.length > 0) {
                     $scope.calldetail = data.callSettings;
 
@@ -830,7 +833,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
                 console.log(data.experience);
-                abc = $scope.experiencedetail;
+                //abc = $scope.experiencedetail;
                 // for (var i = 0; i < $scope.experiencedetail.length; i++) {
                 //     console.log($scope.experiencedetail.length);
                 //     $scope.experiencedetail[i].popupModel = false;
@@ -968,8 +971,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             image1: ''
         }];
 
-        $scope.addexperience = function() {
-            var addexperience = $scope.experiencedetail.length + 1;
+        $scope.moreExperience = function() {
+            var addexperience =$scope.experiencedetail.length + 1;
             $scope.experiencedetail.splice(0, 0, {
                 'id': '' + addexperience
             });
@@ -1257,6 +1260,53 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Search");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+
+
+        $scope.checkAll = function () {
+    if ($scope.selectedAll) {
+        $scope.selectedAll = true;
+    } else {
+        $scope.selectedAll = false;
+    }
+    angular.forEach($scope.expertiseArr, function (expertise) {
+        expertise.model = $scope.selectedAll;
+    });
+
+};
+
+        // $scope.checkAll=function(checkEm) {
+        //     var cbs = document.getElementsByName('areaOfEx');
+        //     for (var i = 0; i < cbs.length; i++) {
+        //         if (cbs[i].type == 'checkbox') {
+        //             if (cbs[i].name == 'my_form_tasks[]') {
+        //                 cbs[i].checked = checkEm;
+        //             }
+        //         }
+        //     }
+        // };
+
+
+
+//         $scope.checkAll=function(ele) {
+//     var checkboxes = document.getElementsByName('areaOfEx');
+//     if (ele.checked) {
+//         for (var i = 0; i < checkboxes.length; i++) {
+//             if (checkboxes[i].type == 'checkbox') {
+//                 checkboxes[i].checked = true;
+//             }
+//         }
+//     } else {
+//         for (var i = 0; i < checkboxes.length; i++) {
+//             console.log(i)
+//             if (checkboxes[i].type == 'checkbox') {
+//                 checkboxes[i].checked = false;
+//             }
+//         }
+//     }
+// }
+
+
+
         $scope.expertdata = {
             search: $stateParams.search
         };

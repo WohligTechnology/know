@@ -30,6 +30,15 @@
                             <form>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">AREA OF EXPERTISE</label>
+
+                                    <input type="checkbox" ng-model="selectedAll" ng-click="checkAll()" />
+                                    <label>
+                                        Select All
+                                    </label>
+
+
+                                  <!-- <input type="button" class="my_form-check-button" ng-click="checkAll(true);" value="Check All"/> -->
+
                                     <!-- <input type="text" class="form-control padd filter-input" ng-model="searchExpertise" id="exampleInputEmail1" placeholder="eg. doctor, surgeon, etc." ng-keyup="pushExpertise(searchExpertise,$event.keyCode)"> -->
                                     <div class="checkbox">
                                         <div class="" ng-repeat="expertise in expertiseArr track by $index" >

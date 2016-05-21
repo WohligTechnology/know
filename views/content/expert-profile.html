@@ -189,7 +189,7 @@
                                 <div class="set-title display-inline">
                                     <h5 class="font-raleway font-bold f17 color-base text-up">EDUCATIONAL QUALIFICATION </h5>
                                 </div>
-                                <div class="add display-inline">
+                                <div ng-if="!edudetail[0] ||(edudetail[0] && edudetail[0].degreeTitle)" class="add display-inline">
                                     <i class="ln-cross" ng-click="addMore()"></i>
                                 </div>
                                 <div ng-repeat="edu in edudetail" ng-value="userForm.educationalQualification = edudetail">
@@ -245,8 +245,8 @@
                                 <div class="set-title display-inline">
                                     <h5 class="font-raleway font-bold f17 color-base text-up">EXPERIENCE </h5>
                                 </div>
-                                <div class="add display-inline">
-                                    <i class="ln-cross" ng-click="addexperience()"></i>
+                                <div ng-if="!experiencedetail[0] ||(experiencedetail[0] && experiencedetail[0].jobDescription)" class="add display-inline">
+                                    <i class="ln-cross" ng-click="moreExperience()"></i>
                                 </div>
                                 <!-- <form action="" class="form-input"> -->
                                 <div ng-repeat="experi in experiencedetail" ng-value="userForm.experience = experiencedetail">
