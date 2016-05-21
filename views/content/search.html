@@ -30,21 +30,13 @@
                             <form>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">AREA OF EXPERTISE</label>
-
+<div>
                                     <input type="checkbox" ng-model="selectedAll" ng-click="checkAll()" />
                                     <label>
                                         Select All
                                     </label>
+                                  </div>
 
-                                    <!-- <input type="checkbox" ng-model="selectedAll" ng-click="checkAll()" />
-                                    <label>
-                                        UnSelect All
-                                    </label> -->
-
-
-                                  <!-- <input type="button" class="my_form-check-button" ng-click="checkAll(true);" value="Check All"/> -->
-
-                                    <!-- <input type="text" class="form-control padd filter-input" ng-model="searchExpertise" id="exampleInputEmail1" placeholder="eg. doctor, surgeon, etc." ng-keyup="pushExpertise(searchExpertise,$event.keyCode)"> -->
                                     <div class="checkbox">
                                         <div class="" ng-repeat="expertise in expertiseArr track by $index" >
                                             <input type="checkbox" ng-model="expertiseArr[$index].model" id="{{expertise.value}}" ng-change="searchExpert()">
@@ -57,10 +49,12 @@
                                 <div class="form-group">
 
                                     <label for="exampleInputEmail1">LOCATION</label>
+                                    <div>
                                     <input type="checkbox" ng-model="selectedAllLocation" ng-click="checkAllLocation()" />
                                     <label>
                                         Select All
                                     </label>
+                                  </div>
 
                                     <!-- <input type="text" ng-model="searchLocation" class="form-control filter-input" id="exampleInputEmail1" placeholder="eg. Mumbai, Pune, etc." ng-keyup="pushLocation(searchLocation,$event.keyCode)"> -->
                                     <div class="checkbox">
