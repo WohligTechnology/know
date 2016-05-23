@@ -557,6 +557,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //console.log('on the user');
             if (formValid.$valid) {
                 $scope.formComplete = true;
+                $timeout(function() {
+                        $state.reload();
+                        $timeout(function() {
+                            $scope.formComplete = "";
+                        }, 2000)
+
+                    }, 3000)
                 NavigationService.editProfile($scope.userForm, function(data) {
 
                     $scope.userForm = data.data;
@@ -1006,8 +1013,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     id: '' + addCalls,
                     callTime: $scope.userForm.callTime,
                     day: $scope.userForm.callday,
-                    fromTime: Date(),
-                    toTime: Date()
+                    fromTime: new Date(2016,0,0,0,0,0),
+                    toTime: new Date(2016,0,0,0,0,0)
                 });
             }
             // } else {
@@ -1650,7 +1657,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.becomeExpertBtn = function() {
           NavigationService.getUser(function(data) {
-              if (!data) {
+            // console.log('id',data._id);
+
+            // $scope.userobj=angular.isObject(data);
+            // console.log('$scope.userobj',$scope.userobj);
+              if (!data._id) {
                 $state.go('home-expert');
               }else{
 
