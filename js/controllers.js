@@ -1648,6 +1648,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     });
     // $scope.fromUrl = $state.
 
+        $scope.becomeExpertBtn = function() {
+          NavigationService.getUser(function(data) {
+              if (!data) {
+                $state.go('home-expert');
+              }else{
+
+              }
+              });
+
+        };
+
     $scope.newsletter = {};
 
     $scope.goToLogin = function() {

@@ -47,9 +47,9 @@
                     <div class="righ-side pull-right custom-li mt10">
                         <ul>
                             <li>
-                                <a ui-sref="home-expert">
-                                    <button class="btn-animate-become b btn font-bold btn-1 btn-1b">Become an expert</button>
-                                </a>
+                                <!-- <a ng-if="!userLogedin" ui-sref="home-expert"> -->
+                                    <button class="btn-animate-become b btn font-bold btn-1 btn-1b" ng-click="becomeExpertBtn();">Become an expert</button>
+                                <!-- </a> -->
                             </li>
                             <li class="notify-bell profile pointer" ng-show="userLogedin || expertLogedin">
                                 <a href="" class=" display-inline">
@@ -100,7 +100,44 @@
                                     <!-- <a ng-click="openform('Login')">  <img class="color-base black-img" src="img/close2.png" alt="" width="30"  ng-show="expertloginlogo"/></a> -->
 
                                 </a>
-                                <ul class="view-dropdown" ng-show="userLogedin || expertLogedin">
+
+                                <!-- -----------User Login Dropdown--------- -->
+                                <ul class="view-dropdown" ng-if="userLogedin && !expertLogedin">
+                                    <li>
+                                        <a href="" ui-sref="edit-user({id:userdata._id})" class="text-uppercase color-primary" ng-if="userdata.firstName && !userdata.name">
+                                        {{userdata.firstName}} {{userdata.lastName}}
+                                      </a>
+                                    </li>
+                                    <li ng-show="userLogedin"><a href="" class="text-uppercase" title="Your Booking" ui-sref="user-booking">your booking</a></li>
+                                    <li ng-show="userLogedin"><a href="" class="text-uppercase" title="short list" ui-sref="wishlist">short list</a></li>
+                                    <li ng-show="userLogedin"><a href="" class="text-uppercase" title="Edit Account" ui-sref="edit-user({id:userdata._id})">edit profile</a></li>
+                                    <li ng-show="userLogedin"><a href="" class="text-uppercase" title="Change Password" ui-sref="change-password({id:userdata._id})">change password</a></li>
+                                    <li ng-show="userLogedin"><a ui-sref="login" class="text-uppercase" title="Logout" ng-click="userLogout();">logout</a></li>
+
+                                </ul>
+
+
+
+                                <!-- -----------Expert Login Dropdown--------- -->
+                                <ul class="view-dropdown" ng-if="expertLogedin && !userLogedin">
+                                    <li>
+                                      <a href="" ui-sref="expert-profile({id:userdata._id})" class="text-uppercase color-primary" ng-if="userdata.name && !userdata.firstName">
+                                        {{userdata.name}}
+                                      </a>
+                                        <a href="" ui-sref="expert-profile({id:userdata._id})" class="text-uppercase color-primary" ng-if="userdata.name && userdata.firstName">
+                                        {{userdata.name}}
+                                      </a>
+                                    </li>
+                                    <li ng-show="expertLogedin"><a href="" class="text-uppercase" title="Your Booking" ui-sref="expert-booking">your booking</a></li>
+                                  <li ng-show="expertLogedin"><a href="" class="text-uppercase" title="Edit Account" ui-sref="expert-profile({id:userdata._id})">edit profile</a></li>
+                                  <li ng-show="expertLogedin"><a class="text-uppercase" title="Change Password" ui-sref="change-expert-password({id:userdata._id})">change password</a></li>
+                                  <li ng-show="expertLogedin"><a ui-sref="home-expert" class="text-uppercase" title="Logout" ng-click="expertLogout();">logout</a></li>
+                                </ul>
+
+
+
+
+                                <!-- <ul class="view-dropdown" ng-show="userLogedin || expertLogedin">
                                     <li>
                                         <a href="" class="text-uppercase color-primary" ng-if="userdata.firstName && !userdata.name">
                                         {{userdata.firstName}} {{userdata.lastName}}
@@ -121,7 +158,7 @@
                                     <li ng-show="expertLogedin"><a class="text-uppercase" title="Change Password" ui-sref="change-expert-password({id:userdata._id})">change password</a></li>
                                     <li ng-show="userLogedin"><a ui-sref="login" class="text-uppercase" title="Logout" ng-click="userLogout();">logout</a></li>
                                     <li ng-show="expertLogedin"><a ui-sref="home-expert" class="text-uppercase" title="Logout" ng-click="expertLogout();">logout</a></li>
-                                </ul>
+                                </ul> -->
 
                                 <ul class="view-dropdown" ng-hide="!userLogedin || !expertLogedin">
 
