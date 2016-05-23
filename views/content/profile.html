@@ -118,7 +118,7 @@
                         </div>
 
                     </div>
-                    <div class="awd mt50" ng-if="tab2=='awd'">
+                    <div class="awd mt50" ng-if="tab2=='awd'" ng-if="expertprofile.awards!=''">
                         <h4 class="font-raleway color-success font-med margin0">AWARDS AND HONORS</h4>
                         <div class="awd-list summary">
                             <ul class="padding0 mt10" ng-repeat="expertaward in expertprofile.awards">
@@ -142,8 +142,8 @@
                 </li>
                 <li>Padma Bhushan Awards</li>
                 <li>Angular Hackothan Awards </li>
-              </ul>
-            </div> -->
+              </ul>-->
+            </div>
 
                         <!-- <div class="awd-list summary pt20">
               <h4 class="font-raleway color-success font-med margin0 text-up">VIDEO</h4>
@@ -174,7 +174,7 @@
               </div>
             </div> -->
 
-                        <div class="awd-list summary pt20">
+                        <div class="awd-list summary pt20" ng-if="expertprofile.addPhotos!=''">
                             <h4 class="font-raleway color-success font-med margin0 text-up">photos</h4>
                             <div class="row mt10">
                                 <div class="col-md-2 col-sm-3 col-xs-4" ng-repeat="img in expertprofile.addPhotos">
@@ -189,7 +189,7 @@
                 </div> -->
                             </div>
                         </div>
-                        <div class="awd-list pt20">
+                        <div class="awd-list pt20" ng-if="expertprofile.publicationLinks!=''">
                             <h4 class="font-raleway color-success font-med margin0 text-up">publication link</h4>
                             <div class="row mt10">
                                 <div class="col-md-10 col-sm-10 col-xs-12" ng-repeat="publink in expertprofile.publicationLinks">

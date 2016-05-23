@@ -342,7 +342,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         $scope.formComplete = true;
                         console.log('booknow', $scope.userForm);
                     } else {
+                      if(data.data == 'User not loggd-in'){
+                        $scope.nouser = true;
+
+                      }else{
                         $scope.alreadyBooked = true;
+                      }
+
                     }
 
                 });
@@ -553,15 +559,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.formComplete = true;
                 NavigationService.editProfile($scope.userForm, function(data) {
 
-
-
                     $scope.userForm = data.data;
                 });
             }
-
-
-
         };
+        //
+        // $scope.getreload=function(){
+        //   $state.reload();
+        // };
     })
     .controller('ChangePasswordCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
         $scope.template = TemplateService.changecontent("change-password");
@@ -1549,22 +1554,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log('getExpertProfile', data.data);
         $scope.expertprofile = data.data;
         console.log('$scope.expertprofile.experience', $scope.expertprofile.experience);
+        if(data){
+          var length = $scope.expertprofile.experience.length;
+          // console.log('length',length);
+          for (var i = 0; i < length; i++) {
+              var oneDay = 24 * 60 * 60 * 1000;
+              var startdt = new Date($scope.expertprofile.experience[i].startDate);
+              var enddt = new Date($scope.expertprofile.experience[i].endDate);
+              var diffDays = Math.round(Math.abs((startdt.getTime() - enddt.getTime()) / (oneDay)));
+              console.log(diffDays);
+              var diffDays = parseInt(diffDays);
+              console.log('diffDays', diffDays);
+              var months = Math.floor(diffDays / 31);
+              console.log('months', months);
+              $scope.expertprofile.experience[i].duration = months;
 
-        var length = $scope.expertprofile.experience.length;
-        // console.log('length',length);
-        for (var i = 0; i < length; i++) {
-            var oneDay = 24 * 60 * 60 * 1000;
-            var startdt = new Date($scope.expertprofile.experience[i].startDate);
-            var enddt = new Date($scope.expertprofile.experience[i].endDate);
-            var diffDays = Math.round(Math.abs((startdt.getTime() - enddt.getTime()) / (oneDay)));
-            console.log(diffDays);
-            var diffDays = parseInt(diffDays);
-            console.log('diffDays', diffDays);
-            var months = Math.floor(diffDays / 31);
-            console.log('months', months);
-            $scope.expertprofile.experience[i].duration = months;
+          };
+        }
 
-        };
 
 
     });
@@ -1664,8 +1671,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 //$state.go("home");
             });
         } else {
-            $scope.newsletter.comment = "incorrectEmail";
-            $scope.newsletter.message = "incorrectEmail";
+            // $scope.newsletter.comment = "incorrectEmail";
+            // $scope.newsletter.message = "incorrectEmail";
         }
 
     };
