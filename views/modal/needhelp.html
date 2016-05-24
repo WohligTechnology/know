@@ -11,15 +11,9 @@
             <p class="font-light f13">If you got here by mistake click here to go back to <span ng-click="$dismiss()" class="color-success">Home/ Search</span></p>
         </div>
         <div class="mail mt20 pos-relative">
-            <select name="category" class="form-control display-inline log" placeholder="Please select a category" ng-model="userForm.category" value="{{cat.name}}" required>
-                <!-- <select class="form-control display-inline log"> -->
-                <!-- <option>PLEASE SELECT A CATEGORY</option> -->
-                <option value="" selected>Please select a category</option>
-                <option ng-repeat="cat in categorydata" ng-init="userForm.category='PLEASE SELECT A CATEGORY'">{{cat.name}}</option>
-                <!-- <option>2</option>
-<option>3</option>
-<option>4</option>
-<option>5</option> -->
+            <select name="categorydata" class="form-control display-inline log"  ng-init="userForm.category='nocat'" ng-model="userForm.category" value="{{cat.name}}" required>
+              <option ng-selected="true" value="nocat">PLEASE SELECT A CATEGORY</option>
+              <option ng-repeat="cat in categorydata">{{cat.name}}</option>
             </select>
             <div class="icon-mail display-inline arrow">
                 <i class="ln-chevron-down"></i>
