@@ -129,74 +129,76 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
 
     };
-
-    $scope.categorydata = {};
-    NavigationService.getCategory($scope.categorydata, function(data) {
-        $scope.categorydata = data.data;
-        console.log('$scope.categorydata', $scope.categorydata);
-
-    });
-    $scope.userdata = {};
-    $scope.userForm = {};
-    $scope.addQuery = function(id, cat, needhelp) {
-        // if(cat.$valid && needhelp.$valid) {
-
-        NavigationService.getUserData($scope.userdata, function(data) {
-            $scope.userdata = data;
-            console.log("$scope.userdata", $scope.userdata._id);
-            NavigationService.getHelp($scope.userForm, function(data) {
-                if (data && data.value === true) {
-
-                    $scope.findcat = true;
-                    $timeout(function() {
-                            modalInstance1.dismiss();
-                            $timeout(function() {
-                                $scope.findcat = "";
-                            }, 2000)
-
-                        }, 3000)
-                        //$state.reload();
-
-                } else {
-                    $scope.nouser = true;
-                    $timeout(function() {
-                            modalInstance1.dismiss();
-                            $timeout(function() {
-                                $scope.nouser = "";
-                            }, 2000)
-                        }, 3000)
-                        //$state.reload();
-                }
-
-            });
-
-
-        });
-        // }
-    };
-    var modalInstance1 = '';
-    $scope.open4 = function(size) {
-        modalInstance1 = $uibModal.open({
-            animation: $scope.animationsEnabled,
-            templateUrl: 'views/modal/needhelp.html',
-            //controller: 'HomeCtrl',
-            size: size,
-            scope: $scope,
-            //           myModalTimeout: setTimeout(function(){
-            //      $("#needhelp.html").hide();
-            //  }, 3000)
-            // resolve: {
-            //     items: function() {
-            //         return $scope.items;
-            //     }
-            // }
-        });
-
-    };
-
-    $scope.toggleAnimation = function() {
-        $scope.animationsEnabled = !$scope.animationsEnabled;
-    };
+    //
+    // $scope.categorydata = {};
+    // NavigationService.getCategory($scope.categorydata, function(data) {
+    //     $scope.categorydata = data.data;
+    //     console.log('$scope.categorydata', $scope.categorydata);
+    //
+    // });
+    // $scope.userdata = {};
+    // $scope.userForm = {};
+    // $scope.addQuery = function(id, cat, needhelp) {
+    //     // if(cat.$valid && needhelp.$valid) {
+    //
+    //     NavigationService.getUserData($scope.userdata, function(data) {
+    //         $scope.userdata = data;
+    //         console.log("$scope.userdata", $scope.userdata._id);
+    //         NavigationService.getHelp($scope.userForm, function(data) {
+    //             if (data && data.value === true) {
+    //
+    //                 $scope.findcat = true;
+    //                 $timeout(function() {
+    //                         modalInstance1.dismiss();
+    //                         $timeout(function() {
+    //                             $scope.findcat = "";
+    //                         }, 1000)
+    //
+    //                     }, 2500)
+    //                     //$state.reload();
+    //
+    //             } else {
+    //                 $scope.nouser = true;
+    //                 $timeout(function() {
+    //                         modalInstance1.dismiss();
+    //                         $timeout(function() {
+    //                             $scope.nouser = "";
+    //                         }, 1000)
+    //                     }, 2500)
+    //                     //$state.reload();
+    //             }
+    //
+    //         });
+    //
+    //
+    //
+    //     });
+    //     $scope.userForm={};
+    //     // }
+    // };
+    // var modalInstance1 = '';
+    // $scope.open4 = function(size) {
+    //     modalInstance1 = $uibModal.open({
+    //         animation: $scope.animationsEnabled,
+    //         templateUrl: 'views/modal/needhelp.html',
+    //         //controller: 'HomeCtrl',
+    //         size: size,
+    //         scope: $scope,
+    //         //           myModalTimeout: setTimeout(function(){
+    //         //      $("#needhelp.html").hide();
+    //         //  }, 3000)
+    //         // resolve: {
+    //         //     items: function() {
+    //         //         return $scope.items;
+    //         //     }
+    //         // }
+    //     });
+    //
+    // };
+    //
+    // $scope.toggleAnimation = function() {
+    //     $scope.animationsEnabled = !$scope.animationsEnabled;
+    // };
 
 })
 
@@ -313,7 +315,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
     })
-    .controller('BookNowCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $window, $stateParams) {
+    .controller('BookNowCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $window, $stateParams, $state) {
         $scope.template = TemplateService.changecontent("book-now");
         $scope.menutitle = NavigationService.makeactive("Book-Now");
         TemplateService.title = $scope.menutitle;
@@ -340,13 +342,34 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     console.log('booknow', data.value);
                     if (data.value == true) {
                         $scope.formComplete = true;
+                        $timeout(function() {
+                                $state.reload();
+                                $timeout(function() {
+                                    $scope.formComplete = "";
+                                }, 2000)
+
+                            }, 3000)
                         console.log('booknow', $scope.userForm);
                     } else {
                       if(data.data == 'User not loggd-in'){
                         $scope.nouser = true;
+                        $timeout(function() {
+                                $state.reload();
+                                $timeout(function() {
+                                    $scope.formComplete = "";
+                                }, 2000)
+
+                            }, 3000)
 
                       }else{
                         $scope.alreadyBooked = true;
+                        $timeout(function() {
+                                $state.reload();
+                                $timeout(function() {
+                                    $scope.formComplete = "";
+                                }, 2000)
+
+                            }, 3000)
                       }
 
                     }
@@ -1634,9 +1657,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 })
 
-.controller('headerctrl', function($scope, TemplateService, NavigationService, $state, $rootScope) {
+.controller('headerctrl', function($scope, TemplateService, NavigationService, $state, $rootScope,$uibModal,$timeout) {
     $scope.template = TemplateService;
-    $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams, $state) {
+    $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams, $state,$uibModal,$timeout) {
         $(window).scrollTop(0);
     });
     $scope.menu = "menu-out";
@@ -1768,4 +1791,80 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
         });
     };
+
+
+  // -------------------for need help-------------------------------
+
+  $scope.categorydata = {};
+  NavigationService.getCategory($scope.categorydata, function(data) {
+      $scope.categorydata = data.data;
+      console.log('$scope.categorydata', $scope.categorydata);
+
+  });
+  $scope.userdata = {};
+  $scope.userForm = {};
+  $scope.addQuery = function(id, cat, needhelp,formvalid) {
+    console.log('formvalid',formvalid);
+       if(formvalid.$valid) {
+
+      NavigationService.getUserData($scope.userdata, function(data) {
+          $scope.userdata = data;
+          console.log("$scope.userdata", $scope.userdata._id);
+          NavigationService.getHelp($scope.userForm, function(data) {
+              if (data && data.value === true) {
+
+                  $scope.findcat = true;
+                  $timeout(function() {
+                          modalInstance1.dismiss();
+                          $timeout(function() {
+                              $scope.findcat = "";
+                          }, 2000)
+
+                      }, 3000)
+                      //$state.reload();
+
+              } else {
+                  $scope.nouser = true;
+                  $timeout(function() {
+                          modalInstance1.dismiss();
+                          $timeout(function() {
+                              $scope.nouser = "";
+                          }, 2000)
+                      }, 3000)
+                      //$state.reload();
+              }
+
+          });
+
+
+      });
+      $scope.userForm={};
+       }
+  };
+
+  var modalInstance1 = '';
+  $scope.open4 = function(size) {
+      modalInstance1 = $uibModal.open({
+          animation: $scope.animationsEnabled,
+          templateUrl: 'views/modal/needhelp.html',
+          //controller: 'HomeCtrl',
+          size: size,
+          scope: $scope,
+          //           myModalTimeout: setTimeout(function(){
+          //      $("#needhelp.html").hide();
+          //  }, 3000)
+          // resolve: {
+          //     items: function() {
+          //         return $scope.items;
+          //     }
+          // }
+      });
+
+  };
+
+  $scope.toggleAnimation = function() {
+      $scope.animationsEnabled = !$scope.animationsEnabled;
+  };
+
+  // --------------------------------------End need Help---------------------------------------------
 });

@@ -596,7 +596,8 @@
                      </div>
                   </div>
                   <div class="completed-section mt30" ng-repeat="booking in userBooking track by $index">
-                     <p class="text-uppercase font-bold color-success">{{booking.status}}</p>
+                     <p class="text-uppercase font-bold color-success" ng-hide="booking.status=='reject'">{{booking.status}}</p>
+                     <p class="text-uppercase font-bold color-success" ng-if="booking.status=='reject'">Cancelled</p>
                      <table class="table text-uppercase account-history font-light text-center">
                         <tr>
                            <th>Expert Name</th>

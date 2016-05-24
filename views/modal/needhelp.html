@@ -6,14 +6,15 @@
         <h6 class="modal-title text-center margin0 color-grey">NEED HELP</h6>
     </div>
     <div class="modal-body" ng-hide="findcat || nouser">
+      <form name="need" ng-submit="addQuery(userdata._id,userForm.category,userForm.query,need)">
         <div class="mt10">
             <p class="font-light f13">In case we have not been able to address your query through the main search function, please enter your question here. Our backend team will endeavour to connect you to a relevant expert.</p>
             <p class="font-light f13">If you got here by mistake click here to go back to <span ng-click="$dismiss()" class="color-success">Home/ Search</span></p>
         </div>
         <div class="mail mt20 pos-relative">
-            <select name="categorydata" class="form-control display-inline log"  ng-init="userForm.category='nocat'" ng-model="userForm.category" value="{{cat.name}}" required>
-              <option ng-selected="true" value="nocat">PLEASE SELECT A CATEGORY</option>
-              <option ng-repeat="cat in categorydata">{{cat.name}}</option>
+            <select name="categorydata" class="form-control display-inline log" ng-model="userForm.category" value="{{cat.name}}" required>
+              <option ng-selected="true" value="">PLEASE SELECT A CATEGORY</option>
+              <option ng-repeat="cat in categorydata" required>{{cat.name}}</option>
             </select>
             <div class="icon-mail display-inline arrow">
                 <i class="ln-chevron-down"></i>
@@ -23,8 +24,9 @@
             <textarea class="form-control log" rows="6" ng-model="userForm.query" placeholder="Please type your question here" required></textarea>
         </div>
         <div class="login-btn mt20">
-            <button class="btn btn-animate-org f10 font-light" ng-click="addQuery(userdata._id,userForm.category,userForm.query)">SUBMIT</button>
+            <button type="submit" class="btn btn-animate-org f10 font-light">SUBMIT</button>
         </div>
+      </form>
     </div>
     <div class="no-data-found" ng-if="findcat && !nouser">
       <img src="img/owl.png" alt="">

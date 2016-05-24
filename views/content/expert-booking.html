@@ -325,7 +325,8 @@
                      </div>
                   </div>
                   <div class="completed-section mt30" ng-repeat="book in bookexpert track by $index">
-                     <p class="text-uppercase font-bold color-success">{{book.status}}</p>
+                     <p class="text-uppercase font-bold color-success" ng-hide="book.status=='reject'">{{book.status}}</p>
+                     <p class="text-uppercase font-bold color-success" ng-if="book.status=='reject'">Cancelled</p>
                      <table class="table text-uppercase account-history font-light text-center">
                         <tr>
                            <th>Expert Name</th>
@@ -338,10 +339,7 @@
                            <td> {{book.user.firstName + " " +book.user.lastName}}</td>
                            <td>{{book.callDuration}}</td>
                            <td>{{book.bookDate| date : "dd.MM.y"}}</td>
-                           <td>{{book.status}}
-
-
-                           </td>
+                           <td>{{book.status}}</td>
                            <td>{{book.expert.priceForService}}
                               <br>
                               <button class="btn btn-animate-success mt10 f12">PRINT INVOICE</button>
