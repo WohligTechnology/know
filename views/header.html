@@ -83,7 +83,7 @@
                                 <a class="display-inline user-icon img-rounded">
                                     <img class="color-white white-img" src="img/log.png" alt="" width="30" tooltip-placement="{{placement.selected}}" uib-tooltip="NOTIFICATIONS {{placement.selected}}" ng-show="userLogedin" ng-if="!userdata.image" />
                                     <img class="color-white white-img" ng-src="{{userdata.image | uploadpath}}" alt="" width="30" tooltip-placement="{{placement.selected}}" ng-show="userLogedin" ng-if="userdata.image" />
-                                    <img class="color-white white-img" src="img/log.png" alt="" width="30" ng-click="goToLogin()" tooltip-placement="{{placement.selected}}" uib-tooltip="NOTIFICATIONS {{placement.selected}}" ng-show="!userLogedin" />
+                                    <img class="color-white white-img" src="img/log.png" alt="" width="30" ng-click="goToLogin()" tooltip-placement="{{placement.selected}}" uib-tooltip="{{placement.selected}}" ng-show="!userLogedin" />
                                     <img class="color-base black-img" src="img/close2.png" alt="" width="30" ng-show="userLogedin || expertLogedin" ng-if="!userdata.image">
 
                                     <!-- -------- both are not logedin ---------------------------- -->
@@ -190,7 +190,7 @@
                     <button class="btn btn-become text-uppercase ask-jack"  ng-controller="headerctrl" ng-click="open4('sm')">ask an expert</button>
                     <button class="btn btn-become text-uppercase become-expert" ui-sref="home-expert" ng-hide="userLogedin">become an expert</button>
 
-                    <button class="btn btn-become text-uppercase become-expert" ng-if="userLogedin">become an expert</button>
+                    <button class="btn btn-become text-uppercase become-expert" ng-if="userLogedin" >become an expert</button>
                 </div>
             </div>
         </div>
