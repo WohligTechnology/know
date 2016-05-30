@@ -76,7 +76,7 @@
                                         <input type="password" name="confirmPassword" class="form-control" ng-model="userForm.confirmPassword" required>
                                         <div class="error-msg" ng-show="user.confirmPassword.$error.required && user.confirmPassword.$touched">Please Confirm Your Password.</div>
                                     </div> -->
-                                    <div class="form-group mt25">
+                                    <div class="form-group mt25">{{userForm.image}}
                                         <label>PROFILE IMAGE</label>
                                         <!-- <img ng-src="{{userForm.image|uploadpath}}" class="img-responsive margin-auto"> -->
 
@@ -86,12 +86,14 @@
                                         <div class="pro-im mt10">
                                             <div class="user-img display-inline">
                                                 <img ng-src="{{userForm.image | uploadpath}}" class="doneLoading" ng-if="userForm.image">
+                                                <upload-image ng-model="userForm.image"></upload-image>
                                             </div>
+
                                             <!-- <div class="sub-btn display-inline">
                                         <button class="btn btn-animate-inverse-success f10">CHOOSE FILE</button>
                                       </div> -->
                                         </div>
-                                        <upload-image ng-model="userForm.image" no-view></upload-image>
+
                                         <!-- <div class="pro-im mt10">
                                           <h4 ng-if="isloading">Loading...</h4>
                                             <div class="user-img display-inline">
@@ -563,7 +565,7 @@
                         <div class="set-title mt25">
                             <h5 class="font-raleway font-bold f17 color-base text-up">BANK DETAILS</h5>
                         </div>
-                        <form name="user" class="form-input">
+                        <form name="user1" class="form-input">
                             <div class="row mt25 pb20">
                                 <div class="col-md-4 col-sm-5">
                                     <div class="form-group">
@@ -627,15 +629,19 @@
                                         <!-- <div class="error-msg" ng-show="user.branchAddress.$error.required && user.branchAddress.$touched">Please Enter Branch Address.
                                         </div> -->
                                     </div>
+
                                 </div>
                             </div>
-                              <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="5000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
+
 
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-xs-12" style="border-top: 1px solid #ccc;">
                                     <div class="save-btn mt25">
-                                        <button class="btn btn-blue font-light text-up f13" ng-click="userSubmitForm(user)">save</button>
+                                        <button class="btn btn-blue font-light text-up f13" ng-click="userSubmitForm(user1)">save</button>
                                     </div>
+                                    <div>
+                                    <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="5000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
+                                  </div>
                                 </div>
                             </div>
                         </form>

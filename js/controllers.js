@@ -533,6 +533,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             if (formValid.$valid) {
 
                 NavigationService.Signup($scope.userForm, function(data) {
+                  if(data.value==true){
                     console.log($scope.userForm.password);
                     console.log($scope.userForm.confirmPassword);
                     if ($scope.userForm.password == $scope.userForm.confirmPassword) {
@@ -549,6 +550,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         }
                         $scope.userForm.confirmPassword = "";
                     }
+                  }else{
+                    $scope.alreadyExist=true;
+                  }
+
 
 
                 });
@@ -739,34 +744,52 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.mesg = [];
         $scope.userForm = {};
         $scope.expertSignup = function(formValid) {
-            console.log('HomeExpertCtrl', $scope.userForm);
             if (formValid.$valid) {
+            console.log('HomeExpertCtrl', $scope.userForm);
+            if ($scope.userForm.password == $scope.userForm.confirmPassword) {
+              NavigationService.ExpertSignup($scope.userForm, function(data) {
+                  $scope.userForm = data.data;
+                if(data.value==true){
+                  $timeout(function () {
+                    $scope.formComplete = true;
 
-                NavigationService.ExpertSignup($scope.userForm, function(data) {
-                    // console.log($scope.userForm.password);
-                    // console.log($scope.userForm.confirmPassword);
-                    if ($scope.userForm.password == $scope.userForm.confirmPassword) {
-                        $scope.userForm = data.data;
-                        //console.log('userformctrl', $scope.userForm);
+                    $timeout(function(){
                         $state.go("expert-profile");
-                    } else {
-                        $scope.mesg.push({
-                            type: 'success',
-                            msg: 'Password do not match.'
-                        });
-                        $scope.closeAlert = function(index) {
-                                $scope.mesg.splice(index, 1);
-                            }
-                            //$window.alert("Password do not match.");
-                        $scope.userForm.confirmPassword = "";
-                    }
-                    //$scope.formComplete = true;
+                    },2000)
+
+                  }, 1000);
+
+                  // $scope.formComplete = true;
 
 
+                }else{
+                  $scope.expertAlreadyExist=true;
+                }
+
+                  // console.log($scope.userForm.password);
+                  // console.log($scope.userForm.confirmPassword);
+
+              });
+
+                //console.log('userformctrl', $scope.userForm);
+                // $state.go("expert-profile");
+            } else {
+                $scope.mesg.push({
+                    type: 'success',
+                    msg: 'Password do not match.'
                 });
-                $scope.mesg = [];
+                $scope.closeAlert = function(index) {
+                        $scope.mesg.splice(index, 1);
+                    }
+                    //$window.alert("Password do not match.");
+                $scope.userForm.confirmPassword = "";
             }
 
+
+
+
+            }
+$scope.mesg = [];
         };
 
         //
@@ -892,7 +915,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.mesg = [];
 
         $scope.userSubmitForm = function(formValid) {
-
             if (formValid.$valid) {
                 //$scope.formComplete = true;
                 console.log("////", $scope.userForm);
@@ -905,7 +927,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
                 console.log("////", $scope.userForm);
                 NavigationService.ExpertUSerCreateSubmit($scope.userForm, function(data) {
-                    if (data.value === true) {
+                  console.log($scope.userForm);
+                    if (data.value == true)
+                    {
+                      console.log('my console',data);
+                      if(formValid.$name=='user1')
+                      {
                         $scope.mesg.push({
                             type: 'success',
                             msg: 'Submitted Successfully, Thank You!'
@@ -913,6 +940,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         $scope.closeAlert = function(index) {
                             $scope.mesg.splice(index, 1);
                         }
+                      }
+
                     }
 
                 });

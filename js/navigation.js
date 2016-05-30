@@ -1,7 +1,8 @@
 var adminurl = "http://chaitalee.com/";
-// var adminurl = "http://192.168.1.145/";
-var adminurl1 = "http://192.168.1.129:81/";
-var imgurl = adminurl1 + "upload/";
+// var adminurl = "http://192.168.1.1 45/";
+// var adminurl1 = "http://192.168.1.129:81/";
+// var imgurl = "http://146.148.4.222/upload/";
+var imgurl = adminurl + "upload/";
 var imgpath = imgurl + "readFile";
 var uploadurl = imgurl;
 
