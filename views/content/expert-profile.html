@@ -76,7 +76,7 @@
                                         <input type="password" name="confirmPassword" class="form-control" ng-model="userForm.confirmPassword" required>
                                         <div class="error-msg" ng-show="user.confirmPassword.$error.required && user.confirmPassword.$touched">Please Confirm Your Password.</div>
                                     </div> -->
-                                    <div class="form-group mt25">{{userForm.image}}
+                                    <div class="form-group mt25">
                                         <label>PROFILE IMAGE</label>
                                         <!-- <img ng-src="{{userForm.image|uploadpath}}" class="img-responsive margin-auto"> -->
 
@@ -86,7 +86,7 @@
                                         <div class="pro-im mt10">
                                             <div class="user-img display-inline">
                                                 <img ng-src="{{userForm.image | uploadpath}}" class="doneLoading" ng-if="userForm.image">
-                                                <upload-image ng-model="userForm.image"></upload-image>
+                                                <upload-image ng-model="userForm.image" no-view></upload-image>
                                             </div>
 
                                             <!-- <div class="sub-btn display-inline">

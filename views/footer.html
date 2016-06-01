@@ -5,7 +5,7 @@
       <div class="col-md-4 col-sm-3 col-xs-6">
         <div class="footer-menu" ng-controller="headerctrl">
           <ul>
-            <li>
+            <li ng-if="!userLogedin && !expertLogedin" >
               <a ui-sref="login">
                   Login/Signup
                 </a>
@@ -15,37 +15,37 @@
                   Home
                 </a>
             </li>
-            <li>
+            <!-- <li>
               <a href="">
                   Booking
                 </a>
-            </li>
-            <!-- <li ng-if="userLogedin || expertLogedin">
+            </li> -->
+            <li ng-if="userLogedin || expertLogedin">
               <a ng-show="userLogedin" ui-sref="user-booking">
-                  Bookings Page
+                  Booking
                 </a>
                 <a ng-show="expertLogedin" ui-sref="expert-booking">
-                    Bookings Page
+                    Booking
                   </a>
             </li>
             <li ng-if="userLogedin || expertLogedin" controller="headerctrl">
               <a ng-show="userLogedin" ui-sref="edit-user({id:userdata._id})">
-                Profile Page
+                Profile
                 </a>
               <a ng-show="expertLogedin" ui-sref="expert-profile({id:userdata._id})">
-                Profile Page
+                Profile
                 </a>
-            </li> -->
-            <li>
+            </li>
+            <!-- <li>
               <a href="">
                   Profile
                 </a>
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
               <a href="">
                   Account
                 </a>
-            </li>
+            </li> -->
             <!-- <li ng-if="userLogedin || expertLogedin" controller="headerctrl">
               <a href="">
                 Account

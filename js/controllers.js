@@ -531,36 +531,75 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.userSignup = function(formValid) {
             console.log('SignupCtrl', $scope.userForm);
             if (formValid.$valid) {
+if ($scope.userForm.password == $scope.userForm.confirmPassword) {
+  NavigationService.Signup($scope.userForm, function(data) {
+    $scope.userForm = data.data;
+            if(data.value==true){
+              $scope.formComplete = true;
 
-                NavigationService.Signup($scope.userForm, function(data) {
-                  if(data.value==true){
-                    console.log($scope.userForm.password);
-                    console.log($scope.userForm.confirmPassword);
-                    if ($scope.userForm.password == $scope.userForm.confirmPassword) {
-                        $scope.userForm = data.data;
-                        //console.log('userformctrl', $scope.userForm);
-                        $state.go("home");
-                    } else {
-                        $scope.mesg.push({
-                            type: 'success',
-                            msg: 'Password do not match.'
-                        });
-                        $scope.closeAlert = function(index) {
-                            $scope.mesg.splice(index, 1);
-                        }
-                        $scope.userForm.confirmPassword = "";
-                    }
-                  }else{
-                    $scope.alreadyExist=true;
+              $timeout(function(){
+                  $state.go("home");
+              },1000)
+
+
+
+          }else{
+            $scope.alreadyExist=true;
+            $timeout(function(){
+                $state.go("login");
+            },1000)
+          }
+        });
+      } else {
+                      $scope.mesg.push({
+                          type: 'success',
+                          msg: 'Password do not match.'
+                      });
+                      $scope.closeAlert = function(index) {
+                          $scope.mesg.splice(index, 1);
+                      }
+                      $scope.userForm.confirmPassword = "";
                   }
 
+                              }
+                  $scope.mesg = [];
+                          };
 
 
-                });
 
-            }
-            $scope.mesg = [];
-        };
+        // $scope.userSignup = function(formValid) {
+        //     console.log('SignupCtrl', $scope.userForm);
+        //     if (formValid.$valid) {
+        //
+        //         NavigationService.Signup($scope.userForm, function(data) {
+        //           if(data.value==true){
+        //             console.log($scope.userForm.password);
+        //             console.log($scope.userForm.confirmPassword);
+        //             if ($scope.userForm.password == $scope.userForm.confirmPassword) {
+        //                 $scope.userForm = data.data;
+        //                 //console.log('userformctrl', $scope.userForm);
+        //                 $state.go("home");
+        //             } else {
+        //                 $scope.mesg.push({
+        //                     type: 'success',
+        //                     msg: 'Password do not match.'
+        //                 });
+        //                 $scope.closeAlert = function(index) {
+        //                     $scope.mesg.splice(index, 1);
+        //                 }
+        //                 $scope.userForm.confirmPassword = "";
+        //             }
+        //           }else{
+        //             $scope.alreadyExist=true;
+        //           }
+        //
+        //
+        //
+        //         });
+        //
+        //     }
+        //     $scope.mesg = [];
+        // };
 
 
     })
@@ -750,20 +789,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
               NavigationService.ExpertSignup($scope.userForm, function(data) {
                   $scope.userForm = data.data;
                 if(data.value==true){
-                  $timeout(function () {
+                  // $timeout(function () {
                     $scope.formComplete = true;
 
                     $timeout(function(){
                         $state.go("expert-profile");
-                    },2000)
+                    },1000)
 
-                  }, 1000);
+                  // }, 1000);
 
                   // $scope.formComplete = true;
 
 
                 }else{
                   $scope.expertAlreadyExist=true;
+                  $timeout(function(){
+                      $state.go("home-expert");
+                  },1000)
                 }
 
                   // console.log($scope.userForm.password);
@@ -1767,6 +1809,7 @@ $scope.mesg = [];
                 console.log('$scope.notificationdata user', $scope.notificationdata);
             });
         } else {
+          $scope.userNotLogedin = true;
             if (window.location.href.indexOf('user-') != -1) {
                 $state.go('home');
             }
@@ -1786,6 +1829,7 @@ $scope.mesg = [];
                 console.log('$scope.notificationdata expert', $scope.notificationdata);
             });
         } else {
+            $scope.expertNotLogedin = true;
             if (window.location.href.indexOf('expert-') != -1) {
                 $state.go('home');
             }

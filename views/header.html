@@ -26,7 +26,12 @@
                                 <img ng-src="img/logop.png" alt="" class="img-responsive home-logo " width="180" alt="logo" title="logo"> </a>
 
                             <!-- -------- both are not logedin ------------------------------------ -->
-                            <a ng-if="!userLogedin && !expertLogedin" ui-sref="home" class="display-inline"> <img ng-src="img/logo2.png" alt="" class="img-responsive user-logo" width="180" alt="logo" title="logo"> </a>
+                            <!-- <a ng-if="!userLogedin && !expertLogedin" ui-sref="home" class="display-inline"> <img ng-src="img/logo2.png" alt="" class="img-responsive user-logo" width="180" alt="logo" title="logo"> </a> -->
+
+
+                            <a ng-if="(!userLogedin && !expertLogedin) && (!userNotLogedin&&expertNotLogedin)" ui-sref="home" class="display-inline"> <img ng-src="img/logo2.png" alt="" class="img-responsive user-logo" width="180" alt="logo" title="logo"> </a>
+
+                            <a ng-if="(!userLogedin && !expertLogedin) || (userNotLogedin&&!expertNotLogedin)" ui-sref="home" class="display-inline"> <img ng-src="img/logou.png" alt="" class="img-responsive user-logo" width="180" alt="logo" title="logo"> </a>
                             <!---------------------------------------------------------------------- -->
 
                             <a ng-if="userLogedin" ui-sref="home" class="display-inline"> <img ng-src="img/logo2.png" alt="" class="img-responsive expertise-logo" width="180" alt="logo" title="logo"> </a>
@@ -67,11 +72,12 @@
                                             <div class="notification-list clearfix">
                                                 <div class="pull-left">
                                                     <div class="notify-imgholder">
-                                                        <img ng-src="{{noti.image|uploadpath}}" alt="" class="img-circle img-responsive" width="30">
+                                                        <img ng-src="{{noti.image|uploadpath}}" alt="" class="img-circle img-responsive" width="30" ng-if="noti.image">
                                                     </div>
                                                 </div>
                                                 <div class="descp-noti">
                                                     <p>{{noti.notification}}</p>
+
                                                 </div>
                                             </div>
                                         </div>

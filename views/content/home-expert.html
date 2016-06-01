@@ -107,7 +107,7 @@
             <h1 class="color-primary">Whoops !</h1>
             <p class="text-cap">User Already Exist !!</p>
           </div>
-          <div class="no-data-found" ng-show="formComplete">
+          <div class="no-data-found" ng-if="formComplete && !expertAlreadyExist">
             <img src="img/owl.png" alt="">
             <h1 class="color-primary">Congratulations !</h1>
             <p class="text-cap">Submitted Successfully, Thank You!</p>
