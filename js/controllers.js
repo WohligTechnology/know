@@ -1368,13 +1368,14 @@ $scope.mesg = [];
         $scope.selectedAll = true;
 
         $scope.checkAll = function() {
-            if ($scope.selectedAll) {
-                $scope.selectedAll = false;
-            } else {
-                $scope.selectedAll = true;
-            }
+            // if ($scope.selectedAll) {
+            //     $scope.selectedAll = false;
+            // } else {
+            //     $scope.selectedAll = true;
+            // }
+            var toggleStatus =!$scope.selectedAll;
             _.forEach($scope.expertiseArr, function(expertise) {
-                expertise.model = $scope.selectedAll;
+                expertise.model = toggleStatus;
             });
 
         };
@@ -1505,6 +1506,10 @@ $scope.mesg = [];
 
 
         $scope.searchExpert = function() {
+
+    $scope.selectedAll = $scope.expertiseArr.every(function(expertise){ return expertise.model; })
+
+
             var dataToSend = {
                 search: $scope.expertdata2.search,
                 areaofexpert: [],
