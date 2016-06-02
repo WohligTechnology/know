@@ -28,19 +28,21 @@
                             <!-- -------- both are not logedin ------------------------------------ -->
                             <!-- <a ng-if="!userLogedin && !expertLogedin" ui-sref="home" class="display-inline"> <img ng-src="img/logo2.png" alt="" class="img-responsive user-logo" width="180" alt="logo" title="logo"> </a> -->
 
+                              <a ng-if="userNotLogedin && expertNotLogedin" ui-sref="home" class="display-inline"><img ng-src="img/logou.png" alt="" class="img-responsive user-logo " width="180" alt="logo" title="logo"> </a>
 
-                            <a ng-if="(!userLogedin && !expertLogedin) && (!userNotLogedin&&expertNotLogedin)" ui-sref="home" class="display-inline"> <img ng-src="img/logo2.png" alt="" class="img-responsive user-logo" width="180" alt="logo" title="logo"> </a>
+                            <!-- <a ng-if="(!userLogedin && !expertLogedin) && (!userNotLogedin&&expertNotLogedin)" ui-sref="home" class="display-inline"> <img ng-src="img/logo2.png" alt="" class="img-responsive user-logo" width="180" alt="logo" title="logo"> </a>
 
-                            <a ng-if="(!userLogedin && !expertLogedin) || (userNotLogedin&&!expertNotLogedin)" ui-sref="home" class="display-inline"> <img ng-src="img/logou.png" alt="" class="img-responsive user-logo" width="180" alt="logo" title="logo"> </a>
+                            <a ng-if="(!userLogedin && !expertLogedin) || (userNotLogedin&&!expertNotLogedin)" ui-sref="home" class="display-inline"> <img ng-src="img/logou.png" alt="" class="img-responsive user-logo" width="180" alt="logo" title="logo"> </a> -->
                             <!---------------------------------------------------------------------- -->
 
-                            <a ng-if="userLogedin" ui-sref="home" class="display-inline"> <img ng-src="img/logo2.png" alt="" class="img-responsive expertise-logo" width="180" alt="logo" title="logo"> </a>
+                            <!-- <a ng-if="userLogedin" ui-sref="home" class="display-inline"> <img ng-src="img/logo2.png" alt="" class="img-responsive expertise-logo" width="180" alt="logo" title="logo"> </a> -->
 
-                            <a ng-if="expertLogedin" class="display-inline"> <img ng-src="img/logo2.png" alt="" class="img-responsive expertise-logo" width="180" alt="logo" title="logo"> </a>
+                            <a ng-if="expertLogedin && !userLogedin" ui-sref="expert-booking" class="display-inline"> <img ng-src="img/logo2.png" alt="" class="img-responsive expertise-logo" width="180" alt="logo" title="logo"> </a>
+                            <!-- <a ng-if="!expertLogedin && !userLogedin" ui-sref="home-expert" class="display-inline"> <img ng-src="img/logo2.png" alt="" class="img-responsive expertise-logo" width="180" alt="logo" title="logo"> </a> -->
 
-                            <a ng-if="userLogedin" ui-sref="home" class="display-inline"><img ng-src="img/logou.png" alt="" class="img-responsive user-logo " width="180" alt="logo" title="logo"> </a>
+                            <a ng-if="userLogedin && !expertLogedin" ui-sref="home" class="display-inline"><img ng-src="img/logou.png" alt="" class="img-responsive user-logo " width="180" alt="logo" title="logo"> </a>
 
-                            <a ng-if="expertLogedin" class="display-inline"><img ng-src="img/logo2.png" alt="" class="img-responsive user-logo " width="180" alt="logo" title="logo"> </a>
+                            <a ng-if="expertLogedin && !userLogedin" ui-sref="expert-booking" class="display-inline"><img ng-src="img/logo2.png" alt="" class="img-responsive user-logo " width="180" alt="logo" title="logo"> </a>
 
                             <a ui-sref="home" class="display-inline"><img ng-src="img/logoe.png" alt="" class="img-responsive expert-home " width="180" alt="logo" title="logo">
                             </a>
@@ -54,8 +56,10 @@
                             <li>
                                 <!-- <a ng-if="!userLogedin" ui-sref="home-expert"> -->
                                     <button class="btn-animate-become b btn font-bold btn-1 btn-1b" ng-click="becomeExpertBtn();">Become an expert</button>
+                                    
                                 <!-- </a> -->
                             </li>
+
                             <li class="notify-bell profile pointer" ng-show="(userLogedin || expertLogedin) && notificationdata.length>0">
                                 <a href="" class=" display-inline">
                                     <img src="img/noti-white.png" alt="" class=" noti-icon white-img" width="30" ng-show="userLogedin || expertLogedin">

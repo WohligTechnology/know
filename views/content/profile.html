@@ -27,8 +27,8 @@
                     </div>
                     <div ng-if="expertprofile.callSettings[0].callTime=='custom'" class="avl-time">
                         <span class="color-success font-light">
-                          Available Day:
-                          <span step="1" ng-repeat="myday in expertprofile.callSettings" class="text-cap cpointer" ng-click="open()">{{myday.day | limitTo:3}}
+
+                          <span step="1" ng-repeat="myday in expertprofile.callSettings" class="text-cap cpointer" ng-click="open()">Available Day: {{myday.day | limitTo:3}}
                             <span ng-if="$index!=expertprofile.callSettings.length-1" style="margin-left: -2px;">, </span>
                           </span>
                         </span>
@@ -36,19 +36,19 @@
                       <div class="avl-time" ng-if="expertprofile.callSettings[0].callTime=='unavailable'">
                         <span  class="color-success font-light">
                           Unavailable Day:
-                          <span step="1" ng-repeat="myday in expertprofile.callSettings" class="text-cap cpointer">{{myday.day | limitTo:3}}
+                          <span step="1" ng-repeat="myday in expertprofile.callSettings" class="text-cap cpointer">Unavailable Day: {{myday.day | limitTo:3}}
                             <span ng-if="$index!=expertprofile.callSettings.length-1" style="margin-left: -2px;">, </span>
                           </span>
                         </span>
                     </div>
                       <div class="avl-time" ng-if="expertprofile.callTime=='weekdays'">
                         <span  class="color-success font-light">
-                          Anavailable Day:Weekdays(9AM-9PM)
+                          Available Day:Weekdays(9AM-9PM)
                         </span>
                     </div>
                       <div class="avl-time" ng-if="expertprofile.callTime=='weekend'">
                         <span  class="color-success font-light">
-                          Anavailable Day:Weekend(9AM-9PM)
+                          Available Day:Weekend(9AM-9PM)
                         </span>
                     </div>
                     <div class="price">
@@ -102,7 +102,7 @@
             <div class="exp-sec summary">
               <h4 class="font-raleway color-success font-med margin0">{{exp.degreeTitle}}</h4>
               <span class="color-base ">{{exp.instituteName}}</span>
-              <p class="color-base font-light f16 mt10">{{exp.yearOfPassing| date:'MMM-yyyy'}} (PASSING YEAR)</p>
+              <p class="color-base font-light f16 mt10">{{exp.yearOfPassing}} (PASSING YEAR)</p>
               <p class="color-base ">{{exp.city}}, {{exp.country}}</p>
             </div>
 
