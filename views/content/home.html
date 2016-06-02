@@ -45,11 +45,11 @@
         </div>
       </div>
     </div>
-    <div class="signup text-center">
+    <!-- <div class="signup text-center">
       <h2 class="color-white font-raleway">
   SIGN UP AND GET YOUR SECOND CALL FREE
 </h2>
-    </div>
+    </div> -->
   </div>
 </section>
 <section>
@@ -120,7 +120,7 @@
           <div class="cat-list">
             <ul class="padding0">
               <li ng-repeat="category in categories">
-                <a href="">
+                <a ui-sref="search({search:category.name})">
                   <i class="ln-briefcase"></i> {{category.name}}
                 </a>
               </li>
@@ -150,7 +150,7 @@
             <ul class="padding0">
               <li>
 
-                <a href=""> {{freq.search}} <span class="badge pull-right">{{freq.time}}</span></a>
+                <a> {{freq.search}}</a>
 
               </li>
               <!-- <li>
