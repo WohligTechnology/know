@@ -30,17 +30,17 @@
                             <form>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">AREA OF EXPERTISE</label>
-<div>
-                                    <input ng-change="searchExpert()" value="{{expertise.value}}" type="checkbox" ng-model="selectedAll" ng-click="checkAll()" />
-                                    <label>
-                                        Select All
-                                    </label>
-                                  </div>
+                                    <div>
+                                        <input ng-change="searchExpert()" value="{{expertise.value}}" type="checkbox" ng-model="selectedAll" ng-click="checkAll()" />
+                                        <label>
+                                            Select All
+                                        </label>
+                                    </div>
 
                                     <div class="checkbox">
-                                        <div class="" ng-repeat="expertise in expertiseArr track by $index" >
+                                        <div class="" ng-repeat="expertise in expertiseArr track by $index">
                                             <input type="checkbox" ng-model="expertiseArr[$index].model" id="{{expertise.value}}" ng-change="searchExpert()">
-                                            <label for="{{expertise.value}}" >
+                                            <label for="{{expertise.value}}">
                                                 <span></span> {{expertise.value}}
                                             </label>
                                         </div>
@@ -48,19 +48,19 @@
                                 </div>
                                 <div class="form-group">
 
-                                    <label for="exampleInputEmail1">LOCATION</label>
+                                    <label for="exampleInputEmail2">LOCATION</label>
                                     <div>
-                                    <input type="checkbox" ng-model="selectedAllLocation" ng-click="checkAllLocation()" />
-                                    <label>
-                                        Select All
-                                    </label>
-                                  </div>
+                                      <input ng-change="searchExpert()" value="{{location.value}}" type="checkbox" ng-model="selectedAllLocation" ng-click="checkAllLocation()"/>
+                                        <label>
+                                            Select All{{selectedAllLocation}}
+                                        </label>
+                                    </div>
 
                                     <!-- <input type="text" ng-model="searchLocation" class="form-control filter-input" id="exampleInputEmail1" placeholder="eg. Mumbai, Pune, etc." ng-keyup="pushLocation(searchLocation,$event.keyCode)"> -->
                                     <div class="checkbox">
-                                        <div class=""  ng-repeat="location in locationArr track by $index">
-                                            <input type="checkbox" ng-model="locationArr[$index].model"  id="{{location.value}}" ng-change="searchExpert()">
-                                            <label for="{{location.value}}" >
+                                        <div class="" ng-repeat="location in locationArr track by $index">
+                                            <input type="checkbox" ng-model="locationArr[$index].model" id="{{location.value}}" ng-change="searchExpert()">
+                                            <label for="{{location.value}}">
                                                 <span></span> {{location.value}}
                                             </label>
                                         </div>
@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <div class="col-md-8 col-sm-8">
-                  <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="3000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
+                    <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="3000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
                     <div class="search">
                         <div class="filter-title">
                             <h4 ng-if="expertdata.length==1 && expertdata.length<=1">SEARCH RESULT : {{expertdata.length}} RESULT FOUND</h4>
@@ -90,8 +90,8 @@
                             <div class="row">
                                 <div class="col-md-3 col-sm-4">
                                     <div class="search-img margin-auto">
-                                      <!-- <img ng-src="{{userForm.image|uploadpath}}" class="img-responsive margin-auto" ng-if="userForm.image" style="height:200px;"> -->
-                                        <img ng-src="{{experts.image|uploadpath}}" alt=""  style="height:200px;">
+                                        <!-- <img ng-src="{{userForm.image|uploadpath}}" class="img-responsive margin-auto" ng-if="userForm.image" style="height:200px;"> -->
+                                        <img ng-src="{{experts.image|uploadpath}}" alt="" style="height:200px;">
                                     </div>
                                     <div class="short text-center mt10">
                                         <button type="button" name="button" class="btn btn-animate-inverse-org text-uppercase" ng-click="addToWishlist(experts._id)" ng-if="experts.showbtn==true">shortlist</button>
@@ -137,9 +137,9 @@
                             </div>
                         </div>
                         <div class="no-data-found" ng-show="notfound">
-                          <img src="img/owl.png" alt="">
-                          <h1 class="color-primary">Whoops !</h1>
-                          <p class="text-cap">No Result Found!</p>
+                            <img src="img/owl.png" alt="">
+                            <h1 class="color-primary">Whoops !</h1>
+                            <p class="text-cap">No Result Found!</p>
                         </div>
                         <!-- <div ng-show="notfound" class="showerror">
    <h3 class="text-center">No Result Found!</h3>

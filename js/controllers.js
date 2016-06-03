@@ -1383,47 +1383,29 @@ $scope.mesg = [];
 
         $scope.selectedAllLocation = true;
         $scope.checkAllLocation = function() {
-            if ($scope.selectedAllLocation) {
-                $scope.selectedAllLocation = false;
-            } else {
-                $scope.selectedAllLocation = true;
-            }
+            // if ($scope.selectedAllLocation) {
+            //     $scope.selectedAllLocation = false;
+            // } else {
+            //     $scope.selectedAllLocation = true;
+            // }
+            var toggleStatusLocation =!$scope.selectedAllLocation;
             _.forEach($scope.locationArr, function(location) {
-                location.model = $scope.selectedAllLocation;
+                location.model = toggleStatusLocation;
             });
 
         };
-
-        // $scope.checkAll=function(checkEm) {
-        //     var cbs = document.getElementsByName('areaOfEx');
-        //     for (var i = 0; i < cbs.length; i++) {
-        //         if (cbs[i].type == 'checkbox') {
-        //             if (cbs[i].name == 'my_form_tasks[]') {
-        //                 cbs[i].checked = checkEm;
-        //             }
-        //         }
-        //     }
-        // };
-
-
-
-        //         $scope.checkAll=function(ele) {
-        //     var checkboxes = document.getElementsByName('areaOfEx');
-        //     if (ele.checked) {
-        //         for (var i = 0; i < checkboxes.length; i++) {
-        //             if (checkboxes[i].type == 'checkbox') {
-        //                 checkboxes[i].checked = true;
-        //             }
-        //         }
+        // $scope.selectedAllLocation = true;
+        // $scope.checkAllLocation = function() {
+        //     if ($scope.selectedAllLocation) {
+        //         $scope.selectedAllLocation = false;
         //     } else {
-        //         for (var i = 0; i < checkboxes.length; i++) {
-        //             console.log(i)
-        //             if (checkboxes[i].type == 'checkbox') {
-        //                 checkboxes[i].checked = false;
-        //             }
-        //         }
+        //         $scope.selectedAllLocation = true;
         //     }
-        // }
+        //     _.forEach($scope.locationArr, function(location) {
+        //         location.model = $scope.selectedAllLocation;
+        //     });
+        //
+        // };
 
 
 
