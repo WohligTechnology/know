@@ -1,18 +1,20 @@
 <ul class="nav navbar-nav" ng-controller="headerctrl">
    <!-- <li ng-if="userLogedin || expertLogedin" ng-repeat="menu in navigation" class="{{menu.classis}}"> -->
    <li class="active">
-      <a ui-sref="home" ng-hide="expertLogedin">Home</a>
-      <a ng-show="expertLogedin">Home</a>
+      <!-- <a ui-sref="home" ng-hide="expertLogedin">Home</a>
+      <a ng-show="expertLogedin">Home</a> -->
       <!-- <a ui-sref="profile">Profile</a> -->
       <!-- <a ui-sref="edit-user" >Account</a> -->
-      <a ui-sref="edit-user" ng-show="userLogedin">Account</a>
+      <a ui-sref="home">Home</a>
+      <a ng-show="userLogedin">Account</a>
       <a ng-show="userLogedin" ui-sref="user-booking">Bookings</a>
       <a ng-show="expertLogedin" ui-sref="expert-booking">Bookings</a>
       <a ng-show="userLogedin" ui-sref="edit-user({id:userdata._id})">Profile</a>
       <a ng-show="expertLogedin" ui-sref="expert-profile({id:userdata._id})">Profile</a>
       <a ui-sref="about">About Us</a>
       <a ui-sref="contact">Contact Us</a>
-      <a ui-sref="faq">Help</a>
+      <a ui-sref="faq" ng-if="(!expertLogedin && userLogedin)|| (expertNotLogedin)">Help</a>
+      <a ui-sref="faq-expert" ng-if="expertLogedin && !userLogedin">Help</a>
 
    </li>
 </ul>

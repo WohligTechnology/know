@@ -37,12 +37,12 @@
 
                             <!-- <a ng-if="userLogedin" ui-sref="home" class="display-inline"> <img ng-src="img/logo2.png" alt="" class="img-responsive expertise-logo" width="180" alt="logo" title="logo"> </a> -->
 
-                            <a ng-if="expertLogedin && !userLogedin" ui-sref="expert-booking" class="display-inline"> <img ng-src="img/logo2.png" alt="" class="img-responsive expertise-logo" width="180" alt="logo" title="logo"> </a>
+                            <a ng-if="expertLogedin && !userLogedin" ui-sref="home" class="display-inline"> <img ng-src="img/logo2.png" alt="" class="img-responsive expertise-logo" width="180" alt="logo" title="logo"> </a>
                             <!-- <a ng-if="!expertLogedin && !userLogedin" ui-sref="home-expert" class="display-inline"> <img ng-src="img/logo2.png" alt="" class="img-responsive expertise-logo" width="180" alt="logo" title="logo"> </a> -->
 
                             <a ng-if="userLogedin && !expertLogedin" ui-sref="home" class="display-inline"><img ng-src="img/logou.png" alt="" class="img-responsive user-logo " width="180" alt="logo" title="logo"> </a>
 
-                            <a ng-if="expertLogedin && !userLogedin" ui-sref="expert-booking" class="display-inline"><img ng-src="img/logo2.png" alt="" class="img-responsive user-logo " width="180" alt="logo" title="logo"> </a>
+                            <a ng-if="expertLogedin && !userLogedin" ui-sref="home" class="display-inline"><img ng-src="img/logo2.png" alt="" class="img-responsive user-logo " width="180" alt="logo" title="logo"> </a>
 
                             <a ui-sref="home" class="display-inline"><img ng-src="img/logoe.png" alt="" class="img-responsive expert-home " width="180" alt="logo" title="logo">
                             </a>
@@ -56,7 +56,7 @@
                             <li>
                                 <!-- <a ng-if="!userLogedin" ui-sref="home-expert"> -->
                                     <button class="btn-animate-become b btn font-bold btn-1 btn-1b" ng-click="becomeExpertBtn();">Become an expert</button>
-                                    
+
                                 <!-- </a> -->
                             </li>
 
@@ -178,8 +178,12 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="" class="display-inline">
+                                <a href="" class="display-inline" ng-if="(!expertLogedin && userLogedin)|| (expertNotLogedin)">
                                     <img src="img/help2.png" class="black-img" alt="" width="30" ui-sref="faq">
+                                    <img src="img/help.png" class="white-img" alt="" width="30" ui-sref="faq" tooltip-placement="{{placement.selected}}" uib-tooltip="HELP {{placement.selected}}">
+                                </a>
+                                <a href="" class="display-inline" ng-if="expertLogedin && !userLogedin">
+                                    <img src="img/help2.png" class="black-img" alt="" width="30" ui-sref="faq-expert">
                                     <img src="img/help.png" class="white-img" alt="" width="30" ui-sref="faq" tooltip-placement="{{placement.selected}}" uib-tooltip="HELP {{placement.selected}}">
                                 </a>
                             </li>

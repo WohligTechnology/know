@@ -480,10 +480,16 @@
                                         <div class="row" ng-if="userForm.callTime=='custom' || userForm.callTime=='unavailable'">
                                             <div class="col-md-12 col-sm-12 col-xs-12 pb20">
                                                 <!-- <form action="" class="form-input"> -->
-                                                <div class="form-group display-inline">
+                                                <div class="form-group display-inline" ng-if="userForm.callTime=='custom'">
                                                     <label for="exampleInputPassword1">SELECT DAY</label>
                                                     <select class="form-control text-up" ng-model="userForm.callday">
                                                         <option value="{{weekday}}" ng-repeat="weekday in weekdays">{{weekday}}</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group display-inline" ng-if="userForm.callTime=='unavailable'">
+                                                    <label for="exampleInputPassword1">SELECT DAY</label>
+                                                    <select class="form-control text-up" ng-model="userForm.callday">
+                                                        <option value="{{weekday}}" ng-repeat="weekday in unavailWeekdays">{{weekday}}</option>
                                                     </select>
                                                 </div>
 

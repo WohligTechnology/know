@@ -1012,6 +1012,7 @@ $scope.mesg = [];
         //  };
 
         $scope.weekdays = ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY'];
+        $scope.unavailWeekdays = ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY'];
 
 
         $scope.deleteCall = function(formValid) {
@@ -1298,6 +1299,14 @@ $scope.mesg = [];
     .controller('FaqCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("faq");
         $scope.menutitle = NavigationService.makeactive("FAQ");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.expertlogo = "";
+        $scope.userlogo = "user-page";
+    })
+    .controller('FaqExpertCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        $scope.template = TemplateService.changecontent("faq-expert");
+        $scope.menutitle = NavigationService.makeactive("FAQ-Expert");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.expertlogo = "";
