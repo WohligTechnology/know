@@ -31,7 +31,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">AREA OF EXPERTISE</label>
                                     <div>
-                                        <input ng-change="searchExpert()" value="{{expertise.value}}" type="checkbox" ng-model="selectedAll" ng-click="checkAll()" />
+                                        <input value="{{expertise.value}}" type="checkbox" ng-model="selectedAll.expertise" ng-click="checkAll()" />
                                         <label>
                                             Select All
                                         </label>
@@ -50,9 +50,9 @@
 
                                     <label for="exampleInputEmail2">LOCATION</label>
                                     <div>
-                                      <input ng-change="searchExpert()" value="{{location.value}}" type="checkbox" ng-model="selectedAllLocation" ng-click="checkAllLocation()"/>
+                                        <input value="{{location.value}}" type="checkbox" ng-model="selectedAll.location" ng-click="checkAllLocation()" />
                                         <label>
-                                            Select All{{selectedAllLocation}}
+                                            Select All
                                         </label>
                                     </div>
 

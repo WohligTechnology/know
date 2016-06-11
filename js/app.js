@@ -136,7 +136,6 @@ firstapp.filter('uploadpath', function() {
             other += "&style=" + style;
         }
         if (input) {
-            console.log(input);
             if (input.indexOf('https://') == -1) {
                 return imgpath + "?file=" + input + other;
             } else {
@@ -148,8 +147,6 @@ firstapp.filter('uploadpath', function() {
 
 firstapp.filter('showbtn', function(NavigationService) {
     return function(input, data) {
-        console.log('input', input);
-        console.log('data', data);
         if (input && data && input != "" && data != "") {
             if (data._id && data.shortList && data.shortList.length > 0) {
                 var foundIndex = _.findIndex(data.shortList, {
