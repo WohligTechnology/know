@@ -28,7 +28,7 @@
                             <!-- -------- both are not logedin ------------------------------------ -->
                             <!-- <a ng-if="!userLogedin && !expertLogedin" ui-sref="home" class="display-inline"> <img ng-src="img/logo2.png" alt="" class="img-responsive user-logo" width="180" alt="logo" title="logo"> </a> -->
 
-                              <a ng-if="userNotLogedin && expertNotLogedin" ui-sref="home" class="display-inline"><img ng-src="img/logou.png" alt="" class="img-responsive user-logo " width="180" alt="logo" title="logo"> </a>
+                            <a ng-if="userNotLogedin && expertNotLogedin" ui-sref="home" class="display-inline"><img ng-src="img/logou.png" alt="" class="img-responsive user-logo " width="180" alt="logo" title="logo"> </a>
 
                             <!-- <a ng-if="(!userLogedin && !expertLogedin) && (!userNotLogedin&&expertNotLogedin)" ui-sref="home" class="display-inline"> <img ng-src="img/logo2.png" alt="" class="img-responsive user-logo" width="180" alt="logo" title="logo"> </a>
 
@@ -53,9 +53,9 @@
                 <div class="col-md-8 col-sm-7">
                     <div class="righ-side pull-right custom-li mt10">
                         <ul>
-                            <li>
+                            <li ng-if="!userLogedin">
                                 <!-- <a ng-if="!userLogedin" ui-sref="home-expert"> -->
-                                    <button class="btn-animate-become b btn font-bold btn-1 btn-1b" ng-click="becomeExpertBtn();">Become an expert</button>
+                                <button class="btn-animate-become b btn font-bold btn-1 btn-1b" ng-click="becomeExpertBtn();">Become an expert</button>
 
                                 <!-- </a> -->
                             </li>
@@ -134,7 +134,7 @@
                                 <!-- -----------Expert Login Dropdown--------- -->
                                 <ul class="view-dropdown" ng-if="expertLogedin && !userLogedin">
                                     <li>
-                                      <a href="" ui-sref="expert-profile({id:userdata._id})" class="text-uppercase color-primary" ng-if="userdata.name && !userdata.firstName">
+                                        <a href="" ui-sref="expert-profile({id:userdata._id})" class="text-uppercase color-primary" ng-if="userdata.name && !userdata.firstName">
                                         {{userdata.name}}
                                       </a>
                                         <a href="" ui-sref="expert-profile({id:userdata._id})" class="text-uppercase color-primary" ng-if="userdata.name && userdata.firstName">
@@ -142,9 +142,9 @@
                                       </a>
                                     </li>
                                     <li ng-show="expertLogedin"><a href="" class="text-uppercase" title="Your Booking" ui-sref="expert-booking">your booking</a></li>
-                                  <li ng-show="expertLogedin"><a href="" class="text-uppercase" title="Edit Account" ui-sref="expert-profile({id:userdata._id})">edit profile</a></li>
-                                  <li ng-show="expertLogedin"><a class="text-uppercase" title="Change Password" ui-sref="change-expert-password({id:userdata._id})">change password</a></li>
-                                  <li ng-show="expertLogedin"><a ui-sref="home-expert" class="text-uppercase" title="Logout" ng-click="expertLogout();">logout</a></li>
+                                    <li ng-show="expertLogedin"><a href="" class="text-uppercase" title="Edit Account" ui-sref="expert-profile({id:userdata._id})">edit profile</a></li>
+                                    <li ng-show="expertLogedin"><a class="text-uppercase" title="Change Password" ui-sref="change-expert-password({id:userdata._id})">change password</a></li>
+                                    <li ng-show="expertLogedin"><a ui-sref="home-expert" class="text-uppercase" title="Logout" ng-click="expertLogout();">logout</a></li>
                                 </ul>
 
 
@@ -201,10 +201,10 @@
                 <span class="heading-menu">Menu</span>
                 <div class="template menu" ng-include="template.menu"></div>
                 <div class="mt30">
-                    <button class="btn btn-become text-uppercase ask-jack"  ng-controller="headerctrl" ng-click="open4('sm')">ask an expert</button>
-                    <button class="btn btn-become text-uppercase become-expert" ui-sref="home-expert" ng-hide="userLogedin">become an expert</button>
+                    <button class="btn btn-become text-uppercase ask-jack" ng-controller="headerctrl" ng-click="open4('sm')">ask an expert</button>
+                    <button class="btn btn-become text-uppercase become-expert" ui-sref="home-expert" ng-hide="userLogedin || expertLogedin">become an expert</button>
 
-                    <button class="btn btn-become text-uppercase become-expert" ng-if="userLogedin" >become an expert</button>
+                    <!-- <button class="btn btn-become text-uppercase become-expert" ng-if="userLogedin" >become an expert</button> -->
                 </div>
             </div>
         </div>

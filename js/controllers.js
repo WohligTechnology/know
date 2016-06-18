@@ -958,8 +958,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.userSubmitForm = function(formValid) {
             if (formValid.$valid) {
+              console.log('formValid',formValid);
                 //$scope.formComplete = true;
+                // console.log('start date',$scope.experi.startDate);
+                // console.log('end date',$scope.experi.endDate);
                 console.log("////", $scope.userForm);
+                // for(var i=$scope.userForm.experience;i<)
+                _.forEach($scope.userForm.experience, function(n) {
+                  console.log('n.endDate',n.endDate);
+                  if(n.endDate=='Thu Jan 01 1970 05:30:00 GMT+0530 (IST)' || n.endDate==null){
+                    n.endDate=new Date();
+                    console.log('n.endDate new date',n.endDate);
+                  }
+                  });
+                if($scope.userForm.experience)
                 if ($scope.userForm.callTime == "weekdays") {
                     $scope.calldetail = [];
                     $scope.userForm.callSettings = [];
@@ -1612,31 +1624,44 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 timestamp: new Date()
             };
             NavigationService.getUser(function(user) {
-                user.shortList.push(input);
-                console.log('userid', user._id);
+                $scope.emptycheck = _.isEmpty(user);
+                if ($scope.emptycheck == false) {
+                    console.log('user in search', user);
+                    user.shortList.push(input);
+                    delete user._id;
+                    NavigationService.editProfile(user, function(data) {
+                        if (data.value === true) {
+                            $scope.mesg.push({
+                                type: 'success',
+                                msg: 'Added to the Shortlist'
+                            });
+                            NavigationService.getUser(function(logindata) {
+                                _.each($scope.expertdata, function(n) {
+                                    n.showbtn = $filter('showbtn')(n._id, logindata);
 
-                delete user._id;
-                NavigationService.editProfile(user, function(data) {
-                    // console.log('addWishlist', data);
-                    if (data.value === true) {
-                        $scope.mesg.push({
-                            type: 'success',
-                            msg: 'added to the wishlist'
-                        });
-                        NavigationService.getUser(function(logindata) {
-                            _.each($scope.expertdata, function(n) {
-                                n.showbtn = $filter('showbtn')(n._id, logindata);
-
+                                })
                             })
-                        })
-                    }
+                        }
+                        $scope.closeAlert = function(index) {
+                            $scope.mesg.splice(index, 1);
+                        }
+                    });
+                    $scope.mesg = [];
+                } else {
+                    $scope.noLogin = true;
+                    console.log('user is not here');
+                    $scope.mesg.push({
+                        type: 'success',
+                        msg: 'Please Login to Shortlist'
+                    });
                     $scope.closeAlert = function(index) {
-                        $scope.mesg.splice(index, 1);
-                    }
-                });
-                $scope.mesg = [];
+                            $scope.mesg.splice(index, 1);
+                        }
+                        //
+                }
+                //
             })
-
+            $scope.mesg = [];
         };
 
 

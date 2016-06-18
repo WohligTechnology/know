@@ -80,7 +80,8 @@
                     </div>
                 </div>
                 <div class="col-md-8 col-sm-8">
-                    <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="3000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
+                    <uib-alert ng-if="!noLogin" ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="3000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
+                    <uib-alert ng-if="noLogin" ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="3000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
                     <div class="search">
                         <div class="filter-title">
                             <h4 ng-if="expertdata.length==1 && expertdata.length<=1">SEARCH RESULT : {{expertdata.length}} RESULT FOUND</h4>
@@ -91,7 +92,7 @@
                                 <div class="col-md-3 col-sm-4">
                                     <div class="search-img margin-auto">
                                         <!-- <img ng-src="{{userForm.image|uploadpath}}" class="img-responsive margin-auto" ng-if="userForm.image" style="height:200px;"> -->
-                                        <img ng-src="{{experts.image|uploadpath}}" alt="" style="height:200px;">
+                                        <img ng-if="experts.image" ng-src="{{experts.image|uploadpath}}" alt="" style="height:200px;">
                                     </div>
                                     <div class="short text-center mt10">
                                         <button type="button" name="button" class="btn btn-animate-inverse-org text-uppercase" ng-click="addToWishlist(experts._id)" ng-if="experts.showbtn==true">shortlist</button>
