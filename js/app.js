@@ -201,9 +201,6 @@ firstapp.directive('uploadImage', function($http, $filter) {
                             url: $filter("uploadpath")(n)
                         });
                     });
-                } else {
-                    $scope.image = {};
-                    $scope.image.url = $filter("uploadpath")($scope.model);
                 }
 
             }
