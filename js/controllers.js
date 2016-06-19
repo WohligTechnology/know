@@ -1633,7 +1633,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         if (data.value === true) {
                             $scope.mesg.push({
                                 type: 'success',
-                                msg: 'Added to the Shortlist'
+                                msg: 'Added To Your Shortlist'
                             });
                             NavigationService.getUser(function(logindata) {
                                 _.each($scope.expertdata, function(n) {
