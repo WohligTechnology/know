@@ -104,6 +104,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
             templateUrl: "views/template.html",
             controller: 'TermsConditionCtrl'
         })
+        .state('terms-condition-expert', {
+            url: "/terms-condition-expert",
+            templateUrl: "views/template.html",
+            controller: 'TermsConditionExpertCtrl'
+        })
         .state('contact', {
             url: "/contact",
             templateUrl: "views/template.html",

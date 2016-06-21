@@ -769,6 +769,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
     })
+    .controller('TermsConditionExpertCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        $scope.template = TemplateService.changecontent("terms-condition-expert");
+        $scope.menutitle = NavigationService.makeactive("Terms-Condition-expert");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.expertlogo = "";
+        $scope.userlogo = "user-page";
+    })
     .controller('HomeExpertCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $window) {
         $scope.template = TemplateService.changecontent("home-expert");
         $scope.menutitle = NavigationService.makeactive("Home-Expert");
