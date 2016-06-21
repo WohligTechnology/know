@@ -357,8 +357,8 @@ header {
     }
     &:after {
       content: "";
-      @include size(100%, 50px);
-      @include position(absolute, -25px null null null );
+      @include size(100%, 60px);
+      @include position(absolute, -45px null null null );
     }
   }
 }
@@ -368,6 +368,10 @@ header {
     border-top: 1px solid #474747;
     &:before { border-bottom: 15px solid #474747; }
   }
+}
+.close-icon {
+  cursor: pointer;
+  font-size: 20px;
 }
 .notification-list{
   padding: 10px;
