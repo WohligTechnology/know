@@ -1,7 +1,7 @@
-// var adminurl = "http://chaitalee.com/";
-var adminurl = "http://146.148.4.222/";
-var imgurl = "http://146.148.4.222/upload/";
-// var imgurl = adminurl + "upload/";
+var adminurl = "http://chaitalee.com/";
+// var adminurl = "http://146.148.4.222/";
+// var imgurl = "http://146.148.4.222/upload/";
+var imgurl = adminurl + "upload/";
 var imgpath = imgurl + "readFile";
 var uploadurl = imgurl;
 
@@ -72,6 +72,18 @@ var navigationservice = angular.module('navigationservice', [])
             //console.log('Navigation form data: ', formData);
             $http({
                 url: adminurl + 'ExpertUser/profile',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    _id: _id
+                }
+
+            }).success(callback);
+        },
+        getOneUser: function(_id, callback) {
+            //console.log('Navigation form data: ', formData);
+            $http({
+                url: adminurl + 'user/getOne',
                 method: 'POST',
                 withCredentials: true,
                 data: {
@@ -392,7 +404,6 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         getExpertProfile: function(_id, callback) {
-            // console.log('form data: ', formData);
             $http({
                 url: adminurl + 'ExpertUser/getOne',
                 method: 'POST',
@@ -436,17 +447,11 @@ var navigationservice = angular.module('navigationservice', [])
                 data: data
             }).success(callback);
         },
-        getPayment: function(status, id, user, callback) {
-            console.log(status);
-            console.log(id);
+        getPayment: function(data, callback) {
             $http({
                 url: adminurl + 'Booking/saveData',
                 method: 'POST',
-                data: {
-                    "_id": id,
-                    "status": status,
-                    "from": user
-                }
+                data: data
             }).success(callback);
         },
         getExpertBooking: function(formData, callback) {

@@ -83,7 +83,7 @@
                     </div>
 
 <div class="summary mt50" ng-if="tab2=='summary'">
-            <h4 class="font-raleway color-success font-med">{{expertprofile.areaOfExpertise}}</h4>
+          <a ui-sref="search({search:expertprofile.areaOfExpertise})">  <h4 class="font-raleway color-success font-med cpointer">{{expertprofile.areaOfExpertise}}</h4></a>
             <!-- <p class="color-base font-light f16">2 year of experience in MSBI.</p> -->
             <p class="color-base font-light f16">{{expertprofile.descriptionAndSkills}}</p>
             <p class="color-base font-light f16">{{expertprofile.specilization}}
