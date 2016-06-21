@@ -1234,6 +1234,14 @@ padding: 13px 0px 11px 0px;
     color:$grey-base;
     font-weight: 300;
   }
+ul{
+    li{
+     color:$grey-base;
+    }
+  }
+}
+.padding-li{
+  padding-left: 20px;
 }
 // search
 .range-slider {
