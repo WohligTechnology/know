@@ -235,7 +235,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.getPay = function(status, id, expert) {
         $scope.userpay._id = id;
         $scope.userpay.status = status;
+        console.log(expert);
         NavigationService.getExpertProfile(expert, function(data2) {
+          console.log("/////////////////////////////",data2);
             $scope.userpay.expertemail = data2.data.email;
             $scope.userpay.expertname = data2.data.firstName;
             NavigationService.getPayment($scope.userpay, function(data) {
