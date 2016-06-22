@@ -358,7 +358,7 @@ header {
     &:after {
       content: "";
       @include size(100%, 60px);
-      @include position(absolute, -45px null null null );
+      @include position(absolute, -45px null null 0 );
     }
   }
 }

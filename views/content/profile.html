@@ -21,6 +21,7 @@
                 <div class="profile-bx text-center">
                     <div class="pro-img-box">
                         <img ng-src="{{expertprofile.image|uploadpath:200}}" alt="">
+                        <img ng-if="expertprofile.image.length==0" ng-src="img/defaultlogo.png" alt="">
                     </div>
                     <div class="pro-name">
                         <h4 class="margin0 color-base font-raleway font-bold">{{expertprofile.firstName + " " +expertprofile.lastName}}</h4>

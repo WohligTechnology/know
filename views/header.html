@@ -73,7 +73,7 @@
                                     <div class="over-flow2">
                                         <div class="notify" ng-repeat="noti in notificationdata track by $index">
 
-                                            <div class="notification-list clearfix">
+                                            <div class="notification-list clearfix" ng-click="onNotification(noti._id);">
                                                 <div class="pull-left">
                                                     <div class="notify-imgholder">
                                                         <img ng-src="{{noti.image|uploadpath}}" alt="" class="img-circle img-responsive" width="30" ng-if="noti.image">

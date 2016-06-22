@@ -93,6 +93,7 @@
                                     <div class="search-img margin-auto">
                                         <!-- <img ng-src="{{userForm.image|uploadpath}}" class="img-responsive margin-auto" ng-if="userForm.image" style="height:200px;"> -->
                                         <img ng-if="experts.image" ng-src="{{experts.image|uploadpath}}" alt="" style="height:200px;">
+                                        <img ng-if="experts.image.length==0" ng-src="img/defaultlogo.png" alt="" style="height:200px;">
                                     </div>
                                     <div class="short text-center mt10">
                                         <button type="button" name="button" class="btn btn-animate-inverse-org text-uppercase" ng-click="addToWishlist(experts._id)" ng-if="experts.showbtn==true">shortlist</button>

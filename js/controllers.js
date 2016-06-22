@@ -237,7 +237,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.userpay.status = status;
         console.log(expert);
         NavigationService.getExpertProfile(expert, function(data2) {
-          console.log("/////////////////////////////",data2);
+            console.log("/////////////////////////////", data2);
             $scope.userpay.expertemail = data2.data.email;
             $scope.userpay.expertname = data2.data.firstName;
             NavigationService.getPayment($scope.userpay, function(data) {
@@ -299,7 +299,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
     })
-    .controller('BookNowCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $window, $stateParams, $state) {
+    .controller('BookNowCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $window, $stateParams, $state, $filter) {
         $scope.template = TemplateService.changecontent("book-now");
         $scope.menutitle = NavigationService.makeactive("Book-Now");
         TemplateService.title = $scope.menutitle;
@@ -323,12 +323,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     if (data2.value != false) {
                         $scope.userForm.expertemail = data2.data.email;
                         $scope.userForm.expertname = data2.data.firstName;
+                        if ($scope.userForm.bookDate && $scope.userForm.bookTime) {
+                            var newdate = $filter('date')($scope.userForm.bookDate, 'yyyy-MM-dd');
+                            var newtime = $filter('date')($scope.userForm.bookTime, 'HH:mm');
+                            console.log(newdate, newtime);
+                            var dateParts = newdate.toString().split('-');
+                            var timeParts = newtime.toString().split(':');
+                            if (dateParts && timeParts) {
+                                dateParts[1] -= 1;
+                                $scope.userForm.callTime = new Date(Date.UTC.apply(undefined, dateParts.concat(timeParts))).toISOString();
+                                console.log('startTime', $scope.userForm.callTime);
+                            }
+                        }
+                        delete $scope.userForm.bookDate;
+                        delete $scope.userForm.bookTime;
+                        console.log($scope.userForm);
                         NavigationService.getBooking($scope.userForm, function(data) {
                             $scope.userForm = data.data;
-                            $scope.userForm.bookDate = new Date();
-                            $scope.userForm.bookTime = new Date();
                             $scope.userForm.callDuration = new Date();
-                            console.log('booknow', data.value);
                             if (data.value == true) {
                                 $scope.formComplete = true;
                                 $timeout(function() {
@@ -337,8 +349,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                                         $scope.formComplete = "";
                                     }, 2000)
 
-                                }, 3000)
-                                console.log('booknow', $scope.userForm);
+                                }, 3000);
                             } else {
                                 if (data.data == 'User not loggd-in') {
                                     $scope.nouser = true;
@@ -773,7 +784,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 console.log('HomeExpertCtrl', $scope.userForm);
                 if ($scope.userForm.password == $scope.userForm.confirmPassword) {
                     NavigationService.ExpertSignup($scope.userForm, function(data) {
-                        $scope.userForm = data.data;
                         if (data.value == true) {
                             // $timeout(function () {
                             $scope.formComplete = true;
@@ -1771,6 +1781,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     });
     // $scope.fromUrl = $state.
 
+    // ----------for Notification onClick---------------
+    $scope.notificationdata={};
+    $scope.onNotification=function(id){
+      NavigationService.getNotification({
+          from: "user"
+      }, function(data) {
+          $scope.notificationdata = data.data;
+          console.log('$scope.notificationdata',$scope.notificationdata);
+      });
+    }
+    // ----------------end of  Notification onClick-----------------
+
     $scope.becomeExpertBtn = function() {
         NavigationService.getUser(function(data) {
             // console.log('id',data._id);
@@ -1821,7 +1843,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     // --------User Login----------
     $scope.userdata = {};
     NavigationService.getUser(function(data) {
-        if (data._id) {
+        if (data._id && data._id != "") {
             $scope.userdata = data;
             $scope.userLogedin = true;
             NavigationService.getNotification({
@@ -1841,7 +1863,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     // --------Expert Login----------
     NavigationService.getExpert(function(data) {
         console.log('false');
-        if (data._id) {
+        if (data._id && data._id != "") {
             $scope.userdata = data;
             $scope.expertLogedin = true;
             NavigationService.getNotification({

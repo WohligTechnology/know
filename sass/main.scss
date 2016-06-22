@@ -1469,6 +1469,11 @@ min-height: 400px;
 .breadcrumb > .active {
     color: $brand-success;
 }
+.user-img{
+  img{
+    height: 100px;
+  }
+}
 // animation end
 @import "amit";
 @import "mobile";
