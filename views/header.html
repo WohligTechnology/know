@@ -71,9 +71,9 @@
                                 <div class="notification view-dropdown" ui-sref="user-booking" ng-if="notificationdata && notificationdata.length>0">
                                     <h4 class="text-center font-light color-grey">Notifications</h4>
                                     <div class="over-flow2">
-                                        <div class="notify" ng-repeat="noti in notificationdata track by $index">
+                                        <div class="notify" ng-repeat="noti in notificationdata track by $index"  ng-click="onNotification(noti._id);">
 
-                                            <div class="notification-list clearfix" ng-click="onNotification(noti._id);">
+                                            <div class="notification-list clearfix">
                                                 <div class="pull-left">
                                                     <div class="notify-imgholder">
                                                         <img ng-src="{{noti.image|uploadpath}}" alt="" class="img-circle img-responsive" width="30" ng-if="noti.image">
@@ -85,6 +85,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </li>
@@ -191,7 +192,6 @@
                     </div>
                 </div>
             </div>
-
             <!--
         <div class="collapse navbar-collapse" id="nav-collapse">
                <div ng-include="template.menu" class="template menu"></div>

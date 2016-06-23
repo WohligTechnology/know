@@ -766,14 +766,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
     })
-    .controller('TermsConditionExpertCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("terms-condition-expert");
-        $scope.menutitle = NavigationService.makeactive("Terms-Condition-expert");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.expertlogo = "";
-        $scope.userlogo = "user-page";
-    })
     .controller('HomeExpertCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $window) {
         $scope.template = TemplateService.changecontent("home-expert");
         $scope.menutitle = NavigationService.makeactive("Home-Expert");
@@ -1790,15 +1782,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     // $scope.fromUrl = $state.
 
     // ----------for Notification onClick---------------
-    $scope.notificationdata={};
-    $scope.onNotification=function(id){
-      NavigationService.getNotification({
-          from: "user"
-      }, function(data) {
-          $scope.notificationdata = data.data;
-          console.log('$scope.notificationdata',$scope.notificationdata);
-      });
+    $scope.editNotificationdata = {};
+    $scope.onNotification = function(id) {
+        NavigationService.editNotification({
+            _id: id
+        }, function(data) {
+            $scope.editNotificationdata = data.data;
+            console.log('$scope.editNotificationdata', $scope.editNotificationdata);
+        });
     }
+
     // ----------------end of  Notification onClick-----------------
 
     $scope.becomeExpertBtn = function() {

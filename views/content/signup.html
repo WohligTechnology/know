@@ -45,7 +45,7 @@
                 </div>
               </div>
               <div class="mail mt10 pos-relative">
-                <input type="text" name="mobile" placeholder="MOBILE NUMBER" class="form-control display-inline log" ng-model="userForm.mobile" required>
+                <input type="tel" name="mobile" placeholder="MOBILE NUMBER" maxlength="10" class="form-control display-inline log" ng-model="userForm.mobile" required only-digits>
                 <div class="error-msg" ng-show="user.mobile.$error.required && user.mobile.$touched">Please Enter Your Mobile No.</div>
 
                 <div class="icon-mail display-inline">

@@ -1,7 +1,7 @@
-// var adminurl = "http://146.148.4.222/";
-// var imgurl = "http://146.148.4.222/upload/";
-var adminurl = "http://chaitalee.com/";
-var imgurl = adminurl + "upload/";
+var adminurl = "http://146.148.4.222/";
+var imgurl = "http://146.148.4.222/upload/";
+// var adminurl = "http://chaitalee.com/";
+// var imgurl = adminurl + "upload/";
 var imgpath = imgurl + "readFile";
 var uploadurl = imgurl;
 
@@ -471,6 +471,15 @@ var navigationservice = angular.module('navigationservice', [])
             //console.log('Navigation form data: ', formData);
             $http({
                 url: adminurl + 'Notification/findNotification',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+
+            }).success(callback);
+        },
+        editNotification: function(formData, callback) {
+            $http({
+                url: adminurl + 'Notification/editNotification',
                 method: 'POST',
                 withCredentials: true,
                 data: formData
