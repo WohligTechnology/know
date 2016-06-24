@@ -307,6 +307,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
 
+        $scope.minTime = new Date();
+        // $scope.minTime = currentDate.getTime();
+
+
+        // var mytime=new Date().getTime();
+        // console.log('//////////',mytime);
+        // var mytime1=mytime.split(" ");
+        // console.log('111111111',mytime1);
+
         $scope.ptions = {
             minDate: new Date()
         }
