@@ -1506,5 +1506,10 @@ label {
     margin: 0 2px !important;
 }
 // animation end
+.alpha{
+  li{
+    list-style-type: lower-alpha;
+  }
+}
 @import "amit";
 @import "mobile"; // @import "upload";
