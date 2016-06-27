@@ -333,20 +333,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         $scope.userForm.expertemail = data2.data.email;
                         $scope.userForm.expertname = data2.data.firstName;
                         if ($scope.userForm.bookDate && $scope.userForm.bookTime) {
-                            var newdate = $filter('date')($scope.userForm.bookDate, 'yyyy-MM-dd');
-                            var newtime = $filter('date')($scope.userForm.bookTime, 'HH:mm');
-                            console.log(newdate, newtime);
-                            var dateParts = newdate.toString().split('-');
-                            var timeParts = newtime.toString().split(':');
-                            if (dateParts && timeParts) {
-                                dateParts[1] -= 1;
-                                $scope.userForm.callTime = new Date(Date.UTC.apply(undefined, dateParts.concat(timeParts))).toISOString();
-                                console.log('startTime', $scope.userForm.callTime);
-                            }
+                            var time = {};
+                            $scope.userForm.bookDate = new Date($scope.userForm.bookDate);
+                            $scope.userForm.bookTime = new Date($scope.userForm.bookTime);
+                            time.year = $scope.userForm.bookDate.getFullYear();
+                            time.month = $scope.userForm.bookDate.getMonth();
+                            time.date = $scope.userForm.bookDate.getDate();
+                            time.hours = $scope.userForm.bookTime.getHours();
+                            time.mins = $scope.userForm.bookTime.getMinutes();
+                            var combined = new Date(time.year, time.month, time.date, time.hours, time.mins, 0, 0);
+                            $scope.userForm.callTime = combined.getTime();
+                            console.log($scope.userForm.callTime);
                         }
                         delete $scope.userForm.bookDate;
                         delete $scope.userForm.bookTime;
-                        console.log($scope.userForm);
                         NavigationService.getBooking($scope.userForm, function(data) {
                             $scope.userForm = data.data;
                             $scope.userForm.callDuration = new Date();
