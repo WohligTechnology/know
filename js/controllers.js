@@ -271,7 +271,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.sendData = {};
         $scope.sendData.from = "expert";
         $scope.acceptRequest = function(val, id, user) {
-            NavigationService.getOneUser(user, function(data2) {
+            NavigationService.getOneUser(user._id, function(data2) {
                 if (val == 1) {
                     $scope.sendData.status = "accept";
                     $scope.sendData._id = id;
