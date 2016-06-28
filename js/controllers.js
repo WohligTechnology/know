@@ -271,6 +271,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.sendData = {};
         $scope.sendData.from = "expert";
         $scope.acceptRequest = function(val, id, user) {
+            console.log(user);
             NavigationService.getOneUser(user._id, function(data2) {
                 if (val == 1) {
                     $scope.sendData.status = "accept";
@@ -341,9 +342,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             time.date = $scope.userForm.bookDate.getDate();
                             time.hours = $scope.userForm.bookTime.getHours();
                             time.mins = $scope.userForm.bookTime.getMinutes();
-                            var combined = new Date(time.year, time.month, time.date, time.hours, time.mins, 0, 0);
-                            $scope.userForm.callTime = combined.getTime();
-                            console.log($scope.userForm.callTime);
+                            $scope.userForm.callTime = new Date(Date.UTC(time.year, time.month, time.date, time.hours, time.mins, 0, 0));
                         }
                         delete $scope.userForm.bookDate;
                         delete $scope.userForm.bookTime;

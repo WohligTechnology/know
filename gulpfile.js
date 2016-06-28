@@ -15,6 +15,7 @@ var jsArray = [
   './bower_components/angular-flexslider/angular-flexslider.js',
   './bower_components/angular-rangeslider/angular.rangeSlider.js',
   './bower_components/lodash/dist/lodash.js',
+  './bower_components/moment/min/moment.min.js',
   './bower_components/angularjs-imageupload-directive/public/javascripts/imageupload.js',
   './js/app.js',
   './js/controllers.js',
