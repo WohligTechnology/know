@@ -307,8 +307,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.navigation = NavigationService.getnav();
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
-
         $scope.minTime = new Date();
+
+        $scope.setMinTime = function() {
+            console.log($scope.userForm.bookDate);
+            var time = {};
+            $scope.userForm.bookDate = new Date($scope.userForm.bookDate);
+            var nowTime = new Date();
+            if ($scope.userForm.bookDate > nowTime) {
+                time.year = $scope.userForm.bookDate.getFullYear();
+                time.month = $scope.userForm.bookDate.getMonth();
+                time.date = $scope.userForm.bookDate.getDate();
+                time.hours = nowTime.getHours();
+                time.mins = nowTime.getMinutes();
+                $scope.minTime = new Date(time.year, time.month, time.date, time.hours, time.mins, 0, 0);
+            } else {
+                $scope.minTime = new Date();
+            }
+            console.log($scope.minTime);
+            // $scope.userForm.callTime = new Date(time.year, time.month, time.date, time.hours, time.mins, 0, 0);
+        }
+
         // $scope.minTime = currentDate.getTime();
 
 

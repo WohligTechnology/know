@@ -27,7 +27,7 @@
                                 <label for="">Select Date</label>
                                 <p class="input-group">
                                     <!-- <input name="bookDate" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.bookDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" /> -->
-                                    <input type="text" name="bookDate" class="form-control" uib-datepicker-popup is-open="popup2.opened" datepicker-options="ptions" ng-required="true" close-text="Close" ng-model="userForm.bookDate" date-disabled="disabled(date,mode)" required/>
+                                    <input type="text" name="bookDate" class="form-control" uib-datepicker-popup is-open="popup2.opened" datepicker-options="ptions" ng-required="true" close-text="Close" ng-model="userForm.bookDate" date-disabled="disabled(date,mode)" required ng-change="setMinTime();"/>
                                     <span class="input-group-btn">
            <button type="button" class="btn btn-default pad" ng-click="open2()"><i class="ln-calendar3"></i></button>
          </span>
@@ -51,7 +51,9 @@
                         <div class="mail mt15 pos-relative">
                             <label for="">Select Time</label>
                             <br>
-
+                            <!-- <pre>
+                              {{minTime}}
+                            </pre> -->
                             <!-- <input type="time" ng-min="minTinme" name="" style="width: 100%;height: 34px;" ng-model="userForm.bookTime" required> -->
                             <uib-timepicker ng-model="userForm.bookTime" min="minTime" show-meridian="false"></uib-timepicker>
                         </div>
