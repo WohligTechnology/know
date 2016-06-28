@@ -342,7 +342,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             time.date = $scope.userForm.bookDate.getDate();
                             time.hours = $scope.userForm.bookTime.getHours();
                             time.mins = $scope.userForm.bookTime.getMinutes();
-                            $scope.userForm.callTime = new Date(Date.UTC(time.year, time.month, time.date, time.hours, time.mins, 0, 0));
+                            $scope.userForm.callTime = new Date(time.year, time.month, time.date, time.hours, time.mins, 0, 0);
                         }
                         delete $scope.userForm.bookDate;
                         delete $scope.userForm.bookTime;
@@ -569,44 +569,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
             $scope.mesg = [];
         };
-
-
-
-        // $scope.userSignup = function(formValid) {
-        //     console.log('SignupCtrl', $scope.userForm);
-        //     if (formValid.$valid) {
-        //
-        //         NavigationService.Signup($scope.userForm, function(data) {
-        //           if(data.value==true){
-        //             console.log($scope.userForm.password);
-        //             console.log($scope.userForm.confirmPassword);
-        //             if ($scope.userForm.password == $scope.userForm.confirmPassword) {
-        //                 $scope.userForm = data.data;
-        //                 //console.log('userformctrl', $scope.userForm);
-        //                 $state.go("home");
-        //             } else {
-        //                 $scope.mesg.push({
-        //                     type: 'success',
-        //                     msg: 'Password do not match.'
-        //                 });
-        //                 $scope.closeAlert = function(index) {
-        //                     $scope.mesg.splice(index, 1);
-        //                 }
-        //                 $scope.userForm.confirmPassword = "";
-        //             }
-        //           }else{
-        //             $scope.alreadyExist=true;
-        //           }
-        //
-        //
-        //
-        //         });
-        //
-        //     }
-        //     $scope.mesg = [];
-        // };
-
-
     })
 
 .controller('EditUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
