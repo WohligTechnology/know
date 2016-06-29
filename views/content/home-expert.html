@@ -79,7 +79,7 @@
               </div>
 
               <div class="login-lnk mt25">
-                <p class="color-white font-light">Already an Jacknow member?<span class="color-primary pointer" ng-click="openform('Login')"> Log in</span></p>
+                <p class="color-white font-light">Already an Jacknow member?<span class="color-primary pointer" ng-click="openform('Login')">&nbsp; Log in</span></p>
               </div>
             </form>
           </div>
@@ -95,12 +95,16 @@
                   <input type="password" class="form-control" id="exampleInputEmail1" ng-model="userForm.password" required>
                   <div class="error-msg" ng-show="user.password.$error.required && user.password.$touched">Please Enter Password.</div>
                 </div>
+                <div class="forg-pass pull-right">
+                  <a href="" class="color-primary font-light f13" ng-click="open3('sm'); $dismiss()">Forgot password?</a>
+                </div>
+                <div class="clearfix"></div>
                 <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="3000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
                 <div class="mt25">
                   <button class="btn btn-org" ng-click="getLogin(user)">SUBMIT</button>
                 </div>
                 <div class="login-lnk mt25">
-                  <p class="color-white">Don’t have an account?<span class="color-primary pointer" ng-click="openform()"> Sign up</span></p>
+                  <p class="color-white">Don’t have an account?<span class="color-primary pointer" ng-click="openform()">&nbsp; Sign up</span></p>
                 </div>
               </form>
             </div>

@@ -30,7 +30,7 @@
                             <form>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">AREA OF EXPERTISE</label>
-                                    <div>
+                                    <div class="pointer">
                                         <input value="{{expertise.value}}" type="checkbox" ng-model="selectedAll.expertise" ng-click="checkAll()" />
                                         <label>
                                             Select All
@@ -38,7 +38,7 @@
                                     </div>
 
                                     <div class="checkbox">
-                                        <div class="" ng-repeat="expertise in expertiseArr track by $index">
+                                        <div class="pointer" ng-repeat="expertise in expertiseArr track by $index">
                                             <input type="checkbox" ng-model="expertiseArr[$index].model" id="{{expertise.value}}" ng-change="searchExpert()">
                                             <label for="{{expertise.value}}">
                                                 <span></span> {{expertise.value}}
@@ -49,7 +49,7 @@
                                 <div class="form-group">
 
                                     <label for="exampleInputEmail2">LOCATION</label>
-                                    <div>
+                                    <div class="pointer">
                                         <input value="{{location.value}}" type="checkbox" ng-model="selectedAll.location" ng-click="checkAllLocation()" />
                                         <label>
                                             Select All
@@ -58,7 +58,7 @@
 
                                     <!-- <input type="text" ng-model="searchLocation" class="form-control filter-input" id="exampleInputEmail1" placeholder="eg. Mumbai, Pune, etc." ng-keyup="pushLocation(searchLocation,$event.keyCode)"> -->
                                     <div class="checkbox">
-                                        <div class="" ng-repeat="location in locationArr track by $index">
+                                        <div class="pointer" ng-repeat="location in locationArr track by $index">
                                             <input type="checkbox" ng-model="locationArr[$index].model" id="{{location.value}}" ng-change="searchExpert()">
                                             <label for="{{location.value}}">
                                                 <span></span> {{location.value}}
@@ -77,32 +77,32 @@
                             </form>
 <div class="some-expert">
     <label for="exampleInputEmail1">EXPERT</label>
-    <div>
+    <div class="pointer">
         <input value="{{expertise.value}}" type="checkbox" ng-model="selectedAll.expertise" ng-click="checkAll()" />
         <label>
             Education
         </label>
     </div>
 
-    <div>
+    <div class="pointer">
         <input value="{{expertise.value}}" type="checkbox" ng-model="selectedAll.expertise" ng-click="checkAll()" />
         <label>
             Careers
         </label>
     </div>
-    <div>
+    <div class="pointer">
         <input value="{{expertise.value}}" type="checkbox" ng-model="selectedAll.expertise" ng-click="checkAll()" />
         <label>
             Therapy
         </label>
     </div>
-    <div>
+    <div class="pointer">
         <input value="{{expertise.value}}" type="checkbox" ng-model="selectedAll.expertise" ng-click="checkAll()" />
         <label>
              Health
         </label>
     </div>
-    <div>
+    <div class="pointer">
         <input value="{{expertise.value}}" type="checkbox" ng-model="selectedAll.expertise" ng-click="checkAll()" />
         <label>
               Fitness
