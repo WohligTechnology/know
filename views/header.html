@@ -68,10 +68,10 @@
                                 <div class="noti-badge" ng-show="(userLogedin || expertLogedin) && notificationdata.length>0">
                                     <a href=""><span>{{notificationdata.length}}</span></a>
                                 </div>
-                                <div class="notification view-dropdown" ui-sref="user-booking" ng-if="notificationdata && notificationdata.length>0">
+                                <div class="notification view-dropdown" ng-if="notificationdata && notificationdata.length>0">
                                     <h4 class="text-center font-light color-grey">Notifications</h4>
                                     <div class="over-flow2">
-                                        <div class="notify" ng-repeat="noti in notificationdata track by $index"  ng-click="onNotification(noti._id);">
+                                        <div class="notify" ng-repeat="noti in notificationdata track by $index" ng-click="onNotification(noti._id);">
 
                                             <div class="notification-list clearfix">
                                                 <div class="pull-left">

@@ -1838,6 +1838,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }, function(data) {
             $scope.editNotificationdata = data.data;
             console.log('$scope.editNotificationdata', $scope.editNotificationdata);
+
         });
     }
 
@@ -1923,6 +1924,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 console.log('$scope.notificationdata expert', $scope.notificationdata);
             });
         } else {
+          console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
             $scope.expertNotLogedin = true;
             if (window.location.href.indexOf('expert-') != -1) {
                 $state.go('home');
