@@ -1507,8 +1507,10 @@ label {
 }
 // animation end
 .alpha {
+      padding-left: 15px;
     li {
         list-style-type: lower-alpha;
+        padding-left: 10px
     }
 }
 .uib-decrement,
@@ -1518,6 +1520,9 @@ label {
 .some-expert {
     border-top: 1px solid #ccc;
     padding-top: 18px;
+}
+.f17{
+      font-size: 17px;
 }
 @import "amit";
 @import "mobile"; // @import "upload";
