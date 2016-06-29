@@ -158,6 +158,9 @@ a {
 .mt30 {
     margin-top: 30px;
 }
+.mt40 {
+    margin-top: 40px;
+}
 .list-style {
     list-style: none;
 }
@@ -1512,6 +1515,9 @@ label {
         list-style-type: lower-alpha;
         padding-left: 10px
     }
+    span{
+      color:#969696;
+    }
 }
 .uib-decrement,
 .uib-increment {
@@ -1524,5 +1530,6 @@ label {
 .f17{
       font-size: 17px;
 }
+
 @import "amit";
 @import "mobile"; // @import "upload";
