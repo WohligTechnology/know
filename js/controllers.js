@@ -614,7 +614,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             if (formValid.$valid) {
                 $scope.formComplete = true;
                 $timeout(function() {
-                    $state.reload();
+                    $state.go("user-booking");
                     $timeout(function() {
                         $scope.formComplete = "";
                     }, 2000)
