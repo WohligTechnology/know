@@ -308,23 +308,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
         $scope.minTime = new Date();
+        $scope.isInvalid = true;
 
-        $scope.setMinTime = function() {
-            console.log($scope.userForm.bookDate);
+        $scope.checkTime = function() {
             var time = {};
-            $scope.userForm.bookDate = new Date($scope.userForm.bookDate);
-            var nowTime = new Date();
-            if ($scope.userForm.bookDate > nowTime) {
+            if ($scope.userForm.bookDate && $scope.userForm.bookTime) {
                 time.year = $scope.userForm.bookDate.getFullYear();
                 time.month = $scope.userForm.bookDate.getMonth();
                 time.date = $scope.userForm.bookDate.getDate();
-                time.hours = nowTime.getHours();
-                time.mins = nowTime.getMinutes();
-                $scope.minTime = new Date(time.year, time.month, time.date, time.hours, time.mins, 0, 0);
-            } else {
-                $scope.minTime = new Date();
+                time.hours = $scope.userForm.bookTime.getHours();
+                time.mins = $scope.userForm.bookTime.getMinutes();
+                $scope.userForm.callTime = new Date(time.year, time.month, time.date, time.hours, time.mins, 0, 0);
+                if ($scope.userForm.callTime < new Date()) {
+                    console.log("here");
+                    $scope.isInvalid = true;
+                } else {
+                    $scope.isInvalid = false;
+                }
             }
-            console.log($scope.minTime);
             // $scope.userForm.callTime = new Date(time.year, time.month, time.date, time.hours, time.mins, 0, 0);
         }
 
