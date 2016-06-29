@@ -52,7 +52,7 @@
                                                     <span class="media-object ln-calendar2 user-info-icon color-success"></span>
                                                 </a>
                                                 <div class="media-body">
-                                                    <h5 class="media-heading">{{book.bookDate| date : "dd.MM.y"}}</h5>
+                                                    <h5 class="media-heading">{{book.callTime| date : "dd.MM.y"}}</h5>
                                                     <span class="color-grey">Book Date</span>
                                                 </div>
                                             </div>
@@ -61,7 +61,7 @@
                                                     <span class="media-object ln-clock user-info-icon color-success"></span>
                                                 </a>
                                                 <div class="media-body">
-                                                    <h5 class="media-heading">{{book.bookTime |date : "h:mm a"}}</h5>
+                                                    <h5 class="media-heading">{{book.callTime |date : "h:mm a"}}</h5>
                                                     <span class="color-grey">Book Time</span>
                                                 </div>
                                             </div>
@@ -80,11 +80,11 @@
                                         <div class="btn-ac custom-li mt30">
                                             <ul class="padding0">
                                                 <li class="pull-left">
-                                                    <a href="" class="blue-link" ng-click="acceptRequest(1,book._id,book.user)">Accept</a>
+                                                    <a href="" class="blue-link" ng-click="acceptRequest(1,book._id,book.user)" ng-disabled="selectOnce">Accept</a>
 
                                                 </li>
                                                 <li class="pull-right">
-                                                    <a href="" class="grey-link" ng-click="acceptRequest(0,book._id,book.user)">Reject</a>
+                                                    <a href="" class="grey-link" ng-click="acceptRequest(0,book._id,book.user)" ng-disabled="selectOnce">Reject</a>
                                                 </li>
 
                                             </ul>
@@ -136,7 +136,7 @@
                                                     <span class="media-object ln-calendar2 user-info-icon color-success"></span>
                                                 </a>
                                                 <div class="media-body">
-                                                    <h5 class="media-heading">{{book.bookDate| date : "dd.MM.y"}}</h5>
+                                                    <h5 class="media-heading">{{book.callTime| date : "dd.MM.y"}}</h5>
                                                     <span class="color-grey">Book Date</span>
                                                 </div>
                                             </div>
@@ -145,7 +145,7 @@
                                                     <span class="media-object ln-clock user-info-icon color-success"></span>
                                                 </a>
                                                 <div class="media-body">
-                                                    <h5 class="media-heading">{{book.bookTime |date : "h:mm a"}}</h5>
+                                                    <h5 class="media-heading">{{book.callTime |date : "h:mm a"}}</h5>
                                                     <span class="color-grey">Book Time</span>
                                                 </div>
                                             </div>

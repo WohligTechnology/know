@@ -274,9 +274,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log(user);
             NavigationService.getOneUser(user._id, function(data2) {
                 if (val == 1) {
+                    $scope.selectOnce = true;
                     $scope.sendData.status = "accept";
                     $scope.sendData._id = id;
                 } else {
+                    $scope.selectOnce = true;
                     $scope.sendData.status = "reject";
                     $scope.sendData._id = id;
                 }
@@ -756,7 +758,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
     })
-    .controller('HomeExpertCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $window) {
+    .controller('HomeExpertCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $window, $uibModal) {
         $scope.template = TemplateService.changecontent("home-expert");
         $scope.menutitle = NavigationService.makeactive("Home-Expert");
         TemplateService.title = $scope.menutitle;
@@ -765,6 +767,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.userlogo = "";
         $scope.home = "";
         $scope.experthome = "expert-home";
+        var modalInstance = '';
+        $scope.open3 = function(size) {
+
+            var modalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: 'views/modal/forgetpassword.html',
+                //controller: 'HomeCtrl',
+                size: size,
+                scope: $scope,
+
+            });
+
+
+        };
 
 
         $scope.mesg = [];
@@ -845,6 +861,49 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 });
                 $scope.mesg = [];
             }
+        };
+
+
+        $scope.forgotpswd = {};
+        $scope.forgotpswdClick = function(formValid) {
+            console.log("//////", formValid);
+            NavigationService.getForgotpswdExpert(formValid, function(data) {
+                $scope.forgotpswd = data.data;
+                console.log('forgotpswd', $scope.forgotpswd);
+                if ($scope.forgotpswd.comment == 'User not found') {
+                    $scope.mesg.push({
+                        type: 'danger',
+                        msg: 'Incorrect Email'
+                    });
+
+                    $scope.closeAlert = function(index) {
+                        $scope.mesg.splice(index, 1);
+                    }
+                } else if ($scope.forgotpswd.comment == 'Mail Sent') {
+                    $scope.changeSuccess = true;
+                    $scope.mesg.push({
+                        type: 'default',
+                        msg: 'Password change successfully'
+                    });
+                    $timeout(function() {
+                      // $scope.showform = false;
+                        // $state.go("home-expert");
+                        $state.reload();
+
+                    }, 2000)
+
+                    $scope.closeAlert = function(index) {
+                            $scope.mesg.splice(index, 1);
+                        }
+                        // $scope.changeSuccess = true;
+
+
+
+
+                }
+
+            });
+            $scope.mesg = [];
         };
 
 

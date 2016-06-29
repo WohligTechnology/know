@@ -84,6 +84,7 @@
             </form>
           </div>
             <div class="login-form" ng-show="showform">
+              <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="3000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
               <form name="user">
                 <div class="form-group">
                   <label for="exampleInputEmail1">EMAIL / MOBILE NUMBER</label>

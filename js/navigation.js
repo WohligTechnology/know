@@ -403,6 +403,17 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
+        getForgotpswdExpert: function(input, callback) {
+            // console.log('form data: ', formData);
+            console.log(input)
+            $http({
+                url: adminurl + 'expertuser/forgotPassword',
+                method: 'POST',
+                data: {
+                    "email": input.email
+                }
+            }).success(callback);
+        },
         getExpertProfile: function(_id, callback) {
             $http({
                 url: adminurl + 'ExpertUser/getOne',
