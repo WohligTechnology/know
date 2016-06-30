@@ -180,13 +180,13 @@
             </div> -->
                </uib-tab>
                <uib-tab>
-                  <uib-tab-heading class="text-uppercase" ng-click="userBook('paid','user')">Schedule Call</uib-tab-heading>
+                  <uib-tab-heading class="text-uppercase" ng-click="userBook('paid','user')">Scheduled Calls</uib-tab-heading>
                   <p ng-hide="userBooking.length==0"  class="font-bold tag-line">Following calls are confirmed. We will connect you at the scheduled time.</p>
                   <!-- <p   class="font-bold tag-line">No Schedule Call.</p> -->
                   <div class="no-data-found" ng-show="userBooking.length==0">
                     <img src="img/owl.png" alt="">
                     <h1 class="color-primary">Whoops !</h1>
-                    <p class="text-cap">We couldn't find any Schedule Call</p>
+                    <p class="text-cap">We couldn't find any Scheduled Calls</p>
                   </div>
                   <div class="row">
                      <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="booking in userBooking track by $index">

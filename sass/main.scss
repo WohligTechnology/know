@@ -1386,8 +1386,9 @@ label {
     overflow-y: scroll;
 }
 .over-flow2 {
-    height: 267px;
-    overflow-y: scroll;
+  height: 150px;
+overflow-y: scroll;
+// overflow: hidden;
     // overflow: hidden;
 }
 #style-7::-webkit-scrollbar-track {
@@ -1511,6 +1512,7 @@ label {
 // animation end
 .alpha {
       padding-left: 15px;
+      color:#969696;
     li {
         list-style-type: lower-alpha;
         padding-left: 10px
