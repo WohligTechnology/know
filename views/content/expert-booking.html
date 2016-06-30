@@ -94,10 +94,82 @@
                             </div>
 
                         </div>
+                        <div>
+                        <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="5000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
+                      </div>
                         <!-- <div class="reg-msg">
               <h3>No requested call</h3>
             </div> -->
                     </uib-tab>
+
+                    <uib-tab>
+                        <uib-tab-heading class="text-uppercase" ng-click="expertBook('accept','expert')">Accepted CALLS</uib-tab-heading>
+                        <div class="b-order mt30">
+                            <p ng-hide="bookexpert.length==0" class="font-bold tag-line ">These calls have been Accepted </p>
+                            <!-- <p ng-show="bookexpert.length==0" class="font-bold tag-line ">No requested calls -->
+                            <div class="no-data-found" ng-show="bookexpert.length==0">
+                                <img src="img/owl.png" alt="">
+                                <h1 class="color-primary">Whoops !</h1>
+                                <p class="text-cap">We couldn't find any requested calls</p>
+                            </div>
+                        </div>
+                        <div class="row mt20">
+                            <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="book in bookexpert">
+                                <div class="outline-single">
+                                    <div class="single-payment">
+                                        <div class="user-bg">
+                                            <!-- / <div class="user-imgholder margin-auto">
+                        <img src="img/search-pro2.jpg" alt="" class="img-responsive">
+                      /</div> -->
+                                            <div class="display-inline">
+                                                <span class="name block font-bold mt5">{{book.user.firstName + " " +book.user.lastName}}</span>
+                                            </div>
+                                            <div class="display-inline pull-right">
+                                                <span class="price color-success block font-bold mt5"><i class="fa fa-inr"></i> {{book.expert.priceForService}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="user-info">
+
+                                            <div class="media mt20">
+                                                <a class="media-left" href="#">
+                                                    <span class="media-object ln-calendar2 user-info-icon color-success"></span>
+                                                </a>
+                                                <div class="media-body">
+                                                    <h5 class="media-heading">{{book.callTime| date : "dd.MM.y"}}</h5>
+                                                    <span class="color-grey">Book Date</span>
+                                                </div>
+                                            </div>
+                                            <div class="media">
+                                                <a class="media-left" href="#">
+                                                    <span class="media-object ln-clock user-info-icon color-success"></span>
+                                                </a>
+                                                <div class="media-body">
+                                                    <h5 class="media-heading">{{book.callTime |date : "h:mm a"}}</h5>
+                                                    <span class="color-grey">Book Time</span>
+                                                </div>
+                                            </div>
+                                            <div class="media">
+                                                <a class="media-left" href="#">
+                                                    <span class="media-object ln-register user-info-icon color-success"></span>
+                                                </a>
+                                                <div class="media-body">
+                                                    <h5 class="media-heading">User Query</h5>
+                                                    <div class="u-query">
+                                                        <p class="color-grey f13">{{book.query}} </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- <div class="reg-msg">
+              <h3></h3>
+            </div> -->
+                    </uib-tab>
+
 
                     <uib-tab>
                         <uib-tab-heading class="text-uppercase" ng-click="expertBook('paid','expert')">Scheduled Calls</uib-tab-heading>

@@ -60,44 +60,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     // };
 
 
-
-
-
-
-    $scope.hows = [{
-        icon: 'img/i1.png',
-        title: 'Search for an expert',
-        desc: 'Search from a wide range of experts to answer all your questions'
-    }, {
-        icon: 'img/i2.png',
-        title: 'Compare experts',
-        desc: 'View expert profiles and shortlist them based on your criteria'
-    }, {
-        icon: 'img/i3.png',
-        title: 'Schedule your expert appointment',
-        desc: 'Schedule your phone consultation at a convenient time, Get a confirmation and only then pay for your call'
-    }, {
-        icon: 'img/i4.png',
-        title: 'Get on call with them',
-        desc: 'Get seamlessly connected with the expert. Have a great experience getting your query resolved'
-    }];
-    // $scope.testimonial = [{
-    //     img: "img/team.png",
-    //     descp: "We had been planning our honeymoon for a lng time. Jacknows’ travel expert helped us curate our experience and visit some places that we would have otherwise missed. I would recommend Jacknows to all would be travellers.Their help in getting us a good expert who could be trusted helped us a great deal",
-    //     name: "- Kris Mathews"
-    // }, {
-    //     img: "img/team.png",
-    //     descp: "We had been planning our honeymoon for a lng time. Jacknows’ travel expert helped us curate our experience and visit some places that we would have otherwise missed. I would recommend Jacknows to all would be travellers.Their help in getting us a good expert who could be trusted helped us a great deal",
-    //     name: "- Kris Mathews"
-    // }, {
-    //     img: "img/team.png",
-    //     descp: "We had been planning our honeymoon for a lng time. Jacknows’ travel expert helped us curate our experience and visit some places that we would have otherwise missed. I would recommend Jacknows to all would be travellers.Their help in getting us a good expert who could be trusted helped us a great deal",
-    //     name: "- Kris Mathews"
-    // }];
-
-
-
-
     $scope.animationsEnabled = true;
     $scope.open = function(size) {
 
@@ -272,7 +234,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 console.log('bookexpert', $scope.bookexpert);
             });
         }
-
+        $scope.mesg = [];
         $scope.sendData = {};
         $scope.sendData.from = "expert";
         $scope.acceptRequest = function(val, id, user) {
@@ -282,10 +244,28 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.selectOnce = true;
                     $scope.sendData.status = "accept";
                     $scope.sendData._id = id;
+                    if ($scope.sendData.status == 'accept') {
+                        $scope.mesg.push({
+                            type: 'success',
+                            msg: 'Your reply send to the user'
+                        });
+                        $scope.closeAlert = function(index) {
+                            $scope.mesg.splice(index, 1);
+                        }
+                    }
                 } else {
                     $scope.selectOnce = true;
                     $scope.sendData.status = "reject";
                     $scope.sendData._id = id;
+                    if ($scope.sendData.status == 'reject') {
+                        $scope.mesg.push({
+                            type: 'success',
+                            msg: 'Your reply send to the user'
+                        });
+                        $scope.closeAlert = function(index) {
+                            $scope.mesg.splice(index, 1);
+                        }
+                    }
                 }
                 $scope.sendData.useremail = data2.data.email;
                 $scope.sendData.username = data2.data.firstName;
@@ -296,6 +276,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     }
                 });
             });
+            $scope.mesgs = [];
         };
         $scope.expertBook('pending', 'expert');
     })
@@ -842,6 +823,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.mesg = [];
         };
 
+
+  $scope.mesgs = [];
         //
         //$scope.userForm = {};
         $scope.getLogin = function(formValid) {
@@ -853,22 +836,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         $scope.userForm = data;
                         $state.go("expert-booking");
                     } else {
-                        $scope.mesg.push({
+                        $scope.mesgs.push({
                             type: 'danger',
                             msg: 'Incorrect Email or Password'
                         });
 
                         $scope.closeAlert = function(index) {
-                            $scope.mesg.splice(index, 1);
+                            $scope.mesgs.splice(index, 1);
                         }
 
                     }
                 });
-                $scope.mesg = [];
+                $scope.mesgs = [];
             }
         };
 
-
+$scope.changeSuccess = false;
         $scope.forgotpswd = {};
         $scope.forgotpswdClick = function(formValid) {
             console.log("//////", formValid);
@@ -886,29 +869,28 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     }
                 } else if ($scope.forgotpswd.comment == 'Mail Sent') {
                     $scope.changeSuccess = true;
-                    $scope.mesg.push({
-                        type: 'default',
-                        msg: 'Password change successfully'
-                    });
-                    $timeout(function() {
-                      // $scope.showform = false;
-                        // $state.go("home-expert");
-                        $state.reload();
-
-                    }, 2000)
-
-                    $scope.closeAlert = function(index) {
-                            $scope.mesg.splice(index, 1);
-                        }
+                    // $scope.mesg.push({
+                    //     type: 'default',
+                    //     msg: 'We have sent you a temporary password on your registered e-mail ID. You may use that to login for now.'
+                    // });
+                    // $timeout(function() {
+                    //     $state.reload();
+                    //
+                    // }, 2000)
+                    //
+                    // $scope.closeAlert = function(index) {
+                    //         $scope.mesg.splice(index, 1);
+                    //     }
                         // $scope.changeSuccess = true;
 
 
 
 
                 }
+                // $scope.changeSuccess = false;
 
             });
-            $scope.mesg = [];
+            // $scope.mesg = [];
         };
 
 
@@ -1715,7 +1697,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.mesg = [];
         };
 
-
+        $scope.categories = {};
+        NavigationService.getCategory($scope.categories, function(data) {
+            $scope.categories = data.data;
+            console.log('categories', $scope.categories);
+        });
 
 
 
