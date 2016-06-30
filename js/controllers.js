@@ -232,7 +232,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.userBook('accept', 'user');
     $scope.userpay.from = "user";
-    $scope.getPay = function(status, id, expert) {
+    $scope.getPay = function(status, id, expert, val) {
+      document.getElementById(val).disabled = true;
         $scope.userpay._id = id;
         $scope.userpay.status = status;
         console.log(expert);
@@ -242,7 +243,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.userpay.expertname = data2.data.firstName;
             NavigationService.getPayment($scope.userpay, function(data) {
                 if (data.value != false) {
+                  document.getElementById(val).disabled = false;
                     $scope.userBook('accept', 'user');
+                }else{
+                  document.getElementById(val).disabled = false;
+                  $scope.userBook('accept', 'user');
                 }
             });
         });
