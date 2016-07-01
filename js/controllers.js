@@ -203,6 +203,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log("/////////////////////////////", data2);
             $scope.userpay.expertemail = data2.data.email;
             $scope.userpay.expertname = data2.data.firstName;
+            $scope.userpay.mobile = data2.data.mobileno;
             NavigationService.getPayment($scope.userpay, function(data) {
                 if (data.value != false) {
                   document.getElementById(val).disabled = false;
@@ -269,6 +270,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
                 $scope.sendData.useremail = data2.data.email;
                 $scope.sendData.username = data2.data.firstName;
+                $scope.sendData.mobile = data2.data.mobileno;
                 NavigationService.acceptRequest($scope.sendData, function(data) {
                     console.log('userdata', $scope.userdata);
                     if (data.value != false) {
@@ -314,16 +316,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.isInvalid = false;
                 }
             }
-            // $scope.userForm.callTime = new Date(time.year, time.month, time.date, time.hours, time.mins, 0, 0);
         }
-
-        // $scope.minTime = currentDate.getTime();
-
-
-        // var mytime=new Date().getTime();
-        // console.log('//////////',mytime);
-        // var mytime1=mytime.split(" ");
-        // console.log('111111111',mytime1);
 
         $scope.ptions = {
             minDate: new Date()
@@ -341,6 +334,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     if (data2.value != false) {
                         $scope.userForm.expertemail = data2.data.email;
                         $scope.userForm.expertname = data2.data.firstName;
+                        $scope.userForm.mobile = data2.data.mobileno;
                         if ($scope.userForm.bookDate && $scope.userForm.bookTime) {
                             var time = {};
                             $scope.userForm.bookDate = new Date($scope.userForm.bookDate);
