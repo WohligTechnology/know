@@ -91,6 +91,9 @@
                            <button id={{$index}} class="btn btn-animate-org f13" ng-click="getPay('paid',booking._id,booking.expert._id,$index)" ng-disabled="">Payment</button>
                         </div>
                      </div>
+                     <div>
+                     <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="5000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
+                   </div>
                      <!-- <div class="col-md-3">
                 <div class="outline-single">
                   <div class="single-payment">
