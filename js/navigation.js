@@ -54,26 +54,17 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'ExpertUser/editProfile',
                 method: 'POST',
-                withCredentials: true,
+
                 data: formData
 
             }).success(callback);
         },
-        // getUseFbLogin: function(callback) {
-        //     //console.log('Navigation form data: ', formData);
-        //     $http({
-        //         url: adminurl + 'user/loginFacebook',
-        //         method: 'POST',
-        //         withCredentials: true
-        //
-        //     }).success(callback);
-        // },
         getExpertEditDetail: function(_id, callback) {
             //console.log('Navigation form data: ', formData);
             $http({
                 url: adminurl + 'ExpertUser/profile',
                 method: 'POST',
-                withCredentials: true,
+
                 data: {
                     _id: _id
                 }
@@ -97,7 +88,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'user/',
                 method: 'POST',
-                withCredentials: true,
+
                 data: {
                     _id: _id
                 }
@@ -110,7 +101,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'ExpertUser/getAll',
                 method: 'POST',
-                withCredentials: true,
+
                 data: formData
 
             }).success(callback);
@@ -120,7 +111,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'SearchLog/getAll',
                 method: 'POST',
-                withCredentials: true,
+
                 data: formData
 
             }).success(callback);
@@ -130,7 +121,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'ExpertUser/saveData',
                 method: 'POST',
-                withCredentials: true,
+
                 data: formData
 
             }).success(callback);
@@ -140,7 +131,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'Contact/saveData',
                 method: 'POST',
-                withCredentials: true,
+
                 data: formData
 
             }).success(callback);
@@ -150,7 +141,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'category/getAll',
                 method: 'POST',
-                withCredentials: true,
+
                 data: formData
 
             }).success(callback);
@@ -161,7 +152,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'Testimonial/getAll',
                 method: 'POST',
-                withCredentials: true,
+
                 data: {
                     "name": formData.name,
                     "testimonial": formData.testimonial,
@@ -176,7 +167,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'DailyUpdates/getAll',
                 method: 'POST',
-                withCredentials: true,
+
                 data: formData
             }).success(callback);
         },
@@ -186,7 +177,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'Booking/getBooking',
                 method: 'POST',
-                withCredentials: true,
+
                 data: {
                     "status": formData.status,
                     "from": formData.from
@@ -199,7 +190,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'Booking/saveData',
                 method: 'POST',
-                withCredentials: true,
+
                 data: formData
             }).success(callback);
         },
@@ -209,7 +200,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'Newsletter/newsletterApi',
                 method: 'POST',
-                withCredentials: true,
+
                 data: formData
             }).success(callback);
         },
@@ -218,7 +209,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl1 + 'ExpertRegistration/delete',
                 method: 'POST',
-                withCredentials: true,
+
                 data: {
                     "_id": formData._id
                 }
@@ -229,7 +220,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'user/profile',
                 method: 'POST',
-                withCredentials: true,
+
                 data: {
                     "_id": _id
                 }
@@ -240,7 +231,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'user/saveData',
                 method: 'POST',
-                withCredentials: true,
+
                 data: formData
             }).success(callback);
         },
@@ -250,7 +241,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'User/saveData',
                 method: 'POST',
-                withCredentials: true,
+
                 data: {
 
                     "expertUser": formData.expertUser,
@@ -265,7 +256,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'User/getShortlist',
                 method: 'POST',
-                withCredentials: true,
+
                 data: formData
 
             }).success(callback);
@@ -276,7 +267,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'user/register',
                 method: 'POST',
-                withCredentials: true,
+
                 data: input
             }).success(callback);
         },
@@ -285,7 +276,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'ExpertUser/register',
                 method: 'POST',
-                withCredentials: true,
+
                 data: input
             }).success(callback);
         },
@@ -303,7 +294,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'user/profile',
                 method: 'POST',
-                withCredentials: true,
+
                 data: input
             }).success(callback);
         },
@@ -320,7 +311,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'user/login',
                 method: 'POST',
-                withCredentials: true,
+
                 data: input
             }).success(callback);
         },
@@ -329,7 +320,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'ExpertUser/login',
                 method: 'POST',
-                withCredentials: true,
+
                 data: input
             }).success(callback);
         },
@@ -340,7 +331,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'user/editProfile',
                 method: 'POST',
-                withCredentials: true,
+
                 data: input
             }).success(callback);
         },
@@ -351,7 +342,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'findexpert/saveData',
                 method: 'POST',
-                withCredentials: true,
+
                 data: input
             }).success(callback);
         },
@@ -394,7 +385,7 @@ var navigationservice = angular.module('navigationservice', [])
         },
         getForgotpswd: function(input, callback) {
             // console.log('form data: ', formData);
-            console.log(input)
+            console.log(input);
             $http({
                 url: adminurl + 'user/forgotPassword',
                 method: 'POST',
@@ -418,7 +409,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'ExpertUser/getOne',
                 method: 'POST',
-                withCredentials: true,
+
                 data: {
                     "_id": _id
                 }
@@ -470,7 +461,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'Booking/getExpertBooking',
                 method: 'POST',
-                withCredentials: true,
+
                 data: {
                     "status": formData.status,
                     "from": formData.from
@@ -483,7 +474,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'Notification/findNotification',
                 method: 'POST',
-                withCredentials: true,
+
                 data: formData
 
             }).success(callback);
