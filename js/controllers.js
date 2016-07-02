@@ -499,7 +499,7 @@ $scope.mesg=[];
             }
             $scope.mesg = [];
         };
-
+$scope.changeSuccess = false;
         $scope.forgotpswd = {};
         $scope.forgotpswdClick = function(formValid) {
             console.log("//////", formValid);
@@ -516,9 +516,11 @@ $scope.mesg=[];
                         $scope.mesg.splice(index, 1);
                     }
 
+                }else if ($scope.forgotpswd.comment == 'Mail Sent') {
+                    $scope.changeSuccess = true;
                 }
             });
-            $scope.mesg = [];
+            // $scope.mesg = [];
         };
 
         $scope.open3 = function(size) {
@@ -873,25 +875,7 @@ $scope.changeSuccess = false;
                     }
                 } else if ($scope.forgotpswd.comment == 'Mail Sent') {
                     $scope.changeSuccess = true;
-                    // $scope.mesg.push({
-                    //     type: 'default',
-                    //     msg: 'We have sent you a temporary password on your registered e-mail ID. You may use that to login for now.'
-                    // });
-                    // $timeout(function() {
-                    //     $state.reload();
-                    //
-                    // }, 2000)
-                    //
-                    // $scope.closeAlert = function(index) {
-                    //         $scope.mesg.splice(index, 1);
-                    //     }
-                        // $scope.changeSuccess = true;
-
-
-
-
                 }
-                // $scope.changeSuccess = false;
 
             });
             // $scope.mesg = [];
