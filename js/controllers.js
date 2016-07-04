@@ -191,11 +191,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log('userBooking', $scope.userBooking);
         });
     }
-$scope.mesg=[];
+    $scope.mesg = [];
     $scope.userBook('accept', 'user');
     $scope.userpay.from = "user";
     $scope.getPay = function(status, id, expert, val) {
-      document.getElementById(val).disabled = true;
+        document.getElementById(val).disabled = true;
         $scope.userpay._id = id;
         $scope.userpay.status = status;
         console.log(expert);
@@ -205,21 +205,21 @@ $scope.mesg=[];
             $scope.userpay.expertname = data2.data.firstName;
             $scope.userpay.mobile = data2.data.mobileno;
             NavigationService.getPayment($scope.userpay, function(data) {
-              if ($scope.userpay.status == 'paid') {
-                  $scope.mesg.push({
-                      type: 'success',
-                      msg: 'Your reply send to the Expert'
-                  });
-                  $scope.closeAlert = function(index) {
-                      $scope.mesg.splice(index, 1);
-                  }
-              }
+                if ($scope.userpay.status == 'paid') {
+                    $scope.mesg.push({
+                        type: 'success',
+                        msg: 'Your reply send to the Expert'
+                    });
+                    $scope.closeAlert = function(index) {
+                        $scope.mesg.splice(index, 1);
+                    }
+                }
                 if (data.value != false) {
-                  document.getElementById(val).disabled = false;
+                    document.getElementById(val).disabled = false;
                     $scope.userBook('accept', 'user');
-                }else{
-                  document.getElementById(val).disabled = false;
-                  $scope.userBook('accept', 'user');
+                } else {
+                    document.getElementById(val).disabled = false;
+                    $scope.userBook('accept', 'user');
                 }
             });
         });
@@ -278,9 +278,13 @@ $scope.mesg=[];
                         }
                     }
                 }
-                $scope.sendData.useremail = data2.data.email;
+                if (data2.data.email) {
+                    $scope.sendData.useremail = data2.data.email;
+                }
                 $scope.sendData.username = data2.data.firstName;
-                $scope.sendData.mobile = data2.data.mobileno;
+                if (data2.data.mobileno) {
+                    $scope.sendData.mobile = data2.data.mobileno;
+                }
                 NavigationService.acceptRequest($scope.sendData, function(data) {
                     console.log('userdata', $scope.userdata);
                     if (data.value != false) {
@@ -499,7 +503,7 @@ $scope.mesg=[];
             }
             $scope.mesg = [];
         };
-$scope.changeSuccess = false;
+        $scope.changeSuccess = false;
         $scope.forgotpswd = {};
         $scope.forgotpswdClick = function(formValid) {
             console.log("//////", formValid);
@@ -516,7 +520,7 @@ $scope.changeSuccess = false;
                         $scope.mesg.splice(index, 1);
                     }
 
-                }else if ($scope.forgotpswd.comment == 'Mail Sent') {
+                } else if ($scope.forgotpswd.comment == 'Mail Sent') {
                     $scope.changeSuccess = true;
                 }
             });
@@ -830,7 +834,7 @@ $scope.changeSuccess = false;
         };
 
 
-  $scope.mesgs = [];
+        $scope.mesgs = [];
         //
         //$scope.userForm = {};
         $scope.getLogin = function(formValid) {
@@ -857,7 +861,7 @@ $scope.changeSuccess = false;
             }
         };
 
-$scope.changeSuccess = false;
+        $scope.changeSuccess = false;
         $scope.forgotpswd = {};
         $scope.forgotpswdClick = function(formValid) {
             console.log("//////", formValid);
@@ -1819,12 +1823,12 @@ $scope.changeSuccess = false;
             console.log('$scope.editNotificationdata', $scope.editNotificationdata);
 
         });
-        if($scope.userLogedin==true){
-          console.log('checkUSer',$scope.userLogedin);
-          $scope.getUserNotification();
-        }else{
-          console.log('checkUSer is expert',$scope.userLogedin);
-          $scope.getExpertNotification();
+        if ($scope.userLogedin == true) {
+            console.log('checkUSer', $scope.userLogedin);
+            $scope.getUserNotification();
+        } else {
+            console.log('checkUSer is expert', $scope.userLogedin);
+            $scope.getExpertNotification();
         }
 
     }
@@ -1876,22 +1880,22 @@ $scope.changeSuccess = false;
     };
 
 
-$scope.getUserNotification=function(){
-  NavigationService.getNotification({
-      from: "user"
-  }, function(data) {
-      $scope.notificationdata = data.data;
-      console.log('$scope.notificationdata user', $scope.notificationdata);
-  });
-}
-$scope.getExpertNotification=function(){
-  NavigationService.getNotification({
-      from: "expert"
-  }, function(data) {
-      $scope.notificationdata = data.data;
-      console.log('$scope.notificationdata expert', $scope.notificationdata);
-  });
-}
+    $scope.getUserNotification = function() {
+        NavigationService.getNotification({
+            from: "user"
+        }, function(data) {
+            $scope.notificationdata = data.data;
+            console.log('$scope.notificationdata user', $scope.notificationdata);
+        });
+    }
+    $scope.getExpertNotification = function() {
+        NavigationService.getNotification({
+            from: "expert"
+        }, function(data) {
+            $scope.notificationdata = data.data;
+            console.log('$scope.notificationdata expert', $scope.notificationdata);
+        });
+    }
 
 
     // --------User Login----------
@@ -1929,7 +1933,7 @@ $scope.getExpertNotification=function(){
             //     console.log('$scope.notificationdata expert', $scope.notificationdata);
             // });
         } else {
-          console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+            console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
             $scope.expertNotLogedin = true;
             if (window.location.href.indexOf('expert-') != -1) {
                 $state.go('home');
