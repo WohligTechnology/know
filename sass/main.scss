@@ -1535,6 +1535,8 @@ overflow-y: scroll;
 uib-tab-heading.text-uppercase {
     padding: 5px 0px 14px 0px;
 }
-
+.navbar-header{
+  width: 250px;
+}
 @import "amit";
 @import "mobile"; // @import "upload";

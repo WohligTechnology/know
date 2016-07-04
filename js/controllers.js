@@ -332,7 +332,7 @@ $scope.mesg=[];
             minDate: new Date()
         }
 
-        $scope.duration = ['30 Min', '60 Min', '90 Min', '120 Min'];
+        $scope.duration = ['10 Min', '30 Min', '60 Min', '90 Min', '120 Min'];
 
         $scope.userForm = {};
         $scope.userSubmitForm = function(formValid) {
@@ -467,10 +467,10 @@ $scope.mesg=[];
         //-------------Social Login------------------------------
 
         $scope.facebookLogin = function() {
-            window.location.href = "http://chaitalee.com/user/loginFacebook";
+            window.location.href = "http://jacknows.wohlig.com/user/loginFacebook";
         }
         $scope.googleLogin = function() {
-                window.location.href = "http://chaitalee.com/user/loginGoogle";
+                window.location.href = "http://jacknows.wohlig.com/user/loginGoogle";
             }
             //-------------------------------------------------------
 

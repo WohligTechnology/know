@@ -1,5 +1,5 @@
-var adminurl = "http://146.148.4.222/";
-var imgurl = "http://146.148.4.222/upload/";
+var adminurl = "http://jacknows.wohlig.com/";
+var imgurl = "http://jacknows.wohlig.com/upload/";
 // var adminurl = "http://chaitalee.com/";
 // var imgurl = adminurl + "upload/";
 var imgpath = imgurl + "readFile";
