@@ -1,6 +1,6 @@
-// var adminurl = "http://jacknows.wohlig.com/";
-// var imgurl = "http://jacknows.wohlig.com/upload/";
-var adminurl = "http://chaitalee.com/";
+var adminurl = "http://jacknows.wohlig.com/";
+var imgurl = "http://jacknows.wohlig.com/upload/";
+// var adminurl = "http://chaitalee.com/";
 var imgurl = adminurl + "upload/";
 var imgpath = imgurl + "readFile";
 var uploadurl = imgurl;
@@ -493,6 +493,16 @@ var navigationservice = angular.module('navigationservice', [])
                 method: 'POST',
                 withCredentials: true,
                 data: formData
+            }).success(callback);
+        },
+        getSingleBooking: function(id, callback) {
+            $http({
+                url: adminurl + 'Booking/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
             }).success(callback);
         },
         makeactive: function(menuname) {

@@ -192,34 +192,72 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
     }
     $scope.mesg = [];
-    $scope.selectOnce=false;
+    $scope.selectOnce = false;
     $scope.userBook('accept', 'user');
     $scope.getPay = function(booking, val) {
-        document.getElementById(val).disabled = true;
-        booking.status = "paid";
-        booking.from = "user";
-        NavigationService.payNow(booking, function(data) {
-            console.log(data);
-            window.open(data.data);
-            document.getElementById(val).disabled = false;
-            if ($scope.userpay.status == 'paid') {
-              $scope.selectOnce=true;
-                $scope.mesg.push({
-                    type: 'success',
-                    msg: 'Your reply send to the Expert'
-                });
-                $scope.closeAlert = function(index) {
-                    $scope.mesg.splice(index, 1);
-                }
+        console.log(booking);
+        var currentDate = new Date();
+        var callTime = new Date(booking.callTime);
+        if (callTime > currentDate) {
+            document.getElementById(val).disabled = true;
+            booking.status = "paid";
+            booking.from = "user";
+            NavigationService.payNow(booking, function(data) {
+                console.log(data);
+                var win = window.open(data.data);
+                var closeInterval = setInterval(function() {
+                    NavigationService.getSingleBooking(booking._id, function(singleBooking) {
+                        console.log(singleBooking);
+                        if (singleBooking.value) {
+                            if (singleBooking.data.status == "paid") {
+                                clearInterval(closeInterval);
+                                win.close();
+                                if ($scope.userpay.status == 'paid') {
+                                    $scope.selectOnce = true;
+                                    $scope.mesg.push({
+                                        type: 'success',
+                                        msg: 'Your reply send to the Expert'
+                                    });
+                                    $scope.closeAlert = function(index) {
+                                        $scope.mesg.splice(index, 1);
+                                    }
+                                }
+                                document.getElementById(val).disabled = false;
+                            } else if (singleBooking.data.status == "failure") {
+                                clearInterval(closeInterval);
+                                win.close();
+                                document.getElementById(val).disabled = false;
+                            }
+                        }
+                    })
+                }, 1000);
+                // if ($scope.userpay.status == 'paid') {
+                //     $scope.selectOnce = true;
+                //     $scope.mesg.push({
+                //         type: 'success',
+                //         msg: 'Your reply send to the Expert'
+                //     });
+                //     $scope.closeAlert = function(index) {
+                //         $scope.mesg.splice(index, 1);
+                //     }
+                // }
+                // if (data.value != false) {
+                //     document.getElementById(val).disabled = false;
+                //     $scope.userBook('accept', 'user');
+                // } else {
+                //     document.getElementById(val).disabled = false;
+                //     $scope.userBook('accept', 'user');
+                // }
+            });
+        } else {
+            $scope.mesg.push({
+                type: 'Error',
+                msg: 'Your call time is expired'
+            });
+            $scope.closeAlert = function(index) {
+                $scope.mesg.splice(index, 1);
             }
-            // if (data.value != false) {
-            //     document.getElementById(val).disabled = false;
-            //     $scope.userBook('accept', 'user');
-            // } else {
-            //     document.getElementById(val).disabled = false;
-            //     $scope.userBook('accept', 'user');
-            // }
-        });
+        }
     };
 })
 
@@ -246,7 +284,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.sendData.from = "expert";
         $scope.alertmesg = false;
         $scope.disableButton = false;
-          $scope.selectOnce = false;
+        $scope.selectOnce = false;
         $scope.acceptRequest = function(val, id, user) {
             $scope.disableButton = true;
             console.log(user);
