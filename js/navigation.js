@@ -409,7 +409,6 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'ExpertUser/getOne',
                 method: 'POST',
-
                 data: {
                     "_id": _id
                 }
@@ -488,7 +487,14 @@ var navigationservice = angular.module('navigationservice', [])
 
             }).success(callback);
         },
-
+        payNow: function(formData, callback) {
+            $http({
+                url: adminurl + 'Config/callPay',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
         makeactive: function(menuname) {
             for (var i = 0; i < navigation.length; i++) {
                 if (navigation[i].name == menuname) {

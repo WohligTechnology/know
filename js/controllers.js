@@ -193,37 +193,31 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     }
     $scope.mesg = [];
     $scope.userBook('accept', 'user');
-    $scope.userpay.from = "user";
-    $scope.getPay = function(status, id, expert, val) {
+    $scope.getPay = function(booking, val) {
         document.getElementById(val).disabled = true;
-        $scope.userpay._id = id;
-        $scope.userpay.status = status;
-        console.log(expert);
-        NavigationService.getExpertProfile(expert, function(data2) {
-            console.log("/////////////////////////////", data2);
-            $scope.userpay.expertemail = data2.data.email;
-            $scope.userpay.expertname = data2.data.firstName;
-            $scope.userpay.mobile = data2.data.mobileno;
-            NavigationService.getPayment($scope.userpay, function(data) {
-                if ($scope.userpay.status == 'paid') {
-                    $scope.mesg.push({
-                        type: 'success',
-                        msg: 'Your reply send to the Expert'
-                    });
-                    $scope.closeAlert = function(index) {
-                        $scope.mesg.splice(index, 1);
-                    }
-                }
-                if (data.value != false) {
-                    document.getElementById(val).disabled = false;
-                    $scope.userBook('accept', 'user');
-                } else {
-                    document.getElementById(val).disabled = false;
-                    $scope.userBook('accept', 'user');
-                }
-            });
+        booking.status = "paid";
+        booking.from = "user";
+        NavigationService.payNow(booking, function(data) {
+            console.log(data);
+            window.open(data.data);
+            document.getElementById(val).disabled = false;
+                // if ($scope.userpay.status == 'paid') {
+                //     $scope.mesg.push({
+                //         type: 'success',
+                //         msg: 'Your reply send to the Expert'
+                //     });
+                //     $scope.closeAlert = function(index) {
+                //         $scope.mesg.splice(index, 1);
+                //     }
+                // }
+                // if (data.value != false) {
+                //     document.getElementById(val).disabled = false;
+                //     $scope.userBook('accept', 'user');
+                // } else {
+                //     document.getElementById(val).disabled = false;
+                //     $scope.userBook('accept', 'user');
+                // }
         });
-        // $scope.mesg=[];
     };
 })
 
@@ -304,161 +298,180 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
     })
-    .controller('BookNowCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $window, $stateParams, $state, $filter) {
-        $scope.template = TemplateService.changecontent("book-now");
-        $scope.menutitle = NavigationService.makeactive("Book-Now");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.expertlogo = "";
-        $scope.userlogo = "user-page";
-        $scope.minTime = new Date();
-        $scope.isInvalid = true;
 
-        $scope.checkTime = function() {
-            var time = {};
-            if ($scope.userForm.bookDate && $scope.userForm.bookTime) {
-                time.year = $scope.userForm.bookDate.getFullYear();
-                time.month = $scope.userForm.bookDate.getMonth();
-                time.date = $scope.userForm.bookDate.getDate();
-                time.hours = $scope.userForm.bookTime.getHours();
-                time.mins = $scope.userForm.bookTime.getMinutes();
-                $scope.userForm.callTime = new Date(time.year, time.month, time.date, time.hours, time.mins, 0, 0);
-                if ($scope.userForm.callTime < new Date()) {
-                    console.log("here");
-                    $scope.isInvalid = true;
-                } else {
-                    $scope.isInvalid = false;
-                }
+.controller('BookNowCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $window, $stateParams, $state, $filter) {
+    $scope.template = TemplateService.changecontent("book-now");
+    $scope.menutitle = NavigationService.makeactive("Book-Now");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.expertlogo = "";
+    $scope.userlogo = "user-page";
+    $scope.minTime = new Date();
+    $scope.isInvalid = true;
+
+    $scope.checkTime = function() {
+        var time = {};
+        if ($scope.userForm.bookDate && $scope.userForm.bookTime) {
+            time.year = $scope.userForm.bookDate.getFullYear();
+            time.month = $scope.userForm.bookDate.getMonth();
+            time.date = $scope.userForm.bookDate.getDate();
+            time.hours = $scope.userForm.bookTime.getHours();
+            time.mins = $scope.userForm.bookTime.getMinutes();
+            $scope.userForm.callTime = new Date(time.year, time.month, time.date, time.hours, time.mins, 0, 0);
+            if ($scope.userForm.callTime < new Date()) {
+                console.log("here");
+                $scope.isInvalid = true;
+            } else {
+                $scope.isInvalid = false;
             }
         }
+    }
 
-        $scope.ptions = {
-            minDate: new Date()
+    $scope.ptions = {
+        minDate: new Date()
+    }
+
+    $scope.duration = ['10 Min', '30 Min', '60 Min', '90 Min', '120 Min'];
+
+    $scope.userForm = {};
+
+    $scope.calcFinalAmt = function(dur) {
+        if (dur) {
+            var factor = parseInt(dur) / 30;
+            $scope.userForm.finalAmount = $scope.expertPrice * factor;
+            $scope.userForm.finalAmount = $scope.userForm.finalAmount.toFixed(2);
         }
+    }
 
-        $scope.duration = ['10 Min', '30 Min', '60 Min', '90 Min', '120 Min'];
-
-        $scope.userForm = {};
-        $scope.userSubmitForm = function(formValid) {
-            if (formValid.$valid) {
-                $scope.userForm.expert = $stateParams.id;
-                NavigationService.getExpertProfile({
-                    _id: $stateParams.id
-                }, function(data2) {
-                    if (data2.value != false) {
-                        $scope.userForm.expertemail = data2.data.email;
-                        $scope.userForm.expertname = data2.data.firstName;
-                        $scope.userForm.mobile = data2.data.mobileno;
-                        if ($scope.userForm.bookDate && $scope.userForm.bookTime) {
-                            var time = {};
-                            $scope.userForm.bookDate = new Date($scope.userForm.bookDate);
-                            $scope.userForm.bookTime = new Date($scope.userForm.bookTime);
-                            time.year = $scope.userForm.bookDate.getFullYear();
-                            time.month = $scope.userForm.bookDate.getMonth();
-                            time.date = $scope.userForm.bookDate.getDate();
-                            time.hours = $scope.userForm.bookTime.getHours();
-                            time.mins = $scope.userForm.bookTime.getMinutes();
-                            $scope.userForm.callTime = new Date(time.year, time.month, time.date, time.hours, time.mins, 0, 0);
-                        }
-                        delete $scope.userForm.bookDate;
-                        delete $scope.userForm.bookTime;
-                        NavigationService.getBooking($scope.userForm, function(data) {
-                            $scope.userForm = data.data;
-                            $scope.userForm.callDuration = new Date();
-                            if (data.value == true) {
-                                $scope.formComplete = true;
-                                $timeout(function() {
-                                    $state.go("user-booking");
-                                    $timeout(function() {
-                                        $scope.formComplete = "";
-                                    }, 2000)
-
-                                }, 3000);
-                            } else {
-                                if (data.data == 'User not loggd-in') {
-                                    $scope.nouser = true;
-                                    $timeout(function() {
-                                        $state.reload();
-                                        $timeout(function() {
-                                            $scope.formComplete = "";
-                                        }, 2000)
-
-                                    }, 3000)
-
-                                } else {
-                                    $scope.alreadyBooked = true;
-                                    $timeout(function() {
-                                        $state.reload();
-                                        $timeout(function() {
-                                            $scope.formComplete = "";
-                                        }, 2000);
-                                    }, 3000);
-                                }
-                            }
-                        });
-                    }
-                });
+    NavigationService.getExpertProfile($stateParams.id, function(data) {
+        console.log(data);
+        if (data.value != false) {
+            if (data.data && data.data.priceForService) {
+                $scope.expertPrice = data.data.priceForService;
+                $scope.calcFinalAmt(10);
             }
-        };
-
-        $scope.today = function() {
-            $scope.dt = new Date();
-        };
-        $scope.today();
-
-        $scope.clear = function() {
-            $scope.dt = null;
-        };
-        $scope.open2 = function() {
-            $scope.popup2.opened = true;
-        };
-        $scope.popup2 = {
-            opened: false
-        };
-        $scope.setDate = function(year, month, day) {
-            $scope.dt = new Date(year, month, day);
-        };
-        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-        $scope.format = $scope.formats[0];
-        $scope.altInputFormats = ['M!/d!/yyyy'];
-
-        var tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        var afterTomorrow = new Date();
-        afterTomorrow.setDate(tomorrow.getDate() + 1);
-        $scope.events = [{
-            date: tomorrow,
-            status: 'full'
-        }, {
-            date: afterTomorrow,
-            status: 'partially'
-        }];
-
-        function getDayClass(data) {
-            var date = data.date,
-                mode = data.mode;
-            if (mode === 'day') {
-                var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-
-                for (var i = 0; i < $scope.events.length; i++) {
-                    var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
-
-                    if (dayToCheck === currentDay) {
-                        return $scope.events[i].status;
-                    }
-                }
-            }
-
-            return '';
         }
-        $scope.ismeridian = true;
-        $scope.time = "1970-01-01T05:00:40.000Z"; // (formatted: 10:30 AM)
-        $scope.selectedTimeAsNumber = 37840000; // (formatted: 4:00 PM)
-        $scope.sharedDate = "2016-04-06T05:30:00.116Z"; // (formatted: 4/6/16 11:00 AM)
-
-
     })
-    .controller('LoginCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, $interval) {
+
+    $scope.userSubmitForm = function(formValid) {
+        if (formValid.$valid) {
+            $scope.userForm.expert = $stateParams.id;
+            NavigationService.getExpertProfile({
+                _id: $stateParams.id
+            }, function(data2) {
+                if (data2.value != false) {
+                    $scope.userForm.expertemail = data2.data.email;
+                    $scope.userForm.expertname = data2.data.firstName;
+                    $scope.userForm.mobile = data2.data.mobileno;
+                    if ($scope.userForm.bookDate && $scope.userForm.bookTime) {
+                        var time = {};
+                        $scope.userForm.bookDate = new Date($scope.userForm.bookDate);
+                        $scope.userForm.bookTime = new Date($scope.userForm.bookTime);
+                        time.year = $scope.userForm.bookDate.getFullYear();
+                        time.month = $scope.userForm.bookDate.getMonth();
+                        time.date = $scope.userForm.bookDate.getDate();
+                        time.hours = $scope.userForm.bookTime.getHours();
+                        time.mins = $scope.userForm.bookTime.getMinutes();
+                        $scope.userForm.callTime = new Date(time.year, time.month, time.date, time.hours, time.mins, 0, 0);
+                    }
+                    delete $scope.userForm.bookDate;
+                    delete $scope.userForm.bookTime;
+                    NavigationService.getBooking($scope.userForm, function(data) {
+                        // $scope.userForm = data.data;
+                        // $scope.userForm.callDuration = new Date();
+                        // if (data.value == true) {
+                        //     $scope.formComplete = true;
+                        //     $timeout(function() {
+                        //         $state.go("user-booking");
+                        //         $timeout(function() {
+                        //             $scope.formComplete = "";
+                        //         }, 2000)
+                        //
+                        //     }, 3000);
+                        // } else {
+                        //     if (data.data == 'User not loggd-in') {
+                        //         $scope.nouser = true;
+                        //         $timeout(function() {
+                        //             $state.reload();
+                        //             $timeout(function() {
+                        //                 $scope.formComplete = "";
+                        //             }, 2000)
+                        //
+                        //         }, 3000)
+                        //
+                        //     } else {
+                        //         $scope.alreadyBooked = true;
+                        //         $timeout(function() {
+                        //             $state.reload();
+                        //             $timeout(function() {
+                        //                 $scope.formComplete = "";
+                        //             }, 2000);
+                        //         }, 3000);
+                        //     }
+                        // }
+                    });
+                }
+            });
+        }
+    };
+
+    $scope.today = function() {
+        $scope.dt = new Date();
+    };
+    $scope.today();
+
+    $scope.clear = function() {
+        $scope.dt = null;
+    };
+    $scope.open2 = function() {
+        $scope.popup2.opened = true;
+    };
+    $scope.popup2 = {
+        opened: false
+    };
+    $scope.setDate = function(year, month, day) {
+        $scope.dt = new Date(year, month, day);
+    };
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+    $scope.altInputFormats = ['M!/d!/yyyy'];
+
+    var tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    var afterTomorrow = new Date();
+    afterTomorrow.setDate(tomorrow.getDate() + 1);
+    $scope.events = [{
+        date: tomorrow,
+        status: 'full'
+    }, {
+        date: afterTomorrow,
+        status: 'partially'
+    }];
+
+    function getDayClass(data) {
+        var date = data.date,
+            mode = data.mode;
+        if (mode === 'day') {
+            var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+
+            for (var i = 0; i < $scope.events.length; i++) {
+                var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+
+                if (dayToCheck === currentDay) {
+                    return $scope.events[i].status;
+                }
+            }
+        }
+
+        return '';
+    }
+    $scope.ismeridian = true;
+    $scope.time = "1970-01-01T05:00:40.000Z"; // (formatted: 10:30 AM)
+    $scope.selectedTimeAsNumber = 37840000; // (formatted: 4:00 PM)
+    $scope.sharedDate = "2016-04-06T05:30:00.116Z"; // (formatted: 4/6/16 11:00 AM)
+})
+
+.controller('LoginCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, $interval) {
         $scope.template = TemplateService.changecontent("login");
         $scope.menutitle = NavigationService.makeactive("Login");
         TemplateService.title = $scope.menutitle;

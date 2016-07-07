@@ -19,9 +19,9 @@
                   <p ng-if="userBooking.length!=0" class="font-bold tag-line">Following calls are awaiting payment. Please pay now to confirm the call.</p>
                   <!-- <p ng-show="userBooking.length==0" class="font-bold tag-line">No Awaiting payment.</p> -->
                   <div class="no-data-found" ng-show="nodata">
-                    <img src="img/owl.png" alt="">
-                    <h1 class="color-primary">Whoops !</h1>
-                    <p class="text-cap">We couldn't find any awaiting payment</p>
+                     <img src="img/owl.png" alt="">
+                     <h1 class="color-primary">Whoops !</h1>
+                     <p class="text-cap">We couldn't find any awaiting payment</p>
                   </div>
 
                   <!-- <div ng-if="userBooking.length==0 && !nodata">
@@ -88,12 +88,12 @@
 
                         </div>
                         <div>
-                           <button id={{$index}} class="btn btn-animate-org f13" ng-click="getPay('paid',booking._id,booking.expert._id,$index)" ng-disabled="">Payment</button>
+                           <button id={{$index}} class="btn btn-animate-org f13" ng-click="getPay(booking,$index)" ng-disabled="">Payment</button>
                         </div>
                      </div>
                      <div>
-                     <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="5000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
-                   </div>
+                        <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="5000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
+                     </div>
                      <!-- <div class="col-md-3">
                 <div class="outline-single">
                   <div class="single-payment">
@@ -185,12 +185,12 @@
                </uib-tab>
                <uib-tab>
                   <uib-tab-heading class="text-uppercase" ng-click="userBook('paid','user')">Scheduled Calls</uib-tab-heading>
-                  <p ng-hide="userBooking.length==0"  class="font-bold tag-line">Following calls are confirmed. We will connect you at the scheduled time.</p>
+                  <p ng-hide="userBooking.length==0" class="font-bold tag-line">Following calls are confirmed. We will connect you at the scheduled time.</p>
                   <!-- <p   class="font-bold tag-line">No Schedule Call.</p> -->
                   <div class="no-data-found" ng-show="userBooking.length==0">
-                    <img src="img/owl.png" alt="">
-                    <h1 class="color-primary">Whoops !</h1>
-                    <p class="text-cap">We couldn't find any Scheduled Calls</p>
+                     <img src="img/owl.png" alt="">
+                     <h1 class="color-primary">Whoops !</h1>
+                     <p class="text-cap">We couldn't find any Scheduled Calls</p>
                   </div>
                   <div class="row">
                      <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="booking in userBooking track by $index">
@@ -255,12 +255,12 @@
                </uib-tab>
                <uib-tab>
                   <uib-tab-heading class="text-uppercase" ng-click="userBook('pending','user')">Awaiting Confirmation</uib-tab-heading>
-                  <p ng-hide="userBooking.length==0"  class="font-bold tag-line">Following calls are yet to be confirmed by the experts. Upon confirmation you will be prompted to pay.</p>
+                  <p ng-hide="userBooking.length==0" class="font-bold tag-line">Following calls are yet to be confirmed by the experts. Upon confirmation you will be prompted to pay.</p>
                   <!-- <p   class="font-bold tag-line">No Awaiting Call.</p> -->
                   <div class="no-data-found" ng-show="userBooking.length==0">
-                    <img src="img/owl.png" alt="">
-                    <h1 class="color-primary">Whoops !</h1>
-                    <p class="text-cap">We couldn't find any Awaiting Call</p>
+                     <img src="img/owl.png" alt="">
+                     <h1 class="color-primary">Whoops !</h1>
+                     <p class="text-cap">We couldn't find any Awaiting Call</p>
                   </div>
                   <div class="row">
                      <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="booking in userBooking track by $index">
@@ -474,7 +474,7 @@
                            </div>
                         </div>
                      </div> -->
-                     <!-- <div class="col-md-3">
+               <!-- <div class="col-md-3">
                 <div class="outline-single">
                   <div class="single-payment ">
                     <div class="user-bg text-center">
@@ -523,7 +523,7 @@
                   </div>
                 </div>
               </div> -->
-                     <!-- <div class="col-md-3">
+               <!-- <div class="col-md-3">
                 <div class="outline-single">
                   <div class="single-payment">
                     <div class="user-bg text-center">
@@ -569,11 +569,11 @@
                         </div>
                       </div>
                     </div>  -->
-                     <!-- </div>
+               <!-- </div>
                 </div>
               </div> -->
-                  <!-- </div> -->
-                  <!-- <div class="reg-msg">
+               <!-- </div> -->
+               <!-- <div class="reg-msg">
               <h3>No completed Call</h3>
             </div> -->
                <!-- </uib -tab> -->
@@ -584,9 +584,9 @@
                   </div>
                   <!-- <p  class="font-bold tag-line">No .</p> -->
                   <div class="no-data-found" ng-show="userBooking.length==0">
-                    <img src="img/owl.png" alt="">
-                    <h1 class="color-primary">Whoops !</h1>
-                    <p class="text-cap">We couldn't find any account history</p>
+                     <img src="img/owl.png" alt="">
+                     <h1 class="color-primary">Whoops !</h1>
+                     <p class="text-cap">We couldn't find any account history</p>
                   </div>
                   <div class="filt display-inline" ng-hide="userBooking.length==0">
                      <div class="dropdown">

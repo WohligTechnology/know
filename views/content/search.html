@@ -1,94 +1,94 @@
 <section>
-    <div class="mt70 space-top">
-        <div class="" ng-include="template.searchbar"></div>
-    </div>
-    <div class="container">
+   <div class="mt70 space-top">
+      <div class="" ng-include="template.searchbar"></div>
+   </div>
+   <div class="container">
 
-        <div class="row">
-            <div class="col-md-4">
-                <div class="main-links mt25">
-                    <ul class="breadcrumb">
-                        <li><a ui-sref="home" class="text-uppercase">Home</a></li>
-                        <li class="active text-uppercase">Profile</li>
-                    </ul>
-                </div>
+      <div class="row">
+         <div class="col-md-4">
+            <div class="main-links mt25">
+               <ul class="breadcrumb">
+                  <li><a ui-sref="home" class="text-uppercase">Home</a></li>
+                  <li class="active text-uppercase">Profile</li>
+               </ul>
             </div>
-        </div>
-    </div>
+         </div>
+      </div>
+   </div>
 </section>
 <section>
-    <div class="bg-search">
-        <div class="container">
+   <div class="bg-search">
+      <div class="container">
 
-            <div class="row">
-                <div class="col-md-4 col-sm-4">
-                    <div class="filter">
-                        <div class="filter-title">
-                            <h4 class="text-uppercase">filter</h4>
+         <div class="row">
+            <div class="col-md-4 col-sm-4">
+               <div class="filter">
+                  <div class="filter-title">
+                     <h4 class="text-uppercase">filter</h4>
+                  </div>
+                  <div class="filter-box">
+                     <form>
+                        <div class="form-group">
+                           <label for="exampleInputEmail1">AREA OF EXPERTISE</label>
+                           <div class="pointer">
+                              <input value="{{expertise.value}}" type="checkbox" ng-model="selectedAll.expertise" ng-click="checkAll()" />
+                              <label>
+                                 Select All
+                              </label>
+                           </div>
+
+                           <div class="checkbox">
+                              <div class="pointer" ng-repeat="expertise in expertiseArr track by $index">
+                                 <input type="checkbox" ng-model="expertiseArr[$index].model" id="{{expertise.value}}" ng-change="searchExpert()">
+                                 <label for="{{expertise.value}}">
+                                    <span></span> {{expertise.value}}
+                                 </label>
+                              </div>
+                           </div>
                         </div>
-                        <div class="filter-box">
-                            <form>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">AREA OF EXPERTISE</label>
-                                    <div class="pointer">
-                                        <input value="{{expertise.value}}" type="checkbox" ng-model="selectedAll.expertise" ng-click="checkAll()" />
-                                        <label>
-                                            Select All
-                                        </label>
-                                    </div>
+                        <div class="form-group">
 
-                                    <div class="checkbox">
-                                        <div class="pointer" ng-repeat="expertise in expertiseArr track by $index">
-                                            <input type="checkbox" ng-model="expertiseArr[$index].model" id="{{expertise.value}}" ng-change="searchExpert()">
-                                            <label for="{{expertise.value}}">
-                                                <span></span> {{expertise.value}}
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
+                           <label for="exampleInputEmail2">LOCATION</label>
+                           <div class="pointer">
+                              <input value="{{location.value}}" type="checkbox" ng-model="selectedAll.location" ng-click="checkAllLocation()" />
+                              <label>
+                                 Select All
+                              </label>
+                           </div>
 
-                                    <label for="exampleInputEmail2">LOCATION</label>
-                                    <div class="pointer">
-                                        <input value="{{location.value}}" type="checkbox" ng-model="selectedAll.location" ng-click="checkAllLocation()" />
-                                        <label>
-                                            Select All
-                                        </label>
-                                    </div>
+                           <!-- <input type="text" ng-model="searchLocation" class="form-control filter-input" id="exampleInputEmail1" placeholder="eg. Mumbai, Pune, etc." ng-keyup="pushLocation(searchLocation,$event.keyCode)"> -->
+                           <div class="checkbox">
+                              <div class="pointer" ng-repeat="location in locationArr track by $index">
+                                 <input type="checkbox" ng-model="locationArr[$index].model" id="{{location.value}}" ng-change="searchExpert()">
+                                 <label for="{{location.value}}">
+                                    <span></span> {{location.value}}
+                                 </label>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <label for="exampleInputEmail1">COST</label>
 
-                                    <!-- <input type="text" ng-model="searchLocation" class="form-control filter-input" id="exampleInputEmail1" placeholder="eg. Mumbai, Pune, etc." ng-keyup="pushLocation(searchLocation,$event.keyCode)"> -->
-                                    <div class="checkbox">
-                                        <div class="pointer" ng-repeat="location in locationArr track by $index">
-                                            <input type="checkbox" ng-model="locationArr[$index].model" id="{{location.value}}" ng-change="searchExpert()">
-                                            <label for="{{location.value}}">
-                                                <span></span> {{location.value}}
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">COST</label>
+                           <div class="range-slider">
+                              <div range-slider min="priceFilter.range.min" max="priceFilter.range.max" model-min="priceFilter.minPrice" model-max="priceFilter.maxPrice" filter="currency:'₹'" step="100" on-handle-up="searchExpert()"></div>
+                           </div>
 
-                                    <div class="range-slider">
-                                        <div range-slider min="priceFilter.range.min" max="priceFilter.range.max" model-min="priceFilter.minPrice" model-max="priceFilter.maxPrice" filter="currency:'₹'" step="100" on-handle-up="searchExpert()"></div>
-                                    </div>
+                        </div>
+                     </form>
+                     <div class="some-expert">
+                        <label for="exampleInputEmail1">Experts are available across the following Sectors.</label>
+                        <div class="pointer">
+                           <ol class="padding0 color-primary" style="list-style:none">
+                              <li ng-repeat="cat in categories" ui-sref="search({search:cat.name})">{{cat.name}}</li>
+                           </ol>
 
-                                </div>
-                            </form>
-<div class="some-expert">
-    <label for="exampleInputEmail1">Experts are available across the following Sectors.</label>
-    <div class="pointer">
-      <ol class="padding0 color-primary" style="list-style:none">
-          <li ng-repeat="cat in categories" ui-sref="search({search:cat.name})">{{cat.name}}</li>
-      </ol>
-
-        <!-- <input value="{{expertise.value}}" type="checkbox" ng-model="selectedAll.expertise" ng-click="checkAll()" />
+                           <!-- <input value="{{expertise.value}}" type="checkbox" ng-model="selectedAll.expertise" ng-click="checkAll()" />
         <label>
             Education
         </label> -->
-    </div>
+                        </div>
 
-    <!-- <div class="pointer">
+                        <!-- <div class="pointer">
         <input value="{{expertise.value}}" type="checkbox" ng-model="selectedAll.expertise" ng-click="checkAll()" />
         <label>
             Careers
@@ -112,78 +112,78 @@
               Fitness
         </label>
     </div> -->
-</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-8 col-sm-8">
+               <uib-alert ng-if="!noLogin" ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="3000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
+               <uib-alert ng-if="noLogin" ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="3000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
+               <div class="search">
+                  <div class="filter-title">
+                     <h4 ng-if="expertdata.length==1 && expertdata.length<=1">SEARCH RESULT : {{expertdata.length}} RESULT FOUND</h4>
+                     <h4 ng-if="expertdata.length>=1 && expertdata.length!=1">SEARCH RESULT : {{expertdata.length}} RESULT'S FOUND</h4>
+                  </div>
+                  <div class="search-box" ng-repeat="experts in expertdata" ng-hide="notfound">
+                     <div class="row">
+                        <div class="col-md-3 col-sm-4">
+                           <div class="search-img margin-auto">
+                              <!-- <img ng-src="{{userForm.image|uploadpath}}" class="img-responsive margin-auto" ng-if="userForm.image" style="height:200px;"> -->
+                              <img ng-if="experts.image" ng-src="{{experts.image|uploadpath}}" alt="" style="height:200px;">
+                              <img ng-if="experts.image.length==0" ng-src="img/defaultlogo.png" alt="" style="height:200px;">
+                           </div>
+                           <div class="short text-center mt10">
+                              <button type="button" name="button" class="btn btn-animate-inverse-org text-uppercase" ng-click="addToWishlist(experts._id)" ng-if="experts.showbtn==true">shortlist</button>
+                              <button type="button" name="button" class="btn btn-animate-inverse-org text-uppercase" ng-click="addToWishlist(experts._id)" ng-if="experts.showbtn==false" disabled>shortlist</button>
+                              <br>
+                              <button type="button" name="button " class="btn btn-animate-inverse-org text-uppercase mt10" ui-sref="profile({id:experts._id})">View detail</button>
+                           </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-8 col-sm-8">
-                    <uib-alert ng-if="!noLogin" ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="3000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
-                    <uib-alert ng-if="noLogin" ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="3000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
-                    <div class="search">
-                        <div class="filter-title">
-                            <h4 ng-if="expertdata.length==1 && expertdata.length<=1">SEARCH RESULT : {{expertdata.length}} RESULT FOUND</h4>
-                            <h4 ng-if="expertdata.length>=1 && expertdata.length!=1">SEARCH RESULT : {{expertdata.length}} RESULT'S FOUND</h4>
-                        </div>
-                        <div class="search-box" ng-repeat="experts in expertdata" ng-hide="notfound">
-                            <div class="row">
-                                <div class="col-md-3 col-sm-4">
-                                    <div class="search-img margin-auto">
-                                        <!-- <img ng-src="{{userForm.image|uploadpath}}" class="img-responsive margin-auto" ng-if="userForm.image" style="height:200px;"> -->
-                                        <img ng-if="experts.image" ng-src="{{experts.image|uploadpath}}" alt="" style="height:200px;">
-                                        <img ng-if="experts.image.length==0" ng-src="img/defaultlogo.png" alt="" style="height:200px;">
-                                    </div>
-                                    <div class="short text-center mt10">
-                                        <button type="button" name="button" class="btn btn-animate-inverse-org text-uppercase" ng-click="addToWishlist(experts._id)" ng-if="experts.showbtn==true">shortlist</button>
-                                        <button type="button" name="button" class="btn btn-animate-inverse-org text-uppercase" ng-click="addToWishlist(experts._id)" ng-if="experts.showbtn==false" disabled>shortlist</button>
-                                        <br>
-                                        <button type="button" name="button " class="btn btn-animate-inverse-org text-uppercase mt10" ui-sref="profile({id:experts._id})">View detail</button>
-                                    </div>
-                                </div>
-                                <div class="col-md-9 col-sm-8">
-                                    <div class="search-info">
-                                        <div class="pull-right">
-                                            <div class="pric font-bold color-success">
-                                                <i class="fa fa-inr"></i>{{experts.priceForService}} / 30 Min
-                                            </div>
-                                            <div class="mt5">
-                                                <button type="button" class="btn btn-animate-success text-uppercase" ui-sref="book-now({id:experts._id})">book now</button>
-                                            </div>
-                                        </div>
-                                        <div class="exp-desg">
-                                            <h5 class="color-grey font-light">{{experts.areaOfExpertise}}</h5>
-                                        </div>
-                                        <div class="exp-name">
-                                            <h4 class="color-primary font-bold">{{experts.firstName + " " +experts.lastName}}</h4>
-                                        </div>
-                                        <div class="exp-city">
-                                            <span class="color-grey">{{experts.city}}</span>
-                                        </div>
-                                        <div class="exp-brief">
-                                            <span class="color-success-light font-bold">BRIEF BIO:</span>
-                                            <p>{{experts.description}}</p>
-                                        </div>
-                                        <div class="exp-brief" ng-if="experts.salesPitch">
-                                            <span class="color-success-light font-bold">SALES PITCH:</span>
-                                            <p>{{experts.salesPitch}}</p>
-                                        </div>
-                                        <div class="exp-brief">
-                                            <span class="color-success-light font-bold">SPECIALIZATION:</span>
-                                            <p>{{experts.specilization}}</p>
-                                        </div>
-                                    </div>
+                        <div class="col-md-9 col-sm-8">
+                           <div class="search-info">
+                              <div class="pull-right">
+                                 <div class="pric font-bold color-success">
+                                    <i class="fa fa-inr"></i>{{experts.priceForService}} / 30 Min
+                                 </div>
+                                 <div class="mt5" ng-if="experts.priceForService">
+                                    <button type="button" class="btn btn-animate-success text-uppercase" ui-sref="book-now({id:experts._id})">book now</button>
+                                 </div>
+                              </div>
+                              <div class="exp-desg">
+                                 <h5 class="color-grey font-light">{{experts.areaOfExpertise}}</h5>
+                              </div>
+                              <div class="exp-name">
+                                 <h4 class="color-primary font-bold">{{experts.firstName + " " +experts.lastName}}</h4>
+                              </div>
+                              <div class="exp-city">
+                                 <span class="color-grey">{{experts.city}}</span>
+                              </div>
+                              <div class="exp-brief">
+                                 <span class="color-success-light font-bold">BRIEF BIO:</span>
+                                 <p>{{experts.description}}</p>
+                              </div>
+                              <div class="exp-brief" ng-if="experts.salesPitch">
+                                 <span class="color-success-light font-bold">SALES PITCH:</span>
+                                 <p>{{experts.salesPitch}}</p>
+                              </div>
+                              <div class="exp-brief">
+                                 <span class="color-success-light font-bold">SPECIALIZATION:</span>
+                                 <p>{{experts.specilization}}</p>
+                              </div>
+                           </div>
 
-                                </div>
-                            </div>
                         </div>
-                        <div class="no-data-found" ng-show="notfound">
-                            <img src="img/owl.png" alt="">
-                            <h1 class="color-primary">Whoops !</h1>
-                            <p class="text-cap">No Result Found!</p>
-                        </div>
-                        <!-- <div ng-show="notfound" class="showerror">
+                     </div>
+                  </div>
+                  <div class="no-data-found" ng-show="notfound">
+                     <img src="img/owl.png" alt="">
+                     <h1 class="color-primary">Whoops !</h1>
+                     <p class="text-cap">No Result Found!</p>
+                  </div>
+                  <!-- <div ng-show="notfound" class="showerror">
    <h3 class="text-center">No Result Found!</h3>
  </div> -->
-                        <!-- <div class="search-box mt20">
+                  <!-- <div class="search-box mt20">
               <div class="row">
                 <div class="col-md-3">
                   <div class="search-img margin-auto">
@@ -231,9 +231,9 @@
                 </div>
               </div>
             </div> -->
-                    </div>
-                </div>
+               </div>
             </div>
-        </div>
-    </div>
+         </div>
+      </div>
+   </div>
 </section>
