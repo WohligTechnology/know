@@ -18,7 +18,7 @@
                   <uib-tab-heading class="text-uppercase" ng-click="userBook('accept','user')">Awaiting Payment</uib-tab-heading>
                   <p ng-if="userBooking.length!=0" class="font-bold tag-line">Following calls are awaiting payment. Please pay now to confirm the call.</p>
                   <!-- <p ng-show="userBooking.length==0" class="font-bold tag-line">No Awaiting payment.</p> -->
-                  <div class="no-data-found" ng-show="nodata">
+                  <div class="no-data-found" ng-show="nodata && !selectOnce">
                      <img src="img/owl.png" alt="">
                      <h1 class="color-primary">Whoops !</h1>
                      <p class="text-cap">We couldn't find any awaiting payment</p>
@@ -92,7 +92,7 @@
                         </div>
                      </div>
                      <div>
-                        <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="5000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
+                        <uib-alert ng-show="selectOnce && !nodata" ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="5000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
                      </div>
                      <!-- <div class="col-md-3">
                 <div class="outline-single">

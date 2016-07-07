@@ -192,6 +192,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
     }
     $scope.mesg = [];
+    $scope.selectOnce=false;
     $scope.userBook('accept', 'user');
     $scope.getPay = function(booking, val) {
         document.getElementById(val).disabled = true;
@@ -201,22 +202,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log(data);
             window.open(data.data);
             document.getElementById(val).disabled = false;
-                // if ($scope.userpay.status == 'paid') {
-                //     $scope.mesg.push({
-                //         type: 'success',
-                //         msg: 'Your reply send to the Expert'
-                //     });
-                //     $scope.closeAlert = function(index) {
-                //         $scope.mesg.splice(index, 1);
-                //     }
-                // }
-                // if (data.value != false) {
-                //     document.getElementById(val).disabled = false;
-                //     $scope.userBook('accept', 'user');
-                // } else {
-                //     document.getElementById(val).disabled = false;
-                //     $scope.userBook('accept', 'user');
-                // }
+            if ($scope.userpay.status == 'paid') {
+              $scope.selectOnce=true;
+                $scope.mesg.push({
+                    type: 'success',
+                    msg: 'Your reply send to the Expert'
+                });
+                $scope.closeAlert = function(index) {
+                    $scope.mesg.splice(index, 1);
+                }
+            }
+            // if (data.value != false) {
+            //     document.getElementById(val).disabled = false;
+            //     $scope.userBook('accept', 'user');
+            // } else {
+            //     document.getElementById(val).disabled = false;
+            //     $scope.userBook('accept', 'user');
+            // }
         });
     };
 })
@@ -242,7 +244,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.mesg = [];
         $scope.sendData = {};
         $scope.sendData.from = "expert";
+        $scope.alertmesg = false;
+        $scope.disableButton = false;
+          $scope.selectOnce = false;
         $scope.acceptRequest = function(val, id, user) {
+            $scope.disableButton = true;
             console.log(user);
             NavigationService.getOneUser(user._id, function(data2) {
                 if (val == 1) {
@@ -250,6 +256,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.sendData.status = "accept";
                     $scope.sendData._id = id;
                     if ($scope.sendData.status == 'accept') {
+                        $scope.alertmesg = true;
                         $scope.mesg.push({
                             type: 'success',
                             msg: 'Your reply send to the user'
