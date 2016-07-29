@@ -12,9 +12,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.expertlogo = "";
     $scope.userlogo = "";
     $scope.home = "home-page";
-    // $timeout(function () {
-    //     $scope.hidePreloader();
-    // }, 2000);
 
     $scope.freqSearch = {};
     NavigationService.getFreqSearch($scope.freqSearch, function(data) {
@@ -24,9 +21,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     });
 
     // ----for search expert------
-
-
-
 
     $scope.testimonial = {};
     NavigationService.getTestimonial($scope.testimonial, function(data) {
@@ -46,23 +40,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log('categories', $scope.categories);
     });
 
-    // $scope.forgotpswd = {};
-    // $scope.forgotpswdClick = function(formValid) {
-    //     console.log('in fun');
-    //     if (formValid.$valid) {
-    //
-    //
-    //         NavigationService.getForgotpswd($scope.forgotpswd, function(data) {
-    //             $scope.forgotpswd = data.data;
-    //             console.log('forgotpswd', $scope.forgotpswd);
-    //         });
-    //     }
-    // };
-
-
     $scope.animationsEnabled = true;
     $scope.open = function(size) {
-
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'views/modal/login.html',
@@ -74,10 +53,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
             }
         });
-
     };
     $scope.open2 = function(size) {
-
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'views/modal/signup.html',
@@ -89,79 +66,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
             }
         });
-
-    };
-    //
-    // $scope.categorydata = {};
-    // NavigationService.getCategory($scope.categorydata, function(data) {
-    //     $scope.categorydata = data.data;
-    //     console.log('$scope.categorydata', $scope.categorydata);
-    //
-    // });
-    // $scope.userdata = {};
-    // $scope.userForm = {};
-    // $scope.addQuery = function(id, cat, needhelp) {
-    //     // if(cat.$valid && needhelp.$valid) {
-    //
-    //     NavigationService.getUserData($scope.userdata, function(data) {
-    //         $scope.userdata = data;
-    //         console.log("$scope.userdata", $scope.userdata._id);
-    //         NavigationService.getHelp($scope.userForm, function(data) {
-    //             if (data && data.value === true) {
-    //
-    //                 $scope.findcat = true;
-    //                 $timeout(function() {
-    //                         modalInstance1.dismiss();
-    //                         $timeout(function() {
-    //                             $scope.findcat = "";
-    //                         }, 1000)
-    //
-    //                     }, 2500)
-    //                     //$state.reload();
-    //
-    //             } else {
-    //                 $scope.nouser = true;
-    //                 $timeout(function() {
-    //                         modalInstance1.dismiss();
-    //                         $timeout(function() {
-    //                             $scope.nouser = "";
-    //                         }, 1000)
-    //                     }, 2500)
-    //                     //$state.reload();
-    //             }
-    //
-    //         });
-    //
-    //
-    //
-    //     });
-    //     $scope.userForm={};
-    //     // }
-    // };
-    // var modalInstance1 = '';
-    // $scope.open4 = function(size) {
-    //     modalInstance1 = $uibModal.open({
-    //         animation: $scope.animationsEnabled,
-    //         templateUrl: 'views/modal/needhelp.html',
-    //         //controller: 'HomeCtrl',
-    //         size: size,
-    //         scope: $scope,
-    //         //           myModalTimeout: setTimeout(function(){
-    //         //      $("#needhelp.html").hide();
-    //         //  }, 3000)
-    //         // resolve: {
-    //         //     items: function() {
-    //         //         return $scope.items;
-    //         //     }
-    //         // }
-    //     });
-    //
-    // };
-    //
-    // $scope.toggleAnimation = function() {
-    //     $scope.animationsEnabled = !$scope.animationsEnabled;
-    // };
-
+    }
 })
 
 .controller('UserBookingCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -186,7 +91,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.userBooking = data.data;
             if (data.data == "") {
                 console.log('this iss null');
-                $scope.nodata = true;
             }
             console.log('userBooking', $scope.userBooking);
         });
@@ -195,10 +99,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.selectOnce = false;
     $scope.userBook('accept', 'user');
     $scope.getPay = function(booking, val) {
-        console.log(booking);
         var currentDate = new Date();
         var callTime = new Date(booking.callTime);
         if (callTime > currentDate) {
+            console.log("in me");
             document.getElementById(val).disabled = true;
             booking.status = "paid";
             booking.from = "user";
@@ -208,6 +112,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 var closeInterval = setInterval(function() {
                     NavigationService.getSingleBooking(booking._id, function(singleBooking) {
                         console.log(singleBooking);
+                        console.log($scope.userpay);
                         if (singleBooking.value) {
                             if (singleBooking.data.status == "paid") {
                                 clearInterval(closeInterval);
@@ -226,32 +131,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             } else if (singleBooking.data.status == "failure") {
                                 clearInterval(closeInterval);
                                 win.close();
+                                $scope.selectOnce = true;
+                                $scope.mesg.push({
+                                    type: 'danger',
+                                    msg: 'Your payment failed'
+                                });
+                                $scope.closeAlert = function(index) {
+                                    $scope.mesg.splice(index, 1);
+                                }
                                 document.getElementById(val).disabled = false;
                             }
                         }
-                    })
+                    });
                 }, 1000);
-                // if ($scope.userpay.status == 'paid') {
-                //     $scope.selectOnce = true;
-                //     $scope.mesg.push({
-                //         type: 'success',
-                //         msg: 'Your reply send to the Expert'
-                //     });
-                //     $scope.closeAlert = function(index) {
-                //         $scope.mesg.splice(index, 1);
-                //     }
-                // }
-                // if (data.value != false) {
-                //     document.getElementById(val).disabled = false;
-                //     $scope.userBook('accept', 'user');
-                // } else {
-                //     document.getElementById(val).disabled = false;
-                //     $scope.userBook('accept', 'user');
-                // }
             });
         } else {
+            $scope.selectOnce = true;
+            console.log($scope.selectOnce);
             $scope.mesg.push({
-                type: 'Error',
+                type: 'danger',
                 msg: 'Your call time is expired'
             });
             $scope.closeAlert = function(index) {
@@ -262,87 +160,88 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 })
 
 .controller('ExpertBookingCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams) {
-        $scope.template = TemplateService.changecontent("expert-booking");
-        $scope.menutitle = NavigationService.makeactive("Expert-Booking");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.expertlogo = "expert-page";
-        $scope.userlogo = "";
-        $scope.bookexperts = {};
-        $scope.expertBook = function(status, expert) {
-            console.log(status);
-            $scope.bookexperts.status = status;
-            $scope.bookexperts.from = expert;
-            NavigationService.getExpertBooking($scope.bookexperts, function(data) {
-                console.log(data);
-                $scope.bookexpert = data.data;
-                console.log('bookexpert', $scope.bookexpert);
+    $scope.template = TemplateService.changecontent("expert-booking");
+    $scope.menutitle = NavigationService.makeactive("Expert-Booking");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.expertlogo = "expert-page";
+    $scope.userlogo = "";
+    $scope.bookexperts = {};
+    $scope.expertBook = function(status, expert) {
+        console.log(status);
+        $scope.bookexperts.status = status;
+        $scope.bookexperts.from = expert;
+        NavigationService.getExpertBooking($scope.bookexperts, function(data) {
+            console.log(data);
+            $scope.bookexpert = data.data;
+            console.log('bookexpert', $scope.bookexpert);
+        });
+    }
+    $scope.mesg = [];
+    $scope.sendData = {};
+    $scope.sendData.from = "expert";
+    $scope.alertmesg = false;
+    $scope.disableButton = false;
+    $scope.selectOnce = false;
+    $scope.acceptRequest = function(val, id, user) {
+        $scope.disableButton = true;
+        console.log(user);
+        NavigationService.getOneUser(user._id, function(data2) {
+            if (val == 1) {
+                $scope.selectOnce = true;
+                $scope.sendData.status = "accept";
+                $scope.sendData._id = id;
+                if ($scope.sendData.status == 'accept') {
+                    $scope.alertmesg = true;
+                    $scope.mesg.push({
+                        type: 'success',
+                        msg: 'Your reply send to the user'
+                    });
+                    $scope.closeAlert = function(index) {
+                        $scope.mesg.splice(index, 1);
+                    }
+                }
+            } else {
+                $scope.selectOnce = true;
+                $scope.sendData.status = "reject";
+                $scope.sendData._id = id;
+                if ($scope.sendData.status == 'reject') {
+                    $scope.mesg.push({
+                        type: 'success',
+                        msg: 'Your reply send to the user'
+                    });
+                    $scope.closeAlert = function(index) {
+                        $scope.mesg.splice(index, 1);
+                    }
+                }
+            }
+            if (data2.data.email) {
+                $scope.sendData.useremail = data2.data.email;
+            }
+            $scope.sendData.username = data2.data.firstName;
+            if (data2.data.mobile) {
+                $scope.sendData.mobile = data2.data.mobile;
+            }
+            NavigationService.acceptRequest($scope.sendData, function(data) {
+                console.log('userdata', $scope.userdata);
+                if (data.value != false) {
+                    $scope.expertBook('pending', 'expert');
+                }
             });
-        }
+        });
         $scope.mesg = [];
-        $scope.sendData = {};
-        $scope.sendData.from = "expert";
-        $scope.alertmesg = false;
-        $scope.disableButton = false;
-        $scope.selectOnce = false;
-        $scope.acceptRequest = function(val, id, user) {
-            $scope.disableButton = true;
-            console.log(user);
-            NavigationService.getOneUser(user._id, function(data2) {
-                if (val == 1) {
-                    $scope.selectOnce = true;
-                    $scope.sendData.status = "accept";
-                    $scope.sendData._id = id;
-                    if ($scope.sendData.status == 'accept') {
-                        $scope.alertmesg = true;
-                        $scope.mesg.push({
-                            type: 'success',
-                            msg: 'Your reply send to the user'
-                        });
-                        $scope.closeAlert = function(index) {
-                            $scope.mesg.splice(index, 1);
-                        }
-                    }
-                } else {
-                    $scope.selectOnce = true;
-                    $scope.sendData.status = "reject";
-                    $scope.sendData._id = id;
-                    if ($scope.sendData.status == 'reject') {
-                        $scope.mesg.push({
-                            type: 'success',
-                            msg: 'Your reply send to the user'
-                        });
-                        $scope.closeAlert = function(index) {
-                            $scope.mesg.splice(index, 1);
-                        }
-                    }
-                }
-                if (data2.data.email) {
-                    $scope.sendData.useremail = data2.data.email;
-                }
-                $scope.sendData.username = data2.data.firstName;
-                if (data2.data.mobileno) {
-                    $scope.sendData.mobile = data2.data.mobileno;
-                }
-                NavigationService.acceptRequest($scope.sendData, function(data) {
-                    console.log('userdata', $scope.userdata);
-                    if (data.value != false) {
-                        $scope.expertBook('pending', 'expert');
-                    }
-                });
-            });
-            $scope.mesg = [];
-        };
-        $scope.expertBook('pending', 'expert');
-    })
-    .controller('AboutCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("about");
-        $scope.menutitle = NavigationService.makeactive("About");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.expertlogo = "";
-        $scope.userlogo = "user-page";
-    })
+    };
+    $scope.expertBook('pending', 'expert');
+})
+
+.controller('AboutCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("about");
+    $scope.menutitle = NavigationService.makeactive("About");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.expertlogo = "";
+    $scope.userlogo = "user-page";
+})
 
 .controller('BookNowCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $window, $stateParams, $state, $filter) {
     $scope.template = TemplateService.changecontent("book-now");
@@ -424,36 +323,36 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     NavigationService.getBooking($scope.userForm, function(data) {
                         // $scope.userForm = data.data;
                         // $scope.userForm.callDuration = new Date();
-                        // if (data.value == true) {
-                        //     $scope.formComplete = true;
-                        //     $timeout(function() {
-                        //         $state.go("user-booking");
-                        //         $timeout(function() {
-                        //             $scope.formComplete = "";
-                        //         }, 2000)
-                        //
-                        //     }, 3000);
-                        // } else {
-                        //     if (data.data == 'User not loggd-in') {
-                        //         $scope.nouser = true;
-                        //         $timeout(function() {
-                        //             $state.reload();
-                        //             $timeout(function() {
-                        //                 $scope.formComplete = "";
-                        //             }, 2000)
-                        //
-                        //         }, 3000)
-                        //
-                        //     } else {
-                        //         $scope.alreadyBooked = true;
-                        //         $timeout(function() {
-                        //             $state.reload();
-                        //             $timeout(function() {
-                        //                 $scope.formComplete = "";
-                        //             }, 2000);
-                        //         }, 3000);
-                        //     }
-                        // }
+                        if (data.value == true) {
+                            $scope.formComplete = true;
+                            $timeout(function() {
+                                $state.go("user-booking");
+                                $timeout(function() {
+                                    $scope.formComplete = "";
+                                }, 2000)
+
+                            }, 3000);
+                        } else {
+                            if (data.data == 'User not loggd-in') {
+                                $scope.nouser = true;
+                                $timeout(function() {
+                                    $state.reload();
+                                    $timeout(function() {
+                                        $scope.formComplete = "";
+                                    }, 2000)
+
+                                }, 3000)
+
+                            } else {
+                                $scope.alreadyBooked = true;
+                                $timeout(function() {
+                                    $state.reload();
+                                    $timeout(function() {
+                                        $scope.formComplete = "";
+                                    }, 2000);
+                                }, 3000);
+                            }
+                        }
                     });
                 }
             });
@@ -517,446 +416,391 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 })
 
 .controller('LoginCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, $interval) {
-        $scope.template = TemplateService.changecontent("login");
-        $scope.menutitle = NavigationService.makeactive("Login");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.expertlogo = "";
-        $scope.userlogo = "user-page";
-        $scope.mesg = [];
-        $scope.userForm = {};
+    $scope.template = TemplateService.changecontent("login");
+    $scope.menutitle = NavigationService.makeactive("Login");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.expertlogo = "";
+    $scope.userlogo = "user-page";
+    $scope.mesg = [];
+    $scope.userForm = {};
 
-        //-------------Social Login------------------------------
+    //-------------Social Login------------------------------
+    $scope.facebookLogin = function() {
+        window.location.href = "http://jacknows.wohlig.com/user/loginFacebook";
+    }
+    $scope.googleLogin = function() {
+        window.location.href = "http://jacknows.wohlig.com/user/loginGoogle";
+    }
 
-        $scope.facebookLogin = function() {
-            window.location.href = "http://jacknows.wohlig.com/user/loginFacebook";
-        }
-        $scope.googleLogin = function() {
-                window.location.href = "http://jacknows.wohlig.com/user/loginGoogle";
-            }
-            //-------------------------------------------------------
+    //-------------------------------------------------------
 
-        $scope.getLogin = function(formValid) {
-            //console.log($scope.userForm);
-            if (formValid.$valid) {
-
-                NavigationService.getUserLogin($scope.userForm, function(data) {
-                    if (data.value == true) {
-                        $scope.userForm = data;
-                        $state.go("home");
-                    } else {
-                        $scope.mesg.push({
-                            type: 'danger',
-                            msg: 'Incorrect Email or Password'
-                        });
-
-                        $scope.closeAlert = function(index) {
-                            $scope.mesg.splice(index, 1);
-                        }
-
-                    }
-
-                });
-
-            }
-            $scope.mesg = [];
-        };
-        $scope.changeSuccess = false;
-        $scope.forgotpswd = {};
-        $scope.forgotpswdClick = function(formValid) {
-            console.log("//////", formValid);
-            NavigationService.getForgotpswd(formValid, function(data) {
-                $scope.forgotpswd = data.data;
-                console.log('forgotpswd', $scope.forgotpswd);
-                if ($scope.forgotpswd.comment == 'User not found') {
-                    $scope.mesg.push({
-                        type: 'danger',
-                        msg: 'Incorrect Email'
-                    });
-
-                    $scope.closeAlert = function(index) {
-                        $scope.mesg.splice(index, 1);
-                    }
-
-                } else if ($scope.forgotpswd.comment == 'Mail Sent') {
-                    $scope.changeSuccess = true;
-                }
-            });
-            // $scope.mesg = [];
-        };
-
-        $scope.open3 = function(size) {
-
-            var modalInstance = $uibModal.open({
-                animation: $scope.animationsEnabled,
-                templateUrl: 'views/modal/forgetpassword.html',
-                //controller: 'HomeCtrl',
-                size: size,
-                scope: $scope
-            });
-
-        };
-
-
-
-    })
-    .controller('SignupCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $window) {
-        $scope.template = TemplateService.changecontent("signup");
-        $scope.menutitle = NavigationService.makeactive("Signup");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.expertlogo = "";
-        $scope.userlogo = "user-page";
-        $scope.mesg = [];
-        $scope.userForm = {};
-        $scope.userSignup = function(formValid) {
-            console.log('SignupCtrl', $scope.userForm);
-            if (formValid.$valid) {
-                if ($scope.userForm.password == $scope.userForm.confirmPassword) {
-                    NavigationService.Signup($scope.userForm, function(data) {
-                        $scope.userForm = data.data;
-                        if (data.value == true) {
-                            $scope.formComplete = true;
-
-                            $timeout(function() {
-                                $state.go("home");
-                            }, 1000)
-
-
-
-                        } else {
-                            $scope.alreadyExist = true;
-                            $timeout(function() {
-                                $state.go("login");
-                            }, 1000)
-                        }
-                    });
+    $scope.getLogin = function(formValid) {
+        //console.log($scope.userForm);
+        if (formValid.$valid) {
+            NavigationService.getUserLogin($scope.userForm, function(data) {
+                if (data.value == true) {
+                    $scope.userForm = data;
+                    $state.go("home");
                 } else {
                     $scope.mesg.push({
-                        type: 'success',
-                        msg: 'Password do not match.'
+                        type: 'danger',
+                        msg: 'Incorrect Email or Password'
                     });
                     $scope.closeAlert = function(index) {
                         $scope.mesg.splice(index, 1);
                     }
-                    $scope.userForm.confirmPassword = "";
                 }
+            });
+        }
+        $scope.mesg = [];
+    };
 
+    NavigationService.getUser(function(data) {
+        if (data._id && data._id != "") {
+            $state.go("home");
+        }
+    });
+
+    $scope.changeSuccess = false;
+    $scope.forgotpswd = {};
+    $scope.forgotpswdClick = function(formValid) {
+        console.log("//////", formValid);
+        NavigationService.getForgotpswd(formValid, function(data) {
+            $scope.forgotpswd = data.data;
+            console.log('forgotpswd', $scope.forgotpswd);
+            if ($scope.forgotpswd.comment == 'User not found') {
+                $scope.mesg.push({
+                    type: 'danger',
+                    msg: 'Incorrect Email'
+                });
+                $scope.closeAlert = function(index) {
+                    $scope.mesg.splice(index, 1);
+                }
+            } else if ($scope.forgotpswd.comment == 'Mail Sent') {
+                $scope.changeSuccess = true;
             }
-            $scope.mesg = [];
-        };
-    })
+        });
+    };
+
+    $scope.open3 = function(size) {
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'views/modal/forgetpassword.html',
+            //controller: 'HomeCtrl',
+            size: size,
+            scope: $scope
+        });
+    };
+})
+
+.controller('SignupCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $window) {
+    $scope.template = TemplateService.changecontent("signup");
+    $scope.menutitle = NavigationService.makeactive("Signup");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.expertlogo = "";
+    $scope.userlogo = "user-page";
+    $scope.mesg = [];
+    $scope.userForm = {};
+    $scope.userSignup = function(formValid) {
+        console.log('SignupCtrl', $scope.userForm);
+        if (formValid.$valid) {
+            if ($scope.userForm.password == $scope.userForm.confirmPassword) {
+                NavigationService.Signup($scope.userForm, function(data) {
+                    $scope.userForm = data.data;
+                    if (data.value == true) {
+                        $scope.formComplete = true;
+                        $timeout(function() {
+                            $state.go("home");
+                        }, 1000);
+                    } else {
+                        $scope.alreadyExist = true;
+                        $timeout(function() {
+                            $state.go("login");
+                        }, 1000);
+                    }
+                });
+            } else {
+                $scope.mesg.push({
+                    type: 'success',
+                    msg: 'Password do not match.'
+                });
+                $scope.closeAlert = function(index) {
+                    $scope.mesg.splice(index, 1);
+                }
+                $scope.userForm.confirmPassword = "";
+            }
+        }
+        $scope.mesg = [];
+    };
+})
 
 .controller('EditUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
-        $scope.template = TemplateService.changecontent("edit-user");
-        $scope.menutitle = NavigationService.makeactive("Edit-User");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.expertlogo = "";
-        $scope.userlogo = "user-page";
+    $scope.template = TemplateService.changecontent("edit-user");
+    $scope.menutitle = NavigationService.makeactive("Edit-User");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.expertlogo = "";
+    $scope.userlogo = "user-page";
+    // $scope.userForm = {};
+    NavigationService.getUserEditDetail($stateParams.id, function(data) {
+        console.log('getUserEditDetail', data);
+        $scope.userForm = data;
+    });
 
-        // $scope.userForm = {};
-        NavigationService.getUserEditDetail($stateParams.id, function(data) {
-            console.log('getUserEditDetail', data);
-            $scope.userForm = data;
-        });
-
-        $scope.userSubmitForm = function(formValid) {
-            console.log($scope.userForm);
-
-            //console.log('on the user');
-            if (formValid.$valid) {
-                $scope.formComplete = true;
+    $scope.userSubmitForm = function(formValid) {
+        console.log($scope.userForm);
+        if (formValid.$valid) {
+            $scope.formComplete = true;
+            $timeout(function() {
+                $state.go("user-booking");
                 $timeout(function() {
-                    $state.go("user-booking");
-                    $timeout(function() {
-                        $scope.formComplete = "";
-                    }, 2000)
-
-                }, 3000)
-                NavigationService.editProfile($scope.userForm, function(data) {
-
-                    $scope.userForm = data.data;
-                });
-            }
-        };
-        //
-        // $scope.getreload=function(){
-        //   $state.reload();
-        // };
-    })
-    .controller('ChangePasswordCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
-        $scope.template = TemplateService.changecontent("change-password");
-        $scope.menutitle = NavigationService.makeactive("change-password");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-
-        $scope.expertlogo = "";
-        $scope.userlogo = "user-page";
-        $scope.mesg = [];
-
-
-
-        // $scope.userForm = {};
-        NavigationService.getUserEditDetail($stateParams.id, function(data) {
-            console.log('getUserEditDetail', data);
-            $scope.userForm = data;
-        });
-
-        $scope.userSubmitForm = function(formValid) {
-            console.log('in function');
-
-            //console.log('on the user');
-            if (formValid.$valid) {
-                console.log('in validate');
-                NavigationService.changePassword($scope.userForm, function(data) {
-                    console.log('$scope.userForm', $scope.userForm);
-                    if (data.value == true) {
-                        $scope.changpswd = true;
-                        $scope.userForm = data.data;
-                        //$state.go("home");
-                    } else {
-                        $scope.mesg.push({
-                            type: 'danger',
-                            msg: 'Incorrect Password'
-                        });
-                        $scope.closeAlert = function(index) {
-                            $scope.mesg.splice(index, 1);
-                        }
-                    }
-                });
-            }
-            $scope.mesg = [];
-        };
-    })
-    .controller('ChangeExpertPasswordCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
-        $scope.template = TemplateService.changecontent("change-expert-password");
-        $scope.menutitle = NavigationService.makeactive("change-expert-password");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-
-        $scope.expertlogo = "";
-        $scope.userlogo = "user-page";
-        $scope.mesg = [];
-
-
-
-        // $scope.userForm = {};
-        NavigationService.getExpertEditDetail($stateParams.id, function(data) {
-            console.log('getUserEditDetail', data);
-            $scope.userForm = data;
-        });
-
-        $scope.userSubmitForm = function(formValid) {
-            console.log('in function');
-
-            //console.log('on the user');
-            if (formValid.$valid) {
-                console.log('in validate');
-                NavigationService.changeExpertPassword($scope.userForm, function(data) {
-                    console.log('$scope.userForm', $scope.userForm);
-                    if (data.value == true) {
-                        $scope.changpswd = true;
-                        $scope.userForm = data.data;
-                        //$state.go("home");
-                    } else {
-                        $scope.mesg.push({
-                            type: 'danger',
-                            msg: 'Incorrect Password'
-                        });
-                        $scope.closeAlert = function(index) {
-                            $scope.mesg.splice(index, 1);
-                        }
-                    }
-                });
-            }
-            $scope.mesg = [];
-        };
-    })
-    .controller('ContactCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("contact");
-        $scope.menutitle = NavigationService.makeactive("Contact");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.expertlogo = "";
-        $scope.userlogo = "user-page";
-
-        $scope.userForm = {};
-        $scope.userSubmitForm = function(formValid) {
-            console.log($scope.userForm);
-            if (formValid.$valid) {
-                $scope.formComplete = true;
-                NavigationService.ContactSubmit($scope.userForm, function(data) {
-                    //console.log('userformctrl', $scope.userForm);
-
-                });
-
-            }
-
-        };
-
-    })
-    .controller('PrivacyCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("privacy");
-        $scope.menutitle = NavigationService.makeactive("Privacy");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.expertlogo = "";
-        $scope.userlogo = "user-page";
-    })
-    .controller('TermsConditionCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("terms-condition");
-        $scope.menutitle = NavigationService.makeactive("Terms-Condition");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.expertlogo = "";
-        $scope.userlogo = "user-page";
-    })
-    .controller('HomeExpertCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $window, $uibModal) {
-        $scope.template = TemplateService.changecontent("home-expert");
-        $scope.menutitle = NavigationService.makeactive("Home-Expert");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.expertlogo = "";
-        $scope.userlogo = "";
-        $scope.home = "";
-        $scope.experthome = "expert-home";
-        var modalInstance = '';
-        $scope.open3 = function(size) {
-
-            var modalInstance = $uibModal.open({
-                animation: $scope.animationsEnabled,
-                templateUrl: 'views/modal/forgetpassword.html',
-                //controller: 'HomeCtrl',
-                size: size,
-                scope: $scope,
-
+                    $scope.formComplete = "";
+                }, 2000);
+            }, 3000);
+            NavigationService.editProfile($scope.userForm, function(data) {
+                $scope.userForm = data.data;
             });
+        }
+    };
+})
 
+.controller('ChangePasswordCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+    $scope.template = TemplateService.changecontent("change-password");
+    $scope.menutitle = NavigationService.makeactive("change-password");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
 
-        };
+    $scope.expertlogo = "";
+    $scope.userlogo = "user-page";
+    $scope.mesg = [];
 
+    NavigationService.getUserEditDetail($stateParams.id, function(data) {
+        console.log('getUserEditDetail', data);
+        $scope.userForm = data;
+    });
 
-        $scope.mesg = [];
-        $scope.userForm = {};
-        $scope.expertSignup = function(formValid) {
-            if (formValid.$valid) {
-                console.log('HomeExpertCtrl', $scope.userForm);
-                if ($scope.userForm.password == $scope.userForm.confirmPassword) {
-                    NavigationService.ExpertSignup($scope.userForm, function(data) {
-                        if (data.value == true) {
-                            // $timeout(function () {
-                            $scope.formComplete = true;
-
-                            $timeout(function() {
-                                $state.go("expert-profile");
-                            }, 1000)
-
-                            // }, 1000);
-
-                            // $scope.formComplete = true;
-
-
-                        } else {
-                            $scope.expertAlreadyExist = true;
-                            $timeout(function() {
-                                $scope.expertAlreadyExist = false;
-                                // $state.go("home-expert");
-                            }, 5000)
-                        }
-
-                        // console.log($scope.userForm.password);
-                        // console.log($scope.userForm.confirmPassword);
-
-                    });
-
-                    //console.log('userformctrl', $scope.userForm);
-                    // $state.go("expert-profile");
+    $scope.userSubmitForm = function(formValid) {
+        console.log('in function');
+        if (formValid.$valid) {
+            console.log('in validate');
+            NavigationService.changePassword($scope.userForm, function(data) {
+                console.log('$scope.userForm', $scope.userForm);
+                if (data.value == true) {
+                    $scope.changpswd = true;
+                    $scope.userForm = data.data;
+                    //$state.go("home");
                 } else {
                     $scope.mesg.push({
-                        type: 'success',
-                        msg: 'Password do not match.'
-                    });
-                    $scope.closeAlert = function(index) {
-                            $scope.mesg.splice(index, 1);
-                        }
-                        //$window.alert("Password do not match.");
-                    $scope.userForm.confirmPassword = "";
-                }
-
-
-
-
-            }
-            $scope.mesg = [];
-        };
-
-
-        $scope.mesgs = [];
-        //
-        //$scope.userForm = {};
-        $scope.getLogin = function(formValid) {
-            //console.log($scope.userForm);
-            if (formValid.$valid) {
-
-                NavigationService.getExpertLogin($scope.userForm, function(data) {
-                    if (data.value == true) {
-                        $scope.userForm = data;
-                        $state.go("expert-booking");
-                    } else {
-                        $scope.mesgs.push({
-                            type: 'danger',
-                            msg: 'Incorrect Email or Password'
-                        });
-
-                        $scope.closeAlert = function(index) {
-                            $scope.mesgs.splice(index, 1);
-                        }
-
-                    }
-                });
-                $scope.mesgs = [];
-            }
-        };
-
-        $scope.changeSuccess = false;
-        $scope.forgotpswd = {};
-        $scope.forgotpswdClick = function(formValid) {
-            console.log("//////", formValid);
-            NavigationService.getForgotpswdExpert(formValid, function(data) {
-                $scope.forgotpswd = data.data;
-                console.log('forgotpswd', $scope.forgotpswd);
-                if ($scope.forgotpswd.comment == 'User not found') {
-                    $scope.mesg.push({
                         type: 'danger',
-                        msg: 'Incorrect Email'
+                        msg: 'Incorrect Password'
                     });
-
                     $scope.closeAlert = function(index) {
                         $scope.mesg.splice(index, 1);
                     }
-                } else if ($scope.forgotpswd.comment == 'Mail Sent') {
-                    $scope.changeSuccess = true;
                 }
-
             });
-            // $scope.mesg = [];
-        };
-
-
-
-
-
-        $scope.openform = function(param) {
-            if (param == 'Login') {
-                $scope.showform = true;
-            } else {
-                $scope.showform = false;
-            }
-            $(window).scrollTop(0)
         }
-        global.open = $scope.openform;
-    })
+        $scope.mesg = [];
+    };
+})
+
+.controller('ChangeExpertPasswordCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+    $scope.template = TemplateService.changecontent("change-expert-password");
+    $scope.menutitle = NavigationService.makeactive("change-expert-password");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.expertlogo = "";
+    $scope.userlogo = "user-page";
+    $scope.mesg = [];
+
+    // $scope.userForm = {};
+    NavigationService.getExpertEditDetail($stateParams.id, function(data) {
+        console.log('getUserEditDetail', data);
+        $scope.userForm = data;
+    });
+
+    $scope.userSubmitForm = function(formValid) {
+        console.log('in function');
+        //console.log('on the user');
+        if (formValid.$valid) {
+            console.log('in validate');
+            NavigationService.changeExpertPassword($scope.userForm, function(data) {
+                console.log('$scope.userForm', $scope.userForm);
+                if (data.value == true) {
+                    $scope.changpswd = true;
+                    $scope.userForm = data.data;
+                    //$state.go("home");
+                } else {
+                    $scope.mesg.push({
+                        type: 'danger',
+                        msg: 'Incorrect Password'
+                    });
+                    $scope.closeAlert = function(index) {
+                        $scope.mesg.splice(index, 1);
+                    }
+                }
+            });
+        }
+        $scope.mesg = [];
+    };
+})
+
+.controller('ContactCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("contact");
+    $scope.menutitle = NavigationService.makeactive("Contact");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.expertlogo = "";
+    $scope.userlogo = "user-page";
+
+    $scope.userForm = {};
+    $scope.userSubmitForm = function(formValid) {
+        console.log($scope.userForm);
+        if (formValid.$valid) {
+            $scope.formComplete = true;
+            NavigationService.ContactSubmit($scope.userForm, function(data) {
+                //console.log('userformctrl', $scope.userForm);
+            });
+        }
+    };
+})
+
+.controller('PrivacyCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("privacy");
+    $scope.menutitle = NavigationService.makeactive("Privacy");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.expertlogo = "";
+    $scope.userlogo = "user-page";
+})
+
+.controller('TermsConditionCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("terms-condition");
+    $scope.menutitle = NavigationService.makeactive("Terms-Condition");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.expertlogo = "";
+    $scope.userlogo = "user-page";
+})
+
+.controller('HomeExpertCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $window, $uibModal) {
+    $scope.template = TemplateService.changecontent("home-expert");
+    $scope.menutitle = NavigationService.makeactive("Home-Expert");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.expertlogo = "";
+    $scope.userlogo = "";
+    $scope.home = "";
+    $scope.experthome = "expert-home";
+    var modalInstance = '';
+
+    NavigationService.getExpert(function(data) {
+        if (data._id && data._id != "") {
+            $state.go("home-expert");
+        }
+    });
+
+    $scope.open3 = function(size) {
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'views/modal/forgetpassword.html',
+            //controller: 'HomeCtrl',
+            size: size,
+            scope: $scope
+        });
+    };
+
+    $scope.mesg = [];
+    $scope.userForm = {};
+    $scope.expertSignup = function(formValid) {
+        if (formValid.$valid) {
+            console.log('HomeExpertCtrl', $scope.userForm);
+            if ($scope.userForm.password == $scope.userForm.confirmPassword) {
+                NavigationService.ExpertSignup($scope.userForm, function(data) {
+                    if (data.value == true) {
+                        $scope.formComplete = true;
+                        $timeout(function() {
+                            $state.go("expert-profile");
+                        }, 1000);
+                    } else {
+                        $scope.expertAlreadyExist = true;
+                        $timeout(function() {
+                            $scope.expertAlreadyExist = false;
+                        }, 5000)
+                    }
+                });
+            } else {
+                $scope.mesg.push({
+                    type: 'success',
+                    msg: 'Password do not match.'
+                });
+                $scope.closeAlert = function(index) {
+                    $scope.mesg.splice(index, 1);
+                }
+                $scope.userForm.confirmPassword = "";
+            }
+        }
+        $scope.mesg = [];
+    };
+
+    $scope.mesgs = [];
+
+    $scope.getLogin = function(formValid) {
+        if (formValid.$valid) {
+            NavigationService.getExpertLogin($scope.userForm, function(data) {
+                if (data.value == true) {
+                    $scope.userForm = data;
+                    $state.go("expert-booking");
+                } else {
+                    $scope.mesgs.push({
+                        type: 'danger',
+                        msg: 'Incorrect Email or Password'
+                    });
+
+                    $scope.closeAlert = function(index) {
+                        $scope.mesgs.splice(index, 1);
+                    }
+                }
+            });
+            $scope.mesgs = [];
+        }
+    };
+
+    $scope.changeSuccess = false;
+    $scope.forgotpswd = {};
+    $scope.forgotpswdClick = function(formValid) {
+        console.log("//////", formValid);
+        NavigationService.getForgotpswdExpert(formValid, function(data) {
+            $scope.forgotpswd = data.data;
+            console.log('forgotpswd', $scope.forgotpswd);
+            if ($scope.forgotpswd.comment == 'User not found') {
+                $scope.mesg.push({
+                    type: 'danger',
+                    msg: 'Incorrect Email'
+                });
+
+                $scope.closeAlert = function(index) {
+                    $scope.mesg.splice(index, 1);
+                }
+            } else if ($scope.forgotpswd.comment == 'Mail Sent') {
+                $scope.changeSuccess = true;
+            }
+
+        });
+    };
+
+    $scope.openform = function(param) {
+        if (param == 'Login') {
+            $scope.showform = true;
+        } else {
+            $scope.showform = false;
+        }
+        $(window).scrollTop(0)
+    }
+    global.open = $scope.openform;
+})
 
 .controller('ExpertProfileCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $window, $stateParams) {
         $scope.template = TemplateService.changecontent("expert-profile");
@@ -1834,7 +1678,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.animationsEnabled = true;
     $scope.open = function(size) {
-
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'views/modal/day.html',
@@ -1895,23 +1738,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.becomeExpertBtn = function() {
         NavigationService.getUser(function(data) {
-            // console.log('id',data._id);
-
-            // $scope.userobj=angular.isObject(data);
-            // console.log('$scope.userobj',$scope.userobj);
             if (!data._id) {
                 $state.go('home-expert');
-            } else {
-
             }
         });
-
     };
 
     $scope.newsletter = {};
 
     $scope.goToLogin = function() {
-
         if ($state.current.name == "home-expert") {
             global.open('Login');
         } else if ($state.current.name == "home") {
@@ -1979,7 +1814,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     // --------Expert Login----------
     NavigationService.getExpert(function(data) {
-        console.log('false');
         if (data._id && data._id != "") {
             $scope.userdata = data;
             $scope.expertLogedin = true;
@@ -1999,31 +1833,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
     });
     $scope.userLogout = function() {
-        //$state.go('login');
         NavigationService.getUserLogout($scope.userdata, function(data) {
-            // if(id==data._id){
             if (data.value == true) {
-
                 $scope.userNotAvail = true;
                 console.log('true');
-                if (window.location.href.indexOf('home')) {
-
-                }
+                $state.go('home');
             }
         });
     };
     $scope.expertLogout = function() {
-        //$state.go('home-expert');
-        console.log("in me expert logout/////////////////////////////////");
         NavigationService.getExpertLogout($scope.userdata, function(data) {
             console.log(data);
             if (data.value == true) {
-
                 $scope.expertNotAvail = true;
-                console.log('trueeeeeeeeeeeeeeeee');
-                if (window.location.href.indexOf('home')) {
-
-                }
+                $state.go("home-expert");
             }
         });
     };
@@ -2035,20 +1858,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     NavigationService.getCategory($scope.categorydata, function(data) {
         $scope.categorydata = data.data;
         console.log('$scope.categorydata', $scope.categorydata);
-
     });
     $scope.userdata = {};
     $scope.userForm = {};
     $scope.addQuery = function(id, cat, needhelp, formvalid) {
         console.log('formvalid', formvalid);
         if (formvalid.$valid) {
-
             NavigationService.getUserData($scope.userdata, function(data) {
                 $scope.userdata = data;
                 console.log("$scope.userdata", $scope.userdata._id);
                 NavigationService.getHelp($scope.userForm, function(data) {
                     if (data && data.value === true) {
-
                         $scope.findcat = true;
                         $timeout(function() {
                                 modalInstance1.dismiss();
@@ -2069,10 +1889,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             }, 3000)
                             //$state.reload();
                     }
-
                 });
-
-
             });
             $scope.userForm = {};
         }
