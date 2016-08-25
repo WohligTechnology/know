@@ -1720,6 +1720,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $(".side-menu").removeClass("menu-in");
         $(".side-menu").addClass("menu-out");
     });
+    $scope.userLogedin = false;
+      $scope.expertLogedin = false;
     // $scope.fromUrl = $state.
 
     // ----------for Notification onClick---------------
@@ -1789,42 +1791,57 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log('$scope.notificationdata user', $scope.notificationdata);
         });
     }
-    $scope.getExpertNotification = function() {
-        NavigationService.getNotification({
-            from: "expert"
-        }, function(data) {
-            $scope.notificationdata = data.data;
-            console.log('$scope.notificationdata expert', $scope.notificationdata);
-        });
-    }
+
+      $scope.getExpertNotification = function() {
+
+          NavigationService.getNotification({
+              from: "expert"
+          }, function(data) {
+              $scope.notificationdata = data.data;
+              console.log('$scope.notificationdata expert', $scope.notificationdata);
+          });
+      }
+    
+
 
 
     // --------User Login----------
     $scope.userdata = {};
     NavigationService.getUser(function(data) {
-        if (data._id && data._id != "") {
-            $scope.userdata = data;
-            $scope.userLogedin = true;
-            $scope.getUserNotification();
-            // NavigationService.getNotification({
-            //     from: "user"
-            // }, function(data) {
-            //     $scope.notificationdata = data.data;
-            //     console.log('$scope.notificationdata user', $scope.notificationdata);
-            // });
-        } else {
-            $scope.userNotLogedin = true;
-            if (window.location.href.indexOf('user-') != -1) {
-                $state.go('home');
+        if(_.isEmpty(data)==false){
+          $scope.userLogedin = true;
+          // $scope.expertLogedin = false;
+            if (data._id && data._id != "") {
+                $scope.userdata = data;
+
+                $scope.getUserNotification();
+                // NavigationService.getNotification({
+                //     from: "user"
+                // }, function(data) {
+                //     $scope.notificationdata = data.data;
+                //     console.log('$scope.notificationdata user', $scope.notificationdata);
+                // });
+            } else {
+                $scope.userNotLogedin = true;
+                if (window.location.href.indexOf('user-') != -1) {
+                    $state.go('home');
+                }
             }
+        }else{
+          $scope.userLogedin = false;
         }
+
     });
 
     // --------Expert Login----------
     NavigationService.getExpert(function(data) {
+      if(_.isEmpty(data)==false){
+        console.log(data,'////////////////****************************');
+        $scope.expertLogedin = true;
         if (data._id && data._id != "") {
             $scope.userdata = data;
-            $scope.expertLogedin = true;
+            console.log($scope.userdata);
+
             $scope.getExpertNotification();
             // NavigationService.getNotification({
             //     from: "expert"
@@ -1833,12 +1850,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //     console.log('$scope.notificationdata expert', $scope.notificationdata);
             // });
         } else {
-            console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
-            $scope.expertNotLogedin = true;
+            // console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+            // $scope.expertNotLogedin = true;
             if (window.location.href.indexOf('expert-') != -1) {
                 $state.go('home');
             }
         }
+      }else{
+        $scope.expertLogedin = false;
+        console.log('is empty');
+      }
+
+
+
     });
     $scope.userLogout = function() {
         NavigationService.getUserLogout($scope.userdata, function(data) {

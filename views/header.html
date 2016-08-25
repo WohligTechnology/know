@@ -55,7 +55,8 @@
                         <ul>
                             <li ng-if="!userLogedin">
                                 <!-- <a ng-if="!userLogedin" ui-sref="home-expert"> -->
-                                <button class="btn-animate-become b btn font-bold btn-1 btn-1b" ng-click="becomeExpertBtn();">Become an expert</button>
+                                <button class="btn-animate-become b btn font-bold btn-1 btn-1b" ng-click="becomeExpertBtn();" ng-if="!expertLogedin">Become an expert</button>
+                                <button class="btn-animate-become b btn font-bold btn-1 btn-1b" ng-if="expertLogedin">Hello {{userdata.firstName}}</button>
 
                                 <!-- </a> -->
                             </li>
@@ -114,6 +115,7 @@
                                 </a>
 
                                 <!-- -----------User Login Dropdown--------- -->
+
                                 <ul class="view-dropdown" ng-if="userLogedin && !expertLogedin">
                                     <li>
                                         <a href="" ui-sref="edit-user({id:userdata._id})" class="text-uppercase color-primary" ng-if="userdata.firstName && !userdata.name">
