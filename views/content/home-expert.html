@@ -41,9 +41,10 @@
               <div class="form-group">
                 <label for="exampleInputEmail1">CONFIRM PASSWORD</label>
                 <input type="password" name="confirmPassword" class="form-control" id="exampleInputEmail1" ng-model="userForm.confirmPassword" required>
+                <!-- <div class="color-white" class="error-msg" ng-if="userForm.confirmPassword !=userForm.password">Incorrect Password.</div> -->
                 <div class="color-white" class="error-msg" ng-if="user.confirmPassword.$error.required && user.confirmPassword.$touched">Please Confirm Password.</div>
               </div>
-              <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="3000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
+              <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="5000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
               <div class="row">
                 <div class="col-md-3 col-sm-3 col-xs-4">
                   <div class="form-group">
@@ -51,6 +52,7 @@
                     <input type="text" class="form-control" id="exampleInputEmail1" ng-model="userForm.age" required>
                     <div class="color-white" class="error-msg" ng-if="user.age.$error.required && user.age.$touched">Please Enter Your  Age.</div>
                   </div>
+                    <uib-alert ng-repeat="alert in mesgage" type="{{alert.type}}" class="text-center" dismiss-on-timeout="5000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
                 </div>
                 <div class="col-md-5 col-sm-7 col-xs-8">
                   <div class="form-group">
@@ -100,7 +102,7 @@
                   <a href="" class="color-primary font-light f13" ng-click="open3('sm'); $dismiss()">Forgot password?</a>
                 </div>
                 <div class="clearfix"></div>
-                <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="3000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
+                <uib-alert ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="5000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
                 <div class="mt25">
                   <button class="btn btn-org" ng-click="getLogin(user)">SUBMIT</button>
                 </div>

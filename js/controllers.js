@@ -721,11 +721,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
     $scope.mesg = [];
+    $scope.mesgage = [];
     $scope.userForm = {};
     $scope.expertSignup = function(formValid) {
         if (formValid.$valid) {
-            console.log('HomeExpertCtrl', $scope.userForm);
+            console.log('HomeExpertCtrl', $scope.userForm.age);
             if ($scope.userForm.password == $scope.userForm.confirmPassword) {
+              // if($scope.userForm.age>=18){
+              //
+              // }
                 NavigationService.ExpertSignup($scope.userForm, function(data) {
                     if (data.value == true) {
                         $scope.formComplete = true;
@@ -740,17 +744,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     }
                 });
             } else {
+              console.log('doo not match');
                 $scope.mesg.push({
                     type: 'success',
-                    msg: 'Password do not match.'
+                    msg: 'Incorrect Password.'
                 });
                 $scope.closeAlert = function(index) {
                     $scope.mesg.splice(index, 1);
                 }
-                $scope.userForm.confirmPassword = "";
+                // $scope.mesgage.push({
+                //     type: 'success',
+                //     msg: 'Age Does Not Meet Requirements.'
+                // });
+                // $scope.closeAlert = function(index) {
+                //     $scope.mesgage.splice(index, 1);
+                // }
             }
         }
-        $scope.mesg = [];
     };
 
     $scope.mesgs = [];
@@ -1801,7 +1811,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
               console.log('$scope.notificationdata expert', $scope.notificationdata);
           });
       }
-    
+
 
 
 
@@ -1866,6 +1876,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     });
     $scope.userLogout = function() {
         NavigationService.getUserLogout($scope.userdata, function(data) {
+          $scope.userLogedin=false;
             if (data.value == true) {
                 $scope.userNotAvail = true;
                 console.log('true');
