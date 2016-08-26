@@ -693,7 +693,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.userlogo = "user-page";
 })
 
-.controller('HomeExpertCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $window, $uibModal) {
+.controller('HomeExpertCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $window, $uibModal, $rootScope, saveform, UserForm) {
     $scope.template = TemplateService.changecontent("home-expert");
     $scope.menutitle = NavigationService.makeactive("Home-Expert");
     TemplateService.title = $scope.menutitle;
@@ -808,6 +808,44 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         });
     };
+
+
+
+
+    $scope.userform = {};
+            $scope.tempData = {};
+
+            $rootScope.$on('$stateChangeStart', function(event){
+
+                console.log($scope.tempData , $scope.userform)
+
+                if(!_.isEqual($scope.tempData , $scope.userform)){
+                    console.log('OK CHANGE DETECTED, SAVE')
+
+                    var temp = {}
+
+                    UserForm.set(angular.copy($scope.userform));
+
+                }else{
+                    console.log('NO CHANGE')
+                }
+
+            });
+
+            $rootScope.$on('$stateChangeSuccess', function(event){
+                var temp = UserForm.get();
+
+                if(Object.keys(temp).length!=0){
+                    UserForm.cancel();
+                    angular.copy(temp, $scope.tempData );
+                    angular.copy(temp, $scope.userform );
+                }
+            });
+
+
+
+
+
 
     $scope.openform = function(param) {
         if (param == 'Login') {
@@ -1911,6 +1949,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.userdata = data;
                 console.log("$scope.userdata", $scope.userdata._id);
                 NavigationService.getHelp($scope.userForm, function(data) {
+                  console.log($scope.userForm,'///////////////////////');
                     if (data && data.value === true) {
                         $scope.findcat = true;
                         $timeout(function() {
@@ -1934,7 +1973,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     }
                 });
             });
-            $scope.userForm = {};
+            // $scope.userForm = {};
         }
     };
 

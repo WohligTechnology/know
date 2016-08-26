@@ -87,7 +87,12 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         .state('home-expert', {
             url: "/home-expert",
             templateUrl: "views/template.html",
-            controller: 'HomeExpertCtrl'
+            controller: 'HomeExpertCtrl',
+            resolve : {
+                   saveform : function($state, UserForm){
+
+                   }
+                 },
         })
         .state('faq', {
             url: "/faq",
@@ -107,7 +112,12 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         .state('terms-condition-expert', {
             url: "/terms-condition-expert",
             templateUrl: "views/template.html",
-            controller: 'TermsConditionExpertCtrl'
+            controller: 'TermsConditionExpertCtrl',
+            resolve : {
+                     saveform : function($state, UserForm){
+                         return UserForm.save();
+                     }
+                 },
         })
         .state('contact', {
             url: "/contact",
@@ -269,6 +279,37 @@ firstapp.directive('img', function($compile, $parse) {
         }
     };
 });
+firstapp.service('UserForm', function($q, $timeout){
+        this.userform = {};
+
+        this.save = function(){
+            if(Object.keys(this.userform).length===0)
+                return false;
+
+            var deferred = $q.defer();
+
+            $timeout(function() {
+                this.userform.test = "YEAH TEST";
+                deferred.resolve(this.userform);
+                //this.userform = {};
+            }.bind(this), 1000);
+
+            return deferred.promise;
+
+        }
+
+        this.cancel = function(){
+            this.userform = {};
+        }
+
+        this.set = function(data){
+            this.userform = data;
+        }
+
+        this.get = function(){
+            return this.userform;
+        }
+    })
 
 firstapp.directive('fancybox', function($compile, $parse) {
     return {
