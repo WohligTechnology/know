@@ -38,11 +38,10 @@
                                         <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" ng-model="userForm.firstName" required>
                                         <div class="error-msg" ng-if="user.firstName.$error.required && user.firstName.$touched">Please Enter Your First Name.</div>
                                     </div>
-                                    <div class="form-group mt25">
+                                    <!-- <div class="form-group mt25">
                                         <label>Sales Pitch <span class="f10 color-success"></span></label>
                                         <input type="text" name="salesPitch" class="form-control" ng-model="userForm.salesPitch">
-                                        <!-- <div class="error-msg" ng-show="user.salesPitch.$error.required && user.salesPitch.$touched">Please Enter Your Sales Pitch.</div> -->
-                                    </div>
+                                    </div> -->
                                     <div class="form-group mt25">
                                         <label>GENDER</label>
                                         <div class="rad">
@@ -175,8 +174,8 @@
                                 <div class="col-md-6 col-sm-6">
                                     <!-- <form action="" class="form-input"> -->
                                     <div class="form-group">
-                                        <label>short descrpition</label>
-                                        <input type="text" name="description" class="form-control" ng-model="userForm.description">
+                                        <label>Profile Summary <span class="color-success">(50 words or less)</span></label>
+                                        <input type="text" name="description" maxlength="50" class="form-control" ng-model="userForm.description">
                                         <!-- <div class="error-msg" ng-show="user.description.$error.required && user.description.$touched">Please Enter Description.</div> -->
                                     </div>
                                     <div class="form-group mt25">

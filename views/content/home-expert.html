@@ -52,7 +52,7 @@
                     <input type="text" class="form-control" id="exampleInputEmail1" ng-model="userForm.age" required>
                     <div class="color-white" class="error-msg" ng-if="user.age.$error.required && user.age.$touched">Please Enter Your  Age.</div>
                   </div>
-                    <uib-alert ng-repeat="alert in mesgage" type="{{alert.type}}" class="text-center" dismiss-on-timeout="5000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
+                    <uib-alert ng-repeat="alert in mesgage" type="{{alert.type}}" class="text-center" dismiss-on-timeout="7000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
                 </div>
                 <div class="col-md-5 col-sm-7 col-xs-8">
                   <div class="form-group">
@@ -73,9 +73,10 @@
               </div>
 
               <div class="mt10 text-justify">
-                <p class=" f13 color-white"><input type="checkbox" name="signing" value="signing" class="size-setup"> By signing up, YOU AGREE to the JacKnows <a ui-sref="terms-condition-expert" class="color-primary">Terms & Conditions</a><span>&nbsp;and</span> <a ui-sref="privacy" class="color-primary">Privacy Policy</a>
+                <p class=" f13 color-white"><input type="checkbox" name="signing" value="signing" ng-model="userForm.agreeTerms" class="size-setup"> By signing up, YOU AGREE to the JacKnows <a ui-sref="terms-condition-expert" target="_blank" class="color-primary">Terms & Conditions</a><span>&nbsp;and</span> <a target="_blank" ui-sref="privacy" class="color-primary">Privacy Policy</a>
         </p>
               </div>
+                <uib-alert ng-repeat="alert in mesgAgree" type="{{alert.type}}" class="text-center" dismiss-on-timeout="7000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
               <div class="mt25">
                 <button class="btn btn-animate-org" ng-click="expertSignup(user)">SUBMIT</button>
               </div>
