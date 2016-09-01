@@ -2011,6 +2011,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     var modalInstance1 = '';
     $scope.open4 = function(size) {
+      $scope.userForm = {};
         modalInstance1 = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'views/modal/needhelp.html',
@@ -2027,6 +2028,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             // }
         });
 
+    };
+    $scope.cancelmodal = function(formData) {
+        console.log(formData, '**************************');
+        formData = {};
+        // console.log(formData,'/////////////////////');
+        modalInstance1.dismiss();
     };
 
     $scope.toggleAnimation = function() {
