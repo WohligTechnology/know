@@ -38,6 +38,10 @@
                                         <input type="text" name="firstName" class="form-control" id="exampleInputEmail1" ng-model="userForm.firstName" required>
                                         <div class="error-msg" ng-if="user.firstName.$error.required && user.firstName.$touched">Please Enter Your First Name.</div>
                                     </div>
+                                    <div class="form-group mt25">
+                                        <label>Email <span class="f10 color-success"></span></label>
+                                        <input type="text" name="email" class="form-control" ng-model="userForm.email">
+                                    </div>
                                     <!-- <div class="form-group mt25">
                                         <label>Sales Pitch <span class="f10 color-success"></span></label>
                                         <input type="text" name="salesPitch" class="form-control" ng-model="userForm.salesPitch">
@@ -57,6 +61,11 @@
                                         </div>
                                     </div>
                                     <!-- </form> -->
+                                    <div class="form-group ">
+                                        <label>Age</label>
+                                        <input type="text" name="age" class="form-control" ng-model="userForm.age" required>
+                                        <div class="error-msg" ng-show="user.age.$error.required && user.age.$touched">Please Enter Your Age.</div>
+                                    </div>
                                 </div>
                                 <div class="col-md-4 col-sm-5">
                                     <!-- <form action=""  class="form-input"> -->
@@ -94,6 +103,7 @@
                                       </div> -->
                                         </div>
 
+
                                         <!-- <div class="pro-im mt10">
                                           <h4 ng-if="isloading">Loading...</h4>
                                             <div class="user-img display-inline">
@@ -106,6 +116,7 @@
                                         </div> -->
                                         <!-- <upload-image ng-model="userForm.image" no-view></upload-image> -->
                                     </div>
+
                                     <!-- </form> -->
                                 </div>
                             </div>
@@ -154,7 +165,7 @@
                                 <div class="col-md-6 col-sm-6">
                                     <!-- <form name="user" class="form-input"> -->
                                     <div class="form-group ">
-                                        <label for="exampleInputEmail1">AREA OF EXPERTISE</label>
+                                        <label for="exampleInputEmail1">Category</label>
                                         <select name="areaOfExpertise" class="form-control text-up" ng-model="userForm.areaOfExpertise" required>
                                             <option ng-repeat="cat in categorydata">{{cat.name}}</option>
                                             <!-- <option>Financial Adviser</option>
@@ -162,7 +173,7 @@
                                             <option>Fitness Expert</option>
                                             <option>Travel Consultant</option> -->
                                         </select>
-                                        <div class="error-msg" ng-show="user.areaOfExpertise.$error.required && user.areaOfExpertise.$touched">Please Select Area of Expertise.</div>
+                                        <div class="error-msg" ng-show="user.areaOfExpertise.$error.required && user.areaOfExpertise.$touched">Please Select Category.</div>
                                     </div>
                                     <div class="form-group mt25">
                                         <label>specialization <span class="f10 color-success">(YOU CAN ENTER MULTIPLE SPECIALIZATION)</span></label>
@@ -174,7 +185,7 @@
                                 <div class="col-md-6 col-sm-6">
                                     <!-- <form action="" class="form-input"> -->
                                     <div class="form-group">
-                                        <label>Profile Summary <span class="color-success">(50 words or less)</span></label>
+                                        <label>Brief Profile <span class="color-success">(50 words or less)</span></label>
                                         <input type="text" name="description" maxlength="50" class="form-control" ng-model="userForm.description">
                                         <!-- <div class="error-msg" ng-show="user.description.$error.required && user.description.$touched">Please Enter Description.</div> -->
                                     </div>

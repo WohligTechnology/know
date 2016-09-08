@@ -738,15 +738,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             scope: $scope
         });
     };
-    $scope.open4 = function(size) {
-        var modalInstance = $uibModal.open({
-            animation: $scope.animationsEnabled,
-            templateUrl: 'views/modal/otp.html',
-            //controller: 'HomeCtrl',
-            size: size,
-            scope: $scope
-        });
-    };
 
     $scope.mesg = [];
     $scope.mesgAgree = [];
