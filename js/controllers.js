@@ -738,7 +738,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             scope: $scope
         });
     };
-
+      $scope.open4 = function(size) {
+            var modalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: 'views/modal/otp.html',
+                //controller: 'HomeCtrl',
+                size: size,
+                scope: $scope
+            });
+        };
     $scope.mesg = [];
     $scope.mesgAgree = [];
     $scope.mesgage = [];
@@ -1689,6 +1697,36 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         // default the user's values to the available range
         $scope.userMinPrice = $scope.minPrice;
         $scope.userMaxPrice = $scope.maxPrice;
+    })
+
+    .controller('VerifyEmailCtrl', function($scope, $stateParams, TemplateService, NavigationService, $timeout) {
+        $scope.template = TemplateService.changecontent("verifyemail");
+        $scope.menutitle = NavigationService.makeactive("Notification");
+        TemplateService.title = $scope.menutitle;
+        $scope.ver = {};
+        $scope.sc = {};
+        $scope.er = {};
+        $scope.er.errText = false;
+        $scope.ver.verify = $stateParams.text;
+        $scope.navigation = NavigationService.getnav();
+        NavigationService.emailVerification($scope.ver, function(data) {
+            console.log(data);
+            $scope.er.errText = false;
+            $scope.sc.status = data.value;
+
+            if (data.value) {
+
+            } else {
+                if (data.error && data.error.includes("mobile")) {
+                    $scope.sc.status = true;
+                    $scope.sc.text = data.error;
+                    $scope.er.errText = true;
+                }
+            }
+        }, function(err) {
+            console.log(err);
+        });
+        TemplateService.header = "views/content/header.html";
     })
 
 .controller('ProfileCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $uibModal) {

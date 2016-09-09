@@ -72,6 +72,15 @@ var navigationservice = angular.module('navigationservice', [])
 
             }).success(callback);
         },
+        emailVerification: function(request, callback, err) {
+    return $http({
+        url: adminURL + "ExpertUser/emailVerification",
+        method: "POST",
+        data: {
+            "verifyemail": request.verify
+        }
+    }).success(callback).error(err);
+},
         getOneUser: function(_id, callback) {
             //console.log('Navigation form data: ', formData);
             $http({
