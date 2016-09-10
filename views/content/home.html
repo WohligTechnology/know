@@ -28,6 +28,16 @@
                   </div>
                   <div>
                     <div class="search-br searching">
+                      <!-- <ui-select ng-model="expertdata.search" ng-change="" style="width: 100%;" title="Search Movie" class="search-drop">
+                          <ui-select-match placeholder="Search for a Movie">{{$select.selected.name}}</ui-select-match>
+                          <ui-select-choices repeat="cat in categoryNames | filter: {name:$select.search}">
+                              <div class="movi-src-rslt">
+                                  <div class="display-inline ml15">
+                                      <span ng-bind-html="movie.name"></span>
+                                  </div>
+                              </div>
+                          </ui-select-choices>
+                      </ui-select> -->
                       <input type="text" name="name" value="search"  class="form-control" placeholder="Search category, expertname, skill.." ng-model="expertdata.search">
                     </div>
 

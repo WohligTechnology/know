@@ -20,6 +20,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     });
 
+       $scope.categoryNames = ["Health", "Education", "charlie", "robert", "alban", "oscar"];
+
     // ----for search expert------
 
     $scope.testimonial = {};
