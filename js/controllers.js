@@ -13,14 +13,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.userlogo = "";
     $scope.home = "home-page";
 
+    $scope.categorydata = {};
+    NavigationService.getCategory($scope.categorydata, function(data) {
+        $scope.categorydata = data.data;
+        console.log('$scope.categorydata', $scope.categorydata);
+    });
     $scope.freqSearch = {};
     NavigationService.getFreqSearch($scope.freqSearch, function(data) {
         $scope.freqSearch = data.data;
         console.log('$scope.freqSearch', $scope.freqSearch);
 
     });
-
-       $scope.categoryNames = ["Health", "Education", "charlie", "robert", "alban", "oscar"];
+    $scope.changeToSearchPage=function(search){
+      console.log(search);
+      $state.go('search', {
+          search: search
+      });
+    }
 
     // ----for search expert------
 
