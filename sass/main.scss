@@ -369,7 +369,7 @@ a {
 .home {
     height: 550px;
     position: relative;
-    overflow: hidden;
+    // overflow: hidden;
 }
 //header
 .navbar-default {
@@ -1549,6 +1549,23 @@ uib-tab-heading.text-uppercase {
 }
 .navbar-header{
   width: 250px;
+}
+.cs-drop {
+    background-color: #fff;
+    text-align: left;
+ul{
+  list-style: none;
+  li{
+    padding:12px 0px;
+      @include transition(all 300ms linear);
+      cursor: pointer;
+    &:hover{
+      color:$brand-primary;
+      font-size: 16px;
+
+    }
+  }
+}
 }
 @import "amit";
 @import "mobile"; // @import "upload";
