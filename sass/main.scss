@@ -10,6 +10,7 @@
 @import "../bower_components/ngTimepicker/src/css/ngTimepicker.css";
 @import "../linearicons/icons.css";
 @import "../bower_components/animate.css/animate.min.css";
+@import "../bower_components/angular-ui-select/dist/select";
 /* Bootstrap Variables Goes Here */
 $brand-primary: #ff8621 !default;
 $brand-success-light: #0093b0 !default;
@@ -537,6 +538,7 @@ a {
     position: absolute;
     left: 15px;
     top: 10px;
+        z-index: 99;
 }
 .search-input {
     background: rgba(0, 0, 0, 0.5);
@@ -546,10 +548,20 @@ a {
     width: 83%;
     float: left;
     input {
-        padding: 6px 10px 6px 50px;
+      padding: 3px 10px 3px 50px;
+  line-height: 220%;
         height: 40px;
         font-size: 14px;
     }
+    .form-control{
+      height: 40px;
+      padding: 3px 10px 3px 50px;
+  line-height: 220%;
+
+    }
+    .ui-select-bootstrap .ui-select-toggle > .caret {
+    display: none;
+}
 }
 .form-control {
     border-radius: 0;

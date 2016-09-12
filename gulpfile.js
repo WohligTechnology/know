@@ -18,6 +18,7 @@ var jsArray = [
     './bower_components/moment/min/moment.min.js',
     './bower_components/jStorage/jstorage.min.js',
     './bower_components/angularjs-imageupload-directive/public/javascripts/imageupload.js',
+    './bower_components/angular-ui-select/dist/select.js',
     './js/app.js',
     './js/controllers.js',
     './js/templateservice.js',
