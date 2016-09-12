@@ -917,7 +917,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.userForm.callday = "MONDAY";
         $scope.userForm.sameaddress = false;
         $scope.calldetail = [];
-
         //
         // if(document.getElementById("RadioBtn").checked){
         //   $scope.sameaddress=true;
@@ -988,22 +987,34 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.editExpert();
 
         $scope.mesg = [];
-
-        $scope.userSubmitForm = function(formValid) {
+$scope.startDateISGreater = false;
+        $scope.userSubmitForm = function(formValid,userform) {
             if (formValid.$valid) {
                 console.log('formValid', formValid);
                 //$scope.formComplete = true;
                 // console.log('start date',$scope.experi.startDate);
                 // console.log('end date',$scope.experi.endDate);
                 console.log("////", $scope.userForm);
+                // _.forEach($scope.userForm.experience,function(n){
+                //   if(n.startDate > n.endDate){
+                //     console.log('isgreater');
+                //   }else{
+                //     console.log('not greater');
+                //   }
+                // })
+
                 // for(var i=$scope.userForm.experience;i<)
                 _.forEach($scope.userForm.experience, function(n) {
                     console.log('n.endDate', n.endDate);
                     if (n.endDate == 'Thu Jan 01 1970 05:30:00 GMT+0530 (IST)' || n.endDate == null) {
                         n.endDate = new Date();
                         console.log('n.endDate new date', n.endDate);
+                    }else{
+                      // $scope.startDateISGreater = false;
+                      console.log('in else');
                     }
                 });
+                  // $scope.startDateISGreater = true;
                 if ($scope.userForm.experience)
                     if ($scope.userForm.callTime == "weekdays") {
                         $scope.calldetail = [];
@@ -1033,6 +1044,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             }
             $scope.mesg = [];
+
         };
 
         $scope.categorydata = {};
@@ -1121,11 +1133,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }];
 
         $scope.moreExperience = function() {
+          // console.log($scope.experiencedetail,'*********************');
             var addexperience = $scope.experiencedetail.length + 1;
             $scope.experiencedetail.splice(0, 0, {
                 'id': '' + addexperience
             });
         };
+        // _.forEach($scope.experiencedetail,function(n){
+        //   if(n.startDate>n.endDate){
+        //     $scope.startDateISGreater = true;
+        //       console.log('isgreater');
+        //   }
+        // })
 
         $scope.removeAllDays = function() {
             $scope.calldetail = _.cloneDeep($scope.oldCallSettings);

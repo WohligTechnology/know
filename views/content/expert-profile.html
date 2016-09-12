@@ -327,6 +327,8 @@
                 </span>
                                                 </p>
                                             </div>
+
+                                            <p ng-if="experi.startDate>experi.endDate">Please Enter valid Date</p>
                                         </div>
                                         <div class="col-md-4 col-sm-4">
                                             <div class="form-group">
@@ -449,10 +451,11 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row ">
                                 <div class="col-md-12 col-sm-12" style="border-top: 1px solid #ccc;">
                                     <div class="save-btn mt25">
-                                        <button class="btn btn-blue font-light text-up f13" ng-click="userSubmitForm(user);tabchange('call',3);">save</button>
+                                        <button class="btn btn-blue font-light text-up f13" ng-click="userSubmitForm(user);tabchange('call',3);" ng-disabled="experi.startDate > experi.endDate">save</button>
                                     </div>
                                 </div>
                             </div>
