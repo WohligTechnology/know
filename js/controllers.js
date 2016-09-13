@@ -1,7 +1,7 @@
 window.uploadurl = "http://wohlig.biz/uploadfile/upload/";
 var abc = {};
 var global = {};
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'jkuri.timepicker', 'imageupload', 'angular-loading-bar','ui.select'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui-rangeSlider', 'jkuri.timepicker', 'imageupload', 'angular-loading-bar', 'ui.select'])
 
 .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, $stateParams) {
     //Used to name the .html file
@@ -24,11 +24,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log('$scope.freqSearch', $scope.freqSearch);
 
     });
-    $scope.changeToSearchPage=function(search){
-      console.log(search);
-      $state.go('search', {
-          search: search
-      });
+    $scope.changeToSearchPage = function(search) {
+        console.log(search);
+        $state.go('search', {
+            search: search
+        });
     }
 
     // ----for search expert------
@@ -263,6 +263,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.userlogo = "user-page";
     $scope.minTime = new Date();
     $scope.isInvalid = true;
+
+    // -------------set time 9 am to 9 pm----------------------------
+    // $scope.min = '';
+    // $scope.max = '';
+    var d = new Date();
+    d.setHours(9);
+    d.setMinutes( 0 );
+    $scope.min = d;
+
+    var d = new Date();
+    d.setHours(21);
+    d.setMinutes( 0 );
+    $scope.max = d;
+    // -------------------------------------------------------
 
     $scope.checkTime = function() {
         var time = {};
@@ -749,15 +763,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             scope: $scope
         });
     };
-      $scope.open4 = function(size) {
-            var modalInstance = $uibModal.open({
-                animation: $scope.animationsEnabled,
-                templateUrl: 'views/modal/otp.html',
-                //controller: 'HomeCtrl',
-                size: size,
-                scope: $scope
-            });
-        };
+    $scope.open4 = function(size) {
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'views/modal/otp.html',
+            //controller: 'HomeCtrl',
+            size: size,
+            scope: $scope
+        });
+    };
     $scope.mesg = [];
     $scope.mesgAgree = [];
     $scope.mesgage = [];
@@ -987,8 +1001,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.editExpert();
 
         $scope.mesg = [];
-$scope.startDateISGreater = false;
-        $scope.userSubmitForm = function(formValid,userform) {
+        $scope.startDateISGreater = false;
+        $scope.userSubmitForm = function(formValid, userform) {
             if (formValid.$valid) {
                 console.log('formValid', formValid);
                 //$scope.formComplete = true;
@@ -1009,12 +1023,12 @@ $scope.startDateISGreater = false;
                     if (n.endDate == 'Thu Jan 01 1970 05:30:00 GMT+0530 (IST)' || n.endDate == null) {
                         n.endDate = new Date();
                         console.log('n.endDate new date', n.endDate);
-                    }else{
-                      // $scope.startDateISGreater = false;
-                      console.log('in else');
+                    } else {
+                        // $scope.startDateISGreater = false;
+                        console.log('in else');
                     }
                 });
-                  // $scope.startDateISGreater = true;
+                // $scope.startDateISGreater = true;
                 if ($scope.userForm.experience)
                     if ($scope.userForm.callTime == "weekdays") {
                         $scope.calldetail = [];
@@ -1133,7 +1147,7 @@ $scope.startDateISGreater = false;
         }];
 
         $scope.moreExperience = function() {
-          // console.log($scope.experiencedetail,'*********************');
+            // console.log($scope.experiencedetail,'*********************');
             var addexperience = $scope.experiencedetail.length + 1;
             $scope.experiencedetail.splice(0, 0, {
                 'id': '' + addexperience
@@ -1729,35 +1743,35 @@ $scope.startDateISGreater = false;
         $scope.userMaxPrice = $scope.maxPrice;
     })
 
-    .controller('VerifyEmailCtrl', function($scope, $stateParams, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("verifyemail");
-        $scope.menutitle = NavigationService.makeactive("Notification");
-        TemplateService.title = $scope.menutitle;
-        $scope.ver = {};
-        $scope.sc = {};
-        $scope.er = {};
+.controller('VerifyEmailCtrl', function($scope, $stateParams, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("verifyemail");
+    $scope.menutitle = NavigationService.makeactive("Notification");
+    TemplateService.title = $scope.menutitle;
+    $scope.ver = {};
+    $scope.sc = {};
+    $scope.er = {};
+    $scope.er.errText = false;
+    $scope.ver.verify = $stateParams.text;
+    $scope.navigation = NavigationService.getnav();
+    NavigationService.emailVerification($scope.ver, function(data) {
+        console.log(data);
         $scope.er.errText = false;
-        $scope.ver.verify = $stateParams.text;
-        $scope.navigation = NavigationService.getnav();
-        NavigationService.emailVerification($scope.ver, function(data) {
-            console.log(data);
-            $scope.er.errText = false;
-            $scope.sc.status = data.value;
+        $scope.sc.status = data.value;
 
-            if (data.value) {
+        if (data.value) {
 
-            } else {
-                if (data.error && data.error.includes("mobile")) {
-                    $scope.sc.status = true;
-                    $scope.sc.text = data.error;
-                    $scope.er.errText = true;
-                }
+        } else {
+            if (data.error && data.error.includes("mobile")) {
+                $scope.sc.status = true;
+                $scope.sc.text = data.error;
+                $scope.er.errText = true;
             }
-        }, function(err) {
-            console.log(err);
-        });
-        TemplateService.header = "views/content/header.html";
-    })
+        }
+    }, function(err) {
+        console.log(err);
+    });
+    TemplateService.header = "views/content/header.html";
+})
 
 .controller('ProfileCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $uibModal) {
     $scope.template = TemplateService.changecontent("profile");
@@ -2079,7 +2093,7 @@ $scope.startDateISGreater = false;
 
     var modalInstance1 = '';
     $scope.open4 = function(size) {
-      $scope.userForm = {};
+        $scope.userForm = {};
         modalInstance1 = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'views/modal/needhelp.html',
