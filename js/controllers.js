@@ -272,10 +272,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     d.setMinutes( 0 );
     $scope.min = d;
 
-    var d = new Date();
-    d.setHours(21);
-    d.setMinutes( 0 );
-    $scope.max = d;
+    var s = new Date();
+    s.setHours(21);
+    s.setMinutes( 0 );
+    $scope.max = s;
     // -------------------------------------------------------
 
     $scope.checkTime = function() {
@@ -1660,6 +1660,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
                     //console.log('$scope.expertdata.length',$scope.expertdata.length);
                     if ($scope.expertdata.length == 0) {
+                      $state.go('search',{search:''});
+                      // expertdata2.search = '';
                         //console.log('$scope.expertdata.length22',$scope.expertdata.length);
                         $scope.notfound = true;
                     } else {
@@ -1673,6 +1675,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
                     }
                 } else {
+                  $state.go('search',{search:''});
+                  // expertdata2.search = '';
                     $scope.notfound = true;
                 }
             });

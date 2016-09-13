@@ -21,9 +21,50 @@
                     </ui-select-choices>
                 </ui-select> -->
                 <input type="text" name="name" class="form-control" placeholder="Search category, expertname, skill.." ng-model="expertdata2.search">
+                <!-- <input type="text" ng-mousedown="isShow = true" ng-init="isShow = false" name="name" value="search" class="form-control" placeholder="Select your Sector from one of the Sector below" ng-model="expertdata2.search">
+                <div class="cs-drop" ng-if="isShow">
+                    <ul>
+                        <li ui-sref="search({search:'Education'})">
+                            Education / Student Counselling
+                        </li>
+                        <li ui-sref="search({search:'Career Counselling'})">
+                            Career Counselling
+                        </li>
+                        <li ui-sref="search({search:'Image Counselling'})">
+                            Image Counselling / Grooming
+                        </li>
+                        <li ui-sref="search({search:'Relationship Counselling'})">
+                            Relationship Counselling
+                        </li>
+                        <li ui-sref="search({search:'Stress'})">
+                            Stress / Depression / Anxiety
+                        </li>
+                        <li ui-sref="search({search:'Meditation'})">
+                            Meditation
+                        </li>
+                        <li ui-sref="search({search:'Life Skills'})">
+                            Life Skills
+                        </li>
+                        <li ui-sref="search({search:'Support'})">
+                            Personality
+                        </li>
+                        <li ui-sref="search({search:'Alternate'})">
+                            Alternate / Spiritual Healing
+                        </li>
+                        <li ui-sref="search({search:'Child Behaviour'})">
+                            Child Behaviour
+                        </li>
+                        <li ui-sref="search({search:'Adolescence Counselling'})">
+                            Adolescence Counselling
+                        </li>
+                    </ul>
+                </div> -->
+
+
               </div>
               <div class="search-btn searchbtn display-inline"><a ui-sref="search({search:expertdata2.search})">
-                <button class="btn btn-animate-org" ng-disabled="expertdata2.search.length==null || expertdata2.search.length==0">SEARCH</button></a>
+                <button class="btn btn-animate-org">SEARCH</button></a>
+                <!-- <button class="btn btn-animate-org" ng-disabled="expertdata2.search.length==null || expertdata2.search.length==0">SEARCH</button></a> -->
               </div>
             </form>
           </div>
