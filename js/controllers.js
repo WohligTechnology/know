@@ -1453,7 +1453,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.selectedAll = {};
         $scope.selectedAll.expertise = true;
         $scope.selectedAll.location = true;
-
+  $scope.noResult = false;
 
         $scope.checkAll = function() {
             // if ($scope.selectedAll) {
@@ -1616,8 +1616,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }), 'value');
 
             NavigationService.getSearch(dataToSend, function(data) {
+              console.log(data.data.message);
+              if(data.data.message){
+                $scope.noResult = true;
+              }
                 if (data && data.data && data.data.data) {
-                    $scope.notfound = false;
+                    // $scope.notfound = false;
                     $scope.expertdata = data.data.data;
 
                     $scope.expertiseFilter = data.data.arr;
@@ -1661,7 +1665,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     //console.log('$scope.expertdata.length',$scope.expertdata.length);
                     if ($scope.expertdata.length == 0) {
                       // $state.go('search',{search:''});
-                        $scope.notfound = true;
+                        // $scope.notfound = true;
                     } else {
                         console.log('getSearchdata111', $scope.expertdata);
                         NavigationService.getUser(function(logindata) {
@@ -1674,7 +1678,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     }
                 } else {
                   // $state.go('search',{search:''});
-                  $scope.notfound = true;
+                  // $scope.notfound = true;
                 }
             });
 
