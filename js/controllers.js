@@ -1660,9 +1660,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
                     //console.log('$scope.expertdata.length',$scope.expertdata.length);
                     if ($scope.expertdata.length == 0) {
-                      $state.go('search',{search:''});
-                      // expertdata2.search = '';
-                        //console.log('$scope.expertdata.length22',$scope.expertdata.length);
+                      // $state.go('search',{search:''});
                         $scope.notfound = true;
                     } else {
                         console.log('getSearchdata111', $scope.expertdata);
@@ -1675,9 +1673,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
                     }
                 } else {
-                  $state.go('search',{search:''});
-                  // expertdata2.search = '';
-                    $scope.notfound = true;
+                  // $state.go('search',{search:''});
+                  $scope.notfound = true;
                 }
             });
 
