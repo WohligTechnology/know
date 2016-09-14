@@ -313,7 +313,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     }
 
     NavigationService.getExpertProfile($stateParams.id, function(data) {
-        console.log(data);
+        console.log(data.data);
+        $scope.ExpertDetail=data.data;
         if (data.value != false) {
             if (data.data && data.data.priceForService) {
                 $scope.expertPrice = data.data.priceForService;
@@ -1617,11 +1618,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             NavigationService.getSearch(dataToSend, function(data) {
               console.log(data.data.message);
-              if(data.data.message){
-                $scope.noResult = true;
-              }
+              // if(data.data.message){
+              //   $scope.noResult = true;
+              // }
                 if (data && data.data && data.data.data) {
-                    // $scope.notfound = false;
+                    $scope.notfound = false;
                     $scope.expertdata = data.data.data;
 
                     $scope.expertiseFilter = data.data.arr;
@@ -1665,7 +1666,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     //console.log('$scope.expertdata.length',$scope.expertdata.length);
                     if ($scope.expertdata.length == 0) {
                       // $state.go('search',{search:''});
-                        // $scope.notfound = true;
+                        $scope.notfound = true;
                     } else {
                         console.log('getSearchdata111', $scope.expertdata);
                         NavigationService.getUser(function(logindata) {
@@ -1678,7 +1679,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     }
                 } else {
                   // $state.go('search',{search:''});
-                  // $scope.notfound = true;
+                  $scope.notfound = true;
                 }
             });
 
@@ -1901,10 +1902,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         });
         if ($scope.userLogedin == true) {
+          $state.go('user-booking');
             console.log('checkUSer', $scope.userLogedin);
             $scope.getUserNotification();
         } else {
             console.log('checkUSer is expert', $scope.userLogedin);
+            $state.go('expert-booking');
             $scope.getExpertNotification();
         }
 

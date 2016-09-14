@@ -101,6 +101,8 @@
 
                                     <!-- -------- both are not logedin ---------------------------- -->
                                     <img class="color-base black-img" src="img/close2.png" alt="" ui-sref="login" width="30" ng-show="!userLogedin && !expertLogedin" ng-if="!userdata.image">
+
+
                                     <!-- ------------------------------------------- -->
 
 
@@ -113,11 +115,22 @@
                                     <!-- <a ng-click="openform('Login')">  <img class="color-base black-img" src="img/close2.png" alt="" width="30"  ng-show="expertloginlogo"/></a> -->
 
                                 </a>
-
+                                <ul class="view-dropdown">
+                                    <li>
+                                        <a ui-sref="login" class="text-uppercase color-primary">
+                                        Login As User
+                                      </a>
+                                    </li>
+                                    <li>
+                                        <a ui-sref="home-expert" class="text-uppercase color-primary">
+                                        Login As Expert
+                                      </a>
+                                    </li>
+                                </ul>
                                 <!-- -----------User Login Dropdown--------- -->
 
                                 <ul class="view-dropdown" ng-if="userLogedin && !expertLogedin">
-                                <!-- <ul class="view-dropdown" ng-if="userLogedin && !expertLogedin"> -->
+                                    <!-- <ul class="view-dropdown" ng-if="userLogedin && !expertLogedin"> -->
                                     <li>
                                         <a href="" ui-sref="edit-user({id:userdata._id})" class="text-uppercase color-primary" ng-if="userdata.firstName && !userdata.name">
                                         {{userdata.firstName}} {{userdata.lastName}}
@@ -126,11 +139,11 @@
                                         {{userdata.name}}
                                       </a>
                                     </li>
-                                    <li ng-show="userLogedin"><a href="" class="text-uppercase" title="Your Booking" ui-sref="user-booking">your booking</a></li>
-                                    <li ng-show="userLogedin"><a href="" class="text-uppercase" title="short list" ui-sref="wishlist">short list</a></li>
-                                    <li ng-show="userLogedin"><a href="" class="text-uppercase" title="Edit Account" ui-sref="edit-user({id:userdata._id})">edit profile</a></li>
-                                    <li ng-show="userLogedin"><a href="" class="text-uppercase" title="Change Password" ui-sref="change-password({id:userdata._id})">change password</a></li>
-                                    <li ng-show="userLogedin"><a  class="text-uppercase" title="Logout" ng-click="userLogout();">logout</a></li>
+                                    <li ng-show="userLogedin"><a class="text-uppercase" title="Your Booking" ui-sref="user-booking">your booking</a></li>
+                                    <li ng-show="userLogedin"><a class="text-uppercase" title="short list" ui-sref="wishlist">short list</a></li>
+                                    <li ng-show="userLogedin"><a class="text-uppercase" title="Edit Account" ui-sref="edit-user({id:userdata._id})">edit profile</a></li>
+                                    <li ng-show="userLogedin"><a class="text-uppercase" title="Change Password" ui-sref="change-password({id:userdata._id})">change password</a></li>
+                                    <li ng-show="userLogedin"><a class="text-uppercase" title="Logout" ng-click="userLogout();">logout</a></li>
                                     <!-- <li ng-show="userLogedin"><a ui-sref="login" class="text-uppercase" title="Logout" ng-click="userLogout();">logout</a></li> -->
 
                                 </ul>

@@ -20,18 +20,18 @@
                 <div class="conten-box" ng-hide="formComplete || alreadyBooked || nouser">
                     <form name="user" class="form-input" ng-submit="userSubmitForm(user)">
                         <div class="login-form cust-form">
-                            <h4 class="text-up text-center color-base">book now</h4>
+                            <h4 class="text-up text-center color-base">Expert Availability Slot</h4>
                         </div>
 
-                          <div class="modal-header">
-                              <h6 class="modal-title text-center margin0 color-grey text-up">available DAY</h6>
-                          </div>
-                            <div class="modal-body">
-                                <div class="day-data">
-                                  <table class="table table-hover">
+                        <div class="modal-header">
+                            <h6 class="modal-title text-center margin0 color-grey text-up">available DAY</h6>
+                        </div>
+                        <div class="modal-body">
+                            <div class="day-data" ng-if="ExpertDetail.callTime=='custom'">
+                                <!-- <table class="table table-hover">
                                     <thead>
                                       <tr>
-                                        <th>Monday</th>
+                                        <th>{{data.day}}</th>
 
                                       </tr>
                                     </thead>
@@ -42,103 +42,119 @@
                                       </tr>
 
                                     </tbody>
-                                  </table>
-                                </div>
+                                  </table> -->
+                                <table class="table">
+                                    <tr>
+                                        <th ng-repeat="data in ExpertDetail.callSettings">{{data.day}}</th>
+                                    </tr>
+                                    <tr>
+                                        <td ng-repeat="data in ExpertDetail.callSettings">
+                                            {{data.fromTime | date:'h:mm a'}} to {{data.toTime | date:'h:mm a'}}
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
+                            <div ng-if="ExpertDetail.callTime=='weekends'">
+                                <p>Weekends(9AM-9PM)</p>
+                            </div>
+                            <div ng-if="ExpertDetail.callTime=='weekdays'">
+                                <p>Weekdays(9AM-9PM)</p>
+                            </div>
+                        </div>
                     </form>
-                  </div>
+                </div>
 
-                    </div>
-                    <div class=" col-md-6 col-sm-6 col-xs-12">
-                        <div class="conten-box" ng-hide="formComplete || alreadyBooked || nouser">
-                            <form name="user" class="form-input" ng-submit="userSubmitForm(user)">
-                                <div class="login-form cust-form">
-                                    <h4 class="text-up text-center color-base">book now</h4>
+            </div>
+            <div class=" col-md-6 col-sm-6 col-xs-12">
+                <div class="conten-box" ng-hide="formComplete || alreadyBooked || nouser">
+                    <form name="user" class="form-input" ng-submit="userSubmitForm(user)">
+                        <div class="login-form cust-form">
+                            <h4 class="text-up text-center color-base">book now</h4>
 
-                                    <div class="mail mt15 pos-relative">
-                                        <label for="">Select Date</label>
-                                        <p class="input-group">
-                                            <!-- <input name="bookDate" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.bookDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" /> -->
-                                            <input type="text" name="bookDate" class="form-control" uib-datepicker-popup is-open="popup2.opened" datepicker-options="ptions" ng-required="true" close-text="Close" ng-model="userForm.bookDate" date-disabled="disabled(date,mode)" required ng-change="checkTime(user);"
-                                            />
-                                            <span class="input-group-btn">
+                            <div class="mail mt15 pos-relative">
+                                <label for="">Select Date</label>
+                                <p class="input-group">
+                                    <!-- <input name="bookDate" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.bookDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" /> -->
+                                    <input type="text" name="bookDate" class="form-control" uib-datepicker-popup is-open="popup2.opened" datepicker-options="ptions" ng-required="true" close-text="Close" ng-model="userForm.bookDate" date-disabled="disabled(date,mode)" required ng-change="checkTime(user);"
+                                    />
+                                    <span class="input-group-btn">
            <button type="button" class="btn btn-default pad" ng-click="open2()"><i class="ln-calendar3"></i></button>
          </span>
-                                            <!-- <input type="text" id="datepicker" uib-datepicker-popup="{{dateformat}}" ng-model="dt" is-open="showdp" date-disabled="disabled(date, mode)" />
+                                    <!-- <input type="text" id="datepicker" uib-datepicker-popup="{{dateformat}}" ng-model="dt" is-open="showdp" date-disabled="disabled(date, mode)" />
                 <span>
                     <button type="button" class="btn btn-default" ng-click="showcalendar($event)">
                         <i class="glyphicon glyphicon-calendar"></i>
                     </button>
                 </span> -->
-                                            <!-- <p class="input-group">Date: <input type="text" id="datetimepicker5" /></p> -->
-                                            <!-- <div class='input-group date' id='datetimepicker5'>
+                                    <!-- <p class="input-group">Date: <input type="text" id="datetimepicker5" /></p> -->
+                                    <!-- <div class='input-group date' id='datetimepicker5'>
                                    <input type='text' class="form-control" />
                                    <span class="input-group-addon">
                                        <span class="glyphicon glyphicon-calendar"></span>
                                    </span>
                                </div> -->
 
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="mail mt15 pos-relative">
-                                    <label for="">Select Time</label>
-                                    <br>
-                                    <!-- <pre>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mail mt15 pos-relative">
+                            <label for="">Select Time</label>
+                            <br>
+                            <!-- <pre>
                               {{minTime}}
                             </pre> -->
-                                    <!-- <input type="time" ng-min="minTinme" name="" style="width: 100%;height: 34px;" ng-model="userForm.bookTime" required> -->{{min}}{{max}}
-                                    <uib-timepicker ng-model="userForm.bookTime" ng-disabled="!userForm.bookDate" show-meridian="false" min="min" max="max" ng-change="checkTime(user)"></uib-timepicker>
-                                </div>
-                                <div class="mail mt15 pos-relative">
-                                    <label for="">Select Duration</label>
-                                    <select name="duration" class="form-control display-inline pos-relative pointer" ng-model="userForm.callDuration" value="{{dur}}" ng-change="calcFinalAmt(userForm.callDuration);" required>
-                        <option ng-repeat="dur in duration" ng-init="userForm.callDuration='10 Min'">{{dur}}</option>
-                     </select>
-                                    <!-- <div class="error-msg" ng-show="user.duration.$error.required && user.duration.$touched">Please Enter Duration.
-                        </div> -->
-                                    <div class="icon-mail display-inline arrow" style="top: 33px;">
-                                        <i class="ln-chevron-down"></i>
-                                    </div>
-                                </div>
-                                <div class="mail mt15">
-                                    <label for="">Ask Query</label>
-                                    <textarea class="form-control" rows="6" style="resize:none" placeholder="ASK QUERY" ng-model="userForm.query" required></textarea>
-                                </div>
-                                <div class="login-btn mt50">
-                                    <button class="btn btn-animate-org f10 font-light" type="submit" ng-disabled="user.$invalid || isInvalid">BOOK NOW</button>
-                                </div>
-
-
-                            </form>
+                            <!-- <input type="time" ng-min="minTinme" name="" style="width: 100%;height: 34px;" ng-model="userForm.bookTime" required> -->
+                            <uib-timepicker ng-model="userForm.bookTime" ng-disabled="!userForm.bookDate" show-meridian="false" min="min" max="max" ng-change="checkTime(user)"></uib-timepicker>
                         </div>
-                        <!-- <div class="text-center" ng-show="formComplete">
+                        <div class="mail mt15 pos-relative">
+                            <label for="">Select Duration</label>
+                            <select name="duration" class="form-control display-inline pos-relative pointer" ng-model="userForm.callDuration" value="{{dur}}" ng-change="calcFinalAmt(userForm.callDuration);" required>
+                                <option ng-repeat="dur in duration" ng-init="userForm.callDuration='10 Min'">{{dur}}</option>
+                            </select>
+                            <!-- <div class="error-msg" ng-show="user.duration.$error.required && user.duration.$touched">Please Enter Duration.
+                        </div> -->
+                            <div class="icon-mail display-inline arrow" style="top: 33px;">
+                                <i class="ln-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="mail mt15">
+                            <label for="">Ask Query</label>
+                            <textarea class="form-control" rows="6" style="resize:none" placeholder="ASK QUERY" ng-model="userForm.query" required></textarea>
+                        </div>
+                        <div class="login-btn mt50">
+                            <button class="btn btn-animate-org f10 font-light" type="submit" ng-disabled="user.$invalid || isInvalid">BOOK NOW</button>
+                        </div>
+
+
+                    </form>
+                </div>
+                <!-- <div class="text-center" ng-show="formComplete">
             <h3>Booking Successfully, Thank You!</h3>
           </div> -->
 
-                        <div class="no-data-found" ng-show="alreadyBooked">
-                            <img src="img/owl.png" alt="">
-                            <h1 class="color-primary">Whoops !</h1>
-                            <p class="text-cap">Expert have been Already Booked!</p>
-                        </div>
+                <div class="no-data-found" ng-show="alreadyBooked">
+                    <img src="img/owl.png" alt="">
+                    <h1 class="color-primary">Whoops !</h1>
+                    <p class="text-cap">Expert have been Already Booked!</p>
+                </div>
 
-                        <div class="no-data-found" ng-show="formComplete">
-                            <img src="img/owl.png" alt="">
-                            <h1 class="color-primary">Congratulations !</h1>
-                            <p class="text-cap">Booking Successfully, Thank You!</p>
-                        </div>
+                <div class="no-data-found" ng-show="formComplete">
+                    <img src="img/owl.png" alt="">
+                    <h1 class="color-primary">Congratulations !</h1>
+                    <p class="text-cap">Booking Successfully, Thank You!</p>
+                </div>
 
-                        <div class="no-data-found" ng-show="nouser">
-                            <img src="img/owl.png" alt="">
-                            <h1 class="color-primary">Whoops !</h1>
-                            <p class="text-cap">User not logged-in</p>
-                        </div>
+                <div class="no-data-found" ng-show="nouser">
+                    <img src="img/owl.png" alt="">
+                    <h1 class="color-primary">Whoops !</h1>
+                    <p class="text-cap">User not logged-in</p>
+                </div>
 
-                        <!-- <div class="text-center" ng-show="alreadyBooked">
+                <!-- <div class="text-center" ng-show="alreadyBooked">
       <h3>Expert have been Already Booked!</h3>
     </div> -->
-                    </div>
-                </div>
             </div>
         </div>
+    </div>
+    </div>
 </section>

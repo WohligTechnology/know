@@ -124,12 +124,12 @@
                      <h4 ng-if="expertdata.length==1 && expertdata.length<=1">SEARCH RESULT : {{expertdata.length}} RESULT FOUND</h4>
                      <h4 ng-if="expertdata.length>=1 && expertdata.length!=1">SEARCH RESULT : {{expertdata.length}} RESULT'S FOUND</h4>
                   </div>
-                  <div class="no-data-found" ng-show="noResult">
+                  <!-- <div class="no-data-found" ng-show="noResult">
                      <img src="img/owl.png" alt="">
                      <h1 class="color-primary">Whoops !</h1>
                      <p class="text-cap">No Result Found!</p>
-                  </div>
-                  <div class="search-box" ng-repeat="experts in expertdata">
+                  </div> -->
+                  <div class="search-box" ng-repeat="experts in expertdata" ng-hide="notfound">
                      <div class="row">
                         <div class="col-md-3 col-sm-4">
                            <div class="search-img margin-auto">
@@ -179,6 +179,11 @@
 
                         </div>
                      </div>
+                  </div>
+                  <div class="no-data-found" ng-show="notfound">
+                     <img src="img/owl.png" alt="">
+                     <h1 class="color-primary">Whoops !</h1>
+                     <p class="text-cap">No Result Found!</p>
                   </div>
 
                   <!-- <div ng-show="notfound" class="showerror">
