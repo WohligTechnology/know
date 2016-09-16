@@ -74,7 +74,7 @@ var navigationservice = angular.module('navigationservice', [])
         },
         emailVerification: function(request, callback, err) {
     return $http({
-        url: adminURL + "ExpertUser/emailVerification",
+        url: adminurl + "ExpertUser/emailVerification",
         method: "POST",
         data: {
             "verifyemail": request.verify

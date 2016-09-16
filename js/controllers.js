@@ -1802,12 +1802,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.template = TemplateService.changecontent("verifyemail");
     $scope.menutitle = NavigationService.makeactive("Notification");
     TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
     $scope.ver = {};
     $scope.sc = {};
     $scope.er = {};
     $scope.er.errText = false;
     $scope.ver.verify = $stateParams.text;
-    $scope.navigation = NavigationService.getnav();
+
     NavigationService.emailVerification($scope.ver, function(data) {
         console.log(data);
         $scope.er.errText = false;
