@@ -1,5 +1,5 @@
-// var adminurl = "http://localhost:80/";
-var adminurl = "http://jacknows.wohlig.com/";
+var adminurl = "http://localhost:80/";
+// var adminurl = "http://jacknows.wohlig.com/";
 // var imgurl = "http://jacknows.wohlig.com/upload/";
 // var adminurl = "http://chaitalee.com/";
 var imgurl = adminurl + "upload/";
@@ -363,7 +363,7 @@ var navigationservice = angular.module('navigationservice', [])
                 url: adminurl + 'user/changePassword',
                 method: 'POST',
                 data: {
-                    "password": input.password,
+                    // "password": input.password,
                     "changePassword": input.changePassword
                 }
             }).success(callback);
@@ -374,7 +374,7 @@ var navigationservice = angular.module('navigationservice', [])
                 url: adminurl + 'ExpertUser/changePassword',
                 method: 'POST',
                 data: {
-                    "password": input.password,
+                    // "password": input.password,
                     "changePassword": input.changePassword
                 }
             }).success(callback);

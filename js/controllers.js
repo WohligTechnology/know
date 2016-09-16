@@ -462,13 +462,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     //-------------------------------------------------------
 
     $scope.getLogin = function(formValid) {
+      $scope.myjstorage=$.jStorage.get('DoneForgotPswd');
+      console.log('$scope.myjstorage',$scope.myjstorage);
         //console.log($scope.userForm);
         if (formValid.$valid) {
             NavigationService.getUserLogin($scope.userForm, function(data) {
-                if (data.value == true) {
+                if (data.value == true && $scope.myjstorage==null) {
                     $scope.userForm = data;
+                    console.log('inside if',$scope.userForm);
                     $state.go("home");
-                } else {
+                } else if (data.value == true && $scope.myjstorage == 'Mail Sent') {
+                  $scope.userForm = data;
+                  var myid = data.data._id;
+                  console.log('inside elseif',$scope.userForm);
+                  $state.go("change-password",{id:myid});
+                }
+                else {
                     $scope.mesg.push({
                         type: 'danger',
                         msg: 'Incorrect Email or Password'
@@ -491,7 +500,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.changeSuccess = false;
     $scope.forgotpswd = {};
     $scope.forgotpswdClick = function(formValid) {
-        console.log("//////", formValid);
         NavigationService.getForgotpswd(formValid, function(data) {
             $scope.forgotpswd = data.data;
             console.log('forgotpswd', $scope.forgotpswd);
@@ -504,6 +512,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.mesg.splice(index, 1);
                 }
             } else if ($scope.forgotpswd.comment == 'Mail Sent') {
+               $.jStorage.set('DoneForgotPswd',$scope.forgotpswd.comment);
+               $scope.myjstorage=$.jStorage.get('DoneForgotPswd');
+               console.log('$scope.myjstorage',$scope.myjstorage);
                 $scope.changeSuccess = true;
             }
         });
@@ -620,34 +631,42 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.expertlogo = "";
     $scope.userlogo = "user-page";
     $scope.mesg = [];
-
+// if($stateParams.id==''){
+//
+// }
     NavigationService.getUserEditDetail($stateParams.id, function(data) {
         console.log('getUserEditDetail', data);
         $scope.userForm = data;
     });
 
     $scope.userSubmitForm = function(formValid) {
+      // $.jstorage.set()
         console.log('in function');
         if (formValid.$valid) {
             console.log('in validate');
-            NavigationService.changePassword($scope.userForm, function(data) {
-                console.log('$scope.userForm', $scope.userForm);
-                if (data.value == true) {
-                    $scope.changpswd = true;
-                    $scope.userForm = data.data;
-                    //$state.go("home");
-                } else {
-                    $scope.mesg.push({
-                        type: 'danger',
-                        msg: 'Incorrect Password'
-                    });
-                    $scope.closeAlert = function(index) {
-                        $scope.mesg.splice(index, 1);
-                    }
-                }
-            });
+              console.log('$scope.userForm', $scope.userForm);
+              if ($scope.userForm.changePassword==$scope.userForm.changePassword2) {
+                NavigationService.changePassword($scope.userForm, function(data) {
+                  $scope.changpswd = true;
+                  $scope.userForm = data.data;
+                  //$state.go("home");
+                    // console.log('$scope.userForm', $scope.userForm);
+
+                });
+
+              } else {
+                  $scope.mesg.push({
+                      type: 'danger',
+                      msg: 'Re-enter correct Password'
+                  });
+                  $scope.closeAlert = function(index) {
+                      $scope.mesg.splice(index, 1);
+                  }
+                  // $scope.mesg = [];
+              }
+
         }
-        $scope.mesg = [];
+
     };
 })
 
@@ -671,25 +690,31 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         //console.log('on the user');
         if (formValid.$valid) {
             console.log('in validate');
-            NavigationService.changeExpertPassword($scope.userForm, function(data) {
-                console.log('$scope.userForm', $scope.userForm);
-                if (data.value == true) {
-                    $scope.changpswd = true;
-                    $scope.userForm = data.data;
-                    //$state.go("home");
-                } else {
-                    $scope.mesg.push({
-                        type: 'danger',
-                        msg: 'Incorrect Password'
-                    });
-                    $scope.closeAlert = function(index) {
-                        $scope.mesg.splice(index, 1);
+              if ($scope.userForm.changePassword==$scope.userForm.changePassword2){
+                NavigationService.changeExpertPassword($scope.userForm, function(data) {
+                    console.log('$scope.userForm', $scope.userForm);
+                    if (data.value == true) {
+                        $scope.changpswd = true;
+                        $scope.userForm = data.data;
+                        //$state.go("home");
                     }
-                }
-            });
+                });
+              }else {
+                  $scope.mesg.push({
+                      type: 'danger',
+                      msg: 'Re-enter correct Password'
+                  });
+                  $scope.closeAlert = function(index) {
+                      $scope.mesg.splice(index, 1);
+                  }
+              }
+
         }
-        $scope.mesg = [];
+        // $scope.mesg = [];
     };
+
+
+
 })
 
 .controller('ContactCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -831,21 +856,42 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.mesgs = [];
 
     $scope.getLogin = function(formValid) {
+      $scope.myjstorage=$.jStorage.get('DoneForgotPswd');
+      console.log('$scope.myjstorage',$scope.myjstorage);
         if (formValid.$valid) {
             NavigationService.getExpertLogin($scope.userForm, function(data) {
-                if (data.value == true) {
-                    $scope.userForm = data;
-                    $state.go("expert-booking");
-                } else {
-                    $scope.mesgs.push({
-                        type: 'danger',
-                        msg: 'Incorrect Email or Password'
-                    });
-
-                    $scope.closeAlert = function(index) {
-                        $scope.mesgs.splice(index, 1);
-                    }
-                }
+              if (data.value == true && $scope.myjstorage==null) {
+                  $scope.userForm = data;
+                  console.log('inside if',$scope.userForm);
+                  $state.go("expert-booking");
+              } else if (data.value == true && $scope.myjstorage == 'Mail Sent') {
+                $scope.userForm = data;
+                var myid = data.data._id;
+                console.log('inside elseif',$scope.userForm);
+                $state.go("change-expert-password",{id:myid});
+              }
+              else {
+                  $scope.mesg.push({
+                      type: 'danger',
+                      msg: 'Incorrect Email or Password'
+                  });
+                  $scope.closeAlert = function(index) {
+                      $scope.mesg.splice(index, 1);
+                  }
+              }
+                // if (data.value == true) {
+                //     $scope.userForm = data;
+                //     $state.go("expert-booking");
+                // } else {
+                //     $scope.mesgs.push({
+                //         type: 'danger',
+                //         msg: 'Incorrect Email or Password'
+                //     });
+                //
+                //     $scope.closeAlert = function(index) {
+                //         $scope.mesgs.splice(index, 1);
+                //     }
+                // }
             });
             $scope.mesgs = [];
         }
@@ -868,6 +914,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.mesg.splice(index, 1);
                 }
             } else if ($scope.forgotpswd.comment == 'Mail Sent') {
+              $.jStorage.set('DoneForgotPswd',$scope.forgotpswd.comment);
+              $scope.myjstorage=$.jStorage.get('DoneForgotPswd');
+              console.log('$scope.myjstorage',$scope.myjstorage);
                 $scope.changeSuccess = true;
             }
 
@@ -2034,6 +2083,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     });
     $scope.userLogout = function() {
+      $.jStorage.flush();
         NavigationService.getUserLogout($scope.userdata, function(data) {
             $scope.userLogedin = false;
             if (data.value == true) {
@@ -2044,6 +2094,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
     };
     $scope.expertLogout = function() {
+      $.jStorage.flush();
         NavigationService.getExpertLogout($scope.userdata, function(data) {
             console.log(data);
             if (data.value == true) {
