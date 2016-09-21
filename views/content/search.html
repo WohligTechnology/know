@@ -120,15 +120,16 @@
                <uib-alert ng-if="!noLogin" ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="3000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
                <uib-alert ng-if="noLogin" ng-repeat="alert in mesg" type="{{alert.type}}" class="text-center" dismiss-on-timeout="3000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
                <div class="search">
-                  <div class="filter-title">
+                 <div class="no-data-found" ng-if="noSearchFound">
+                    <img src="img/owl.png" alt="">
+                    <h1 class="color-primary">Whoops !</h1>
+                    <p class="text-cap">No Result Found for your search category,but we have following Experts!</p>
+                 </div>
+                  <div class="filter-title" ng-hide="noSearchFound">
                      <h4 ng-if="expertdata.length==1 && expertdata.length<=1">SEARCH RESULT : {{expertdata.length}} RESULT FOUND</h4>
                      <h4 ng-if="expertdata.length>=1 && expertdata.length!=1">SEARCH RESULT : {{expertdata.length}} RESULT'S FOUND</h4>
                   </div>
-                  <!-- <div class="no-data-found" ng-show="noResult">
-                     <img src="img/owl.png" alt="">
-                     <h1 class="color-primary">Whoops !</h1>
-                     <p class="text-cap">No Result Found!</p>
-                  </div> -->
+
                   <div class="search-box" ng-repeat="experts in expertdata" ng-hide="notfound">
                      <div class="row">
                         <div class="col-md-3 col-sm-4">
@@ -180,11 +181,11 @@
                         </div>
                      </div>
                   </div>
-                  <div class="no-data-found" ng-show="notfound">
+                  <!-- <div class="no-data-found" ng-show="notfound">
                      <img src="img/owl.png" alt="">
                      <h1 class="color-primary">Whoops !</h1>
                      <p class="text-cap">No Result Found!</p>
-                  </div>
+                  </div> -->
 
                   <!-- <div ng-show="notfound" class="showerror">
    <h3 class="text-center">No Result Found!</h3>

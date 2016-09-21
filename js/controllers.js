@@ -1623,7 +1623,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             minPrice: undefined,
             maxPrice: undefined
         };
-
+  $scope.noSearchFound = false;
 
         $scope.searchExpert = function() {
 
@@ -1666,7 +1666,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }), 'value');
 
             NavigationService.getSearch(dataToSend, function(data) {
-              console.log(data.data.message);
+              if(data.data.length == 0 || $stateParams.search == ''){
+                $scope.noSearchFound = true;
+                $state.go('search',({search:''}));
+              }
+              console.log(data.data.length);
               // if(data.data.message){
               //   $scope.noResult = true;
               // }
@@ -1808,9 +1812,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.er = {};
     $scope.er.errText = false;
     $scope.ver.verify = $stateParams.text;
-
+console.log('in verify ctrl');
     NavigationService.emailVerification($scope.ver, function(data) {
-        console.log(data);
+        console.log('*********************************************');
         $scope.er.errText = false;
         $scope.sc.status = data.value;
 
