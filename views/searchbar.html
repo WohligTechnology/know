@@ -9,7 +9,7 @@
               <div class="search-icon display-inline">
                 <img src="img/search-mini.png" alt="">
               </div>
-              <div class="search-br searchbr">
+              <div class="search-br searchbr pos-relative">
                 <!-- <ui-select ng-model="expertdata.search" ng-change="" style="width: 100%;" title="Search Movie" class="search-drop">
                     <ui-select-match placeholder="Search for a Movie">{{$select.selected.name}}</ui-select-match>
                     <ui-select-choices repeat="cat in categoryNames | filter: {name:$select.search}">
@@ -22,7 +22,7 @@
                 </ui-select> -->
                 <!-- <input type="text" name="name" class="form-control" placeholder="Search category, expertname, skill.." ng-model="expertdata2.search"> -->
                 <input type="text" ng-mousedown="isShow = true" ng-init="isShow = false" name="name" value="search" class="form-control" placeholder="Select your Sector from one of the Sector below" ng-model="expertdata2.search">
-                <div class="cs-drop" ng-if="isShow">
+                <div class="cs-drop em-ch" ng-if="isShow">
                     <ul>
                         <li ui-sref="search({search:'Education'})">
                             Education / Student Counselling

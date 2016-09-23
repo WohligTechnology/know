@@ -1561,11 +1561,25 @@ ul{
       cursor: pointer;
     &:hover{
       color:$brand-primary;
-      font-size: 16px;
+
 
     }
   }
 }
+}
+.min-h {
+    min-height: 667px;
+    position: relative;
+    .ps-ab{
+      position: absolute;
+      top:25%;
+      left:50%;
+      transform: translate(-50%,-50%);
+    }
+}
+.em-ch{
+  position: absolute;
+  width: 100%;
 }
 @import "amit";
 @import "mobile"; // @import "upload";
