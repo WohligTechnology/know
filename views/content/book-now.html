@@ -52,7 +52,7 @@
             </div>
             <div class=" col-md-6 col-sm-6 col-xs-12">
                 <div class="conten-box" ng-hide="formComplete || alreadyBooked || nouser">
-                    <form name="user" class="form-input" ng-submit="userSubmitForm(user)">
+                    <form name="user" class="form-input" ng-submit="userSubmitForm(userForm)">
                         <div class="login-form cust-form">
                             <h4 class="text-up text-center color-base">book now</h4>
 
@@ -60,8 +60,7 @@
                                 <label for="">Select Date</label>
                                 <p class="input-group">
                                     <!-- <input name="bookDate" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.bookDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" /> -->
-                                    <input type="text" name="bookDate" class="form-control" uib-datepicker-popup is-open="popup2.opened" datepicker-options="ptions" ng-required="true" close-text="Close" ng-model="userForm.bookDate" required ng-change="checkTime(user);"
-                                    />
+                                    <input type="text" name="bookDate" class="form-control" uib-datepicker-popup is-open="popup2.opened" datepicker-options="ptions" ng-required="true" close-text="Close" ng-model="userForm.bookDate" required ng-change="checkTime(user);" />
 
 
                                     <span class="input-group-btn">
@@ -87,11 +86,11 @@
                         <div class="mail mt15 pos-relative">
                             <label for="">Select Time</label>
                             <br>
-                            <!-- <pre>
-                              {{minTime}}
-                            </pre> -->
-                            <!-- <input type="time" ng-min="minTinme" name="" style="width: 100%;height: 34px;" ng-model="userForm.bookTime" required> -->
-                            <uib-timepicker ng-model="userForm.bookTime" ng-disabled="!userForm.bookDate" show-meridian="false" min="min" max="max" ng-change="checkTime(user)"></uib-timepicker>
+
+                            <select name="duration" class="form-control display-inline pos-relative pointer" ng-model="userForm.bookTime" ng-disabled="!userForm.bookDate" required>
+                                <option ng-repeat="time in timing">{{time}}</option>
+                            </select>
+                            <!-- <uib-timepicker ng-model="userForm.bookTime" ng-disabled="!userForm.bookDate" show-meridian="false" min="min" max="max" ng-change="checkTime(user)"></uib-timepicker> -->
                         </div>
                         <div class="mail mt15 pos-relative">
                             <label for="">Select Duration</label>

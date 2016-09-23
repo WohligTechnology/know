@@ -269,69 +269,98 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     // $scope.max = '';
     var d = new Date();
     d.setHours(9);
-    d.setMinutes( 0 );
+    d.setMinutes(0);
     $scope.min = d;
 
     var s = new Date();
     s.setHours(21);
-    s.setMinutes( 0 );
+    s.setMinutes(0);
     $scope.max = s;
     // -------------------------------------------------------
 
     $scope.checkTime = function() {
-        var time = {};
-        if ($scope.userForm.bookDate && $scope.userForm.bookTime) {
-            time.year = $scope.userForm.bookDate.getFullYear();
-            time.month = $scope.userForm.bookDate.getMonth();
-            time.date = $scope.userForm.bookDate.getDate();
-            time.hours = $scope.userForm.bookTime.getHours();
-            time.mins = $scope.userForm.bookTime.getMinutes();
-            $scope.userForm.callTime = new Date(time.year, time.month, time.date, time.hours, time.mins, 0, 0);
-            if ($scope.userForm.callTime < new Date()) {
-                console.log("here");
-                $scope.isInvalid = true;
-            } else {
-                $scope.isInvalid = false;
+        $scope.checktime = moment($scope.userForm.bookDate).format("dddd").toUpperCase();
+        console.log($scope.userForm.bookDate);
+        var dateSelected = moment($scope.userForm.bookDate);
+        if ($scope.ExpertDetail.callTime == "custom") {
+            $scope.compareday = _.find($scope.ExpertDetail.callSettings, ['day', $scope.checktime]);
+
+            if(dateSelected.isSame(moment(), 'day'))
+            {
+              $scope.timing = getTimeBetween(moment($scope.compareday.fromTime), moment($scope.compareday.toTime) , "today");
+            }
+            else {
+              $scope.timing = getTimeBetween(moment($scope.compareday.fromTime), moment($scope.compareday.toTime));
+            }
+
+
+        }
+        if ($scope.ExpertDetail.callTime == "weekends") {
+
+          if(dateSelected.isSame(moment(), 'day'))
+          {
+            $scope.timing = getTimeBetween(moment("01 01 2016 , 09:00:00","DD MM YYYY , HH:mm:ss"), moment("01 01 2016 , 21:00:00","DD MM YYYY , HH:mm:ss"), "today");
+          }
+          else {
+            $scope.timing = getTimeBetween(moment("01 01 2016 , 09:00:00","DD MM YYYY , HH:mm:ss"), moment("01 01 2016 , 21:00:00","DD MM YYYY , HH:mm:ss"));
+          }
+        }
+        if ($scope.ExpertDetail.callTime == "weekdays") {
+          if(dateSelected.isSame(moment(), 'day'))
+          {
+            $scope.timing = getTimeBetween(moment("01 01 2016 , 09:00:00","DD MM YYYY , HH:mm:ss"), moment("01 01 2016 , 21:00:00","DD MM YYYY , HH:mm:ss"), "today");
+          }
+          else {
+            $scope.timing = getTimeBetween(moment("01 01 2016 , 09:00:00","DD MM YYYY , HH:mm:ss"), moment("01 01 2016 , 21:00:00","DD MM YYYY , HH:mm:ss"));
+          }
+        }
+
+    }
+
+    function getTimeBetween(from, to,isToday) {
+
+        from = moment(moment().format("DD MM YYYY , ") + from.format("HH:mm:ss"),"DD MM YYYY , HH:mm:ss");
+        to = moment(moment().format("DD MM YYYY , ") + to.format("HH:mm:ss"),"DD MM YYYY , HH:mm:ss");
+        currentMoment = moment();
+        var arr = [];
+        var fd = moment(from);
+        var td = moment(to);
+        var newD = moment(from);
+        while (newD.isSameOrBefore(td)) {
+          console.log("CHECK");
+            if(isToday &&  newD.isBefore(currentMoment)) {
+              newD = newD.add(5, "minute");
+            }
+            else {
+              arr.push(newD.format("hh:mm A"));
+              newD = newD.add(5, "minute");
+            }
+
+        }
+        return arr;
+        console.log(arr);
+    }
+
+    $scope.disabled = function(date, mode) {
+        var d = moment(date.date);
+        var returnval = false;
+        if ($scope.ExpertDetail.callTime == "weekdays") {
+            if (d.day() == 0 || d.day() == 6) {
+                returnval = true;
             }
         }
-    }
-
-    function getTimeBetween(from,to) {
-      var arr = [];
-      var fd = moment(from);
-      var td = moment(to);
-      var newD = moment(from);
-      while(newD.isSameOrBefore(td) ) {
-        arr.push(newD.format("hh:mm A"));
-        newD = newD.add(5,"minute");
-      }
-      return arr;
-    }
-
-
-    $scope.disabled = function (date, mode) {
-
-      var d = moment(date.date);
-      var returnval = false;
-      if($scope.ExpertDetail.callTime == "weekdays")
-      {
-        if(d.day() == 0 || d.day() == 6) {
-          returnval = true;
+        if ($scope.ExpertDetail.callTime == "weekends") {
+            if (!(d.day() == 0 || d.day() == 6)) {
+                returnval = true;
+            }
         }
-      }
-      if($scope.ExpertDetail.callTime == "weekends")
-      {
-        if(!(d.day() == 0 || d.day() == 6)) {
-          returnval = true;
+        if ($scope.ExpertDetail.callTime == "custom") {
+            if (_.indexOf(myarr, d.day()) == -1) {
+                returnval = true;
+            }
+
         }
-      }
-      if($scope.ExpertDetail.callTime == "custom")
-      {
-        if(_.indexOf(myarr,d.day()) == -1) {
-          returnval = true;
-        }
-      }
-      return returnval;
+        return returnval;
     };
 
 
@@ -352,54 +381,62 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.userForm.finalAmount = $scope.userForm.finalAmount.toFixed(2);
         }
     }
-$scope.custdays = [];
-var myarr = [];
-  NavigationService.getExpertProfile($stateParams.id, function(data) {
-      console.log(data.data.callSettings);
-      _.each(data.data.callSettings,function(n){
-        var day;
- switch (n.day) {
-     case "Sunday":
-         day = 0;
-         break;
-     case "MONDAY":
-         day = 1;
-         break;
-     case "TUESDAY":
-         day = 2;
-         break;
-     case "Wednesday":
-         day = 3;
-         break;
-     case "THURSDAY":
-         day = 4;
-         break;
-     case "Friday":
-         day = 5;
-         break;
-     case  "Saturday":
-         day = 6;
-         break;
+    $scope.custdays = [];
+    var myarr = [];
+    NavigationService.getExpertProfile($stateParams.id, function(data) {
+        console.log(data.data.callSettings);
+        _.each(data.data.callSettings, function(n) {
+            var day;
+            switch (n.day) {
+                case "SUNDAY":
+                    day = 0;
+                    break;
+                case "MONDAY":
+                    day = 1;
+                    break;
+                case "TUESDAY":
+                    day = 2;
+                    break;
+                case "WEDNESDAY":
+                    day = 3;
+                    break;
+                case "THURSDAY":
+                    day = 4;
+                    break;
+                case "FRIDAY":
+                    day = 5;
+                    break;
+                case "SATURDAY":
+                    day = 6;
+                    break;
 
- }
- console.log(day);
-        $scope.custdays.push(day);
-       myarr = $scope.custdays;
-      })
-      console.log(myarr);
-      $scope.ExpertDetail=data.data;
-      if (data.value != false) {
-          if (data.data && data.data.priceForService) {
-              $scope.expertPrice = data.data.priceForService;
-              $scope.calcFinalAmt(10);
-          }
-      }
-  })
+            }
+            console.log(day);
+            $scope.custdays.push(day);
+            myarr = $scope.custdays;
+
+            //    $scope.timing = getTimeBetween(moment(n.fromTime).add(3,"minute"),moment(n.toTime).add(5,'hours'));
+            //  console.log("Timing");
+            //  console.log($scope.timing);
+        })
+        console.log(myarr);
+        $scope.ExpertDetail = data.data;
+        // console.log($scope.userForm.bookDate);
+        // console.log($scope.ExpertDetail.callSettings);
+
+        if (data.value != false) {
+            if (data.data && data.data.priceForService) {
+                $scope.expertPrice = data.data.priceForService;
+                $scope.calcFinalAmt(10);
+            }
+        }
+    })
 
 
 
 
     $scope.userSubmitForm = function(formValid) {
+        console.log(formValid);
         if (formValid.$valid) {
             $scope.userForm.expert = $stateParams.id;
             NavigationService.getExpertProfile({
@@ -538,22 +575,23 @@ var myarr = [];
     //-------------------------------------------------------
 
     $scope.getLogin = function(formValid) {
-      $scope.myjstorage=$.jStorage.get('DoneForgotPswd');
-      console.log('$scope.myjstorage',$scope.myjstorage);
+        $scope.myjstorage = $.jStorage.get('DoneForgotPswd');
+        console.log('$scope.myjstorage', $scope.myjstorage);
         //console.log($scope.userForm);
         if (formValid.$valid) {
             NavigationService.getUserLogin($scope.userForm, function(data) {
-                if (data.value == true && $scope.myjstorage==null) {
+                if (data.value == true && $scope.myjstorage == null) {
                     $scope.userForm = data;
-                    console.log('inside if',$scope.userForm);
+                    console.log('inside if', $scope.userForm);
                     $state.go("home");
                 } else if (data.value == true && $scope.myjstorage == 'Mail Sent') {
-                  $scope.userForm = data;
-                  var myid = data.data._id;
-                  console.log('inside elseif',$scope.userForm);
-                  $state.go("change-password",{id:myid});
-                }
-                else {
+                    $scope.userForm = data;
+                    var myid = data.data._id;
+                    console.log('inside elseif', $scope.userForm);
+                    $state.go("change-password", {
+                        id: myid
+                    });
+                } else {
                     $scope.mesg.push({
                         type: 'danger',
                         msg: 'Incorrect Email or Password'
@@ -588,9 +626,9 @@ var myarr = [];
                     $scope.mesg.splice(index, 1);
                 }
             } else if ($scope.forgotpswd.comment == 'Mail Sent') {
-               $.jStorage.set('DoneForgotPswd',$scope.forgotpswd.comment);
-               $scope.myjstorage=$.jStorage.get('DoneForgotPswd');
-               console.log('$scope.myjstorage',$scope.myjstorage);
+                $.jStorage.set('DoneForgotPswd', $scope.forgotpswd.comment);
+                $scope.myjstorage = $.jStorage.get('DoneForgotPswd');
+                console.log('$scope.myjstorage', $scope.myjstorage);
                 $scope.changeSuccess = true;
             }
         });
@@ -707,39 +745,39 @@ var myarr = [];
     $scope.expertlogo = "";
     $scope.userlogo = "user-page";
     $scope.mesg = [];
-// if($stateParams.id==''){
-//
-// }
+    // if($stateParams.id==''){
+    //
+    // }
     NavigationService.getUserEditDetail($stateParams.id, function(data) {
         console.log('getUserEditDetail', data);
         $scope.userForm = data;
     });
 
     $scope.userSubmitForm = function(formValid) {
-      // $.jstorage.set()
+        // $.jstorage.set()
         console.log('in function');
         if (formValid.$valid) {
             console.log('in validate');
-              console.log('$scope.userForm', $scope.userForm);
-              if ($scope.userForm.changePassword==$scope.userForm.changePassword2) {
+            console.log('$scope.userForm', $scope.userForm);
+            if ($scope.userForm.changePassword == $scope.userForm.changePassword2) {
                 NavigationService.changePassword($scope.userForm, function(data) {
-                  $scope.changpswd = true;
-                  $scope.userForm = data.data;
-                  //$state.go("home");
+                    $scope.changpswd = true;
+                    $scope.userForm = data.data;
+                    //$state.go("home");
                     // console.log('$scope.userForm', $scope.userForm);
 
                 });
 
-              } else {
-                  $scope.mesg.push({
-                      type: 'danger',
-                      msg: 'Re-enter correct Password'
-                  });
-                  $scope.closeAlert = function(index) {
-                      $scope.mesg.splice(index, 1);
-                  }
-                  // $scope.mesg = [];
-              }
+            } else {
+                $scope.mesg.push({
+                    type: 'danger',
+                    msg: 'Re-enter correct Password'
+                });
+                $scope.closeAlert = function(index) {
+                        $scope.mesg.splice(index, 1);
+                    }
+                    // $scope.mesg = [];
+            }
 
         }
 
@@ -766,7 +804,7 @@ var myarr = [];
         //console.log('on the user');
         if (formValid.$valid) {
             console.log('in validate');
-              if ($scope.userForm.changePassword==$scope.userForm.changePassword2){
+            if ($scope.userForm.changePassword == $scope.userForm.changePassword2) {
                 NavigationService.changeExpertPassword($scope.userForm, function(data) {
                     console.log('$scope.userForm', $scope.userForm);
                     if (data.value == true) {
@@ -775,15 +813,15 @@ var myarr = [];
                         //$state.go("home");
                     }
                 });
-              }else {
-                  $scope.mesg.push({
-                      type: 'danger',
-                      msg: 'Re-enter correct Password'
-                  });
-                  $scope.closeAlert = function(index) {
-                      $scope.mesg.splice(index, 1);
-                  }
-              }
+            } else {
+                $scope.mesg.push({
+                    type: 'danger',
+                    msg: 'Re-enter correct Password'
+                });
+                $scope.closeAlert = function(index) {
+                    $scope.mesg.splice(index, 1);
+                }
+            }
 
         }
         // $scope.mesg = [];
@@ -932,29 +970,30 @@ var myarr = [];
     $scope.mesgs = [];
 
     $scope.getLogin = function(formValid) {
-      $scope.myjstorage=$.jStorage.get('DoneForgotPswd');
-      console.log('$scope.myjstorage',$scope.myjstorage);
+        $scope.myjstorage = $.jStorage.get('DoneForgotPswd');
+        console.log('$scope.myjstorage', $scope.myjstorage);
         if (formValid.$valid) {
             NavigationService.getExpertLogin($scope.userForm, function(data) {
-              if (data.value == true && $scope.myjstorage==null) {
-                  $scope.userForm = data;
-                  console.log('inside if',$scope.userForm);
-                  $state.go("expert-booking");
-              } else if (data.value == true && $scope.myjstorage == 'Mail Sent') {
-                $scope.userForm = data;
-                var myid = data.data._id;
-                console.log('inside elseif',$scope.userForm);
-                $state.go("change-expert-password",{id:myid});
-              }
-              else {
-                  $scope.mesg.push({
-                      type: 'danger',
-                      msg: 'Incorrect Email or Password'
-                  });
-                  $scope.closeAlert = function(index) {
-                      $scope.mesg.splice(index, 1);
-                  }
-              }
+                if (data.value == true && $scope.myjstorage == null) {
+                    $scope.userForm = data;
+                    console.log('inside if', $scope.userForm);
+                    $state.go("expert-booking");
+                } else if (data.value == true && $scope.myjstorage == 'Mail Sent') {
+                    $scope.userForm = data;
+                    var myid = data.data._id;
+                    console.log('inside elseif', $scope.userForm);
+                    $state.go("change-expert-password", {
+                        id: myid
+                    });
+                } else {
+                    $scope.mesg.push({
+                        type: 'danger',
+                        msg: 'Incorrect Email or Password'
+                    });
+                    $scope.closeAlert = function(index) {
+                        $scope.mesg.splice(index, 1);
+                    }
+                }
                 // if (data.value == true) {
                 //     $scope.userForm = data;
                 //     $state.go("expert-booking");
@@ -990,9 +1029,9 @@ var myarr = [];
                     $scope.mesg.splice(index, 1);
                 }
             } else if ($scope.forgotpswd.comment == 'Mail Sent') {
-              $.jStorage.set('DoneForgotPswd',$scope.forgotpswd.comment);
-              $scope.myjstorage=$.jStorage.get('DoneForgotPswd');
-              console.log('$scope.myjstorage',$scope.myjstorage);
+                $.jStorage.set('DoneForgotPswd', $scope.forgotpswd.comment);
+                $scope.myjstorage = $.jStorage.get('DoneForgotPswd');
+                console.log('$scope.myjstorage', $scope.myjstorage);
                 $scope.changeSuccess = true;
             }
 
@@ -1579,7 +1618,7 @@ var myarr = [];
         $scope.selectedAll = {};
         $scope.selectedAll.expertise = true;
         $scope.selectedAll.location = true;
-  $scope.noResult = false;
+        $scope.noResult = false;
 
         $scope.checkAll = function() {
             // if ($scope.selectedAll) {
@@ -1699,7 +1738,7 @@ var myarr = [];
             minPrice: undefined,
             maxPrice: undefined
         };
-  $scope.noSearchFound = false;
+        $scope.noSearchFound = false;
 
         $scope.searchExpert = function() {
 
@@ -1742,14 +1781,16 @@ var myarr = [];
             }), 'value');
 
             NavigationService.getSearch(dataToSend, function(data) {
-              if(data.data.length == 0 || $stateParams.search == ''){
-                $scope.noSearchFound = true;
-                $state.go('search',({search:''}));
-              }
-              console.log(data.data.length);
-              // if(data.data.message){
-              //   $scope.noResult = true;
-              // }
+                if (data.data.length == 0 || $stateParams.search == '') {
+                    $scope.noSearchFound = true;
+                    $state.go('search', ({
+                        search: ''
+                    }));
+                }
+                console.log(data.data.length);
+                // if(data.data.message){
+                //   $scope.noResult = true;
+                // }
                 if (data && data.data && data.data.data) {
                     $scope.notfound = false;
                     $scope.expertdata = data.data.data;
@@ -1794,7 +1835,7 @@ var myarr = [];
 
                     //console.log('$scope.expertdata.length',$scope.expertdata.length);
                     if ($scope.expertdata.length == 0) {
-                      // $state.go('search',{search:''});
+                        // $state.go('search',{search:''});
                         $scope.notfound = true;
                     } else {
                         console.log('getSearchdata111', $scope.expertdata);
@@ -1807,8 +1848,8 @@ var myarr = [];
 
                     }
                 } else {
-                  // $state.go('search',{search:''});
-                  $scope.notfound = true;
+                    // $state.go('search',{search:''});
+                    $scope.notfound = true;
                 }
             });
 
@@ -1891,7 +1932,7 @@ var myarr = [];
     $scope.er = {};
     $scope.er.errText = false;
     $scope.ver.verify = $stateParams.text;
-console.log('in verify ctrl');
+    console.log('in verify ctrl');
     NavigationService.emailVerification($scope.ver, function(data) {
         console.log('*********************************************');
         $scope.er.errText = false;
@@ -2035,7 +2076,7 @@ console.log('in verify ctrl');
 
         });
         if ($scope.userLogedin == true) {
-          $state.go('user-booking');
+            $state.go('user-booking');
             console.log('checkUSer', $scope.userLogedin);
             $scope.getUserNotification();
         } else {
@@ -2167,7 +2208,7 @@ console.log('in verify ctrl');
 
     });
     $scope.userLogout = function() {
-      $.jStorage.flush();
+        $.jStorage.flush();
         NavigationService.getUserLogout($scope.userdata, function(data) {
             $scope.userLogedin = false;
             if (data.value == true) {
@@ -2178,7 +2219,7 @@ console.log('in verify ctrl');
         });
     };
     $scope.expertLogout = function() {
-      $.jStorage.flush();
+        $.jStorage.flush();
         NavigationService.getExpertLogout($scope.userdata, function(data) {
             console.log(data);
             if (data.value == true) {
