@@ -296,8 +296,49 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
     }
 
+    function getTimeBetween(from,to) {
+      var arr = [];
+      var fd = moment(from);
+      var td = moment(to);
+      var newD = moment(from);
+      while(newD.isSameOrBefore(td) ) {
+        arr.push(newD.format("hh:mm A"));
+        newD = newD.add(5,"minute");
+      }
+      return arr;
+    }
+
+
+    $scope.disabled = function (date, mode) {
+
+      var d = moment(date.date);
+      var returnval = false;
+      if($scope.ExpertDetail.callTime == "weekdays")
+      {
+        if(d.day() == 0 || d.day() == 6) {
+          returnval = true;
+        }
+      }
+      if($scope.ExpertDetail.callTime == "weekends")
+      {
+        if(!(d.day() == 0 || d.day() == 6)) {
+          returnval = true;
+        }
+      }
+      if($scope.ExpertDetail.callTime == "custom")
+      {
+        if(_.indexOf(myarr,d.day()) == -1) {
+          returnval = true;
+        }
+      }
+      return returnval;
+    };
+
+
+
     $scope.ptions = {
-        minDate: new Date()
+        minDate: new Date(),
+        dateDisabled: $scope.disabled
     }
 
     $scope.duration = ['10 Min', '30 Min', '60 Min', '90 Min', '120 Min'];
@@ -311,17 +352,52 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.userForm.finalAmount = $scope.userForm.finalAmount.toFixed(2);
         }
     }
+$scope.custdays = [];
+var myarr = [];
+  NavigationService.getExpertProfile($stateParams.id, function(data) {
+      console.log(data.data.callSettings);
+      _.each(data.data.callSettings,function(n){
+        var day;
+ switch (n.day) {
+     case "Sunday":
+         day = 0;
+         break;
+     case "MONDAY":
+         day = 1;
+         break;
+     case "TUESDAY":
+         day = 2;
+         break;
+     case "Wednesday":
+         day = 3;
+         break;
+     case "THURSDAY":
+         day = 4;
+         break;
+     case "Friday":
+         day = 5;
+         break;
+     case  "Saturday":
+         day = 6;
+         break;
 
-    NavigationService.getExpertProfile($stateParams.id, function(data) {
-        console.log(data.data);
-        $scope.ExpertDetail=data.data;
-        if (data.value != false) {
-            if (data.data && data.data.priceForService) {
-                $scope.expertPrice = data.data.priceForService;
-                $scope.calcFinalAmt(10);
-            }
-        }
-    })
+ }
+ console.log(day);
+        $scope.custdays.push(day);
+       myarr = $scope.custdays;
+      })
+      console.log(myarr);
+      $scope.ExpertDetail=data.data;
+      if (data.value != false) {
+          if (data.data && data.data.priceForService) {
+              $scope.expertPrice = data.data.priceForService;
+              $scope.calcFinalAmt(10);
+          }
+      }
+  })
+
+
+
 
     $scope.userSubmitForm = function(formValid) {
         if (formValid.$valid) {
@@ -812,9 +888,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         NavigationService.ExpertSignup($scope.userForm, function(data) {
                             if (data.value == true) {
                                 $scope.formComplete = true;
-                                $timeout(function() {
-                                    $state.go("expert-profile");
-                                }, 1000);
+                                // $timeout(function() {
+                                //     $state.go("expert-profile");
+                                // }, 1000);
                             } else {
                                 $scope.expertAlreadyExist = true;
                                 $timeout(function() {
@@ -1804,9 +1880,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('VerifyEmailCtrl', function($scope, $stateParams, TemplateService, NavigationService, $timeout) {
     $scope.template = TemplateService.changecontent("verifyemail");
-    $scope.menutitle = NavigationService.makeactive("Notification");
+    // console.log($scope.template);
+    $scope.template.header = "";
+    $scope.template.footer = "";
+    $scope.menutitle = NavigationService.makeactive("Verify Email");
     TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
+    $scope.navigation = NavigationService.getnav();
     $scope.ver = {};
     $scope.sc = {};
     $scope.er = {};
@@ -1830,7 +1909,7 @@ console.log('in verify ctrl');
     }, function(err) {
         console.log(err);
     });
-    TemplateService.header = "views/content/header.html";
+    // TemplateService.header = "views/content/header.html";
 })
 
 .controller('ProfileCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $uibModal) {
