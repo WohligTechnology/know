@@ -456,6 +456,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         time.hours = $scope.userForm.bookTime.getHours();
                         time.mins = $scope.userForm.bookTime.getMinutes();
                         $scope.userForm.callTime = new Date(time.year, time.month, time.date, time.hours, time.mins, 0, 0);
+                        console.log($scope.userForm.callTime,'/////////////');
                     }
                     delete $scope.userForm.bookDate;
                     delete $scope.userForm.bookTime;

@@ -1,6 +1,6 @@
 var adminurl = "http://localhost:3000/";
 // var adminurl = "http://jacknows.wohlig.com/";
-// var imgurl = "http://jacknows.wohlig.com/upload/";
+var imgurl = "http://jacknows.wohlig.com/upload/";
 // var adminurl = "http://chaitalee.com/";
 var imgurl = adminurl + "upload/";
 var imgpath = imgurl + "readFile";

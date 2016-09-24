@@ -108,7 +108,8 @@
                             <textarea class="form-control" rows="6" style="resize:none" placeholder="ASK QUERY" ng-model="userForm.query" required></textarea>
                         </div>
                         <div class="login-btn mt50">
-                            <button class="btn btn-animate-org f10 font-light" type="submit" ng-disabled="user.$invalid || isInvalid">BOOK NOW</button>
+                            <button class="btn btn-animate-org f10 font-light" type="submit" ng-disabled="userForm.$invalid">BOOK NOW</button>
+                            <!-- <button class="btn btn-animate-org f10 font-light" type="submit" ng-disabled="user.$invalid || isInvalid">BOOK NOW</button> -->
                         </div>
 
 
