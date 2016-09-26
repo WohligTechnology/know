@@ -1,0 +1,20 @@
+<div class="container">
+<div class="row">
+  <div class="col-md-12">
+    <div class="min-h text-center">
+      <div class="ps-ab">
+      <div class="verify-success" ng-show="sc.status">
+          <h2 class="color-primary">Email Verified</h2>
+          <p ng-hide="er.errText">Please proceed to login, <a ui-sref="home" class="color-primary">Click Here</a></p>
+          <p  ng-show="er.errText">{{sc.text}}</p>
+      </div>
+      <div class="verify-failure" ng-hide="sc.status">
+          <h2 class="color-primary">Email Already Verified</h2>
+          <p ng-hide="er.errText">Please proceed to login, <a ui-sref="home" class="color-primary">Click Here</a></p>
+          <p  ng-show="er.errText">{{sc.text}}</p>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

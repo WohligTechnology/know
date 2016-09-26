@@ -44,6 +44,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
           templateUrl: "views/template.html",
           controller: 'VerifyEmailCtrl'
       })
+        .state('userverifyemail', {
+          url: "/userverifyemail/:text",
+          templateUrl: "views/template.html",
+          controller: 'UserVerifyEmailCtrl'
+      })
         .state('change-password', {
             url: "/change-password/:id",
             templateUrl: "views/template.html",

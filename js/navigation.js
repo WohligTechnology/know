@@ -1,6 +1,9 @@
-var adminurl = "http://localhost:3000/";
+var adminurl = "http://localhost/";
+// var adminurl = "http://146.148.4.222:1337/";
+// var adminurl = "http://jacknows.wohlig.com:1337/";
+
 // var adminurl = "http://jacknows.wohlig.com/";
-var imgurl = "http://jacknows.wohlig.com/upload/";
+// var imgurl = "http://jacknows.wohlig.com/upload/";
 // var adminurl = "http://chaitalee.com/";
 var imgurl = adminurl + "upload/";
 var imgpath = imgurl + "readFile";
@@ -75,6 +78,15 @@ var navigationservice = angular.module('navigationservice', [])
         emailVerification: function(request, callback, err) {
     return $http({
         url: adminurl + "ExpertUser/emailVerification",
+        method: "POST",
+        data: {
+            "verifyemail": request.verify
+        }
+    }).success(callback).error(err);
+},
+        useremailVerification: function(request, callback, err) {
+    return $http({
+        url: adminurl + "user/emailVerification",
         method: "POST",
         data: {
             "verifyemail": request.verify

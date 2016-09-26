@@ -52,7 +52,7 @@
             </div>
             <div class=" col-md-6 col-sm-6 col-xs-12">
                 <div class="conten-box" ng-hide="formComplete || alreadyBooked || nouser">
-                    <form name="user" class="form-input" ng-submit="userSubmitForm(userForm)">
+                    <form name="user" class="form-input" ng-submit="userSubmitForm(user)">
                         <div class="login-form cust-form">
                             <h4 class="text-up text-center color-base">book now</h4>
 
@@ -88,7 +88,7 @@
                             <br>
 
                             <select name="duration" class="form-control display-inline pos-relative pointer" ng-model="userForm.bookTime" ng-disabled="!userForm.bookDate" required>
-                                <option ng-repeat="time in timing">{{time}}</option>
+                                <option ng-repeat="time in timing track by $index">{{time}}</option>
                             </select>
                             <!-- <uib-timepicker ng-model="userForm.bookTime" ng-disabled="!userForm.bookDate" show-meridian="false" min="min" max="max" ng-change="checkTime(user)"></uib-timepicker> -->
                         </div>
@@ -108,7 +108,7 @@
                             <textarea class="form-control" rows="6" style="resize:none" placeholder="ASK QUERY" ng-model="userForm.query" required></textarea>
                         </div>
                         <div class="login-btn mt50">
-                            <button class="btn btn-animate-org f10 font-light" type="submit" ng-disabled="userForm.$invalid">BOOK NOW</button>
+                            <button class="btn btn-animate-org f10 font-light" type="submit" ng-disabled="user.$invalid">BOOK NOW</button>
                             <!-- <button class="btn btn-animate-org f10 font-light" type="submit" ng-disabled="user.$invalid || isInvalid">BOOK NOW</button> -->
                         </div>
 

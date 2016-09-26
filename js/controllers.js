@@ -282,6 +282,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.checktime = moment($scope.userForm.bookDate).format("dddd").toUpperCase();
         console.log($scope.userForm.bookDate);
         var dateSelected = moment($scope.userForm.bookDate);
+        console.log(dateSelected);
         if ($scope.ExpertDetail.callTime == "custom") {
             $scope.compareday = _.find($scope.ExpertDetail.callSettings, ['day', $scope.checktime]);
 
@@ -332,7 +333,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
               newD = newD.add(5, "minute");
             }
             else {
-              arr.push(newD.format("hh:mm A"));
+              arr.push(newD.format("HH:mm"));
               newD = newD.add(5, "minute");
             }
 
@@ -438,6 +439,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.userSubmitForm = function(formValid) {
         console.log(formValid);
         if (formValid.$valid) {
+          console.log('insides');
             $scope.userForm.expert = $stateParams.id;
             NavigationService.getExpertProfile({
                 _id: $stateParams.id
@@ -448,14 +450,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.userForm.mobile = data2.data.mobileno;
                     if ($scope.userForm.bookDate && $scope.userForm.bookTime) {
                         var time = {};
+                          console.log($scope.userForm.bookTime,'/////////////');
+                          var myhour = [];
                         $scope.userForm.bookDate = new Date($scope.userForm.bookDate);
-                        $scope.userForm.bookTime = new Date($scope.userForm.bookTime);
+                        // $scope.userForm.bookTime = new Date($scope.userForm.bookTime);
+                        myhour = $scope.userForm.bookTime.split(":");
+                        console.log(myhour);
                         time.year = $scope.userForm.bookDate.getFullYear();
                         time.month = $scope.userForm.bookDate.getMonth();
                         time.date = $scope.userForm.bookDate.getDate();
-                        time.hours = $scope.userForm.bookTime.getHours();
-                        time.mins = $scope.userForm.bookTime.getMinutes();
-                        $scope.userForm.callTime = new Date(time.year, time.month, time.date, time.hours, time.mins, 0, 0);
+                        // time.hours = $scope.userForm.bookTime.getHours();
+                        // time.mins = $scope.userForm.bookTime.getMinutes();
+                        $scope.userForm.callTime = new Date(time.year, time.month, time.date, myhour[0], myhour[1], 0, 0);
+
                         console.log($scope.userForm.callTime,'/////////////');
                     }
                     delete $scope.userForm.bookDate;
@@ -669,9 +676,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         $scope.userForm = data.data;
                         if (data.value == true) {
                             $scope.formComplete = true;
-                            $timeout(function() {
-                                $state.go("home");
-                            }, 1000);
+                            // $timeout(function() {
+                            //     $state.go("home");
+                            // }, 1000);
                         } else {
                             $scope.alreadyExist = true;
                             $timeout(function() {
@@ -1935,6 +1942,39 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.ver.verify = $stateParams.text;
     console.log('in verify ctrl');
     NavigationService.emailVerification($scope.ver, function(data) {
+        console.log('*********************************************');
+        $scope.er.errText = false;
+        $scope.sc.status = data.value;
+
+        if (data.value) {
+
+        } else {
+            if (data.error && data.error.includes("mobile")) {
+                $scope.sc.status = true;
+                $scope.sc.text = data.error;
+                $scope.er.errText = true;
+            }
+        }
+    }, function(err) {
+        console.log(err);
+    });
+    // TemplateService.header = "views/content/header.html";
+})
+.controller('UserVerifyEmailCtrl', function($scope, $stateParams, TemplateService, NavigationService, $timeout) {
+    $scope.template = TemplateService.changecontent("userverifyemail");
+    // console.log($scope.template);
+    $scope.template.header = "";
+    $scope.template.footer = "";
+    $scope.menutitle = NavigationService.makeactive("Verify Email");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.ver = {};
+    $scope.sc = {};
+    $scope.er = {};
+    $scope.er.errText = false;
+    $scope.ver.verify = $stateParams.text;
+    console.log('in verify ctrl');
+    NavigationService.useremailVerification($scope.ver, function(data) {
         console.log('*********************************************');
         $scope.er.errText = false;
         $scope.sc.status = data.value;
