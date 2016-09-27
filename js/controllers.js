@@ -600,6 +600,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         id: myid
                     });
                 } else {
+                  if(data.data.comment == 'User Not Found'){
                     $scope.mesg.push({
                         type: 'danger',
                         msg: 'Incorrect Email or Password'
@@ -607,6 +608,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.closeAlert = function(index) {
                         $scope.mesg.splice(index, 1);
                     }
+                  }else{
+                    $scope.mesg.push({
+                        type: 'danger',
+                        msg: 'Please Verify your email for Login'
+                    });
+                    $scope.closeAlert = function(index) {
+                        $scope.mesg.splice(index, 1);
+                    }
+                  }
+
                 }
             });
         }
@@ -928,9 +939,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         if (formValid.$valid) {
             console.log('HomeExpertCtrl', $scope.userForm.age);
             if ($scope.userForm.password == $scope.userForm.confirmPassword) {
-                if ($scope.userForm.age >= 18) {
+                // if ($scope.userForm.age >= 18) {
                     if ($scope.userForm.agreeTerms == true) {
-                        console.log('greater than 18');
                         NavigationService.ExpertSignup($scope.userForm, function(data) {
                             if (data.value == true) {
                                 $scope.formComplete = true;
@@ -953,15 +963,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             $scope.mesgAgree.splice(index, 1);
                         }
                     }
-                } else {
-                    $scope.mesgage.push({
-                        type: 'success',
-                        msg: 'Expert Age does not match the requirements.'
-                    });
-                    $scope.closeAlert = function(index) {
-                        $scope.mesgage.splice(index, 1);
-                    }
-                }
+                // } else {
+                //     $scope.mesgage.push({
+                //         type: 'success',
+                //         msg: 'Expert Age does not match the requirements.'
+                //     });
+                //     $scope.closeAlert = function(index) {
+                //         $scope.mesgage.splice(index, 1);
+                //     }
+                // }
             } else {
                 console.log('doo not match');
                 $scope.mesg.push({
@@ -994,6 +1004,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         id: myid
                     });
                 } else {
+                  if(data.data.comment == 'ExpertUser Not Found'){
                     $scope.mesg.push({
                         type: 'danger',
                         msg: 'Incorrect Email or Password'
@@ -1001,6 +1012,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.closeAlert = function(index) {
                         $scope.mesg.splice(index, 1);
                     }
+                  }else{
+                      // $scope.mesgs = [];
+                    $scope.mesg.push({
+                        type: 'danger',
+                        msg: 'Please Verify your email for Login'
+                    });
+                    $scope.closeAlert = function(index) {
+                        $scope.mesg.splice(index, 1);
+                    }
+                  }
+                    // $scope.mesg.push({
+                    //     type: 'danger',
+                    //     msg: 'Incorrect Email or Password'
+                    // });
+                    // $scope.closeAlert = function(index) {
+                    //     $scope.mesg.splice(index, 1);
+                    // }
                 }
                 // if (data.value == true) {
                 //     $scope.userForm = data;
