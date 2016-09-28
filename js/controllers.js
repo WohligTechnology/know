@@ -267,15 +267,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     // -------------set time 9 am to 9 pm----------------------------
     // $scope.min = '';
     // $scope.max = '';
-    var d = new Date();
-    d.setHours(9);
-    d.setMinutes(0);
-    $scope.min = d;
 
-    var s = new Date();
-    s.setHours(21);
-    s.setMinutes(0);
-    $scope.max = s;
     // -------------------------------------------------------
 
     $scope.checkTime = function() {
@@ -307,6 +299,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
           }
         }
         if ($scope.ExpertDetail.callTime == "weekdays") {
+          if(dateSelected.isSame(moment(), 'day'))
+          {
+            $scope.timing = getTimeBetween(moment("01 01 2016 , 09:00:00","DD MM YYYY , HH:mm:ss"), moment("01 01 2016 , 21:00:00","DD MM YYYY , HH:mm:ss"), "today");
+          }
+          else {
+            $scope.timing = getTimeBetween(moment("01 01 2016 , 09:00:00","DD MM YYYY , HH:mm:ss"), moment("01 01 2016 , 21:00:00","DD MM YYYY , HH:mm:ss"));
+          }
+        }
+        if ($scope.ExpertDetail.callTime == "unavailable") {
           if(dateSelected.isSame(moment(), 'day'))
           {
             $scope.timing = getTimeBetween(moment("01 01 2016 , 09:00:00","DD MM YYYY , HH:mm:ss"), moment("01 01 2016 , 21:00:00","DD MM YYYY , HH:mm:ss"), "today");
@@ -357,6 +358,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
         if ($scope.ExpertDetail.callTime == "custom") {
             if (_.indexOf(myarr, d.day()) == -1) {
+                returnval = true;
+            }
+
+        }
+        if ($scope.ExpertDetail.callTime == "unavailable") {
+            if (!(_.indexOf(myarr, d.day()) == -1)) {
                 returnval = true;
             }
 
@@ -1170,7 +1177,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
                 if (data.callSettings && data.callSettings.length > 0) {
                     $scope.calldetail = data.callSettings;
-
+                    console.log('///////////////////',$scope.calldetail);
+                    _.each($scope.calldetail,function(n){
+                      console.log(n);
+                      if(n.fromTime || n.toTime){
+                        n.fromTime = new Date(n.fromTime);
+                        n.toTime = new Date(n.toTime);
+                      }
+                    })
                 } else {
                     $scope.calldetail = [];
                 }
@@ -1238,6 +1252,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $scope.calldetail = [];
                     $scope.userForm.callSettings = [];
                 }
+
                 console.log("////", $scope.userForm);
                 NavigationService.ExpertUSerCreateSubmit($scope.userForm, function(data) {
                     console.log($scope.userForm);
@@ -1281,7 +1296,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         //  selectedOption: {id: '6', name: 'MONDAY'} //This sets the default value of the select in the ui
         //  };
 
-        $scope.weekdays = ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY'];
+        $scope.weekdays = ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY'];
         $scope.unavailWeekdays = ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY'];
 
 
@@ -1571,6 +1586,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             return '';
         }
+
+
 
     })
     .controller('FaqCtrl', function($scope, TemplateService, NavigationService, $timeout) {

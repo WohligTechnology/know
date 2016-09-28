@@ -511,7 +511,7 @@
                                                     <i class="ln-cross" ng-click="addCalls()"></i>
                                                 </div>
                                                 <!-- </form> -->
-                                                <div class="day-opt custom-li mt25" ng-hide="userForm.callTime=='custom'">
+                                                <div class="day-opt custom-li mt25" ng-if="userForm.callTime=='unavailable'">
                                                     <ul class="padding0">
                                                         <li ng-repeat="calls in calldetail track by $index">
                                                             <p class="color-success op2 pointer">{{calls.day}}</p>
@@ -523,7 +523,7 @@
                                                     </li> -->
                                                     </ul>
                                                 </div>
-                                                <div ng-hide="userForm.callTime=='unavailable'">
+                                                <div ng-if="userForm.callTime=='custom'">
                                                     <div class="day-opt2 mt25" ng-repeat="calls in calldetail">
 
                                                         <div class="closes pull-right">
@@ -535,7 +535,7 @@
                                                         <div class="from pull-left mt30">
                                                             <div class="form-group">
                                                                 <label for="exampleInputPassword1">FROM</label>
-                                                                <input type="time" ng-model="calls.fromTime">
+                                                                <input type="time" value="" ng-model="calls.fromTime">
                                                                 <!-- <select class="form-control" ng-model="calls.fromTime">
                                                                     <option>10:00</option>
                                                                     <option>2</option>
