@@ -174,7 +174,10 @@
                               </div> -->
                               <div class="exp-brief">
                                  <span class="color-success-light font-bold">SPECIALIZATION:</span>
-                                 <p>{{experts.specilization}}</p>
+                                 <!-- <p ng-repeat="s in experts.specilization">{{s}},</p> -->
+                                 <ul class="pl12">
+                                   <li ng-repeat="s in experts.specilization">{{s}}</li>
+                                 </ul>
                               </div>
                            </div>
 

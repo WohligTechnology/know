@@ -177,7 +177,16 @@
                                     </div>
                                     <div class="form-group mt25">
                                         <label>specialization <span class="f10 color-success">(YOU CAN ENTER MULTIPLE SPECIALIZATION)</span></label>
-                                        <input name="specilization" type="text" class="form-control" ng-model="userForm.specilization">
+                                        <!-- <input name="specilization" type="text" class="form-control" ng-model="userForm.specilization"> -->
+
+                                        <ui-select multiple sortable="true" ng-model="userForm.specilization" title="Choose a person">
+  <ui-select-match placeholder="Select or search a person in the list...">{{$item}}</ui-select-match>
+  <ui-select-choices repeat="item in SpecializationArr | filter: $select.search">
+    <div ng-bind-html="item | highlight: $select.search"></div>
+    <!-- <small ng-bind-html="item.email | highlight: $select.search"></small> -->
+  </ui-select-choices>
+</ui-select>
+
                                         <!-- <div class="error-msg" ng-show="user.specilization.$error.required && user.specilization.$touched">Please Enter Specilization.</div> -->
                                     </div>
                                     <!-- </form> -->

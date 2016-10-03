@@ -83,7 +83,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     }
 })
 
-.controller('UserBookingCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+.controller('UserBookingCtrl', function($scope, TemplateService, NavigationService, $timeout,$stateParams) {
     $scope.template = TemplateService.changecontent("user-booking");
     $scope.menutitle = NavigationService.makeactive("User-Booking");
     TemplateService.title = $scope.menutitle;
@@ -96,7 +96,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.userBookingsubmit = {};
     $scope.userBooking = {};
     $scope.userpay = {};
-
+$stateParams.tab = 'AwaitingPayment';
     $scope.userBook = function(status, user) {
         console.log("here");
         $scope.userBookings.status = status;
@@ -1178,6 +1178,7 @@ TemplateService.removeLoaderOn(1);
           TemplateService.removeLoaderOn(2);
         $scope.userForm = {};
         $scope.userForm.callday = "MONDAY";
+        $scope.specilization = [];
         $scope.userForm.sameaddress = false;
         $scope.calldetail = [];
         //
@@ -1185,6 +1186,19 @@ TemplateService.removeLoaderOn(1);
         //   $scope.sameaddress=true;
         // }else{
         //     $scope.sameaddress=false;
+        // }
+
+        $scope.SpecializationArr = ['Education / Student Counselling','Career Counselling','Image Counselling / Grooming','Relationship Counselling','Stress / Depression / Anxiety','Meditation','Life Skills','Personality','Alternate / Spiritual Healing','Child Behaviour','Adolescence Counselling'];
+
+// var spArr = [];
+        // $scope.pushArr = function(val){
+        //   spArr.push(val);
+        //   console.log(spArr);
+        // }
+        // $scope.pushSpecialization = function(val) {
+        //   console.log(val);
+        //         $scope.specilization = val;
+        //         console.log($scope.specilization,'////////');
         // }
 
         $scope.changeAddress = function(val) {

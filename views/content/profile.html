@@ -65,7 +65,7 @@
 
                     <div class="spl pt15 mt25">
                         <h4 class="margin0 color-primary">SPECIALIZATION</h4>
-                        <p class="font-bold color-base f10 mt10">{{expertprofile.specilization}}</p>
+                        <p class="font-bold color-base f10 mt10" ng-repeat="s in expertprofile.specilization">{{s}}</p>
                     </div>
                     <div class="btn-book mt25">
                         <button class="btn btn-blue font-raleway text-up" width="100%" ui-sref="book-now({id:expertprofile._id})">book now</button>
@@ -87,8 +87,11 @@
           <a ui-sref="search({search:expertprofile.areaOfExpertise})">  <h4 class="font-raleway color-success font-med cpointer">{{expertprofile.areaOfExpertise}}</h4></a>
             <!-- <p class="color-base font-light f16">2 year of experience in MSBI.</p> -->
             <p class="color-base font-light f16">{{expertprofile.descriptionAndSkills}}</p>
-            <p class="color-base font-light f16">{{expertprofile.specilization}}
-            </p>
+            <!-- <p class="color-base font-light f16" ng-repeat="s in expertprofile.specilization">{{s}}
+            </p> -->
+            <ul class="pl12">
+              <li ng-repeat="s in expertprofile.specilization">{{s}}</li>
+            </ul>
           </div>
           <div class="exps mt50" ng-if="tab2=='exp'" ng-repeat="expertpro in expertprofile.experience">
              <div class="exp-sec summary">

@@ -6,7 +6,7 @@
         <div class="col-md-6 col-sm-6">
           <div class="exp-signup" ng-hide="expertAlreadyExist || formComplete">
             <div ng-hide="showform">
-            <form name="user">
+            <form  name="user" ng-submit="expertSignup(user)">
               <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-6">
                   <div class="form-group">
@@ -63,7 +63,7 @@
                         <label for="radio01" class="color-primary"><span></span>MALE</label>
                       </div>
                       <div class="radio-org display-inline pl12">
-                        <input type="radio" id="radio02" name="gender" ng-model="userForm.gender" value="female" required />
+                        <input type="radio" id="radio02" name="gender" ng-model="userForm.gender" value="female"  />
                         <label for="radio02" class="color-primary"><span></span>FEMALE</label>
                       </div>
                       <div class="color-white" class="error-msg" ng-if="user.gender.$error.required && user.gender.$touched">Please Enter Your  Gender.</div>
@@ -78,7 +78,9 @@
               </div>
                 <uib-alert ng-repeat="alert in mesgAgree" type="{{alert.type}}" class="text-center" dismiss-on-timeout="7000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
               <div class="mt25">
-                <button class="btn btn-animate-org" ng-click="expertSignup(user)">SUBMIT</button>
+                  <button class="btn btn-animate-org" type="submit">SUBMIT</button>
+
+                <!-- <button class="btn btn-animate-org" ng-click="expertSignup(user)">SUBMIT</button> -->
                 <!-- <button class="btn btn-animate-org" ng-click="open4('sm')">SUBMIT</button> -->
               </div>
 
