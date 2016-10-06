@@ -9,7 +9,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Home");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-      TemplateService.removeLoaderOn(3);
+    TemplateService.removeLoaderOn(3);
     $scope.expertlogo = "";
     $scope.userlogo = "";
     $scope.home = "home-page";
@@ -18,13 +18,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     NavigationService.getCategory($scope.categorydata, function(data) {
         $scope.categorydata = data.data;
         console.log('$scope.categorydata', $scope.categorydata);
-          TemplateService.removeLoader();
+        TemplateService.removeLoader();
     });
     $scope.freqSearch = {};
     NavigationService.getFreqSearch($scope.freqSearch, function(data) {
         $scope.freqSearch = data.data;
         console.log('$scope.freqSearch', $scope.freqSearch);
-  TemplateService.removeLoader();
+        TemplateService.removeLoader();
     });
     $scope.changeToSearchPage = function(search) {
         console.log(search);
@@ -51,7 +51,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     NavigationService.getCategory($scope.categories, function(data) {
         $scope.categories = data.data;
         console.log('categories', $scope.categories);
-          TemplateService.removeLoader();
+        TemplateService.removeLoader();
     });
 
     $scope.animationsEnabled = true;
@@ -83,25 +83,49 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     }
 })
 
-.controller('UserBookingCtrl', function($scope, TemplateService, NavigationService, $timeout,$stateParams) {
+.controller('UserBookingCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
     $scope.template = TemplateService.changecontent("user-booking");
     $scope.menutitle = NavigationService.makeactive("User-Booking");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-      TemplateService.removeLoaderOn(1);
+    TemplateService.removeLoaderOn(1);
     // TemplateService.header = "./views/header2.html";
+    // if(!$stateParams.id){
+    //   $stateParams.id='accept';
+    // }
+$scope.formData = {};
+$timeout(function () {
+  console.log("time out");
+   $scope.formData.whichPage = $stateParams.id;
+   $apply();
+}, 1000);
+
+
+
+
     $scope.expertlogo = "";
     $scope.userlogo = "user-page";
     $scope.userBookings = {};
     $scope.userBookingsubmit = {};
     $scope.userBooking = {};
     $scope.userpay = {};
-$stateParams.tab = 'AwaitingPayment';
+    $stateParams.tab = 'AwaitingPayment';
     $scope.userBook = function(status, user) {
+      $scope.active = status;
+        // $state.go('user-booking',{id: $stateParams.id});
+      // if ($stateParams.id) {
+      //    $scope.active = status;
+      //     $state.go('user-booking',{id: $scope.active});
+      // } else {
+      //     $stateParams.id = 'accept';
+      // }
+        console.log(status, '*****************');
+
         console.log("here");
         $scope.userBookings.status = status;
         $scope.userBookings.from = user;
         NavigationService.getUserBooking($scope.userBookings, function(data) {
+            // $state.go('user-booking',{id:status});
             console.log(data);
             $scope.userBooking = data.data;
 
@@ -110,13 +134,13 @@ $stateParams.tab = 'AwaitingPayment';
 
             }
             console.log('userBooking', $scope.userBooking);
-  TemplateService.removeLoader();
+            TemplateService.removeLoader();
         });
 
     }
     $scope.mesg = [];
     $scope.selectOnce = false;
-    $scope.userBook('accept', 'user');
+    $scope.userBook($stateParams.id, 'user');
     $scope.getPay = function(booking, val) {
         var currentDate = new Date();
         var callTime = new Date(booking.callTime);
@@ -184,7 +208,7 @@ $stateParams.tab = 'AwaitingPayment';
     $scope.menutitle = NavigationService.makeactive("Expert-Booking");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-        TemplateService.removeLoaderOn(1);
+    TemplateService.removeLoaderOn(1);
     $scope.expertlogo = "expert-page";
     $scope.userlogo = "";
     $scope.bookexperts = {};
@@ -196,7 +220,7 @@ $stateParams.tab = 'AwaitingPayment';
             console.log(data);
             $scope.bookexpert = data.data;
             console.log('bookexpert', $scope.bookexpert);
-              TemplateService.removeLoader();
+            TemplateService.removeLoader();
         });
     }
     $scope.mesg = [];
@@ -249,9 +273,9 @@ $stateParams.tab = 'AwaitingPayment';
                 if (data.value != false) {
                     $scope.expertBook('pending', 'expert');
                 }
-                  // TemplateService.removeLoader();
+                // TemplateService.removeLoader();
             });
-              // TemplateService.removeLoader();
+            // TemplateService.removeLoader();
         });
         $scope.mesg = [];
     };
@@ -292,64 +316,55 @@ $stateParams.tab = 'AwaitingPayment';
         if ($scope.ExpertDetail.callTime == "custom") {
             $scope.compareday = _.find($scope.ExpertDetail.callSettings, ['day', $scope.checktime]);
 
-            if(dateSelected.isSame(moment(), 'day'))
-            {
-              $scope.timing = getTimeBetween(moment($scope.compareday.fromTime), moment($scope.compareday.toTime) , "today");
-            }
-            else {
-              $scope.timing = getTimeBetween(moment($scope.compareday.fromTime), moment($scope.compareday.toTime));
+            if (dateSelected.isSame(moment(), 'day')) {
+                $scope.timing = getTimeBetween(moment($scope.compareday.fromTime), moment($scope.compareday.toTime), "today");
+            } else {
+                $scope.timing = getTimeBetween(moment($scope.compareday.fromTime), moment($scope.compareday.toTime));
             }
 
 
         }
         if ($scope.ExpertDetail.callTime == "weekends") {
 
-          if(dateSelected.isSame(moment(), 'day'))
-          {
-            $scope.timing = getTimeBetween(moment("01 01 2016 , 09:00:00","DD MM YYYY , HH:mm:ss"), moment("01 01 2016 , 21:00:00","DD MM YYYY , HH:mm:ss"), "today");
-          }
-          else {
-            $scope.timing = getTimeBetween(moment("01 01 2016 , 09:00:00","DD MM YYYY , HH:mm:ss"), moment("01 01 2016 , 21:00:00","DD MM YYYY , HH:mm:ss"));
-          }
+            if (dateSelected.isSame(moment(), 'day')) {
+                $scope.timing = getTimeBetween(moment("01 01 2016 , 09:00:00", "DD MM YYYY , HH:mm:ss"), moment("01 01 2016 , 21:00:00", "DD MM YYYY , HH:mm:ss"), "today");
+            } else {
+                $scope.timing = getTimeBetween(moment("01 01 2016 , 09:00:00", "DD MM YYYY , HH:mm:ss"), moment("01 01 2016 , 21:00:00", "DD MM YYYY , HH:mm:ss"));
+            }
         }
         if ($scope.ExpertDetail.callTime == "weekdays") {
-          if(dateSelected.isSame(moment(), 'day'))
-          {
-            $scope.timing = getTimeBetween(moment("01 01 2016 , 09:00:00","DD MM YYYY , HH:mm:ss"), moment("01 01 2016 , 21:00:00","DD MM YYYY , HH:mm:ss"), "today");
-          }
-          else {
-            $scope.timing = getTimeBetween(moment("01 01 2016 , 09:00:00","DD MM YYYY , HH:mm:ss"), moment("01 01 2016 , 21:00:00","DD MM YYYY , HH:mm:ss"));
-          }
+            if (dateSelected.isSame(moment(), 'day')) {
+                $scope.timing = getTimeBetween(moment("01 01 2016 , 09:00:00", "DD MM YYYY , HH:mm:ss"), moment("01 01 2016 , 21:00:00", "DD MM YYYY , HH:mm:ss"), "today");
+            } else {
+                $scope.timing = getTimeBetween(moment("01 01 2016 , 09:00:00", "DD MM YYYY , HH:mm:ss"), moment("01 01 2016 , 21:00:00", "DD MM YYYY , HH:mm:ss"));
+            }
         }
         if ($scope.ExpertDetail.callTime == "unavailable") {
-          if(dateSelected.isSame(moment(), 'day'))
-          {
-            $scope.timing = getTimeBetween(moment("01 01 2016 , 09:00:00","DD MM YYYY , HH:mm:ss"), moment("01 01 2016 , 21:00:00","DD MM YYYY , HH:mm:ss"), "today");
-          }
-          else {
-            $scope.timing = getTimeBetween(moment("01 01 2016 , 09:00:00","DD MM YYYY , HH:mm:ss"), moment("01 01 2016 , 21:00:00","DD MM YYYY , HH:mm:ss"));
-          }
+            if (dateSelected.isSame(moment(), 'day')) {
+                $scope.timing = getTimeBetween(moment("01 01 2016 , 09:00:00", "DD MM YYYY , HH:mm:ss"), moment("01 01 2016 , 21:00:00", "DD MM YYYY , HH:mm:ss"), "today");
+            } else {
+                $scope.timing = getTimeBetween(moment("01 01 2016 , 09:00:00", "DD MM YYYY , HH:mm:ss"), moment("01 01 2016 , 21:00:00", "DD MM YYYY , HH:mm:ss"));
+            }
         }
 
     }
 
-    function getTimeBetween(from, to,isToday) {
+    function getTimeBetween(from, to, isToday) {
 
-        from = moment(moment().format("DD MM YYYY , ") + from.format("HH:mm:ss"),"DD MM YYYY , HH:mm:ss");
-        to = moment(moment().format("DD MM YYYY , ") + to.format("HH:mm:ss"),"DD MM YYYY , HH:mm:ss");
+        from = moment(moment().format("DD MM YYYY , ") + from.format("HH:mm:ss"), "DD MM YYYY , HH:mm:ss");
+        to = moment(moment().format("DD MM YYYY , ") + to.format("HH:mm:ss"), "DD MM YYYY , HH:mm:ss");
         currentMoment = moment();
         var arr = [];
         var fd = moment(from);
         var td = moment(to);
         var newD = moment(from);
         while (newD.isSameOrBefore(td)) {
-          console.log("CHECK");
-            if(isToday &&  newD.isBefore(currentMoment)) {
-              newD = newD.add(5, "minute");
-            }
-            else {
-              arr.push(newD.format("HH:mm"));
-              newD = newD.add(5, "minute");
+            console.log("CHECK");
+            if (isToday && newD.isBefore(currentMoment)) {
+                newD = newD.add(5, "minute");
+            } else {
+                arr.push(newD.format("HH:mm"));
+                newD = newD.add(5, "minute");
             }
 
         }
@@ -452,7 +467,7 @@ $stateParams.tab = 'AwaitingPayment';
                 $scope.calcFinalAmt(10);
             }
         }
-          TemplateService.removeLoader();
+        TemplateService.removeLoader();
     })
 
 
@@ -461,7 +476,7 @@ $stateParams.tab = 'AwaitingPayment';
     $scope.userSubmitForm = function(formValid) {
         console.log(formValid);
         if (formValid.$valid) {
-          console.log('insides');
+            console.log('insides');
             $scope.userForm.expert = $stateParams.id;
             NavigationService.getExpertProfile({
                 _id: $stateParams.id
@@ -472,8 +487,8 @@ $stateParams.tab = 'AwaitingPayment';
                     $scope.userForm.mobile = data2.data.mobileno;
                     if ($scope.userForm.bookDate && $scope.userForm.bookTime) {
                         var time = {};
-                          console.log($scope.userForm.bookTime,'/////////////');
-                          var myhour = [];
+                        console.log($scope.userForm.bookTime, '/////////////');
+                        var myhour = [];
                         $scope.userForm.bookDate = new Date($scope.userForm.bookDate);
                         // $scope.userForm.bookTime = new Date($scope.userForm.bookTime);
                         myhour = $scope.userForm.bookTime.split(":");
@@ -485,7 +500,7 @@ $stateParams.tab = 'AwaitingPayment';
                         // time.mins = $scope.userForm.bookTime.getMinutes();
                         $scope.userForm.callTime = new Date(time.year, time.month, time.date, myhour[0], myhour[1], 0, 0);
 
-                        console.log($scope.userForm.callTime,'/////////////');
+                        console.log($scope.userForm.callTime, '/////////////');
                     }
                     delete $scope.userForm.bookDate;
                     delete $scope.userForm.bookTime;
@@ -522,10 +537,10 @@ $stateParams.tab = 'AwaitingPayment';
                                 }, 3000);
                             }
                         }
-                          // TemplateService.removeLoader();
+                        // TemplateService.removeLoader();
                     });
                 }
-                  // TemplateService.removeLoader();
+                // TemplateService.removeLoader();
             });
         }
     };
@@ -591,7 +606,7 @@ $stateParams.tab = 'AwaitingPayment';
     $scope.menutitle = NavigationService.makeactive("Login");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-      // TemplateService.removeLoaderOn(2);
+    // TemplateService.removeLoaderOn(2);
     $scope.expertlogo = "";
     $scope.userlogo = "user-page";
     $scope.mesg = [];
@@ -626,23 +641,23 @@ $stateParams.tab = 'AwaitingPayment';
                     });
                     TemplateService.removeLoader();
                 } else {
-                  if(data.data.comment == 'User Not Found'){
-                    $scope.mesg.push({
-                        type: 'danger',
-                        msg: 'Incorrect Email or Password'
-                    });
-                    $scope.closeAlert = function(index) {
-                        $scope.mesg.splice(index, 1);
+                    if (data.data.comment == 'User Not Found') {
+                        $scope.mesg.push({
+                            type: 'danger',
+                            msg: 'Incorrect Email or Password'
+                        });
+                        $scope.closeAlert = function(index) {
+                            $scope.mesg.splice(index, 1);
+                        }
+                    } else {
+                        $scope.mesg.push({
+                            type: 'danger',
+                            msg: 'Please Verify your email for Login'
+                        });
+                        $scope.closeAlert = function(index) {
+                            $scope.mesg.splice(index, 1);
+                        }
                     }
-                  }else{
-                    $scope.mesg.push({
-                        type: 'danger',
-                        msg: 'Please Verify your email for Login'
-                    });
-                    $scope.closeAlert = function(index) {
-                        $scope.mesg.splice(index, 1);
-                    }
-                  }
 
                 }
 
@@ -655,7 +670,7 @@ $stateParams.tab = 'AwaitingPayment';
         if (data._id && data._id != "") {
             $state.go("home");
         }
-          // TemplateService.removeLoader();
+        // TemplateService.removeLoader();
     });
 
     $scope.changeSuccess = false;
@@ -670,9 +685,9 @@ $stateParams.tab = 'AwaitingPayment';
                     msg: 'Incorrect Email'
                 });
                 $scope.closeAlert = function(index) {
-                    $scope.mesg.splice(index, 1);
-                }
-                // TemplateService.removeLoader();
+                        $scope.mesg.splice(index, 1);
+                    }
+                    // TemplateService.removeLoader();
             } else if ($scope.forgotpswd.comment == 'Mail Sent') {
                 $.jStorage.set('DoneForgotPswd', $scope.forgotpswd.comment);
                 $scope.myjstorage = $.jStorage.get('DoneForgotPswd');
@@ -700,7 +715,7 @@ $stateParams.tab = 'AwaitingPayment';
     $scope.menutitle = NavigationService.makeactive("Signup");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-      // TemplateService.removeLoaderOn(1);
+    // TemplateService.removeLoaderOn(1);
     $scope.expertlogo = "";
     $scope.userlogo = "user-page";
     $scope.mesg = [];
@@ -770,7 +785,7 @@ $stateParams.tab = 'AwaitingPayment';
     NavigationService.getUserEditDetail($stateParams.id, function(data) {
         console.log('getUserEditDetail', data);
         $scope.userForm = data;
-          TemplateService.removeLoader();
+        TemplateService.removeLoader();
     });
 
     $scope.userSubmitForm = function(formValid) {
@@ -796,7 +811,7 @@ $stateParams.tab = 'AwaitingPayment';
     $scope.menutitle = NavigationService.makeactive("change-password");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-TemplateService.removeLoaderOn(1);
+    TemplateService.removeLoaderOn(1);
     $scope.expertlogo = "";
     $scope.userlogo = "user-page";
     $scope.mesg = [];
@@ -821,7 +836,7 @@ TemplateService.removeLoaderOn(1);
                     $scope.userForm = data.data;
                     //$state.go("home");
                     // console.log('$scope.userForm', $scope.userForm);
-// TemplateService.removeLoader();
+                    // TemplateService.removeLoader();
                 });
 
             } else {
@@ -895,7 +910,7 @@ TemplateService.removeLoaderOn(1);
     $scope.menutitle = NavigationService.makeactive("Contact");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-      // TemplateService.removeLoaderOn(1);
+    // TemplateService.removeLoaderOn(1);
     $scope.expertlogo = "";
     $scope.userlogo = "user-page";
 
@@ -943,7 +958,7 @@ TemplateService.removeLoaderOn(1);
     $scope.menutitle = NavigationService.makeactive("Home-Expert");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-      // TemplateService.removeLoaderOn(1);
+    // TemplateService.removeLoaderOn(1);
     $scope.expertlogo = "";
     $scope.userlogo = "";
     $scope.home = "";
@@ -985,30 +1000,30 @@ TemplateService.removeLoaderOn(1);
             console.log('HomeExpertCtrl', $scope.userForm.age);
             if ($scope.userForm.password == $scope.userForm.confirmPassword) {
                 // if ($scope.userForm.age >= 18) {
-                    if ($scope.userForm.agreeTerms == true) {
-                        NavigationService.ExpertSignup($scope.userForm, function(data) {
-                            if (data.value == true) {
-                                $scope.formComplete = true;
-                                // $timeout(function() {
-                                //     $state.go("expert-profile");
-                                // }, 1000);
-                            } else {
-                                $scope.expertAlreadyExist = true;
-                                $timeout(function() {
-                                    $scope.expertAlreadyExist = false;
-                                }, 5000)
-                            }
-                              // TemplateService.removeLoader();
-                        });
-                    } else {
-                        $scope.mesgAgree.push({
-                            type: 'success',
-                            msg: 'Please indicate that you have read and agree to Terms & Conditions and Privacy Policy.'
-                        });
-                        $scope.closeAlert = function(index) {
-                            $scope.mesgAgree.splice(index, 1);
+                if ($scope.userForm.agreeTerms == true) {
+                    NavigationService.ExpertSignup($scope.userForm, function(data) {
+                        if (data.value == true) {
+                            $scope.formComplete = true;
+                            // $timeout(function() {
+                            //     $state.go("expert-profile");
+                            // }, 1000);
+                        } else {
+                            $scope.expertAlreadyExist = true;
+                            $timeout(function() {
+                                $scope.expertAlreadyExist = false;
+                            }, 5000)
                         }
+                        // TemplateService.removeLoader();
+                    });
+                } else {
+                    $scope.mesgAgree.push({
+                        type: 'success',
+                        msg: 'Please indicate that you have read and agree to Terms & Conditions and Privacy Policy.'
+                    });
+                    $scope.closeAlert = function(index) {
+                        $scope.mesgAgree.splice(index, 1);
                     }
+                }
                 // } else {
                 //     $scope.mesgage.push({
                 //         type: 'success',
@@ -1050,24 +1065,24 @@ TemplateService.removeLoaderOn(1);
                         id: myid
                     });
                 } else {
-                  if(data.data.comment == 'ExpertUser Not Found'){
-                    $scope.mesg.push({
-                        type: 'danger',
-                        msg: 'Incorrect Email or Password'
-                    });
-                    $scope.closeAlert = function(index) {
-                        $scope.mesg.splice(index, 1);
+                    if (data.data.comment == 'ExpertUser Not Found') {
+                        $scope.mesg.push({
+                            type: 'danger',
+                            msg: 'Incorrect Email or Password'
+                        });
+                        $scope.closeAlert = function(index) {
+                            $scope.mesg.splice(index, 1);
+                        }
+                    } else {
+                        // $scope.mesgs = [];
+                        $scope.mesg.push({
+                            type: 'danger',
+                            msg: 'Please Verify your email for Login'
+                        });
+                        $scope.closeAlert = function(index) {
+                            $scope.mesg.splice(index, 1);
+                        }
                     }
-                  }else{
-                      // $scope.mesgs = [];
-                    $scope.mesg.push({
-                        type: 'danger',
-                        msg: 'Please Verify your email for Login'
-                    });
-                    $scope.closeAlert = function(index) {
-                        $scope.mesg.splice(index, 1);
-                    }
-                  }
                     // $scope.mesg.push({
                     //     type: 'danger',
                     //     msg: 'Incorrect Email or Password'
@@ -1089,7 +1104,7 @@ TemplateService.removeLoaderOn(1);
                 //         $scope.mesgs.splice(index, 1);
                 //     }
                 // }
-                  // TemplateService.removeLoader();
+                // TemplateService.removeLoader();
             });
             $scope.mesgs = [];
         }
@@ -1117,7 +1132,7 @@ TemplateService.removeLoaderOn(1);
                 console.log('$scope.myjstorage', $scope.myjstorage);
                 $scope.changeSuccess = true;
             }
-  TemplateService.removeLoader();
+            TemplateService.removeLoader();
         });
     };
 
@@ -1175,7 +1190,7 @@ TemplateService.removeLoaderOn(1);
         $scope.menutitle = NavigationService.makeactive("Expert-Profile");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-          TemplateService.removeLoaderOn(2);
+        TemplateService.removeLoaderOn(2);
         $scope.userForm = {};
         $scope.userForm.callday = "MONDAY";
         $scope.specilization = [];
@@ -1188,9 +1203,9 @@ TemplateService.removeLoaderOn(1);
         //     $scope.sameaddress=false;
         // }
 
-        $scope.SpecializationArr = ['Education / Student Counselling','Career Counselling','Image Counselling / Grooming','Relationship Counselling','Stress / Depression / Anxiety','Meditation','Life Skills','Personality','Alternate / Spiritual Healing','Child Behaviour','Adolescence Counselling'];
+        $scope.SpecializationArr = ['Education / Student Counselling', 'Career Counselling', 'Image Counselling / Grooming', 'Relationship Counselling', 'Stress / Depression / Anxiety', 'Meditation', 'Life Skills', 'Personality', 'Alternate / Spiritual Healing', 'Child Behaviour', 'Adolescence Counselling'];
 
-// var spArr = [];
+        // var spArr = [];
         // $scope.pushArr = function(val){
         //   spArr.push(val);
         //   console.log(spArr);
@@ -1232,13 +1247,13 @@ TemplateService.removeLoaderOn(1);
                 }
                 if (data.callSettings && data.callSettings.length > 0) {
                     $scope.calldetail = data.callSettings;
-                    console.log('///////////////////',$scope.calldetail);
-                    _.each($scope.calldetail,function(n){
-                      console.log(n);
-                      if(n.fromTime || n.toTime){
-                        n.fromTime = new Date(n.fromTime);
-                        n.toTime = new Date(n.toTime);
-                      }
+                    console.log('///////////////////', $scope.calldetail);
+                    _.each($scope.calldetail, function(n) {
+                        console.log(n);
+                        if (n.fromTime || n.toTime) {
+                            n.fromTime = new Date(n.fromTime);
+                            n.toTime = new Date(n.toTime);
+                        }
                     })
                 } else {
                     $scope.calldetail = [];
@@ -1266,7 +1281,7 @@ TemplateService.removeLoaderOn(1);
                 $scope.userForm = data;
                 $scope.userForm.callday = "MONDAY";
                 $scope.userForm.sameaddress = false;
-                  TemplateService.removeLoader();
+                TemplateService.removeLoader();
             });
         };
         $scope.editExpert();
@@ -1325,7 +1340,7 @@ TemplateService.removeLoaderOn(1);
                         }
 
                     }
-                      // TemplateService.removeLoader();
+                    // TemplateService.removeLoader();
 
                 });
 
@@ -1338,7 +1353,7 @@ TemplateService.removeLoaderOn(1);
         NavigationService.getCategory($scope.categorydata, function(data) {
             $scope.categorydata = data.data;
             console.log('$scope.categorydata', $scope.categorydata);
-  TemplateService.removeLoader();
+            TemplateService.removeLoader();
         });
         //
         //
@@ -1362,7 +1377,7 @@ TemplateService.removeLoaderOn(1);
                 id: formValid
             }, function(data) {
                 console.log('delete data:', data);
-                  // TemplateService.removeLoader();
+                // TemplateService.removeLoader();
             });
         };
 
@@ -1669,7 +1684,7 @@ TemplateService.removeLoaderOn(1);
         $scope.menutitle = NavigationService.makeactive("Wishlist");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-          TemplateService.removeLoaderOn(3);
+        TemplateService.removeLoaderOn(3);
         $scope.expertlogo = "";
         $scope.userlogo = "user-page";
         $scope.showWishlist = function() {
@@ -1730,7 +1745,7 @@ TemplateService.removeLoaderOn(1);
         $scope.menutitle = NavigationService.makeactive("Search");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-          TemplateService.removeLoaderOn(1);
+        TemplateService.removeLoaderOn(1);
         $scope.selectedAll = {};
         $scope.selectedAll.expertise = true;
         $scope.selectedAll.location = true;
@@ -2040,80 +2055,80 @@ TemplateService.removeLoaderOn(1);
     })
 
 .controller('VerifyEmailCtrl', function($scope, $stateParams, TemplateService, NavigationService, $timeout) {
-    $scope.template = TemplateService.changecontent("verifyemail");
-    // console.log($scope.template);
-    $scope.template.header = "";
-    $scope.template.footer = "";
-    $scope.menutitle = NavigationService.makeactive("Verify Email");
-    TemplateService.title = $scope.menutitle;
-    $scope.navigation = NavigationService.getnav();
-      TemplateService.removeLoaderOn(1);
-    $scope.ver = {};
-    $scope.sc = {};
-    $scope.er = {};
-    $scope.er.errText = false;
-    $scope.ver.verify = $stateParams.text;
-    console.log('in verify ctrl');
-    NavigationService.emailVerification($scope.ver, function(data) {
-        console.log('*********************************************');
-        $scope.er.errText = false;
-        $scope.sc.status = data.value;
-
-        if (data.value) {
-
-        } else {
-            if (data.error && data.error.includes("mobile")) {
-                $scope.sc.status = true;
-                $scope.sc.text = data.error;
-                $scope.er.errText = true;
-            }
-        }
-  TemplateService.removeLoader();
-    });
-    // TemplateService.header = "views/content/header.html";
-})
-.controller('UserVerifyEmailCtrl', function($scope, $stateParams, TemplateService, NavigationService, $timeout) {
-    $scope.template = TemplateService.changecontent("userverifyemail");
-    // console.log($scope.template);
-    $scope.template.header = "";
-    $scope.template.footer = "";
-    $scope.menutitle = NavigationService.makeactive("Verify Email");
-    TemplateService.title = $scope.menutitle;
-    $scope.navigation = NavigationService.getnav();
+        $scope.template = TemplateService.changecontent("verifyemail");
+        // console.log($scope.template);
+        $scope.template.header = "";
+        $scope.template.footer = "";
+        $scope.menutitle = NavigationService.makeactive("Verify Email");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
         TemplateService.removeLoaderOn(1);
-    $scope.ver = {};
-    $scope.sc = {};
-    $scope.er = {};
-    $scope.er.errText = false;
-    $scope.ver.verify = $stateParams.text;
-    console.log('in verify ctrl');
-    NavigationService.useremailVerification($scope.ver, function(data) {
-        console.log('*********************************************');
+        $scope.ver = {};
+        $scope.sc = {};
+        $scope.er = {};
         $scope.er.errText = false;
-        $scope.sc.status = data.value;
+        $scope.ver.verify = $stateParams.text;
+        console.log('in verify ctrl');
+        NavigationService.emailVerification($scope.ver, function(data) {
+            console.log('*********************************************');
+            $scope.er.errText = false;
+            $scope.sc.status = data.value;
 
-        if (data.value) {
+            if (data.value) {
 
-        } else {
-            if (data.error && data.error.includes("mobile")) {
-                $scope.sc.status = true;
-                $scope.sc.text = data.error;
-                $scope.er.errText = true;
+            } else {
+                if (data.error && data.error.includes("mobile")) {
+                    $scope.sc.status = true;
+                    $scope.sc.text = data.error;
+                    $scope.er.errText = true;
+                }
             }
-        }
-          TemplateService.removeLoader();
-    // }, function(err) {
-    //     console.log(err);
-    });
-    // TemplateService.header = "views/content/header.html";
-})
+            TemplateService.removeLoader();
+        });
+        // TemplateService.header = "views/content/header.html";
+    })
+    .controller('UserVerifyEmailCtrl', function($scope, $stateParams, TemplateService, NavigationService, $timeout) {
+        $scope.template = TemplateService.changecontent("userverifyemail");
+        // console.log($scope.template);
+        $scope.template.header = "";
+        $scope.template.footer = "";
+        $scope.menutitle = NavigationService.makeactive("Verify Email");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        TemplateService.removeLoaderOn(1);
+        $scope.ver = {};
+        $scope.sc = {};
+        $scope.er = {};
+        $scope.er.errText = false;
+        $scope.ver.verify = $stateParams.text;
+        console.log('in verify ctrl');
+        NavigationService.useremailVerification($scope.ver, function(data) {
+            console.log('*********************************************');
+            $scope.er.errText = false;
+            $scope.sc.status = data.value;
+
+            if (data.value) {
+
+            } else {
+                if (data.error && data.error.includes("mobile")) {
+                    $scope.sc.status = true;
+                    $scope.sc.text = data.error;
+                    $scope.er.errText = true;
+                }
+            }
+            TemplateService.removeLoader();
+            // }, function(err) {
+            //     console.log(err);
+        });
+        // TemplateService.header = "views/content/header.html";
+    })
 
 .controller('ProfileCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $uibModal) {
     $scope.template = TemplateService.changecontent("profile");
     $scope.menutitle = NavigationService.makeactive("Profile");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-      TemplateService.removeLoaderOn(1);
+    TemplateService.removeLoaderOn(1);
     $scope.expertlogo = "";
     $scope.userlogo = "user-page";
     $scope.start = "";
@@ -2144,7 +2159,7 @@ TemplateService.removeLoaderOn(1);
             };
         }
 
-TemplateService.removeLoader();
+        TemplateService.removeLoader();
 
     });
 

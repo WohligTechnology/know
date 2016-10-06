@@ -20,7 +20,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         })
 
     .state('user-booking', {
-            url: "/user-booking/:tab",
+            url: "/user-booking/:id",
             templateUrl: "views/template.html",
             controller: 'UserBookingCtrl'
         })
