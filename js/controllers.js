@@ -104,7 +104,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $timeout(function() {
         console.log("time out");
         $scope.formData.whichPage = $stateParams.id;
-        $apply();
+        // $apply();
     }, 1000);
 
 
@@ -147,7 +147,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     }
     $scope.mesg = [];
     $scope.selectOnce = false;
-    $scope.userBook($stateParams.id, 'user');
+    $scope.userBook('accept', 'user');
     $scope.getPay = function(booking, val) {
         var currentDate = new Date();
         var callTime = new Date(booking.callTime);
