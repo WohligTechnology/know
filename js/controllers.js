@@ -83,13 +83,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
         });
     }
-    (function () {
-        "use strict";
-        var hidden = document.getElementById('hidden');
-        document.addEventListener('click', function (e) {
-            if (e.target.id == 'toggle' || (hidden.style.display != 'none' && !hidden.contains(e.target))) hidden.style.display = hidden.style.display == 'none' ? 'block' : 'none';
-        }, false);
-    })();
+
 
     // $(document).click(function(){
     //  $("#hello").hide('slow');
@@ -106,12 +100,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     // if(!$stateParams.id){
     //   $stateParams.id='accept';
     // }
-$scope.formData = {};
-$timeout(function () {
-  console.log("time out");
-   $scope.formData.whichPage = $stateParams.id;
-   $apply();
-}, 1000);
+    $scope.formData = {};
+    $timeout(function() {
+        console.log("time out");
+        $scope.formData.whichPage = $stateParams.id;
+        $apply();
+    }, 1000);
 
 
 
@@ -124,14 +118,14 @@ $timeout(function () {
     $scope.userpay = {};
     $stateParams.tab = 'AwaitingPayment';
     $scope.userBook = function(status, user) {
-      $scope.active = status;
+        $scope.active = status;
         // $state.go('user-booking',{id: $stateParams.id});
-      // if ($stateParams.id) {
-      //    $scope.active = status;
-      //     $state.go('user-booking',{id: $scope.active});
-      // } else {
-      //     $stateParams.id = 'accept';
-      // }
+        // if ($stateParams.id) {
+        //    $scope.active = status;
+        //     $state.go('user-booking',{id: $scope.active});
+        // } else {
+        //     $stateParams.id = 'accept';
+        // }
         console.log(status, '*****************');
 
         console.log("here");
