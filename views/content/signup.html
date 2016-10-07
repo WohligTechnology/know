@@ -53,9 +53,10 @@
                 </div>
               </div>
               <div class="mail mt10 pos-relative">
-                <input type="password" name="password" placeholder="PASSWORD" class="form-control display-inline log" ng-model="userForm.password" required>
-                <div class="error-msg" ng-show="user.password.$error.required && user.password.$touched">Please Enter Password.</div>
 
+                <input type="password" name="password" placeholder="PASSWORD" class="form-control display-inline log" ng-model="userForm.password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" required>
+                <div class="error-msg" ng-show="user.password.$error.required && user.password.$touched">Please Enter Password.</div>
+  <span class="cl-ps">(Minimum 8 characters at least 1 Alphabet and 1 Number)</span>
                 <div class="icon-mail display-inline">
                   <i class="ln-lock"></i>
                 </div>

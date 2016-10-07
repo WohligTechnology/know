@@ -14,6 +14,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.userlogo = "";
     $scope.home = "home-page";
 
+
+
     $scope.categorydata = {};
     NavigationService.getCategory($scope.categorydata, function(data) {
         $scope.categorydata = data.data;
@@ -81,6 +83,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
         });
     }
+    (function () {
+        "use strict";
+        var hidden = document.getElementById('hidden');
+        document.addEventListener('click', function (e) {
+            if (e.target.id == 'toggle' || (hidden.style.display != 'none' && !hidden.contains(e.target))) hidden.style.display = hidden.style.display == 'none' ? 'block' : 'none';
+        }, false);
+    })();
+
+    // $(document).click(function(){
+    //  $("#hello").hide('slow');
+    // });
 })
 
 .controller('UserBookingCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
@@ -1042,6 +1055,7 @@ $timeout(function () {
                 $scope.closeAlert = function(index) {
                     $scope.mesg.splice(index, 1);
                 }
+                $scope.userForm.confirmPassword = "";
             }
         }
     };
