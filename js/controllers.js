@@ -100,12 +100,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     // if(!$stateParams.id){
     //   $stateParams.id='accept';
     // }
-    $scope.formData = {};
-    $timeout(function() {
-        console.log("time out");
-        $scope.formData.whichPage = $stateParams.id;
-        // $apply();
-    }, 1000);
+    // $scope.formData = {};
+    // $timeout(function() {
+    //     console.log("time out");
+    //     $scope.formData.whichPage = $stateParams.id;
+    //
+    // }, 1000);
 
 
 
@@ -118,16 +118,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.userpay = {};
     $stateParams.tab = 'AwaitingPayment';
     $scope.userBook = function(status, user) {
-        $scope.active = status;
-        // $state.go('user-booking',{id: $stateParams.id});
-        // if ($stateParams.id) {
-        //    $scope.active = status;
-        //     $state.go('user-booking',{id: $scope.active});
-        // } else {
-        //     $stateParams.id = 'accept';
-        // }
-        console.log(status, '*****************');
-
+        // $scope.active = status;
         console.log("here");
         $scope.userBookings.status = status;
         $scope.userBookings.from = user;
@@ -147,7 +138,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     }
     $scope.mesg = [];
     $scope.selectOnce = false;
-    $scope.userBook('accept', 'user');
+    $scope.userBook('pending', 'user');
     $scope.getPay = function(booking, val) {
         var currentDate = new Date();
         var callTime = new Date(booking.callTime);
@@ -687,6 +678,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.forgotpswd = data.data;
             console.log('forgotpswd', $scope.forgotpswd);
             if ($scope.forgotpswd.comment == 'User not found') {
+              console.log('inside if');
                 $scope.mesg.push({
                     type: 'danger',
                     msg: 'Incorrect Email'
@@ -695,7 +687,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         $scope.mesg.splice(index, 1);
                     }
                     // TemplateService.removeLoader();
-            } else if ($scope.forgotpswd.comment == 'Mail Sent') {
+            }
+            else if($scope.forgotpswd.comment == 'User logged in through social login'){
+              console.log('inside else if');
+                $scope.mesg.push({
+                    type: 'danger',
+                    msg: 'User logged in through social login'
+                });
+                $scope.closeAlert = function(index) {
+                        $scope.mesg.splice(index, 1);
+                    }
+                    // TemplateService.removeLoader();
+            }
+             else {
+              // ($scope.forgotpswd.comment == 'Mail Sent') {
                 $.jStorage.set('DoneForgotPswd', $scope.forgotpswd.comment);
                 $scope.myjstorage = $.jStorage.get('DoneForgotPswd');
                 console.log('$scope.myjstorage', $scope.myjstorage);
