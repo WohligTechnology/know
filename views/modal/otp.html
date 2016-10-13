@@ -5,14 +5,14 @@
         </div>
         <h6 class="modal-title text-center margin0 color-grey">OTP VERIFICATION</h6>
     </div>
-    <form name="user" ng-submit="forgotpswdClick(userForm)" ng-hide="changeSuccess">
+    <form name="user" ng-submit="checkOTP(verify,$event);closeDialog();">
         <div class="modal-body">
             <div class="mt10">
                 <p class="font-light f10">Enter the OTP number associated with your mobile, and we’ll verify you a expert account.</p>
             </div>
             <div class="mail mt10 pos-relative">
-                <input type="email" name="email" placeholder="EMAIL ADDRESS" class="form-control display-inline log" ng-model="userForm.email" required>
-                <div class="error-msg" ng-show="user.email.$error.required && user.email.$touched">Please Enter Your OTP.</div>
+                <input type="email" ng-model="verify.otp" id="otp" name="otp" placeholder="Enter OTP" class="form-control display-inline log" >
+                <!-- <div class="error-msg" ng-show="user.email.$error.required && user.email.$touched">Please Enter Your OTP.</div> -->
                 <div class="icon-mail display-inline">
                     <i class="ln-iphone"></i>
                 </div>

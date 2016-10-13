@@ -722,7 +722,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 })
 
-.controller('SignupCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $window) {
+.controller('SignupCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $window,$uibModal) {
     $scope.template = TemplateService.changecontent("signup");
     $scope.menutitle = NavigationService.makeactive("Signup");
     TemplateService.title = $scope.menutitle;
@@ -734,6 +734,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.mesgAgree = [];
     $scope.userForm = {};
     $scope.isAgree = false;
+    $scope.open4 = function() {
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'views/modal/otp.html',
+            controller: 'SignupCtrl',
+            size: 'sm',
+            scope: $scope
+        });
+    };
+
+    $scope.checkOTP = function(input, ev) {
+      console.log('input',input,'env',env);
+        input.contact = $scope.userForm.mobile;
+        NavigationService.checkOTP(input, function(data) {
+            if (data.value) {
+console.log(data.value);
+            } else {
+
+            }
+        }, function(err) {
+            console.log(err);
+        });
+    };
+
     $scope.userSignup = function(formValid) {
         console.log('SignupCtrl', $scope.userForm);
         if (formValid.$valid) {
@@ -745,7 +769,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     NavigationService.Signup($scope.userForm, function(data) {
                         $scope.userForm = data.data;
                         if (data.value == true) {
-                            $scope.formComplete = true;
+                          $scope.open4();
+                            // $scope.formComplete = true;
                             // $timeout(function() {
                             //     $state.go("home");
                             // }, 1000);

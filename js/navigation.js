@@ -526,6 +526,16 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
+        checkOTP: function(request, callback, err) {
+          return $http({
+              url: adminURL + "otp/checkOtp",
+              method: "POST",
+              data: {
+                  "contact": request.contact,
+                  "otp":request.otp
+              }
+          }).success(callback).error(err);
+      },
         makeactive: function(menuname) {
             for (var i = 0; i < navigation.length; i++) {
                 if (navigation[i].name == menuname) {
