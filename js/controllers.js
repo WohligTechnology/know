@@ -149,7 +149,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             booking.from = "user";
             NavigationService.payNow(booking, function(data) {
                 console.log(data);
-                var win = window.open(data.data);
+                window.location.href=data.data;
+                // var win = window.open(data.data);
                 var closeInterval = setInterval(function() {
                     NavigationService.getSingleBooking(booking._id, function(singleBooking) {
                         console.log(singleBooking);
