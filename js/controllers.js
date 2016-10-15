@@ -2126,6 +2126,27 @@ console.log(data.value);
         });
         // TemplateService.header = "views/content/header.html";
     })
+
+.controller('paymentSuccessCtrl', function($scope, $stateParams, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("paymentSuccess");
+  $scope.menutitle = NavigationService.makeactive("paymentSuccess");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+  $scope.expertlogo = "";
+  $scope.userlogo = "user-page";
+
+        // TemplateService.header = "views/content/header.html";
+    })
+.controller('paymentErrorCtrl', function($scope, $stateParams, TemplateService, NavigationService, $timeout) {
+  $scope.template = TemplateService.changecontent("paymentError");
+  $scope.menutitle = NavigationService.makeactive("paymentError");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+  $scope.expertlogo = "";
+  $scope.userlogo = "user-page";
+
+        // TemplateService.header = "views/content/header.html";
+    })
     .controller('UserVerifyEmailCtrl', function($scope, $stateParams, TemplateService, NavigationService, $timeout) {
         $scope.template = TemplateService.changecontent("userverifyemail");
         // console.log($scope.template);

@@ -134,6 +134,16 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
             templateUrl: "views/template.html",
             controller: 'ContactCtrl'
         })
+        .state('paymentSuccess', {
+            url: "/paymentSuccess",
+            templateUrl: "views/template.html",
+            controller: 'paymentSuccessCtrl'
+        })
+        .state('paymentError', {
+            url: "/paymentError",
+            templateUrl: "views/template.html",
+            controller: 'paymentErrorCtrl'
+        })
         .state('profile', {
             url: "/profile/:id",
             templateUrl: "views/template.html",
