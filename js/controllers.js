@@ -149,7 +149,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             booking.from = "user";
             NavigationService.payNow(booking, function(data) {
                 console.log(data);
-                window.location.href=data.data;
+                window.location.href = data.data;
                 // var win = window.open(data.data);
                 var closeInterval = setInterval(function() {
                     NavigationService.getSingleBooking(booking._id, function(singleBooking) {
@@ -679,7 +679,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.forgotpswd = data.data;
             console.log('forgotpswd', $scope.forgotpswd);
             if ($scope.forgotpswd.comment == 'User not found') {
-              console.log('inside if');
+                console.log('inside if');
                 $scope.mesg.push({
                     type: 'danger',
                     msg: 'Incorrect Email'
@@ -688,9 +688,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         $scope.mesg.splice(index, 1);
                     }
                     // TemplateService.removeLoader();
-            }
-            else if($scope.forgotpswd.comment == 'User logged in through social login'){
-              console.log('inside else if');
+            } else if ($scope.forgotpswd.comment == 'User logged in through social login') {
+                console.log('inside else if');
                 $scope.mesg.push({
                     type: 'danger',
                     msg: 'User logged in through social login'
@@ -699,9 +698,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         $scope.mesg.splice(index, 1);
                     }
                     // TemplateService.removeLoader();
-            }
-             else {
-              // ($scope.forgotpswd.comment == 'Mail Sent') {
+            } else {
+                // ($scope.forgotpswd.comment == 'Mail Sent') {
                 $.jStorage.set('DoneForgotPswd', $scope.forgotpswd.comment);
                 $scope.myjstorage = $.jStorage.get('DoneForgotPswd');
                 console.log('$scope.myjstorage', $scope.myjstorage);
@@ -723,7 +721,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 })
 
-.controller('SignupCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $window,$uibModal) {
+.controller('SignupCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $window, $uibModal) {
     $scope.template = TemplateService.changecontent("signup");
     $scope.menutitle = NavigationService.makeactive("Signup");
     TemplateService.title = $scope.menutitle;
@@ -740,23 +738,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             animation: $scope.animationsEnabled,
             templateUrl: 'views/modal/otp.html',
             controller: 'SignupCtrl',
-            backdrop:'static',
+            backdrop: 'static',
             size: 'sm',
             scope: $scope
         });
     };
-  $scope.formComplete = false;
+    $scope.formComplete = false;
     $scope.checkOTP = function(input, ev) {
-      console.log('input',input,'env',ev);
+        console.log('input', input, 'env', ev);
         input.contact = $.jStorage.get('mobile');
         console.log(input.contact);
         NavigationService.checkOTP(input, function(data) {
             if (data.value == true) {
-              // $scope.modalInstance.close();
-              $scope.formComplete = true;
-console.log(data.value);
+                // $scope.modalInstance.close();
+                $scope.formComplete = true;
+                console.log(data.value);
             } else {
-console.log(data.value);
+                console.log(data.value);
             }
         }, function(err) {
             console.log(err);
@@ -766,8 +764,8 @@ console.log(data.value);
     $scope.userSignup = function(formValid) {
         console.log('SignupCtrl', $scope.userForm);
         if (formValid.$valid) {
-          console.log($scope.userForm);
-          $.jStorage.set("mobile",$scope.userForm.mobile);
+            console.log($scope.userForm);
+            $.jStorage.set("mobile", $scope.userForm.mobile);
             if ($scope.userForm.password == $scope.userForm.confirmPassword) {
                 if ($scope.userForm.agreeTerms == true) {
                     console.log('isAgree==============true');
@@ -777,7 +775,7 @@ console.log(data.value);
                         $scope.userForm = data.data;
 
                         if (data.value == true) {
-                          $scope.open4();
+                            $scope.open4();
                             // $scope.formComplete = true;
                             // $timeout(function() {
                             //     $state.go("home");
@@ -998,7 +996,7 @@ console.log(data.value);
         $scope.userlogo = "user-page";
     })
 
-.controller('HomeExpertCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $window, $uibModal, $rootScope, saveform, UserForm) {
+.controller('HomeExpertCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $window, $uibModal, $rootScope,UserForm) {
     $scope.template = TemplateService.changecontent("home-expert");
     $scope.menutitle = NavigationService.makeactive("Home-Expert");
     TemplateService.title = $scope.menutitle;
@@ -1027,12 +1025,13 @@ console.log(data.value);
             scope: $scope
         });
     };
-    $scope.open4 = function(size) {
+    $scope.open40 = function(size) {
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'views/modal/otp.html',
-            //controller: 'HomeCtrl',
-            size: size,
+            controller: 'HomeExpertCtrl',
+            backdrop: 'static',
+            size: 'sm',
             scope: $scope
         });
     };
@@ -1040,15 +1039,35 @@ console.log(data.value);
     $scope.mesgAgree = [];
     $scope.mesgage = [];
     $scope.userForm = {};
+    $scope.formComplete = false;
+    $scope.checkOTP = function(input, ev) {
+        console.log('input', input, 'env', ev);
+        input.contact = $.jStorage.get('mobileno');
+        console.log(input.contact);
+        NavigationService.checkOtpExpert(input, function(data) {
+            if (data.value == true) {
+                // $scope.modalInstance.close();
+                $scope.formComplete = true;
+                console.log(data.value);
+            } else {
+                console.log(data.value);
+            }
+        }, function(err) {
+            console.log(err);
+        });
+    };
     $scope.expertSignup = function(formValid) {
         if (formValid.$valid) {
             console.log('HomeExpertCtrl', $scope.userForm.age);
+            $.jStorage.set("mobileno", $scope.userForm.mobileno);
             if ($scope.userForm.password == $scope.userForm.confirmPassword) {
                 // if ($scope.userForm.age >= 18) {
                 if ($scope.userForm.agreeTerms == true) {
                     NavigationService.ExpertSignup($scope.userForm, function(data) {
                         if (data.value == true) {
-                            $scope.formComplete = true;
+                          console.log('yes value true');
+                            $scope.open40();
+                            // $scope.formComplete = true;
                             // $timeout(function() {
                             //     $state.go("expert-profile");
                             // }, 1000);
@@ -2101,56 +2120,56 @@ console.log(data.value);
     })
 
 .controller('VerifyEmailCtrl', function($scope, $stateParams, TemplateService, NavigationService, $timeout) {
-        $scope.template = TemplateService.changecontent("verifyemail");
-        // console.log($scope.template);
-        $scope.template.header = "";
-        $scope.template.footer = "";
-        $scope.menutitle = NavigationService.makeactive("Verify Email");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        TemplateService.removeLoaderOn(1);
-        $scope.ver = {};
-        $scope.sc = {};
-        $scope.er = {};
+    $scope.template = TemplateService.changecontent("verifyemail");
+    // console.log($scope.template);
+    $scope.template.header = "";
+    $scope.template.footer = "";
+    $scope.menutitle = NavigationService.makeactive("Verify Email");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    TemplateService.removeLoaderOn(1);
+    $scope.ver = {};
+    $scope.sc = {};
+    $scope.er = {};
+    $scope.er.errText = false;
+    $scope.ver.verify = $stateParams.text;
+    console.log('in verify ctrl');
+    NavigationService.emailVerification($scope.ver, function(data) {
+        console.log('*********************************************');
         $scope.er.errText = false;
-        $scope.ver.verify = $stateParams.text;
-        console.log('in verify ctrl');
-        NavigationService.emailVerification($scope.ver, function(data) {
-            console.log('*********************************************');
-            $scope.er.errText = false;
-            $scope.sc.status = data.value;
+        $scope.sc.status = data.value;
 
-            if (data.value) {
+        if (data.value) {
 
-            } else {
-                if (data.error && data.error.includes("mobile")) {
-                    $scope.sc.status = true;
-                    $scope.sc.text = data.error;
-                    $scope.er.errText = true;
-                }
+        } else {
+            if (data.error && data.error.includes("mobile")) {
+                $scope.sc.status = true;
+                $scope.sc.text = data.error;
+                $scope.er.errText = true;
             }
-            TemplateService.removeLoader();
-        });
-        // TemplateService.header = "views/content/header.html";
-    })
+        }
+        TemplateService.removeLoader();
+    });
+    // TemplateService.header = "views/content/header.html";
+})
 
 .controller('paymentSuccessCtrl', function($scope, $stateParams, TemplateService, NavigationService, $timeout) {
-  $scope.template = TemplateService.changecontent("paymentSuccess");
-  $scope.menutitle = NavigationService.makeactive("paymentSuccess");
-  TemplateService.title = $scope.menutitle;
-  $scope.navigation = NavigationService.getnav();
-  $scope.expertlogo = "";
-  $scope.userlogo = "user-page";
+        $scope.template = TemplateService.changecontent("paymentSuccess");
+        $scope.menutitle = NavigationService.makeactive("paymentSuccess");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.expertlogo = "";
+        $scope.userlogo = "user-page";
 
         // TemplateService.header = "views/content/header.html";
     })
-.controller('paymentErrorCtrl', function($scope, $stateParams, TemplateService, NavigationService, $timeout) {
-  $scope.template = TemplateService.changecontent("paymentError");
-  $scope.menutitle = NavigationService.makeactive("paymentError");
-  TemplateService.title = $scope.menutitle;
-  $scope.navigation = NavigationService.getnav();
-  $scope.expertlogo = "";
-  $scope.userlogo = "user-page";
+    .controller('paymentErrorCtrl', function($scope, $stateParams, TemplateService, NavigationService, $timeout) {
+        $scope.template = TemplateService.changecontent("paymentError");
+        $scope.menutitle = NavigationService.makeactive("paymentError");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.expertlogo = "";
+        $scope.userlogo = "user-page";
 
         // TemplateService.header = "views/content/header.html";
     })
