@@ -1,7 +1,7 @@
-// var adminurl = "http://localhost/";
+var adminurl = "http://localhost/";
 // var adminurl = "http://146.148.4.222:1337/";
 
-var adminurl = "http://jacknows.wohlig.com/";
+// var adminurl = "http://jacknows.wohlig.com/";
 // var imgurl = "http://jacknows.wohlig.com/upload/";
 // var adminurl = "http://chaitalee.com/";
 var imgurl = adminurl + "upload/";
@@ -527,8 +527,9 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         checkOTP: function(request, callback, err) {
+          console.log('naviReq',request);
           return $http({
-              url: adminURL + "otp/checkOtp",
+              url: adminurl + "otp/checkOtp",
               method: "POST",
               data: {
                   "contact": request.contact,

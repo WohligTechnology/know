@@ -736,23 +736,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.userForm = {};
     $scope.isAgree = false;
     $scope.open4 = function() {
-        var modalInstance = $uibModal.open({
+        $scope.modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'views/modal/otp.html',
             controller: 'SignupCtrl',
+            backdrop:'static',
             size: 'sm',
             scope: $scope
         });
     };
-
+  $scope.formComplete = false;
     $scope.checkOTP = function(input, ev) {
-      console.log('input',input,'env',env);
-        input.contact = $scope.userForm.mobile;
+      console.log('input',input,'env',ev);
+        input.contact = $.jStorage.get('mobile');
+        console.log(input.contact);
         NavigationService.checkOTP(input, function(data) {
-            if (data.value) {
+            if (data.value == true) {
+              // $scope.modalInstance.close();
+              $scope.formComplete = true;
 console.log(data.value);
             } else {
-
+console.log(data.value);
             }
         }, function(err) {
             console.log(err);
@@ -762,6 +766,8 @@ console.log(data.value);
     $scope.userSignup = function(formValid) {
         console.log('SignupCtrl', $scope.userForm);
         if (formValid.$valid) {
+          console.log($scope.userForm);
+          $.jStorage.set("mobile",$scope.userForm.mobile);
             if ($scope.userForm.password == $scope.userForm.confirmPassword) {
                 if ($scope.userForm.agreeTerms == true) {
                     console.log('isAgree==============true');
@@ -769,6 +775,7 @@ console.log(data.value);
                     console.log('trueeeeeeeeeee');
                     NavigationService.Signup($scope.userForm, function(data) {
                         $scope.userForm = data.data;
+
                         if (data.value == true) {
                           $scope.open4();
                             // $scope.formComplete = true;

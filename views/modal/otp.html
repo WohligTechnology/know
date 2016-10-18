@@ -5,13 +5,13 @@
         </div>
         <h6 class="modal-title text-center margin0 color-grey">OTP VERIFICATION</h6>
     </div>
-    <form name="user" ng-submit="checkOTP(verify,$event);closeDialog();">
-        <div class="modal-body">
+    <form name="user" ng-submit="checkOTP(verify,$event)">
+        <div class="modal-body" ng-hide="formComplete">
             <div class="mt10">
                 <p class="font-light f10">Enter the OTP number associated with your mobile, and we’ll verify you a expert account.</p>
             </div>
             <div class="mail mt10 pos-relative">
-                <input type="email" ng-model="verify.otp" id="otp" name="otp" placeholder="Enter OTP" class="form-control display-inline log" >
+                <input type="text" ng-model="verify.otp" id="otp" name="otp" placeholder="Enter OTP" class="form-control display-inline log" >
                 <!-- <div class="error-msg" ng-show="user.email.$error.required && user.email.$touched">Please Enter Your OTP.</div> -->
                 <div class="icon-mail display-inline">
                     <i class="ln-iphone"></i>
@@ -23,10 +23,14 @@
             </div>
         </div>
     </form>
-    <div ng-show="changeSuccess">
+    <div ng-show="formComplete">
       <p style="padding:0 10px">
-        We have sent you a temporary password on your registered e-mail ID. You may use that to login for now.
+        <!-- We have sent you a temporary password on your registered e-mail ID. You may use that to login for now. -->
+        Your OTP is verified Successfully,Please check your email for Email Verification
       </p>
+      <div class="login-btn mt20">
+          <button class="btn btn-animate-org f10 font-light" ui-sref="home">OK</button>
+      </div>
     </div>
 
 </div>
