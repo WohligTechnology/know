@@ -72,13 +72,14 @@
               </div>
 
               <div class="mt10 text-justify">
-                <p class=" f13"><input type="checkbox" name="signing" ng-model="userForm.agreeTerms"> By signing up, I agree with Jacknows <a ui-sref="terms-condition" class="color-primary">Terms & Condition</a>, <a ui-sref="privacy" class="color-primary">Privacy Policy</a>
+                <p class=" f13"><input type="checkbox" name="signing" ng-model="userForm.agreeTerms" required> By signing up, I agree with Jacknows <a ui-sref="terms-condition" class="color-primary">Terms & Condition</a>, <a ui-sref="privacy" class="color-primary">Privacy Policy</a>
     </p>
               </div>
                 <uib-alert ng-repeat="alert in mesgAgree" type="{{alert.type}}" class="text-center" dismiss-on-timeout="7000" close="closeAlert($index);">{{alert.msg}}</uib-alert>
               <!-- <div ng-if="isAgree" ng-model="merror">Please indicate that you have read and agree to Terms & Conditions and Privacy Policy.</div> -->
               <div class="login-btn mt10">
                 <button class="btn btn-animate-org f10 font-light" ng-click="userSignup(user)">SIGN UP</button>
+                <!-- <button class="btn btn-animate-org f10 font-light" ng-click="open4()" ng-disabled="user.$invalid">SIGN UP</button> -->
               </div>
               <div class="other mt20 text-justify">
                 <p class="font-light f13 pt10 margin0">Already an Jacknow member?  <span class="color-primary pointer"  ui-sref="login">Login</span></p>
