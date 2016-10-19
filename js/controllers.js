@@ -1028,7 +1028,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.open40 = function(size) {
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
-            templateUrl: 'views/modal/otp.html',
+            templateUrl: 'views/modal/otp-expert.html',
             controller: 'HomeExpertCtrl',
             backdrop: 'static',
             size: 'sm',
